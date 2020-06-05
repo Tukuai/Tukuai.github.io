@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Redis删除策略 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="过期数据 Redis是一种内存级数据库，所有数据均存放在内存中，内存中的数据可以通过TTL指令获取其状态 XX ：具有时效性的数据 -1 ：永久有效的数据 -2 ：已经过期的数据 或 被删除的数据 或 未定义的数据 -2 ：已经过期的数据 或 被删除的数据 或 未定义的数据    过期的数据真的删除了吗？并不一定 Redis删除策略  定时删除 惰性删除 定期删除  时效性数据的存储结构 在内存占">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis删除策略">
+<meta property="og:url" content="https://tukuai.github.io/2020/05/20/Redis/Redis%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="过期数据 Redis是一种内存级数据库，所有数据均存放在内存中，内存中的数据可以通过TTL指令获取其状态 XX ：具有时效性的数据 -1 ：永久有效的数据 -2 ：已经过期的数据 或 被删除的数据 或 未定义的数据 -2 ：已经过期的数据 或 被删除的数据 或 未定义的数据    过期的数据真的删除了吗？并不一定 Redis删除策略  定时删除 惰性删除 定期删除  时效性数据的存储结构 在内存占">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/329.png">
+<meta property="og:image" content="https://tukuai.github.io/images/330.png">
+<meta property="article:published_time" content="2020-05-20T06:35:24.000Z">
+<meta property="article:modified_time" content="2020-05-20T07:52:48.572Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/329.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Redis/Redis删除策略" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/20/Redis/Redis%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" class="article-date">
+  <time datetime="2020-05-20T06:35:24.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis删除策略
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="过期数据"><a href="#过期数据" class="headerlink" title="过期数据"></a><strong>过期数据</strong></h2><ul>
+<li>Redis是一种内存级数据库，所有数据均存放在内存中，内存中的数据可以通过TTL指令获取其状态<ul>
+<li>XX ：具有时效性的数据</li>
+<li>-1 ：永久有效的数据</li>
+<li>-2 ：已经过期的数据 或 被删除的数据 或 未定义的数据</li>
+<li>-2 ：已经过期的数据 或 被删除的数据 或 未定义的数据</li>
+</ul>
+</li>
+</ul>
+<p><strong>过期的数据真的删除了吗？</strong><br>并不一定</p>
+<p><strong>Redis删除策略</strong></p>
+<ol>
+<li>定时删除</li>
+<li>惰性删除</li>
+<li>定期删除</li>
+</ol>
+<p><strong>时效性数据的存储结构</strong><br><img src="/images/329.png" alt=""></p>
+<p><strong>在内存占用与CPU占用之间寻找一种平衡，顾此失彼都会造成整体redis性能的下降，甚至引发服务器宕机或内存泄露</strong></p>
+<p><strong>定时删除</strong></p>
+<ul>
+<li>创建一个定时器，当key设置有过期时间，且过期时间到达时，由定时器任务立即执行对键的删除操作</li>
+<li>优点：节约内存，到时就删除，快速释放掉不必要的内存占用</li>
+<li>缺点：CPU压力很大，无论CPU此时负载量多高，均占用CPU，会影响redis服务器响应时间和指令吞吐量</li>
+<li>总结：用处理器性能换取存储空间（拿时间换空间）</li>
+</ul>
+<p><strong>惰性删除</strong></p>
+<ul>
+<li>数据到达过期时间，不做处理。等下次访问该数据时<ul>
+<li>如果未过期，返回数据</li>
+<li>发现已过期，删除，返回不存在</li>
+</ul>
+</li>
+<li>优点：节约CPU性能，发现必须删除的时候才删除</li>
+<li>缺点：内存压力很大，出现长期占用内存的数据</li>
+<li>总结：用存储空间换取处理器性能 expireIfNeeded() （拿时间换空间）</li>
+</ul>
+<p><strong>定期删除</strong><br>两种方案都走极端，有没有折中方案？</p>
+<ul>
+<li><p>Redis启动服务器初始化时，读取配置server.hz的值，默认为10</p>
+</li>
+<li><p>每秒钟执行server.hz次serverCron()    -&gt;databasesCron()  -&gt;activeExpireCycle()</p>
+</li>
+<li><p>activeExpireCycle()对每个expires[* ]逐一进行检测，每次执行250ms/server.hz</p>
+</li>
+<li><p>对某个expires[* ]检测时，随机挑选W个key检测</p>
+<ul>
+<li>如果key超时，删除key</li>
+<li>如果一轮中删除的key的数量&gt;W* 25%，循环该过程</li>
+<li>如果一轮中删除的key的数量≤W* 25%，检查下一个expires[* ]，0-15循环</li>
+</ul>
+</li>
+<li><p>W取值=ACTIVE_EXPIRE_CYCLE_LOOKUPS_PER_LOOP属性值</p>
+</li>
+<li><p>参数current_db用于记录activeExpireCycle() 进入哪个expires[* ] 执行</p>
+</li>
+<li><p>如果activeExpireCycle()执行时间到期，下次从current_db继续向下执行<br><img src="/images/330.png" alt=""></p>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<ul>
+<li>周期性轮询redis库中的时效性数据，采用随机抽取的策略，利用过期数据占比的方式控制删除频度</li>
+<li>特点1：CPU性能占用设置有峰值，检测频度可自定义设置</li>
+<li>特点2：内存压力不是很大，长期占用内存的冷数据会被持续清理</li>
+<li>总结：周期性抽查存储空间</li>
+</ul>
+<p><strong>删除策略比对</strong></p>
+<ol>
+<li>定时删除  * 节约内存，无占用    * 不分时段占用CPU资源，频度高        * 拿时间换空间</li>
+<li>惰性删除    * 内存占用严重        * 延时执行，CPU利用率高            * 拿空间换时间</li>
+<li>定期删除    * 内存定期随机清理    * 每秒花费固定的CPU资源维护内存    * 随机抽查，重点抽查</li>
+</ol>
+<p>redis一般共同使用惰性删除和定期删除</p>
+<h2 id="逐出算法"><a href="#逐出算法" class="headerlink" title="逐出算法"></a><strong>逐出算法</strong></h2><p><strong>当新数据进入redis时，如果内存不足怎么办？</strong></p>
+<ul>
+<li><p>Redis使用内存存储数据，在执行每一个命令前，会调用freeMemoryIfNeeded()检测内存是否充足。如果内存不满足新加入数据的最低存储要求，redis要临时删除一些数据为当前指令清理存储空间。清理数据的策略称为逐出算法。</p>
+</li>
+<li><p>注意：逐出数据的过程不是100%能够清理出足够的可使用的内存空间，如果不成功则反复执行。当对所有数据尝试完毕后，如果不能达到内存清理的要求，将出现错误信息。<br>(error) OOM command not allowed when used memory &gt;’maxmemory’</p>
+</li>
+</ul>
+<p><strong>影响数据逐出的相关配置</strong></p>
+<ul>
+<li><p>最大可使用内存<br>maxmemory<br>占用物理内存的比例，默认值为0，表示不限制。生产环境中根据需求设定，通常设置在50%以上。</p>
+</li>
+<li><p>每次选取待删除数据的个数<br>maxmemory-samples<br>选取数据时并不会全库扫描，导致严重的性能消耗，降低读写性能。因此采用随机获取数据的方式作为待检测删除数据</p>
+</li>
+<li><p>删除策略<br>maxmemory-policy<br>达到最大内存后的，对被挑选出来的数据进行删除的策略</p>
+<ul>
+<li><p>1.检测易失数据（可能会过期的数据集server.db[i].expires ）<br>  ① volatile-lru：挑选最长时间不使用的数据淘汰，Least Recently Used<br>  ② volatile-lfu：挑选最近使用次数最少的数据淘汰，Least Frequently Used<br>  ③ volatile-ttl：挑选将要过期的数据淘汰<br>  ④ volatile-random：任意选择数据淘汰</p>
+</li>
+<li><p>2.检测全库数据（所有数据集server.db[i].dict ）<br>  ⑤ allkeys-lru：挑选最长时间不使用的数据淘汰<br>  ⑥ allkeys-lfu：挑选最近使用次数最少的数据淘汰<br>  ⑦ allkeys-random：任意选择数据淘汰</p>
+</li>
+<li><p>3.放弃数据驱逐<br>  ⑧ no-enviction（驱逐）：禁止驱逐数据（redis4.0中默认策略），会引发错误OOM（Out Of Memory）<br>在配置文件中</p>
+<p>  maxmemory-policy volatile-lru</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/05/20/Redis/Redis%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" data-id="ckb22iuek004gzwu8bat3aivp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/20/Redis/Redis%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis基础配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/20/Redis/Redis%E4%BA%8B%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis事务</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

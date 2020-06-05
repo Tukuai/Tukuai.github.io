@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Jsoup(XML解析工具) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作用：解析HTML，xml。可以做爬虫步骤 导入JAR包 获取Document对象 获取队形标签Element 获取数据  代码： 123456789101112131415161718  &#x2F;public class JsoupDemo1 &amp;#123;    public static void main(String[] args) throws IOException &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jsoup(XML解析工具)">
+<meta property="og:url" content="https://tukuai.github.io/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作用：解析HTML，xml。可以做爬虫步骤 导入JAR包 获取Document对象 获取队形标签Element 获取数据  代码： 123456789101112131415161718  &#x2F;public class JsoupDemo1 &amp;#123;    public static void main(String[] args) throws IOException &amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-10-27T04:46:32.000Z">
+<meta property="article:modified_time" content="2020-04-07T13:26:33.167Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端/Jsoup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/" class="article-date">
+  <time datetime="2019-10-27T04:46:32.000Z" itemprop="datePublished">2019-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Jsoup(XML解析工具)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="作用：解析HTML，xml。可以做爬虫"><a href="#作用：解析HTML，xml。可以做爬虫" class="headerlink" title="作用：解析HTML，xml。可以做爬虫"></a><strong>作用：解析HTML，xml。可以做爬虫</strong></h2><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a><strong>步骤</strong></h2><ol>
+<li>导入JAR包</li>
+<li>获取Document对象</li>
+<li>获取队形标签Element</li>
+<li>获取数据</li>
+</ol>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  /<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//2.获取Document对象，根据xml文档获取</span></span><br><span class="line">        <span class="comment">//2.1获取student.xml的path</span></span><br><span class="line">        String path = JsoupDemo1.class.getClassLoader().getResource("student.xml").getPath();</span><br><span class="line">        <span class="comment">//2.2解析xml文档，加载文档进内存，获取dom树---&gt;Document</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">//3.获取元素对象 Element</span></span><br><span class="line">        Elements elements = document.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(elements.size());</span><br><span class="line">        <span class="comment">//3.1获取第一个name的Element对象</span></span><br><span class="line">        Element element = elements.get(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//3.2获取数据</span></span><br><span class="line">        String name = element.text();</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象的使用："><a href="#对象的使用：" class="headerlink" title="对象的使用："></a><strong>对象的使用</strong>：</h2><ol>
+<li><p><strong>Jsoup：</strong>工具类，可以解析HTML或者XML文档，返回Document<br>方法：</p>
+<ul>
+<li>parse解析HTML或者XML文档，返回Document</li>
+<li>parse​(File in, String charsetName)：解析XML或者HTML文件，参数1：File文件，参数2：编码方式</li>
+<li>parse​(String HTMl)：解析HTML或者XML字符串</li>
+<li>parse​(URL url, int timeoutMillis)：通过网络路径获取指定的HTML或者XML文档对象,timeoutMillis超时时间毫秒值，可以用来作爬虫。<br>  URL url=newURL(“网址”);Document document = Jsoup.parse​(url,10000);</li>
+</ul>
+</li>
+<li><p><strong>Document：</strong>文档对象。代表内存的dom树<br> 获取Element对象，可以获取任意的Element对象</p>
+<pre><code>getElementsByTag​(String tagName)：根据标签名称获取元素对象集合。
+getElementsByAttribute​(String key)：根据属性名称
+getElementsByAttributeValue​(String key, String value)：根据属性名称和对性的值来获取元素对象集合Elements。
+getElementsById(String id);根据id属性值获取**唯一的**element对象</code></pre></li>
+<li><p><strong>Elements：</strong>元素Element对象的集合。可以当做ArrayList<Element>使用</p>
+</li>
+<li><p><strong>Element：</strong>元素对象</p>
+<ul>
+<li>获取自元素对象，只能获取该对象的子对象<br>  getElementsByTag​(String tagName)：根据标签名称获取元素对象集合。<br>  getElementsByAttribute​(String key)：根据属性名称<br>  getElementsByAttributeValue​(String key, String value)：根据属性名称和对性的值来获取元素对象集合Elements。<br>  getElementsById(String id);根据id属性值获取<strong>唯一的</strong>element对象</li>
+<li>获取属性值<br>  public String attr​(String attributeKey)；根据属性名称来获取属性值</li>
+<li>获取文本内容<br>  String text():获取文本内容<br>  String html():获取标签体所有内容（包括子标签的字符串内容）</li>
+</ul>
+</li>
+<li><p><strong>Node：</strong>节点对象<br> 是Document和Element的父类</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过Document对象获取name标签，获取所有的name标签，可以获取到两个</span></span><br><span class="line">       Elements elements = document.getElementsByTag(<span class="string">"name"</span>);                              </span><br><span class="line">       System.out.println(elements.size());</span><br><span class="line">       System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line">       <span class="comment">//通过Element对象获取子标签对象</span></span><br><span class="line">       Element element_student = document.getElementsByTag(<span class="string">"student"</span>).get(<span class="number">0</span>);</span><br><span class="line">       Elements ele_name = element_student.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line">       System.out.println(ele_name.size());</span><br><span class="line"></span><br><span class="line">       <span class="comment">//获取student对象的属性值</span></span><br><span class="line">       String number = element_student.attr(<span class="string">"NUMBER"</span>);</span><br><span class="line">       System.out.println(number);</span><br><span class="line">       System.out.println(<span class="string">"------------"</span>);</span><br><span class="line">       <span class="comment">//获取文本内容</span></span><br><span class="line">       String text = ele_name.text();</span><br><span class="line">       String html = ele_name.html();</span><br><span class="line">       System.out.println(text);</span><br><span class="line">       System.out.println(html);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="快捷的查询方式："><a href="#快捷的查询方式：" class="headerlink" title="快捷的查询方式："></a><strong>快捷的查询方式：</strong></h2><ol>
+<li>selector：选择器<br>使用的方法：Elements select​(String cssQuery)<br>语法：参考selector类中的语法</li>
+</ol>
+<ul>
+<li>普通选择器：ID选择器    #id，class选择器    .class</li>
+<li>标签选择器：div</li>
+<li>属性选择器：[attr]</li>
+<li>属性值选择器：[attr=xx]</li>
+<li>组合选择器：<br>  标签名.类名：div.one    class属性为one的div标签，<br>  标签名[属性名]：a[href]    有href属性的a标签<br>  父元素 子元素    ：div  a，div内的a标签，<br>  兄弟标签A+兄弟标签B：div+span，取到与div标签同级的span标签<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Elements elements = document.select(<span class="string">"name"</span>);</span><br><span class="line">System.out.println(elements);</span><br><span class="line">System.out.println(<span class="string">"=----------------"</span>);</span><br><span class="line"><span class="comment">//4.查询id值为itcast的元素</span></span><br><span class="line">Elements elements1 = document.select(<span class="string">"#itcast"</span>);</span><br><span class="line">System.out.println(elements1);</span><br><span class="line">System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"><span class="comment">//5.获取student标签并且number属性值为heima_0001的age子标签</span></span><br><span class="line"><span class="comment">//5.1.获取student标签并且number属性值为heima_0001</span></span><br><span class="line">Elements elements2 = document.select(<span class="string">"student[number=\"heima_0001\"]"</span>);                 </span><br><span class="line">System.out.println(elements2);</span><br><span class="line">System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//5.2获取student标签并且number属性值为heima_0001的age子标签</span></span><br><span class="line">Elements elements3 = document.select(<span class="string">"student[number=\"heima_0001\"] &gt; age"</span>);</span><br><span class="line">System.out.println(elements3);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>XPath： XPath 是一门在 XML 文档中查找信息的语言。XPath 用于在 XML 文档中通过元素和属性进行导航。<br> 使用Jsoup的Xpath需要额外导入Jar包<br> 查看W3cschool的参考手册,完成XPath的查询。</li>
+</ol>
+<p>例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, XpathSyntaxErrorException </span>&#123;</span><br><span class="line">       <span class="comment">//1.获取student.xml的path</span></span><br><span class="line">       String path = JsoupDemo6.class.getClassLoader().getResource("student.xml").getPath();</span><br><span class="line">       <span class="comment">//2.获取Document对象</span></span><br><span class="line">       Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//3.根据document对象，创建JXDocument对象</span></span><br><span class="line">       JXDocument jxDocument = <span class="keyword">new</span> JXDocument(document);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.结合xpath语法查询</span></span><br><span class="line">       <span class="comment">//4.1查询所有student标签</span></span><br><span class="line">       List&lt;JXNode&gt; jxNodes = jxDocument.selN(<span class="string">"//student"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.2查询所有student标签下的name标签</span></span><br><span class="line">       List&lt;JXNode&gt; jxNodes2 = jxDocument.selN(<span class="string">"//student/name"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes2) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.3查询student标签下带有id属性的name标签</span></span><br><span class="line">       List&lt;JXNode&gt; jxNodes3 = jxDocument.selN(<span class="string">"//student/name[@id]"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes3) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line">       <span class="comment">//4.4查询student标签下带有id属性的name标签 并且id属性值为itcast</span></span><br><span class="line"></span><br><span class="line">       List&lt;JXNode&gt; jxNodes4 = jxDocument.selN(<span class="string">"//student/name[@id='itcast']"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes4) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/" data-id="ckb22iuff007ozwu8hkqg73db" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/02/Web/Tomcat/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Tomcat(服务器软件)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/22/%E5%89%8D%E7%AB%AF/XML/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">XML</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

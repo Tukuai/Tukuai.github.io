@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>HashCode、equals、clone解析 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="public native int hashCode()返回当前对象运行时的hash码。(在jdk源码中的解释是用于支持散列表数据结构，因为散列表在进行数据存储时依赖hash码决定数据存储的位置(逻辑位置)。在程序运行中，无论什么情况下，相同的对象对应的hash码一定是相同的。但是不同的对象有可能会返回相同的hash码。那么其实也代表如果两个对象的hash码不一致，这两个对象一定是不同的。)这里我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashCode、equals、clone解析">
+<meta property="og:url" content="https://tukuai.github.io/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="public native int hashCode()返回当前对象运行时的hash码。(在jdk源码中的解释是用于支持散列表数据结构，因为散列表在进行数据存储时依赖hash码决定数据存储的位置(逻辑位置)。在程序运行中，无论什么情况下，相同的对象对应的hash码一定是相同的。但是不同的对象有可能会返回相同的hash码。那么其实也代表如果两个对象的hash码不一致，这两个对象一定是不同的。)这里我">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-09-10T13:24:12.000Z">
+<meta property="article:modified_time" content="2020-04-18T05:39:08.784Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java基础/HashCode、equals、clone解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HashCode、equals、clone解析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="public-native-int-hashCode"><a href="#public-native-int-hashCode" class="headerlink" title="public native int hashCode()"></a><strong>public native int hashCode()</strong></h2><p>返回当前对象运行时的hash码。(在jdk源码中的解释是用于支持散列表数据结构，因为散列表在进行数据存储时依赖hash码决定数据存储的位置(逻辑位置)。在程序运行中，无论什么情况下，相同的对象对应的hash码一定是相同的。但是不同的对象有可能会返回相同的hash码。那么其实也代表如果两个对象的hash码不一致，这两个对象一定是不同的。)<br>这里我们做一下延伸：</p>
+<h3 id="为什么需要Hash码？"><a href="#为什么需要Hash码？" class="headerlink" title="为什么需要Hash码？"></a><strong>为什么需要Hash码？</strong></h3><p>Hash码的作用:文本校验，数字签名。</p>
+<p><strong>hash码到底是什么？(这里我们引用百度百科的内容)</strong><br>       Hash译作“散列”，就是把任意长度的输入（又叫做预映射pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</p>
+<p><strong>以上有一些概念需要一一作出解释：</strong></p>
+<p><strong>常见的散列算法：</strong></p>
+<ul>
+<li>余数法:先估计整个哈希表中的表项目数目大小。然后用这个估计值作为除数去除每个原始值，得到商和余数。用余数作为哈希值。因为这种方法产生冲突的可能性相当大，因此任何搜索算法都应该能够判断冲突是否发生并提出取代算法。</li>
+<li>折叠法:这种方法是针对原始值为数字时使用，将原始值分为若干部分，然后将各部分叠加，得到的最后四个数字(或者取其他位数的数字都可以)来作为哈希值。</li>
+<li>基数转换法:当原始值是数字时，可以将原始值的数制基数转为一个不同的数字。例如，可以将十进制的原始值转为十六进制的哈希值。为了使哈希值的长度相同，可以省略高位数字。</li>
+<li>数据重排法:这种方法只是简单的将原始值中的数据打乱排序。比如可以将第三位到第六位的数字逆序排列，然后利用重排后的数字作为哈希值。</li>
+</ul>
+<h3 id="Java中Hashcode方法的规定："><a href="#Java中Hashcode方法的规定：" class="headerlink" title="Java中Hashcode方法的规定："></a><strong>Java中Hashcode方法的规定：</strong></h3><ul>
+<li><p>在 Java 应用程序执行期间，在对同一对象多次调用 hashCode方法时，必须一致地返回相同的整数，前提是将对象进行equals比较时所用的信息没有被修改。从某一应用程序的一次执行到同一应用程序的另一次执行，该整数无需保持一致。</p>
+</li>
+<li><p>如果根据 equals(Object) 方法，两个对象是相等的，那么对这两个对象中的每个对象调用 hashCode 方法都必须生成相同的整数结果。</p>
+</li>
+<li><p>如果根据 equals(java.lang.Object) 方法，两个对象不相等，那么对这两个对象中的任一对象上调用hashCode方法不要求一定生成不同的整数结果。但是，程序员应该意识到，为不相等的对象生成不同整数结果可以提高哈希表的性能。</p>
+</li>
+<li><p>实际上，由 Object类定义的hashCode方法确实会针对不同的对象返回不同的整数。（这一般是通过将该对象的内部地址转换成一个整数来实现的，但是Java编程语言不需要这种实现技巧。） </p>
+</li>
+</ul>
+<h3 id="Hotspot中hashcode方法的实现："><a href="#Hotspot中hashcode方法的实现：" class="headerlink" title="Hotspot中hashcode方法的实现："></a><strong>Hotspot中hashcode方法的实现：</strong></h3><p>hash方法的实现是先获取该对象的标记字对象，然后对该标记字对象的的地址做位移和逻辑与操作，以结果作为hashcode（其中，mark_bits方法在globalDefinitions.hpp），之所以做移位操作是因为hashcode在标记字中只占用了部分位（32位机器上是占用25位，64位机器上占用31）</p>
+<p><strong>从实现来看，我们试图解释hashcode的一个现象，为什么不同的对象可能返回相同的hashcode方法？</strong><br>因为尽管虚拟机在运行过程中，不同的对象的地址一定是不同的，但是由于hashcode需要固定25位或者31位，那么就导致真正的hashcode值需要在对象地址上做一定的操作。从而将一个大范围区间的值映射到一个小范围区间的值（hashcode的计算过程），这样的操作必定会导致一部分数据的计算结果会重复。所以说这就是不同的对象可能返回相同hash值的原因。</p>
+<h2 id="public-boolean-equals-Object-obj"><a href="#public-boolean-equals-Object-obj" class="headerlink" title="public boolean equals(Object obj)"></a><strong>public boolean equals(Object obj)</strong></h2><p>在java中equals的作用是，判断两个对象是不是相等的。</p>
+<pre><code>public boolean equals(Object obj) {
+    return (this == obj);
+}</code></pre><p>从jdk的实现可以看出：equals其实就是在比较两个对象的地址是否相等，所以这个方法不存在hashcode()的问题，因为对象在内存中的地址是唯一的。<br><strong>重写equals()方法就必须重写hashCode()方法的原因。</strong><br>假设两个对象，重写了其equals方法，其相等条件是属性相等，就返回true。如果不重写hashcode方法，其哈希映射的逻辑地址值，必然不相等。这就出现了equals方法相等，但是hashcode不相等的情况。这不符合hashcode的规则。在集合框架中，这种情况会导致的严重的问题。<br><strong>比如：</strong>在HashMap中，如果你需要自定义对象作为Key，那么你不论通过key存储或者获取value，都需要计算key的hash值，如果你重写了equals方法，但没有重写hashCode方法（ObjectHashCode方法是对对象的内存地址进行hash值计算），所以会出现两个对象的值相等，但是hash值不相等。<br>这样就会出现问题：HashMap中put元素的时候，计算key的hash值。然后找到对应的数组下标，然后在表头插入元素，如果两个对象相等，但hashCode值不等，则第一个元素对象作为Key放进hashMap中，则通过get(第二个Key)由于对象相等，但是hash值不等，获取value的时候，所以会出现计算hash值找下标找的错误的下标，然后调用equals方法比较也会找不到对应的value。<br>同时对HashSet也会有致命影响，通过hash值来存储对象对象，如果两个对象相等，但是hash值不等，则会被存储在set中，这就与set初衷有冲突，就是不能存储重复的元素。</p>
+<h2 id="protected-native-Object-clone"><a href="#protected-native-Object-clone" class="headerlink" title="protected native Object clone()"></a><strong>protected native Object clone()</strong></h2><p> 底层在实现clone()方法其实非常简单，<br>1.首先确认当前对象是否实现了cloneable接口(这是一个标记接口)<br>2.分配一个和当前对象一样大小的空间<br>3.将原对象堆中的区域以字节的方式复制到新对象中。然而对象在堆中的存储，对象属性其实存储的只是引用地址，那么使用clone()方法的时候就是我们所说浅拷贝，只是值拷贝。拷贝的接口是拷贝的对象和原对象的对象属性指向同一个地址。对这个属性做改动时，会互相影响。</p>
+<p><strong>API描述</strong><br>创建并返回此对象的一个副本。“副本”的准确含义可能依赖于对象的类。<br>这样做的目的是，对于任何对象 x，表达式：<br>x.clone() != x为 true            //因为，分配了另外的内存空间去复制该对象。<br>表达式： x.clone().getClass() == x.getClass()也为 true，但这些并非必须要满足的要求。<br>一般情况下： x.clone().equals(x)为 true  //但这并非必须要满足的要求。若要满足，则必须重写equals方法。<br><strong>注</strong>既然clone对象，判断两个对象是否相等就不能用父类object中继承的equals方法了，因为Object中的equals中使用==则比较是内存地址，所以要重写equals方法和hashCode方法</p>
+<ul>
+<li>按照惯例，返回的对象应该通过调用 super.clone 获得。如果一个类及其所有的超类（Object 除外）都遵守此约定，则 x.clone().getClass() == x.getClass()。 </li>
+<li>Object类的clone方法执行特定的复制操作。首先，如果此对象的类不能实现接口Cloneable，则会抛出CloneNotSupportedException。注意，所有的数组都被视为实现接口 Cloneable。</li>
+<li>此方法会创建此对象的类的一个新实例，并像通过分配那样，严格使用此对象相应字段的内容初始化该对象的所有字段；这些字段的内容没有被自我复制。所以，此方法执行的是该对象的“浅表复制”，而不“深层复制”操作。 </li>
+<li>Object 类本身不实现接口 Cloneable，所以在类为 Object 的对象上调用 clone 方法将会导致在运行时抛出异常。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/" data-id="ckb22iue9003nzwu8cpqz09mb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">枚举</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

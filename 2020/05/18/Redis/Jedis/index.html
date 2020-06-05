@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Jedis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jedis入门连接redis Jedis jedis &#x3D; new Jedis(&quot;localhost&quot;, 6379); 操作redis jedis.set(&quot;name&quot;, &quot;itheima&quot;); jedis.get(&quot;name&quot;); 关闭redis连接 jedis.close();API文档http:&#x2F;&#x2F;xetorthi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jedis">
+<meta property="og:url" content="https://tukuai.github.io/2020/05/18/Redis/Jedis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="jedis入门连接redis Jedis jedis &#x3D; new Jedis(&quot;localhost&quot;, 6379); 操作redis jedis.set(&quot;name&quot;, &quot;itheima&quot;); jedis.get(&quot;name&quot;); 关闭redis连接 jedis.close();API文档http:&#x2F;&#x2F;xetorthi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-18T06:18:25.000Z">
+<meta property="article:modified_time" content="2020-05-18T10:42:50.931Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Redis/Jedis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/18/Redis/Jedis/" class="article-date">
+  <time datetime="2020-05-18T06:18:25.000Z" itemprop="datePublished">2020-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Jedis
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="jedis入门"><a href="#jedis入门" class="headerlink" title="jedis入门"></a><strong>jedis入门</strong></h2><pre><code>连接redis
+Jedis jedis = new Jedis(&quot;localhost&quot;, 6379);
+操作redis
+jedis.set(&quot;name&quot;, &quot;itheima&quot;);
+jedis.get(&quot;name&quot;);
+关闭redis连接
+jedis.close();</code></pre><p><strong>API文档</strong><br><a href="http://xetorthio.github.io/jedis/" target="_blank" rel="noopener">http://xetorthio.github.io/jedis/</a></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h2><p><strong>服务调用次数控制</strong><br>人工智能领域的语义识别与自动对话将是未来服务业机器人应答呼叫体系中的重要技术，百度自研用户评价语义识别服务，免费开放给企业试用，同时训练百度自己的模型。现对试用用户的使用行为进行限速，限制每个用户每分钟最多发起10次调用<br><strong>案例要求</strong></p>
+<ul>
+<li>设定A、B、C三个用户</li>
+<li>A用户限制10次/分调用，B用户限制30次/分调用，C用户不限制</li>
+</ul>
+<p><strong>需求分析</strong></p>
+<ul>
+<li><p>设定一个服务方法，用于模拟实际业务调用的服务，内部采用打印模拟调用</p>
+</li>
+<li><p>在业务调用前服务调用控制单元，内部使用redis进行控制，参照之前的方案</p>
+</li>
+<li><p>对调用超限使用异常进行控制，异常处理设定为打印提示信息</p>
+</li>
+<li><p>主程序启动3个线程，分别表示3种不同用户的调用</p>
+<pre><code>public class Service {
+    private String id;
+    private int num;
+    public Service(String id,int num){
+        this.id = id;
+        this.num = num;
+    }
+    //控制单元
+    public void service(){
+//        Jedis jedis = new Jedis(&quot;127.0.0.1&quot;,6379);
+        Jedis jedis = JedisUtils.getJedis();
+        String value = jedis.get(&quot;compid:&quot;+id);
+        //判断该值是否存在
+        try{
+            if(value == null){
+                //不存在，创建该值
+                jedis.setex(&quot;compid:&quot;+id,5,Long.MAX_VALUE-num+&quot;&quot;);
+            }else{
+                //存在，自增，调用业务
+                Long val = jedis.incr(&quot;compid:&quot;+id);
+                business(id,num-(Long.MAX_VALUE-val));
+            }
+        }catch (JedisDataException e){
+            System.out.println(&quot;使用已经到达次数上限，请升级会员级别&quot;);
+            return;
+        }finally{
+            jedis.close();
+        }
+    }
+    //业务操作
+    public void business(String id,Long val){
+        System.out.println(&quot;用户:&quot;+id+&quot; 业务操作执行第&quot;+val+&quot;次&quot;);
+    }
+}
+
+class MyThread extends Thread{
+    Service sc ;
+    public MyThread(String id,int num){
+        sc = new Service(id,num);
+    }
+    public void run(){
+        while(true){
+            sc.service();
+            try {
+                Thread.sleep(300L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class Main{
+    public static void main(String[] args) {
+        MyThread mt1 = new MyThread(&quot;初级用户&quot;,10);
+        MyThread mt2 = new MyThread(&quot;高级用户&quot;,30);
+        mt1.start();
+        mt2.start();
+    }
+}</code></pre><p>后续1：对业务控制方案进行改造，设定不同用户等级的判定<br>后续2：将不同用户等级对应的信息、限制次数等设定到redis中，使用hash保存</p>
+</li>
+</ul>
+<p><strong>基于连接池获取连接</strong><br><strong>JedisPool：Jedis提供的连接池技术</strong></p>
+<pre><code>poolConfig:连接池配置对象
+host:redis服务地址
+port:redis服务端口号
+public JedisPool(GenericObjectPoolConfig poolConfig, String host, int port) {
+ this(poolConfig, host, port, 2000, (String)null, 0, (String)null);
+}</code></pre><p><strong>redis.properties</strong></p>
+<pre><code>jedis.properties
+jedis.host=localhost
+jedis.port=6379
+jedis.maxTotal=30
+jedis.maxIdle=10</code></pre><p><strong>静态代码块初始化资源</strong></p>
+<pre><code>static{
+ //读取配置文件 获得参数值
+ ResourceBundle rb = ResourceBundle.getBundle(&quot;jedis&quot;);
+ host = rb.getString(&quot;jedis.host&quot;);
+ port = Integer.parseInt(rb.getString(&quot;jedis.port&quot;));
+ maxTotal = Integer.parseInt(rb.getString(&quot;jedis.maxTotal&quot;));
+ maxIdle = Integer.parseInt(rb.getString(&quot;jedis.maxIdle&quot;));
+ poolConfig = new JedisPoolConfig();
+ poolConfig.setMaxTotal(maxTotal);
+ poolConfig.setMaxIdle(maxIdle);
+ jedisPool = new JedisPool(poolConfig,host,port);
+}</code></pre><p><strong>获取连接</strong></p>
+<pre><code>对外访问接口，提供jedis连接对象，连接从连接池获取
+public static Jedis getJedis(){
+ Jedis jedis = jedisPool.getResource();
+ return jedis;
+}</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/05/18/Redis/Jedis/" data-id="ckb22iuei004azwu84hlk8rsz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/18/Redis/Redis&Linux%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis&amp;Linux基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/17/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis持久化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Maven | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="-DarchetypeCatalog&#x3D;internal 什么是 Maven1.什么是 MavenMaven 的正确发音是[ˈmevən]，而不是“马瘟”以及其他什么瘟。Maven 在美国是一个口语化的词语，代表专家、内行的意思。一个对 Maven 比较正式的定义是这么说的：Maven 是一个项目管理工具，它包含了一个项目对象模型 (POM：Project Object Model)，一组标准集合，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven">
+<meta property="og:url" content="https://tukuai.github.io/2020/04/02/Web/Maven/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="-DarchetypeCatalog&#x3D;internal 什么是 Maven1.什么是 MavenMaven 的正确发音是[ˈmevən]，而不是“马瘟”以及其他什么瘟。Maven 在美国是一个口语化的词语，代表专家、内行的意思。一个对 Maven 比较正式的定义是这么说的：Maven 是一个项目管理工具，它包含了一个项目对象模型 (POM：Project Object Model)，一组标准集合，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/174.png">
+<meta property="og:image" content="https://tukuai.github.io/images/175.png">
+<meta property="og:image" content="https://tukuai.github.io/images/177.png">
+<meta property="og:image" content="https://tukuai.github.io/images/176.png">
+<meta property="og:image" content="https://tukuai.github.io/images/178.png">
+<meta property="og:image" content="https://tukuai.github.io/images/179.png">
+<meta property="og:image" content="https://tukuai.github.io/images/180.png">
+<meta property="og:image" content="https://tukuai.github.io/images/181.png">
+<meta property="og:image" content="https://tukuai.github.io/images/182.png">
+<meta property="article:published_time" content="2020-04-02T07:34:24.000Z">
+<meta property="article:modified_time" content="2020-04-09T02:44:41.775Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/174.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Web/Maven" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/02/Web/Maven/" class="article-date">
+  <time datetime="2020-04-02T07:34:24.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Maven
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>-DarchetypeCatalog=internal</p>
+<h2 id="什么是-Maven"><a href="#什么是-Maven" class="headerlink" title="什么是 Maven"></a><strong>什么是 Maven</strong></h2><h3 id="1-什么是-Maven"><a href="#1-什么是-Maven" class="headerlink" title="1.什么是 Maven"></a><strong>1.什么是 Maven</strong></h3><p>Maven 的正确发音是[ˈmevən]，而不是“马瘟”以及其他什么瘟。Maven 在美国是一个口语化的词<br>语，代表专家、内行的意思。<br>一个对 Maven 比较正式的定义是这么说的：Maven 是一个项目管理工具，它包含了一个项目对象模型 (POM：Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。</p>
+<h3 id="2-Maven-能解决什么问题"><a href="#2-Maven-能解决什么问题" class="headerlink" title="2.Maven 能解决什么问题"></a><strong>2.Maven 能解决什么问题</strong></h3><p>可以用更通俗的方式来说明。我们知道，项目开发不仅仅是写写代码而已，期间会伴随着各种<br>必不可少的事情要做，下面列举几个感受一下：</p>
+<ol>
+<li>我们需要引用各种 jar 包，尤其是比较大的工程，引用的 jar 包往往有几十个乃至上百个， 每用到一种jar包，都需要手动引入工程目录，而且经常遇到各种让人抓狂的 jar 包冲突，版本冲突。</li>
+<li>我们辛辛苦苦写好了Java文件，可是只懂0和1的白痴电脑却完全读不懂，需要将它编译成二进制字节码。好歹现在这项工作可以由各种集成开发工具帮我们完成，Eclipse、IDEA 等都可以将代码即时编译。当然，如果你嫌生命漫长，何不铺张，也可以用记事本来敲代码，然后用 javac 命令一个个地去编译，逗电脑玩。</li>
+<li>世界上没有不存在bug的代码，计算机喜欢bug就和人们总是喜欢美女帅哥一样。为了追求美为了减少bug，因此写完了代码，我们还要写一些单元测试，然后一个个的运行来检验代码质量。</li>
+<li>再优雅的代码也是要出来卖的。我们后面还需要把代码与各种配置文件、资源整合到一起，定型打包，如果是 web 项目，还需要将之发布到服务器，供人蹂躏。</li>
+</ol>
+<p><strong>试想</strong>如果现在有一种工具，可以把你从上面的繁琐工作中解放出来，能帮你构建工程，管理jar包，编译代码，还能帮你自动运行单元测试，打包，生成报表，甚至能帮你部署项目，生成 Web 站点，你会心动吗？<br><strong>Maven 就可以解决上面所提到的这些问题。</strong></p>
+<h3 id="3-Maven-的优势举例"><a href="#3-Maven-的优势举例" class="headerlink" title="3.Maven 的优势举例"></a><strong>3.Maven 的优势举例</strong></h3><p>前面我们通过 Web阶段项目，要能够将项目运行起来，就必须将该项目所依赖的一些jar包添加到工程中，否则项目就不能运行。试想如果具有相同架构的项目有十个，那么我们就需要将这一份 jar包复制到十个不同的工程中。<br>我们一起来看一个 CRM项目的工程大小。<br><strong>使用传统 Web 项目构建的 CRM 项目如下：</strong><br><img src="/images/174.png" alt=""><br>原因主要是因为上面的 WEB 程序要运行，我们必须将项目运行所需的 Jar 包复制到工程目录中，从而导致了工程很大。<br><strong>同样的项目，如果我们使用 Maven 工程来构建，会发现总体上工程的大小会少很多。如下图:</strong><br><img src="/images/175.png" alt=""><br>小结：可以初步推断它里面一定没有 jar 包，继续思考，没有 jar 包的项目怎么可能运行呢？</p>
+<h2 id="Maven-的两个精典作用"><a href="#Maven-的两个精典作用" class="headerlink" title="Maven 的两个精典作用"></a><strong>Maven 的两个精典作用</strong></h2><h3 id="1-Maven-的依赖管理"><a href="#1-Maven-的依赖管理" class="headerlink" title="1.Maven 的依赖管理"></a><strong>1.Maven 的依赖管理</strong></h3><p><img src="/images/177.png" alt=""><br>Maven 的一个核心特性就是依赖管理。当我们涉及到多模块的项目（包含成百个模块或者子项目），管理依赖就变成<br>一项困难的任务。Maven 展示出了它对处理这种情形的高度控制。<br>传统的 WEB 项目中，我们必须将工程所依赖的 jar 包复制到工程中，导致了工程的变得很大。那么<br>maven 工程是如何使得工程变得很少呢？<br>分析如下：<br><img src="/images/176.png" alt=""><br>通过分析发现：maven 工程中不直接将 jar 包导入到工程中，而是通过在 pom.xml 文件中添加所需jar包的坐标，这样就很好的避免了 jar 直接引入进来，在需要用到 jar 包的时候，只要查找pom.xml文件，再通过 pom.xml 文件中的坐标，到一个专门用于”存放 jar 包的仓库”(maven 仓库)中根据坐标从而找到这些 jar 包，再把这些 jar 包拿去运行。</p>
+<p><strong>那么问题来了</strong><br><strong>通过读取 pom.xml 文件中的坐标，再到仓库中找到 jar 包，会不会很慢？从而导致这种方式<br>不可行！</strong><br>第通过 pom.xml 文件配置要引入的 jar 包的坐标，再读取坐标并到仓库中加载 jar 包，这样我们就可以直接使用 jar 包了，为了解决这个过程中速度慢的问题，maven 中也有索引的概念，通过建立索引，可以大大提高加载jar包的速度，使得我们认为jar包基本跟放在本地的工程文件中再读取出来的速度是一样的。这个过程就好比我们查阅字典时，为了能够加快查找到内容，书前面的目录就好比是索引，有了这个目录我们就可以方便找到内容了，一样的在 maven 仓库中有了索引我们就可以认为可以快速找到 jar 包。</p>
+<h3 id="2-项目的一键构建"><a href="#2-项目的一键构建" class="headerlink" title="2.项目的一键构建"></a><strong>2.项目的一键构建</strong></h3><p>我们的项目，往往都要经历编译、测试、运行、打包、安装 ，部署等一系列过程。<br><strong>什么是构建？</strong><br>指的是项目从编译、测试、运行、打包、安装 ，部署整个过程都交给 maven 进行管理，这个过程称为构建。</p>
+<p><strong>一键构建</strong><br>指的是整个构建过程，使用 maven 一个命令可以轻松完成整个工作。</p>
+<h2 id="Maven-的使用"><a href="#Maven-的使用" class="headerlink" title="Maven 的使用"></a><strong>Maven 的使用</strong></h2><h3 id="Maven-仓库"><a href="#Maven-仓库" class="headerlink" title="Maven 仓库"></a><strong>Maven 仓库</strong></h3><p><strong>Maven 仓库的分类</strong><br>maven 的工作需要从仓库下载一些 jar 包，如下图所示，本地的项目 A、项目 B 等都会通过 maven软件从远程仓库（可以理解为互联网上的仓库）下载 jar 包并存在本地仓库，本地仓库就是本地文件夹，当第二次需要此jar包时则不再从远程仓库下载，因为本地仓库已经存在了，可以将本地仓库理解为缓存，有了本地仓库就不用每次从远程仓库下载了。<br><img src="/images/178.png" alt=""></p>
+<p>下图描述了 maven 中仓库的类型：</p>
+<ul>
+<li><strong>本地仓库：</strong>用来存储从远程仓库或中央仓库下载的插件和 jar 包，项目使用一些插件或 jar 包，优先从本地仓库查找。<br>默认本地仓库位置在 ${user.dir}/.m2/repository，${user.dir}表示 windows 用户目录。</li>
+<li><strong>远程仓库：</strong>如果本地需要插件或者 jar 包，本地仓库没有，默认去远程仓库下载。一般在本公司，俗称“私服”，远程仓库可以在互联网内也可以在局域网内。</li>
+<li><strong>中央仓库：</strong>在 maven 软件中内置一个远程仓库地址 <a href="http://repo1.maven.org/maven2" target="_blank" rel="noopener">http://repo1.maven.org/maven2</a> ，它是中央仓库，服务于整个互联网，它是由 Maven 团队自己维护，里面存储了非常全的 jar 包，它包含了世界上大部分流行的开源项目构件。<br><img src="/images/179.png" alt=""></li>
+</ul>
+<h3 id="Maven-工程的认识"><a href="#Maven-工程的认识" class="headerlink" title="Maven 工程的认识"></a><strong>Maven 工程的认识</strong></h3><p><strong>Maven 工程的目录结构</strong><br>作为一个 maven 工程，它的 src 目录和 pom.xml 是必备的。<br>进入 src 目录后，我们发现它里面的目录结构如下：<br><strong>src/main/java</strong><br>—— 存放项目的.java 文件<br><strong>src/main/resources</strong><br>—— 存放项目资源文件，如 spring, hibernate 配置文件<br><strong>src/test/java</strong><br>—— 存放所有单元测试.java 文件，如 JUnit 测试类<br><strong>src/test/resources</strong><br>—— 测试资源文件<br><strong>target</strong><br>—— 项目输出位置，编译后的 class 文件会输出到此目录<br><strong>pom.xml</strong><br>——maven 项目核心配置文件<br><strong>src/main/webapp</strong><br>——页面资源，js，css，图片等等<br><strong>注意：</strong>如果是普通的 java 项目，那么就没有 webapp 目录。</p>
+<h3 id="Maven-工程的运行"><a href="#Maven-工程的运行" class="headerlink" title="Maven 工程的运行"></a><strong>Maven 工程的运行</strong></h3><p>进入 maven 工程目录（当前目录有 pom.xml 文件），运行 tomcat:run 命令。<br>根据上边的提示信息，通过浏览器访问：<a href="http://localhost:8080/maven-helloworld/" target="_blank" rel="noopener">http://localhost:8080/maven-helloworld/</a></p>
+<h2 id="Maven-常用命令"><a href="#Maven-常用命令" class="headerlink" title="Maven 常用命令"></a><strong>Maven 常用命令</strong></h2><p>我们可以在 cmd 中通过一系列的 maven 命令来对我们的 maven-helloworld 工程进行编译、测试、运行、打包、安装、部署。</p>
+<h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a><strong>clean</strong></h3><p>clean 是 maven 工程的清理命令，执行 clean 会删除 target 目录及内容。</p>
+<h3 id="compile"><a href="#compile" class="headerlink" title="compile"></a><strong>compile</strong></h3><p>compile 是 maven 工程的编译命令，作用是将 src/main/java 下的文件编译为 class 文件输出到 target目录下。<br>cmd 进入命令状态，执行 mvn compile，如下图提示成功：<br>查看 target 目录，class 文件已生成，编译完成。</p>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a><strong>test</strong></h3><p>test 是 maven 工程的测试命令 mvn test，会执行 src/test/java 下的单元测试类。意思同时包含compile<br>cmd 执行 mvn test 执行 src/test/java 下单元测试类，也会同时编译src/main下的Java代码</p>
+<h3 id="package"><a href="#package" class="headerlink" title="package"></a><strong>package</strong></h3><p>package 是 maven 工程的打包命令，对于 java 工程执行 package 打成 jar 包，对于 web 工程打成 war<br>包。并同时包含compile和test。</p>
+<h3 id="install"><a href="#install" class="headerlink" title="install"></a><strong>install</strong></h3><p>install 是 maven 工程的安装命令，执行 install 将 maven 打成 jar 包或 war 包<strong>发布到本地仓库</strong>。<br>从运行结果中，可以看出：<br>当后面的命令执行时，前面的操作过程也都会自动执行，同时执行compile，test，package</p>
+<h2 id="Maven-指令的生命周期"><a href="#Maven-指令的生命周期" class="headerlink" title="Maven 指令的生命周期"></a><strong>Maven 指令的生命周期</strong></h2><p>maven 对项目构建过程分为三套相互独立的生命周期，请注意这里说的是“三套”，而且“相互独立”，<br>这三套生命周期分别是：</p>
+<ul>
+<li>清理生命周期Clean Lifecycle 在进行真正的构建之前进行一些清理工作。</li>
+<li>默认生命周期Default Lifecycle 构建的核心部分，编译，测试，打包，部署等等。特点：执行后面的会一并执行前面所有的步骤。</li>
+<li>站点生命该周期Site Lifecycle 生成项目报告，站点，发布站点。<br><img src="/images/180.png" alt=""></li>
+</ul>
+<h2 id="maven-的概念模型"><a href="#maven-的概念模型" class="headerlink" title="maven 的概念模型"></a><strong>maven 的概念模型</strong></h2><p>Maven 包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。<br><img src="/images/181.png" alt=""></p>
+<ul>
+<li><p>项目对象模型pom (Project Object Model)<br>一个 maven 工程都有一个pom.xml文件，通过pom.xml文件定义项目的坐标、项目依赖、项目信息、插件目标等。</p>
+</li>
+<li><p>依赖管理系统(Dependency Management System)<br>通过 maven 的依赖管理对项目所依赖的 jar 包进行统一管理。<br>比如：项目依赖 junit4.9，通过在 pom.xml 中定义 junit4.9 的依赖即使用 junit4.9，如下所示是 junit4.9<br>的依赖定义：</p>
+<pre><code>&lt;!-- 依赖关系 --&gt;
+&lt;dependencies&gt;
+&lt;!-- 此项目运行使用 junit，所以此项目依赖 junit --&gt;
+&lt;dependency&gt;
+&lt;!-- junit 的项目名称 --&gt;
+&lt;groupId&gt;junit&lt;/groupId&gt;
+&lt;!-- junit 的模块名称 --&gt;
+&lt;artifactId&gt;junit&lt;/artifactId&gt;
+&lt;!-- junit 版本 --&gt;
+&lt;version&gt;4.9&lt;/version&gt;
+&lt;!-- 依赖范围：单元测试时使用 junit --&gt;
+&lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre></li>
+<li><p>一个项目生命周期(Project Lifecycle)<br>使用 maven 完成项目的构建，项目构建包括：清理、编译、测试、部署等过程，maven 将这些过程规范为一个生命周期，如下所示是生命周期的各各阶段：<br><img src="/images/182.png" alt=""><br>maven 通过执行一些简单命令即可实现上边生命周期的各各过程，比如执行 mvn compile 执行编译、执行 mvn clean 执行清理。</p>
+</li>
+<li><p><strong>一组标准集合</strong><br>maven 将整个项目管理过程定义一组标准，比如：通过 maven 构建工程有标准的目录结构，有标准的生命周期阶段、依赖管理有标准的坐标定义等。</p>
+</li>
+<li><p><strong>插件(plugin)目标(goal)</strong><br>maven 管理项目生命周期过程都是基于插件完成的。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/04/02/Web/Maven/" data-id="ckb22iuf00060zwu84imf84we" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/05/IO/%E5%AD%97%E7%AC%A6%E6%B5%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          字符流
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/02/LeetCode/%E5%89%91%E6%8C%87-%E5%89%AA%E7%BB%B3%E5%AD%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">剑指-剪绳子</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

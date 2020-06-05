@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://tukuai.github.io/page/16/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Tukuai">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java基础/迭代器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/13/Java%E5%9F%BA%E7%A1%80/%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="article-date">
+  <time datetime="2019-09-13T13:24:12.000Z" itemprop="datePublished">2019-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/13/Java%E5%9F%BA%E7%A1%80/%E8%BF%AD%E4%BB%A3%E5%99%A8/">迭代器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>使用iterator()要求容器返回一个Iterator。Iterator将返回序列中第一个元素。</li>
+<li>使用next()方法获得序列下一个元素。</li>
+<li>使用hasNext()检查序列是否还有元素。</li>
+<li>使用remove()将迭代器新近返回的元素删除。</li>
+</ul>
+<p>代码<br>　　<br>         public class MyIterator {<br>              public static void main(String[] args) {<br>                  ArrayList<Integer> aList=new ArrayList&lt;&gt;();<br>                  aList.add(2);aList.add(4);aList.add(1);<br>                  Iterator<Integer> it=aList.iterator();<br>                  System.out.println(“size=”+aList.size());//输出ArrayList原始大小<br>                  System.out.println(it.next());//利用迭代器输出List第一个元素<br>                  it.remove();//删除<br>                  System.out.println(“size=”+aList.size());//输出删除后List大小<br>                 display(it);<br>                 /*<br>                  * 改为LinkedList<br>                  * */<br>                 System.out.println();<br>                 LinkedList<Integer> ltd=new LinkedList&lt;&gt;();<br>                 ltd.add(11);ltd.add(22);ltd.add(33);<br>                 display(ltd.iterator());<br>             }<br>             public static void display(Iterator<Integer> its){<br>                 while (its.hasNext()) {<br>                     int n=its.next();<br>                     System.out.print(n+” “);<br>                 }<br>             }<br>         }</p>
+<p><strong>output:</strong></p>
+<pre><code>size=3
+2
+size=2
+4 1 
+11 22 33 </code></pre><p><strong>如上图的display()方法，不需要考虑容器的具体类型，是LinkedList还是ArrayList之类<br>同时display()方法不包含任何有关它所遍历的序列的类型信息</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/13/Java%E5%9F%BA%E7%A1%80/%E8%BF%AD%E4%BB%A3%E5%99%A8/" data-id="ckb22iueg0044zwu886s9f7cr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java基础/数据类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据类型分类"><a href="#数据类型分类" class="headerlink" title="数据类型分类"></a><strong>数据类型分类</strong></h2><h3 id="Java的数据类型分为两大类："><a href="#Java的数据类型分为两大类：" class="headerlink" title="Java的数据类型分为两大类："></a><strong>Java的数据类型分为两大类：</strong></h3><p><strong>基本数据类型：</strong>包括 整数 、 浮点数 、 字符 、 布尔 。<br><strong>引用数据类型：</strong>包括 类 、 数组 、 接口 。<br>基本数据类型 四类八种基本数据类型：</p>
+<pre><code>数据类型         关键字             内存占用     取值范围 
+字节型             byte             1个字节         -128~127 
+短整型             short             2个字节         -32768~32767 
+整型             int（默认）         4个字节         -231次方~2的31次方-1 
+长整型             long             8个字节         -2的63次方~2的63次方-1 
+单精度浮点数         float             4个字节          1.4013E-45~3.4028E+38 
+双精度浮点数         double（默认）     8个字节          4.9E-324~1.7977E+308 
+字符型             char             2个字节          0-65535 
+布尔类型         boolean         1个字节          true，false</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="ckb22iue8003jzwu88zdz239l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java基础/HashCode、equals、clone解析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/">HashCode、equals、clone解析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="public-native-int-hashCode"><a href="#public-native-int-hashCode" class="headerlink" title="public native int hashCode()"></a><strong>public native int hashCode()</strong></h2><p>返回当前对象运行时的hash码。(在jdk源码中的解释是用于支持散列表数据结构，因为散列表在进行数据存储时依赖hash码决定数据存储的位置(逻辑位置)。在程序运行中，无论什么情况下，相同的对象对应的hash码一定是相同的。但是不同的对象有可能会返回相同的hash码。那么其实也代表如果两个对象的hash码不一致，这两个对象一定是不同的。)<br>这里我们做一下延伸：</p>
+<h3 id="为什么需要Hash码？"><a href="#为什么需要Hash码？" class="headerlink" title="为什么需要Hash码？"></a><strong>为什么需要Hash码？</strong></h3><p>Hash码的作用:文本校验，数字签名。</p>
+<p><strong>hash码到底是什么？(这里我们引用百度百科的内容)</strong><br>       Hash译作“散列”，就是把任意长度的输入（又叫做预映射pre-image）通过散列算法变换成固定长度的输出，该输出就是散列值。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。</p>
+<p><strong>以上有一些概念需要一一作出解释：</strong></p>
+<p><strong>常见的散列算法：</strong></p>
+<ul>
+<li>余数法:先估计整个哈希表中的表项目数目大小。然后用这个估计值作为除数去除每个原始值，得到商和余数。用余数作为哈希值。因为这种方法产生冲突的可能性相当大，因此任何搜索算法都应该能够判断冲突是否发生并提出取代算法。</li>
+<li>折叠法:这种方法是针对原始值为数字时使用，将原始值分为若干部分，然后将各部分叠加，得到的最后四个数字(或者取其他位数的数字都可以)来作为哈希值。</li>
+<li>基数转换法:当原始值是数字时，可以将原始值的数制基数转为一个不同的数字。例如，可以将十进制的原始值转为十六进制的哈希值。为了使哈希值的长度相同，可以省略高位数字。</li>
+<li>数据重排法:这种方法只是简单的将原始值中的数据打乱排序。比如可以将第三位到第六位的数字逆序排列，然后利用重排后的数字作为哈希值。</li>
+</ul>
+<h3 id="Java中Hashcode方法的规定："><a href="#Java中Hashcode方法的规定：" class="headerlink" title="Java中Hashcode方法的规定："></a><strong>Java中Hashcode方法的规定：</strong></h3><ul>
+<li><p>在 Java 应用程序执行期间，在对同一对象多次调用 hashCode方法时，必须一致地返回相同的整数，前提是将对象进行equals比较时所用的信息没有被修改。从某一应用程序的一次执行到同一应用程序的另一次执行，该整数无需保持一致。</p>
+</li>
+<li><p>如果根据 equals(Object) 方法，两个对象是相等的，那么对这两个对象中的每个对象调用 hashCode 方法都必须生成相同的整数结果。</p>
+</li>
+<li><p>如果根据 equals(java.lang.Object) 方法，两个对象不相等，那么对这两个对象中的任一对象上调用hashCode方法不要求一定生成不同的整数结果。但是，程序员应该意识到，为不相等的对象生成不同整数结果可以提高哈希表的性能。</p>
+</li>
+<li><p>实际上，由 Object类定义的hashCode方法确实会针对不同的对象返回不同的整数。（这一般是通过将该对象的内部地址转换成一个整数来实现的，但是Java编程语言不需要这种实现技巧。） </p>
+</li>
+</ul>
+<h3 id="Hotspot中hashcode方法的实现："><a href="#Hotspot中hashcode方法的实现：" class="headerlink" title="Hotspot中hashcode方法的实现："></a><strong>Hotspot中hashcode方法的实现：</strong></h3><p>hash方法的实现是先获取该对象的标记字对象，然后对该标记字对象的的地址做位移和逻辑与操作，以结果作为hashcode（其中，mark_bits方法在globalDefinitions.hpp），之所以做移位操作是因为hashcode在标记字中只占用了部分位（32位机器上是占用25位，64位机器上占用31）</p>
+<p><strong>从实现来看，我们试图解释hashcode的一个现象，为什么不同的对象可能返回相同的hashcode方法？</strong><br>因为尽管虚拟机在运行过程中，不同的对象的地址一定是不同的，但是由于hashcode需要固定25位或者31位，那么就导致真正的hashcode值需要在对象地址上做一定的操作。从而将一个大范围区间的值映射到一个小范围区间的值（hashcode的计算过程），这样的操作必定会导致一部分数据的计算结果会重复。所以说这就是不同的对象可能返回相同hash值的原因。</p>
+<h2 id="public-boolean-equals-Object-obj"><a href="#public-boolean-equals-Object-obj" class="headerlink" title="public boolean equals(Object obj)"></a><strong>public boolean equals(Object obj)</strong></h2><p>在java中equals的作用是，判断两个对象是不是相等的。</p>
+<pre><code>public boolean equals(Object obj) {
+    return (this == obj);
+}</code></pre><p>从jdk的实现可以看出：equals其实就是在比较两个对象的地址是否相等，所以这个方法不存在hashcode()的问题，因为对象在内存中的地址是唯一的。<br><strong>重写equals()方法就必须重写hashCode()方法的原因。</strong><br>假设两个对象，重写了其equals方法，其相等条件是属性相等，就返回true。如果不重写hashcode方法，其哈希映射的逻辑地址值，必然不相等。这就出现了equals方法相等，但是hashcode不相等的情况。这不符合hashcode的规则。在集合框架中，这种情况会导致的严重的问题。<br><strong>比如：</strong>在HashMap中，如果你需要自定义对象作为Key，那么你不论通过key存储或者获取value，都需要计算key的hash值，如果你重写了equals方法，但没有重写hashCode方法（ObjectHashCode方法是对对象的内存地址进行hash值计算），所以会出现两个对象的值相等，但是hash值不相等。<br>这样就会出现问题：HashMap中put元素的时候，计算key的hash值。然后找到对应的数组下标，然后在表头插入元素，如果两个对象相等，但hashCode值不等，则第一个元素对象作为Key放进hashMap中，则通过get(第二个Key)由于对象相等，但是hash值不等，获取value的时候，所以会出现计算hash值找下标找的错误的下标，然后调用equals方法比较也会找不到对应的value。<br>同时对HashSet也会有致命影响，通过hash值来存储对象对象，如果两个对象相等，但是hash值不等，则会被存储在set中，这就与set初衷有冲突，就是不能存储重复的元素。</p>
+<h2 id="protected-native-Object-clone"><a href="#protected-native-Object-clone" class="headerlink" title="protected native Object clone()"></a><strong>protected native Object clone()</strong></h2><p> 底层在实现clone()方法其实非常简单，<br>1.首先确认当前对象是否实现了cloneable接口(这是一个标记接口)<br>2.分配一个和当前对象一样大小的空间<br>3.将原对象堆中的区域以字节的方式复制到新对象中。然而对象在堆中的存储，对象属性其实存储的只是引用地址，那么使用clone()方法的时候就是我们所说浅拷贝，只是值拷贝。拷贝的接口是拷贝的对象和原对象的对象属性指向同一个地址。对这个属性做改动时，会互相影响。</p>
+<p><strong>API描述</strong><br>创建并返回此对象的一个副本。“副本”的准确含义可能依赖于对象的类。<br>这样做的目的是，对于任何对象 x，表达式：<br>x.clone() != x为 true            //因为，分配了另外的内存空间去复制该对象。<br>表达式： x.clone().getClass() == x.getClass()也为 true，但这些并非必须要满足的要求。<br>一般情况下： x.clone().equals(x)为 true  //但这并非必须要满足的要求。若要满足，则必须重写equals方法。<br><strong>注</strong>既然clone对象，判断两个对象是否相等就不能用父类object中继承的equals方法了，因为Object中的equals中使用==则比较是内存地址，所以要重写equals方法和hashCode方法</p>
+<ul>
+<li>按照惯例，返回的对象应该通过调用 super.clone 获得。如果一个类及其所有的超类（Object 除外）都遵守此约定，则 x.clone().getClass() == x.getClass()。 </li>
+<li>Object类的clone方法执行特定的复制操作。首先，如果此对象的类不能实现接口Cloneable，则会抛出CloneNotSupportedException。注意，所有的数组都被视为实现接口 Cloneable。</li>
+<li>此方法会创建此对象的类的一个新实例，并像通过分配那样，严格使用此对象相应字段的内容初始化该对象的所有字段；这些字段的内容没有被自我复制。所以，此方法执行的是该对象的“浅表复制”，而不“深层复制”操作。 </li>
+<li>Object 类本身不实现接口 Cloneable，所以在类为 Object 的对象上调用 clone 方法将会导致在运行时抛出异常。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/" data-id="ckb22iue9003nzwu8cpqz09mb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java基础/枚举" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/">枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="枚举类的使用：入门"><a href="#枚举类的使用：入门" class="headerlink" title="枚举类的使用：入门"></a><strong>枚举类的使用：入门</strong></h2><h3 id="类的对象只有有限个，确定的。举例如下："><a href="#类的对象只有有限个，确定的。举例如下：" class="headerlink" title="类的对象只有有限个，确定的。举例如下："></a><strong>类的对象只有有限个，确定的。举例如下：</strong></h3><p>星期：Monday(星期一)、……、Sunday(星期天)<br>性别：Man(男)、Woman(女)<br>季节：Spring(春节)……Winter(冬天)<br>支付方式：Cash（现金）、WeChatPay（微信）、Alipay(支付宝)、BankCard(银行卡)、CreditCard(信用卡)<br>就职状态：Busy、Free、Vocation、Dimission<br>订单状态：Nonpayment（未付款）、Paid（已付款）、Delivered（已发货）、Return（退货）、Checked（已确认）Fulfilled（已配货）、<br>线程状态：创建、就绪、运行、阻塞、死亡</p>
+<p><strong>当需要定义一组常量时，强烈建议使用枚举类</strong></p>
+<h3 id="枚举类的实现"><a href="#枚举类的实现" class="headerlink" title="枚举类的实现"></a><strong>枚举类的实现</strong></h3><p>JDK1.5之前需要自定义枚举类</p>
+<p>JDK 1.5 新增的 enum 关键字用于定义枚举类</p>
+<p><strong>若枚举只有一个对象, 则可以作为一种单例模式的实现方式。</strong></p>
+<h3 id="枚举类的属性"><a href="#枚举类的属性" class="headerlink" title="枚举类的属性"></a><strong>枚举类的属性</strong></h3><ul>
+<li>枚举类对象的属性不应允许被改动, 所以应该使用 private final 修饰</li>
+<li>枚举类的使用 private final 修饰的属性应该在构造器中为其赋值</li>
+<li>若枚举类显式的定义了带参数的构造器, 则在列出枚举值时也必须对应的传入参数。</li>
+</ul>
+<h3 id="自定义枚举类"><a href="#自定义枚举类" class="headerlink" title="自定义枚举类"></a><strong>自定义枚举类</strong></h3><ol>
+<li><p>私有化类的构造器，保证不能在类的外部创建其对象</p>
+</li>
+<li><p>在类的内部创建枚举类的实例。声明为：public static final </p>
+</li>
+<li><p>对象如果有属性变量，应该声明为private final，并在构造器中初始化</p>
+<pre><code>class Season {
+    private final String SEASONNAME;//季节的名称
+    private final String SEASONDESC;//季节的描述
+    private Season(String seasonName, String seasonDesc) {
+        this.SEASONNAME = seasonName;
+        this.SEASONDESC = seasonDesc;
+    }
+    public static final Season SPRING = new Season(&quot;春天&quot;, &quot;春暖花开&quot;);
+    public static final Season SUMMER = new Season(&quot;夏天&quot;, &quot;夏日炎炎&quot;);
+    public static final Season AUTUMN = new Season(&quot;秋天&quot;, &quot;秋高气爽&quot;);
+    public static final Season WINTER = new Season(&quot;冬天&quot;, &quot;白雪皑皑&quot;);
+}</code></pre></li>
+</ol>
+<h3 id="使用enum定义枚举类"><a href="#使用enum定义枚举类" class="headerlink" title="使用enum定义枚举类"></a><strong>使用enum定义枚举类</strong></h3><p><strong>使用说明</strong></p>
+<ul>
+<li><p>使用 enum 定义的枚举类默认继承了 java.lang.Enum类，因此不能再继承其他类</p>
+</li>
+<li><p>枚举类的构造器只能使用 private 权限修饰符</p>
+</li>
+<li><p>枚举类的所有实例必须在枚举类中显式列出(, 分隔 ; 结尾)。列出的实例系统会自动添加 public static final 修饰</p>
+</li>
+<li><p>必须在枚举类的第一行声明枚举类对象<br>JDK 1.5 中可以在 switch 表达式中使用Enum定义的枚举类的对象作为表达式, case 子句可以直接使用枚举值的名字, 无需添加枚举类作为限定。</p>
+<pre><code>public enum SeasonEnum {
+    SPRING(&quot;春天&quot;, &quot;春风又绿江南岸&quot;),
+    SUMMER(&quot;夏天&quot;, &quot;映日荷花别样红&quot;),
+    AUTUMN(&quot;秋天&quot;, &quot;秋水共长天一色&quot;),
+    WINTER(&quot;冬天&quot;, &quot;窗含西岭千秋雪&quot;);
+    private final String seasonName;
+    private final String seasonDesc;
+    private SeasonEnum(String seasonName, String seasonDesc) {
+        this.seasonName = seasonName;
+        this.seasonDesc = seasonDesc;
+    }
+    public String getSeasonName() {
+        return seasonName;
+    }
+    public String getSeasonDesc() {
+        return seasonDesc;
+    }
+}</code></pre></li>
+</ul>
+<h3 id="Enum类的主要方法："><a href="#Enum类的主要方法：" class="headerlink" title="Enum类的主要方法："></a><strong>Enum类的主要方法：</strong></h3><ul>
+<li>values()方法：返回枚举类型的对象数组。该方法可以很方便地遍历所有的枚举值。</li>
+<li>valueOf(String str)：可以把一个字符串转为对应的枚举类对象。要求字符串必须是枚举类对象的“名字”。如不是，会有运行时异常：IllegalArgumentException。 </li>
+<li>toString()：返回当前枚举类对象常量的名称</li>
+</ul>
+<h3 id="实现接口的枚举类"><a href="#实现接口的枚举类" class="headerlink" title="实现接口的枚举类"></a><strong>实现接口的枚举类</strong></h3><ul>
+<li>和普通 Java 类一样，枚举类可以实现一个或多个接口</li>
+<li>若每个枚举值在调用实现的接口方法呈现相同的行为方式，则只要统一实现该方法即可。</li>
+<li>若需要每个枚举值在调用实现的接口方法呈现出不同的行为方式, 则可以让每个枚举值分别来实现该方法</li>
+</ul>
+<p>以下内容摘自其他博客：<a href="https://www.cnblogs.com/alter888/p/9163612.html" target="_blank" rel="noopener">https://www.cnblogs.com/alter888/p/9163612.html</a></p>
+<h2 id="枚举实现原理"><a href="#枚举实现原理" class="headerlink" title="枚举实现原理"></a><strong>枚举实现原理</strong></h2><pre><code>public class EnumDemo {
+    public static void main(String[] args){
+        //直接引用
+        Day day =Day.MONDAY;
+    }
+}
+//定义枚举类型
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY, SUNDAY
+}</code></pre><p>我们大概了解了枚举类型的定义与简单使用后，现在有必要来了解一下枚举类型的基本实现原理。实际上在使用关键字enum创建枚举类型并编译后，编译器会为我们生成一个相关的类，这个类继承了Java API中的java.lang.Enum类，也就是说通过关键字enum创建枚举类型在编译后事实上也是一个类类型而且该类继承自java.lang.Enum类。下面我们编译前面定义的EnumDemo.java并查看生成的class文件来验证这个结论：</p>
+<pre><code>javac EnumDemo.java 
+Day.class  EnumDemo.class  </code></pre><p>利用javac编译前面定义的EnumDemo.java文件后分别生成了Day.class和EnumDemo.class文件，而Day.class就是枚举类型，这也就验证前面所说的使用关键字enum定义枚举类型并编译后，编译器会自动帮助我们生成一个与枚举相关的类。<br><strong>我们再来看看反编译Day.class文件：</strong></p>
+<pre><code>//反编译Day.class
+final class Day extends Enum
+{
+    //编译器为我们添加的静态的values()方法
+    public static Day[] values()
+    {
+        return (Day[])$VALUES.clone();
+    }
+    //编译器为我们添加的静态的valueOf()方法，注意间接调用了Enum也类的valueOf方法
+    public static Day valueOf(String s)
+    {
+        return (Day)Enum.valueOf(com/zejian/enumdemo/Day, s);
+    }
+    //私有构造函数
+    private Day(String s, int i)
+    {
+        super(s, i);
+    }
+     //前面定义的7种枚举实例
+    public static final Day MONDAY;
+    public static final Day TUESDAY;
+    public static final Day WEDNESDAY;
+    public static final Day THURSDAY;
+    public static final Day FRIDAY;
+    public static final Day SATURDAY;
+    public static final Day SUNDAY;
+    private static final Day $VALUES[];
+    static 
+    {    
+        //实例化枚举实例
+        MONDAY = new Day(&quot;MONDAY&quot;, 0);
+        TUESDAY = new Day(&quot;TUESDAY&quot;, 1);
+        WEDNESDAY = new Day(&quot;WEDNESDAY&quot;, 2);
+        THURSDAY = new Day(&quot;THURSDAY&quot;, 3);
+        FRIDAY = new Day(&quot;FRIDAY&quot;, 4);
+        SATURDAY = new Day(&quot;SATURDAY&quot;, 5);
+        SUNDAY = new Day(&quot;SUNDAY&quot;, 6);
+        $VALUES = (new Day[] {
+            MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+        });
+    }
+}</code></pre><p>从反编译的代码可以看出编译器确实帮助我们生成了一个Day类(注意该类是final类型的，将无法被继承)而且该类继承自java.lang.Enum类，该类是一个抽象类(稍后我们会分析该类中的主要方法)。<br>除此之外，编译器还帮助我们生成了7个Day类型的实例对象分别对应枚举中定义的7个日期，这也充分说明了我们前面使用关键字enum定义的Day类型中的每种日期枚举常量也是实实在在的Day实例对象，只不过代表的内容不一样而已。<br>注意编译器还为我们生成了两个静态方法，分别是values()和 valueOf()，到此我们也就明白了，使用关键字enum定义的枚举类型，在编译期后，也将转换成为一个实实在在的类，而在该类中，会存在每个在枚举类型中定义好变量的对应实例对象，如上述的MONDAY枚举类型对应public static final Day MONDAY;，同时编译器会为该类创建两个方法，分别是values()和valueOf()。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/" data-id="ckb22iuec003yzwu89rk3ba3e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向对象/多态" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%A4%9A%E6%80%81/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%A4%9A%E6%80%81/">多态</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>多态是继封装、继承之后，面向对象的第三大特性。<br>生活中，比如跑的动作，小猫、小狗和大象，跑起来是不一样的。再比如飞的动作，昆虫、鸟类和飞机，飞起来也是不一样的。可见，同一行为，通过不同的事物，可以体现出来的不同的形态。多态，描述的就是这样的状态。<br><strong>定义</strong><br>多态： 是指同一行为，具有多个不同表现形式。<br><strong>前提【重点】</strong> </p>
+<ol>
+<li>继承或者实现【二选一】 </li>
+<li>方法的重写【意义体现：不重写，无意义】 </li>
+<li>父类引用指向子类对象【格式体现】</li>
+</ol>
+<h2 id="多态的体现"><a href="#多态的体现" class="headerlink" title="多态的体现"></a><strong>多态的体现</strong></h2><p><strong>多态体现的格式：</strong></p>
+<pre><code>父类类型 变量名 = new 子类对象； 
+变量名.方法名();
+Fu f = new Zi(); 
+f.method();</code></pre><p>父类类型：指子类对象继承的父类类型，或者实现的父接口类型。<br>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误；如果有，执行的是子类重写后方法。 </p>
+<h2 id="多态的好处"><a href="#多态的好处" class="headerlink" title="多态的好处"></a><strong>多态的好处</strong></h2><p>实际开发的过程中，父类类型作为方法形式参数，传递子类对象给方法，进行方法的调用，更能体现出多态的扩展性与便利。<br>定义父类：<br>定义子类：<br>定义测试类： </p>
+<pre><code>public abstract class Animal { 
+    public abstract void eat(); 
+}
+class Cat extends Animal { 
+    public void eat() { 
+    System.out.println(&quot;吃鱼&quot;); 
+    } 
+}
+class Dog extends Animal { 
+    public void eat() { 
+    System.out.println(&quot;吃骨头&quot;); 
+    } 
+}
+public class Test { 
+    public static void main(String[] args) { 
+        // 多态形式，创建对象 
+        Cat c = new Cat(); 
+        Dog d = new Dog(); 
+        // 调用showCatEat 
+        showCatEat(c); 
+        // 调用showDogEat
+        showDogEat(d); 
+        //以上两个方法, 均可以被showAnimalEat(Animal a)方法所替代而执行效果一致 
+        showAnimalEat(c); 
+        showAnimalEat(d); 
+    }
+    public static void showCatEat (Cat c){ 
+            c.eat(); 
+    }
+    public static void showDogEat (Dog d){ 
+            d.eat(); 
+    }
+    public static void showAnimalEat (Animal a){ 
+            a.eat(); 
+    } 
+}</code></pre><ul>
+<li>由于多态特性的支持，showAnimalEat方法的Animal类型，是Cat和Dog的父类类型，父类类型接收子类对象，当然可以把Cat对象和Dog对象，传递给方法。 </li>
+<li>当eat方法执行时，多态规定，执行的是子类重写的方法，那么效果自然与showCatEat、showDogEat方法一致，所以showAnimalEat完全可以替代以上两方法。 </li>
+<li>不仅仅是替代，在扩展性方面，无论之后再多的子类出现，我们都不需要编写showXxxEat方法了，直接使用showAnimalEat都可以完成。 </li>
+<li>所以，多态的好处，体现在，可以使程序编写的更简单，并有良好的扩展。 </li>
+</ul>
+<h2 id="引用类型转换"><a href="#引用类型转换" class="headerlink" title="引用类型转换"></a><strong>引用类型转换</strong></h2><p>多态的转型分为向上转型与向下转型两种：<br><strong>向上转型</strong><br>多态本身是子类类型向父类类型向上转换的过程，这个过程是默认的。 当父类引用指向一个子类对象时，便是向上转型。<br>使用格式： </p>
+<pre><code>父类类型 变量名 = new 子类类型(); 
+如：Animal a = new Cat();</code></pre><p><strong>向下转型</strong><br>父类类型向子类类型向下转换的过程，这个过程是强制的。<br>一个已经向上转型的子类对象，将父类引用转为子类引用，可以使用强制类型转换的格式，便是向下转型。<br>使用格式： </p>
+<pre><code>子类类型 变量名 = (子类类型) 父类变量名; 
+如:Cat c =(Cat) a;</code></pre><p><strong>为什么要转型</strong><br>当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译错误。也就是说，不能调用子类拥有，而父类没有的方法。编译都错误，更别说运行了。这也是多态给我们带来的一点”小麻烦”。所以，想要调用子类特有的方法，必须做向下转型。 </p>
+<p><strong>转型的异常</strong><br>转型的过程中，一不小心就会遇到这样的问题，请看如下代码：</p>
+<pre><code>public class Test { 
+    public static void main(String[] args) { 
+        // 向上转型 
+        Animal a = new Cat(); 
+        a.eat(); // 调用的是 Cat 的 eat 
+        // 向下转型 
+        Dog d = (Dog)a; 
+        d.watchHouse(); // 调用的是 Dog 的 watchHouse 【运行报错】 
+    } 
+}</code></pre><p>这段代码可以通过编译，但是运行时，却报出了 ClassCastException，类型转换异常！这是因为，明明创建了Cat类型对象，运行时，当然不能转换成Dog对象的。这两个类型并没有任何继承关系，不符合类型转换的定义。<br>为了避免ClassCastException的发生，Java提供了 instanceof 关键字，给引用变量做类型的校验，格式如下： </p>
+<pre><code>// 向下转型 
+if (a instanceof Cat){ 
+    Cat c = (Cat)a; 
+    c.catchMouse(); // 调用的是 Cat 的 catchMouse 
+} else if (a instanceof Dog){ 
+    Dog d = (Dog)a; 
+    d.watchHouse(); // 调用的是 Dog 的 watchHouse 
+} </code></pre><p>所以，转换前，我们最好先做一个判断，</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%A4%9A%E6%80%81/" data-id="ckb22iugy00drzwu8h5ny40rj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向对象/抽象类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8A%BD%E8%B1%A1%E7%B1%BB/">抽象类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p><strong>由来</strong><br>父类中的方法，被它的子类们重写，子类各自的实现都不尽相同。那么父类的方法声明和方法主体，只有声明还有意义，而方法主体则没有存在的意义了。我们把没有方法主体的方法称为抽象方法。Java语法规定，<strong>包含抽象方法的类就是抽象类。</strong><br><strong>定义</strong><br>抽象方法 ： 没有方法体的方法。<br>抽象类：包含抽象方法的类。 </p>
+<h2 id="abstract使用格式"><a href="#abstract使用格式" class="headerlink" title="abstract使用格式"></a><strong>abstract使用格式</strong></h2><p><strong>抽象方法</strong><br>使用 abstract 关键字修饰方法，该方法就成了抽象方法，抽象方法只包含一个方法名，而没有方法体。<br>定义格式： 修饰符 abstract 返回值类型 方法名 (参数列表)；<br>代码举例： public abstract void run()；</p>
+<p><strong>抽象类</strong><br>如果一个类包含抽象方法，那么该类必须是抽象类。<br>定义格式： abstract class 类名字 { }<br>代码举例： public abstract class Animal { public abstract void run()； }</p>
+<p><strong>抽象的使用</strong><br>继承抽象类的子类必须重写父类所有的抽象方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该父类的抽象方法，否则，从最初的父类到最终的子类都不能创建对象，失去意义。<br>此时的方法重写，是子类对父类抽象方法的完成实现，我们将这种方法重写的操作，也叫做实现方法。 </p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h2><p>关于抽象类的使用，以下为语法上要注意的细节，虽然条目较多，但若理解了抽象的本质，无需死记硬背。 </p>
+<ol>
+<li>抽象类不能创建对象，如果创建，编译无法通过而报错。只能创建其非抽象子类的对象。<br>理解：假设创建了抽象类的对象，调用抽象的方法，而抽象方法没有具体的方法体，没有意义。 </li>
+<li>抽象类中，可以有构造方法，是供子类创建对象时，初始化父类成员使用的。<br>理解：子类的构造方法中，有默认的super()，需要访问父类构造方法。 </li>
+<li><strong>抽象类中，不一定包含抽象方法，但是有抽象方法的类必定是抽象类。</strong><br>理解：<strong>未包含抽象方法的抽象类，目的就是不想让调用者创建该类对象</strong>，通常用于某些特殊的类结构设计。 </li>
+<li>抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错。除非该子类也是抽象类。<br>理解：假设不重写所有抽象方法，则类中可能包含抽象方法。那么创建对象后，调用抽象的方法，没有意义。 </li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="ckb22iuh000dxzwu80asp99i1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向对象/接口" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8E%A5%E5%8F%A3/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8E%A5%E5%8F%A3/">接口</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>接口，是Java语言中一种引用类型，是方法的集合，如果说类的内部封装了成员变量、构造方法和成员方法，那么接口的内部主要就是封装了方法，包含抽象方法（JDK 7及以前），默认方法和静态方法（JDK 8），私有方法(JDK 9)。<br>接口的定义，它与定义类方式相似，但是使用 interface 关键字。它也会被编译成.class文件，但一定要明确它并 不是类，而是另外一种引用数据类型。<br>引用数据类型：数组，类，接口。<br>接口的使用，它不能创建对象，但是可以被实现（ implements，类似于被继承）。一个实现接口的类（可以看做是接口的子类），需要实现接口中所有的抽象方法，创建该类对象，就可以调用方法了，否则它必须是一个抽象类。</p>
+<h2 id="定义格式"><a href="#定义格式" class="headerlink" title="定义格式"></a><strong>定义格式</strong></h2><p>public interface 接口名称 {<br>// 抽象方法<br>// 默认方法<br>// 静态方法<br>// 私有方法<br>}<br>含有抽象方法<br>抽象方法：使用public abstract关键字修饰，<strong>可以省略</strong>，没有方法体。该方法供子类实现使用。 </p>
+<p>含有默认方法和静态方法<br>默认方法：使用 default 修饰，不可省略，供子类调用或者子类重写。<br>静态方法：使用 static 修饰，供接口直接调用。 </p>
+<p>含有私有方法和私有静态方法<br>私有方法：使用 private 修饰，供接口中的默认方法或者静态方法调用。 </p>
+<h2 id="基本的实现"><a href="#基本的实现" class="headerlink" title="基本的实现"></a><strong>基本的实现</strong></h2><p><strong>实现的概述</strong><br>类与接口的关系为实现关系，即类实现接口，该类可以称为接口的实现类，也可以称为接口的子类。实现的动作类似继承，格式相仿，只是关键字不同，实现使用 implements 关键字。<br><strong>非抽象子类实现接口：</strong> </p>
+<ol>
+<li>必须重写接口中所有抽象方法。 </li>
+<li>继承了接口的默认方法，即可以直接调用，也可以重写。 </li>
+</ol>
+<p><strong>默认方法的使用</strong><br>可以继承，可以重写，二选一，但是只能通过实现类的对象来调用。 </p>
+<p><strong>静态方法的使用</strong><br>静态与.class 文件相关，<strong>只能使用接口名调用，不可以通过实现类的类名或者实现类的对象调用</strong>，</p>
+<p><strong>私有方法的使用</strong><br>私有方法：只有默认方法可以调用。<br>私有静态方法：默认方法和静态方法可以调用。<br>如果一个接口中有多个默认方法，并且方法中有重复的内容，那么可以抽取出来，封装到私有方法中，供默认方法去调用。从设计的角度讲，私有的方法是对默认方法和静态方法的辅助。</p>
+<h2 id="接口的多实现"><a href="#接口的多实现" class="headerlink" title="接口的多实现"></a><strong>接口的多实现</strong></h2><p>之前学过，在继承体系中，一个类只能继承一个父类。而对于接口而言，一个类是可以实现多个接口的，这叫做接口的多实现。并且，一个类能继承一个父类，同时实现多个接口。<br><strong>注</strong>重名代表继承了多个接口，而这多个接口中有重名的方法<br><strong>抽象方法</strong><br>接口中，有多个抽象方法时，实现类必须重写所有抽象方法。如果抽象方法有重名的，只需要重写一次。<br><strong>默认方法</strong><br>接口中，有多个默认方法时，实现类都可继承使用。如果默认方法有重名的，必须重写一次。</p>
+<p><strong>静态方法</strong><br>接口中，存在同名的静态方法并不会冲突，原因是只能通过各自接口名访问静态方法。<br><strong>优先级的问题</strong><br>当一个类，既继承一个父类，又实现若干个接口时，父类中的成员方法与接口中的默认方法重名，<strong>子类就近选择执行父类的成员方法。</strong></p>
+<h2 id="接口的多继承【了解】"><a href="#接口的多继承【了解】" class="headerlink" title="接口的多继承【了解】"></a><strong>接口的多继承【了解】</strong></h2><p>一个接口能继承另一个或者多个接口，这和类之间的继承比较相似。接口的继承使用extends关键字，子接口继承父接口的方法。如果父接口中的默认方法有重名的，那么子接口需要重写一次。这里可以extends多个接口。</p>
+<pre><code>定义父接口： 
+interface A { 
+    public default void method(){ 
+    System.out.println(&quot;AAAAAAAAAAAAAAAAAAA&quot;); 
+    } 
+}
+interface B { 
+    public default void method(){ 
+    System.out.println(&quot;BBBBBBBBBBBBBBBBBBB&quot;); 
+    } 
+}
+定义子接口： 
+interface D extends A,B{ 
+    @Override 
+    public default void method() { 
+    System.out.println(&quot;DDDDDDDDDDDDDD&quot;); 
+    } 
+}</code></pre><p><strong>小贴士：</strong><br>子接口重写默认方法时，default关键字可以保留。<br>子类重写默认方法时，default关键字不可以保留。</p>
+<h2 id="其他成员特点"><a href="#其他成员特点" class="headerlink" title="其他成员特点"></a><strong>其他成员特点</strong></h2><p>接口中，无法定义成员变量，但是可以定义常量，其值不可以改变，默认使用public static final修饰。<br>接口中，没有构造方法，不能创建对象。<br>接口中，没有静态代码块。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8E%A5%E5%8F%A3/" data-id="ckb22iuh100e1zwu86zvo24q5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向对象/继承" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF/" class="article-date">
+  <time datetime="2019-09-10T13:24:12.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF/">继承</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h2><p>多个类中存在相同属性和行为时，将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要 继承那一个类即可。<br>其中，多个类可以称为子类，单独那一个类称为父类、超类（superclass）或者基类。<br>继承描述的是事物之间的所属关系，兔子属于食草动物，食草动物属于动物。可见，父类更通用，子类更具体。我们通过继承，可以使多种事物之间形成一种关系体系。<br><strong>定义</strong><br>继承：就是子类继承父类的属性和行为，使得子类对象具有与父类相同的属性、相同的行为。子类可以直接 访问父类中的非私有的属性和行为。<br><strong>好处</strong></p>
+<ol>
+<li>提高代码的复用性。 </li>
+<li>类与类之间产生了关系，是多态的前提。</li>
+</ol>
+<h2 id="继承的格式"><a href="#继承的格式" class="headerlink" title="继承的格式"></a><strong>继承的格式</strong></h2><p>通过 extends 关键字，可以声明一个子类继承另外一个父类，定义格式如下：<br>继承演示，代码如下：<br>class 父类 {<br>…<br>}<br>class 子类 extends 父类 {<br>…<br>}</p>
+<h2 id="继承后的特点——成员变量"><a href="#继承后的特点——成员变量" class="headerlink" title="继承后的特点——成员变量"></a><strong>继承后的特点——成员变量</strong></h2><p><strong>成员变量不重名</strong><br>如果子类父类中出现不重名的成员变量，这时的访问是没有影响的。</p>
+<p><strong>成员变量重名</strong><br>如果子类父类中出现重名的成员变量，这时的访问是有影响的。<br>子父类中出现了同名的成员变量时，在子类中需要访问父类中非私有成员变量时，需要使用 super 关键字，修饰父类成员变量，类似于之前学过的this 。<br><strong>使用格式：</strong> super.父类成员变量名<br>小贴士：父类中的成员变量是非私有的，子类中可以直接访问。若父类中的成员变量私有了，子类是不能直接访问的。通常编码时，我们遵循封装的原则，使用private修饰成员变量，那么如何访问父类的私有成员变量呢？可以在父类中提供公共的getXxx方法和setXxx方法。 </p>
+<h2 id="继承后的特点——成员方法"><a href="#继承后的特点——成员方法" class="headerlink" title="继承后的特点——成员方法"></a><strong>继承后的特点——成员方法</strong></h2><p><strong>成员方法不重名</strong><br>如果子类父类中出现不重名的成员方法，这时的调用是没有影响的。对象调用方法时，会先在子类中查找有没有对应的方法，若子类中存在就会执行子类中的方法，若子类中不存在就会执行父类中相应的方法。</p>
+<p><strong>成员方法重名——重写(Override)</strong><br>如果子类父类中出现重名的成员方法，这时的访问是一种特殊情况，叫做方法重写 (Override)。<br>方法重写 ：子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效果，也称为重写或者复写。声明不变，重新实现。<br><strong>重写的应用</strong><br>子类可以根据需要，定义特定于自己的行为。既沿袭了父类的功能名称，又根据子类的需要重新实现父类方法，从而进行扩展增强。比如新的手机增加来电显示头像的功能.<br><strong>小贴士：</strong>这里重写时，用到super.父类成员方法，表示调用父类的成员方法。<br>注意事项 </p>
+<ol>
+<li>子类方法覆盖父类方法，必须要保证权限大于等于父类权限。 </li>
+<li>子类方法覆盖父类方法，返回值类型、函数名和参数列表都要一模一样。 </li>
+</ol>
+<h2 id="继承后的特点——构造方法"><a href="#继承后的特点——构造方法" class="headerlink" title="继承后的特点——构造方法"></a><strong>继承后的特点——构造方法</strong></h2><p>当类之间产生了关系，其中各类中的构造方法，又产生了哪些影响呢？<br>首先我们要回忆两个事情，构造方法的定义格式和作用。 </p>
+<ol>
+<li>构造方法的名字是与类名一致的。所以子类是无法继承父类构造方法的。 </li>
+<li>构造方法的作用是初始化成员变量的。所以子类的初始化过程中，必须先执行父类的初始化动作。子类的构造方法中默认有一个super()，表示调用父类的构造方法，父类成员变量初始化后，才可以给子类使用。</li>
+</ol>
+<h2 id="super和this"><a href="#super和this" class="headerlink" title="super和this"></a><strong>super和this</strong></h2><p>父类空间优先于子类对象产生<br>在每次创建子类对象时，先初始化父类空间，再创建其子类对象本身。目的在于子类对象中包含了其对应的父类空间，便可以包含其父类的成员，如果父类成员非private修饰，则子类可以随意使用父类成员。代码体现在子类的构造方法调用时，一定先调用父类的构造方法。<br>super和this的含义<br>super ：代表父类的存储空间标识(可以理解为父亲的引用)。<br>this ：代表当前对象的引用(谁调用就代表谁)。<br>super和this的用法<br><strong>访问构造方法</strong><br>子类的每个构造方法中均有默认的super()，调用父类的空参构造。手动调用父类构造会覆盖默认的super()。super()和this()都必须是在构造方法的第一行，所以不能同时出现。</p>
+<h2 id="继承的特点"><a href="#继承的特点" class="headerlink" title="继承的特点"></a><strong>继承的特点</strong></h2><ol>
+<li>Java只支持单继承，不支持多继承。 </li>
+<li>Java支持多层继承(继承体系)。 顶层父类是Object类。所有的类默认继承Object，作为父类。 </li>
+<li>子类和父类是一种相对的概念。 </li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF/" data-id="ckb22iuh300e9zwu84o6f5dm3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向对象/重载与重写" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/" class="article-date">
+  <time datetime="2019-09-02T13:12:01.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/">方法的重载与重写</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法重载-Overload"><a href="#方法重载-Overload" class="headerlink" title="方法重载(Overload)"></a><strong>方法重载(Overload)</strong></h2><p>指在同一个类中，允许存在一个以上的同名方法，只要它们的参数列表不同即可，与修饰符和返 回值类型无关。<br>参数列表：个数不同，数据类型不同，顺序不同。<br>重载方法调用：JVM通过方法的参数列表，调用不同的方法。 </p>
+<h2 id="方法重写-Override"><a href="#方法重写-Override" class="headerlink" title="方法重写(Override)"></a><strong>方法重写(Override)</strong></h2><p>如果子类父类中出现重名的成员方法，这时的访问是一种特殊情况，叫做方法重写 (Override)。<br>方法重写 ：子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效果，也称为重写或者复写。声明不变，重新实现。<br><strong>重写的应用</strong><br>子类可以根据需要，定义特定于自己的行为。既沿袭了父类的功能名称，又根据子类的需要重新实现父类方法，从而进行扩展增强。比如新的手机增加来电显示头像的功能.<br><strong>小贴士：</strong>这里重写时，用到super.父类成员方法，表示调用父类的成员方法。<br>注意事项 </p>
+<ol>
+<li>子类方法覆盖父类方法，必须要保证权限大于等于父类权限。 </li>
+<li>子类方法覆盖父类方法，返回值类型、函数名和参数列表都要一模一样。 </li>
+</ol>
+<h2 id="方法重载和方法重写-覆盖-的区别"><a href="#方法重载和方法重写-覆盖-的区别" class="headerlink" title="方法重载和方法重写(覆盖)的区别"></a><strong>方法重载和方法重写(覆盖)的区别</strong></h2><table>
+<thead>
+<tr>
+<th>-</th>
+<th>英文</th>
+<th>位置不同</th>
+<th>修饰符</th>
+<th>返回值</th>
+<th>方法名</th>
+<th>参数</th>
+<th>抛出异常</th>
+<th>方法体</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>重载</td>
+<td>overload</td>
+<td>同一个类中</td>
+<td>无关</td>
+<td>无关</td>
+<td>相同</td>
+<td>不同</td>
+<td>无关</td>
+<td>不同</td>
+</tr>
+<tr>
+<td>重写</td>
+<td>override</td>
+<td>于类和父类间</td>
+<td>大于等于</td>
+<td>小于等于</td>
+<td>相同</td>
+<td>相同</td>
+<td>小于等于</td>
+<td>不同</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/" data-id="ckb22iuh100e3zwu84hqohpnl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向对象/封装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%B0%81%E8%A3%85/" class="article-date">
+  <time datetime="2019-09-02T08:57:45.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%B0%81%E8%A3%85/">封装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-封装概述"><a href="#1-封装概述" class="headerlink" title="1.封装概述"></a><strong>1.封装概述</strong></h2><p>面向对象编程语言是对客观世界的模拟，客观世界里成员变量都是隐藏在对象内部的，外界无法直接操作和修改。封装可以被认为是一个保护屏障，防止该类的代码和数据被其他类随意访问。要访问该类的数据，必须通过指定的方式。适当的封装可以让代码更容易理解与维护，也加强了代码的安全性。<br><strong>原则</strong><br>将属性隐藏起来，若需要访问某个属性，提供公共方法对其访问。 </p>
+<h2 id="2-封装的步骤"><a href="#2-封装的步骤" class="headerlink" title="2.封装的步骤"></a><strong>2.封装的步骤</strong></h2><ol>
+<li>使用 private 关键字来修饰成员变量。 </li>
+<li>对需要访问的成员变量，提供对应的一对 getXxx 方法 、 setXxx 方法。 </li>
+</ol>
+<h2 id="3-封装的操作——private关键字"><a href="#3-封装的操作——private关键字" class="headerlink" title="3.封装的操作——private关键字"></a><strong>3.封装的操作——private关键字</strong></h2><p>private的含义 </p>
+<ol>
+<li>private是一个权限修饰符，代表最小权限。 </li>
+<li>可以修饰成员变量和成员方法。 </li>
+<li>被private修饰后的成员变量和成员方法，只在本类中才能访问。<br>private的使用格式 </li>
+<li>使用 private 修饰成员变量，代码如下： </li>
+<li>提供 getXxx 方法 / setXxx 方法，可以访问成员变量，代码如下： </li>
+</ol>
+<h2 id="4-标准代码——JavaBean"><a href="#4-标准代码——JavaBean" class="headerlink" title="4.标准代码——JavaBean"></a><strong>4.标准代码——JavaBean</strong></h2><p>JavaBean 是 Java语言编写类的一种标准规范。符合 JavaBean 的类，要求类必须是具体的和公共的，并且具有无参数的构造方法，提供用来操作成员变量的 set 和 get 方法。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%B0%81%E8%A3%85/" data-id="ckb22iugx00dpzwu81e6a9mnw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/15/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/17/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

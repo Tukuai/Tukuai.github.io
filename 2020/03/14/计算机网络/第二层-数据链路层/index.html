@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>第二层:数据链路层 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="差错控制差错控制方法通过特殊的编码（差错控制码），使接收端能够发现甚至自动纠正错误。常用的差错控制编码有两类   检错码Ø 能够发现差错，但无法自动纠正差错，通过发送方重传来获得正确的数据。  纠错码Ø 不但能过发现差错，而且能够知道哪里出错，从而自动纠正差错 海明码*海明距离只能纠正一位出错，而实际通信过程中经常发生的是突发性错误只要将发送方式稍做改变，就能利用纠正一位出错的海明码来纠正突发错。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二层:数据链路层">
+<meta property="og:url" content="https://tukuai.github.io/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="差错控制差错控制方法通过特殊的编码（差错控制码），使接收端能够发现甚至自动纠正错误。常用的差错控制编码有两类   检错码Ø 能够发现差错，但无法自动纠正差错，通过发送方重传来获得正确的数据。  纠错码Ø 不但能过发现差错，而且能够知道哪里出错，从而自动纠正差错 海明码*海明距离只能纠正一位出错，而实际通信过程中经常发生的是突发性错误只要将发送方式稍做改变，就能利用纠正一位出错的海明码来纠正突发错。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/109.png">
+<meta property="og:image" content="https://tukuai.github.io/images/110.png">
+<meta property="og:image" content="https://tukuai.github.io/images/111.png">
+<meta property="og:image" content="https://tukuai.github.io/images/112.png">
+<meta property="article:published_time" content="2020-03-14T06:44:16.000Z">
+<meta property="article:modified_time" content="2020-03-14T07:13:46.544Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/109.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-计算机网络/第二层-数据链路层" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="article-date">
+  <time datetime="2020-03-14T06:44:16.000Z" itemprop="datePublished">2020-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第二层:数据链路层
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a><strong>差错控制</strong></h2><p>差错控制方法<br>通过特殊的编码（差错控制码），使接收端能够发现甚至自动纠正错误。<br>常用的差错控制编码有两类 </p>
+<ul>
+<li>检错码<br>Ø 能够发现差错，但无法自动纠正差错，通过发送方重传来获得正确的数据。 </li>
+<li>纠错码<br>Ø 不但能过发现差错，而且能够知道哪里出错，从而自动纠正差错</li>
+<li><em>海明码*</em><br><img src="/images/109.png" alt=""><br><img src="/images/110.png" alt=""><br>海明距离只能纠正一位出错，而实际通信过程中经常发生的是突发性错误<br>只要将发送方式稍做改变，就能利用纠正一位出错的海明码来纠正突发错。</li>
+</ul>
+<hr>
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a><strong>流量控制</strong></h2><p><strong>1.停—等协议</strong><br>发送方发送一帧后，等待对方的应答。<br>接收端收到一帧后，检查校验位串。若出错，返回“否认”信息；若无错，返回“确认”信息。<br>发送端收到“确认”后，立即发送下一帧；收到“否认”则重发该帧。<br>发送端发送一帧后，立即启动超时计时器。若超时中断，重发该帧。<br>接收端应保存最近收到的帧序号，若下一个到达帧的序号与该序号相同，则丢弃并返回“确认”信息。<br>缺点</p>
+<ul>
+<li>信道利用率低 </li>
+</ul>
+<p>优点</p>
+<ul>
+<li>简单 </li>
+</ul>
+<p><strong>2.滑动窗口协议</strong><br>基本思想 </p>
+<ul>
+<li>为提高信道利用率，允许发送方连续发送若干帧后再等待对方应答。<br>基本概念 </li>
+<li>窗口：可容纳数据帧的缓冲区。 </li>
+<li>发送窗口：发送方用来保存已发送但尚未经确认的数据帧。 </li>
+<li>接收窗口：接收方用来保存已正确接受但尚未提交给主机(网络层)数据帧。 </li>
+<li>窗口尺寸：窗口中可以保存的帧数目称为窗口尺寸。<br>帧序号 </li>
+<li>为了保证接收方能按正确次序向主机递交数据帧而设立的临时帧序号。 </li>
+<li>一般在帧控制字段中用若干位来表示帧序号。如果用3位来表示，则帧序号为0—7。当一次通信超过8帧时，则顺序重复使用这8个帧序号。<br>窗口号：对应帧序号</li>
+</ul>
+<p><strong>2.1顺序接收管道协议（回退n）</strong><br>接收窗口尺寸为1的滑动窗口协议，也称回退n协议。设发送窗口尺寸WT=n, 接收窗口尺寸WR=1. </p>
+<ul>
+<li>发送方可连续发送n帧而无需对方应答，但需要将已发出但尚未收到确认的帧保存在发送窗口中，以备由于出错或丢失而重发。 </li>
+<li>接收方将正确的且帧序号落入当前接收窗口的帧存入接收窗口，同时按序将接收窗口的帧送交给主机（网络层）。出错或帧序号未落入当前窗口的帧全部予以丢弃。 </li>
+<li>当某帧丢失或出错时，则其后到达的帧均丢弃，并返回否认信息，请求对方从出错帧开始重发。 </li>
+<li>发送方设置一个超时计时器，当连续发送n帧后，立即启动超时计时器。当超时计时器满且未收到应答，则重发这n帧。<br><img src="/images/111.png" alt=""></li>
+</ul>
+<p><strong>2.2选择重传协议</strong><br>顺序接收管道协议 </p>
+<ul>
+<li>优点：仅需一个接收缓冲区 </li>
+<li>缺点：当信道误码率较高时，会产生大量重发帧<br>另一种更好的方法：选择重传协议 </li>
+<li>若某一帧出错，后面正确到达的帧虽然不能立即送网络层，但接收方可将其保存在接收窗口，仅要求发送方重传那个发错帧。</li>
+</ul>
+<p><strong>停—等协议 、顺序接收管道协议、选择重传协议都可以看成是滑动窗口协议，其差别仅在窗口的尺寸不同。如下表所示</strong><br><img src="/images/112.png" alt=""></p>
+<p><strong>数据链路层协议举例</strong><br>HDLC协议<br>HDLC(High Level Data Control)协议是一种<br>面向比特的链路层协议。</p>
+<p>标志 </p>
+<ul>
+<li>固定为0111110，标志着一个帧的开始和结束。 </li>
+<li>具有帧之间的同步作用。 </li>
+<li>在连续发送多帧时，可用一个标志字段，既表示帧的开始，又表示帧的结束</li>
+</ul>
+<p>为了避免其它字段中出现“0111_1110”，产生误解，HDLC采用插“0”技术<br>发送方：除标志位外，连续发现5个“1”后自动插“0”。<br>接收方：连续发现5个“1”后其后为“0”，则自动去掉该“0”。其后为“1”，则检查下一位 为“0”则为标志位，为“1”则出错。</p>
+<p>控制：该字段表示帧类型，帧编号及其他控制信息。</p>
+<p><strong>HDLC工作原理</strong><br>分三个阶段: </p>
+<ul>
+<li>建立数据链路连接 </li>
+<li>传输数据帧<br>当数据链路建立完毕，发送/接收方按照某种流量控制策略发送和接收数据帧，并允许捎带应答。 </li>
+<li>拆除链路连线<br>全部数据发送完毕，发送方发出DISC（拆除连接）无编号帧，接收方返回UA作为响应，此时释放链路层实体占用的资源。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" data-id="ckb22iugo00clzwu81rv2h1xl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第三层:网络层
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%80%E5%B1%82-%E7%89%A9%E7%90%86%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第一层:物理层</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

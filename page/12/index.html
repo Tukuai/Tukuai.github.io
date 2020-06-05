@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://tukuai.github.io/page/12/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Tukuai">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Web/Servlet" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/03/Web/Servlet/" class="article-date">
+  <time datetime="2019-11-03T03:06:32.000Z" itemprop="datePublished">2019-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/03/Web/Servlet/">Servlet</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p><strong>server applet：</strong>运行在服务器的小程序<br>    <img src="/images/8.png" alt="Servlet"><br><strong>Servlet就是一个接口，定义了Java类被浏览器访问到（被tomcat识别）的规则。<br>将来我们定义一个类，实现Servlet接口，复写方法。Tomcat就可以识别。</strong></p>
+<h2 id="快速入门："><a href="#快速入门：" class="headerlink" title="快速入门："></a><strong>快速入门：</strong></h2><ol>
+<li>创建JavaEE项目</li>
+<li>定义一个类，实现Servlet接口<ul>
+<li>public class ServletDemo1 implements Servlet</li>
+</ul>
+</li>
+<li>实现接口的抽象方法</li>
+<li>配置Servlet,在WEB-INF的web.xml里面配置。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--起个名字对应java类--&gt;</span><br><span class="line"> &lt;servlet&gt;</span><br><span class="line">     &lt;servlet-name&gt;demo1&lt;/servlet-name&gt;</span><br><span class="line">     &lt;servlet-<span class="class"><span class="keyword">class</span>&gt;<span class="title">Servlet</span>.<span class="title">ServletDemo1</span>&lt;/<span class="title">servlet</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class"> &lt;/<span class="title">servlet</span>&gt;</span></span><br><span class="line"><span class="class"> &lt;!--对起的这个名字进行虚拟地址映射--&gt;</span></span><br><span class="line"><span class="class"> &lt;<span class="title">servlet</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">     &lt;<span class="title">servlet</span>-<span class="title">name</span>&gt;<span class="title">demo1</span>&lt;/<span class="title">servlet</span>-<span class="title">name</span>&gt;</span></span><br><span class="line"><span class="class">     &lt;<span class="title">url</span>-<span class="title">pattern</span>&gt;/<span class="title">demo1</span>&lt;/<span class="title">url</span>-<span class="title">pattern</span>&gt;</span></span><br><span class="line"><span class="class"> &lt;/<span class="title">servlet</span>-<span class="title">mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="执行原理："><a href="#执行原理：" class="headerlink" title="执行原理："></a><strong>执行原理：</strong></h2><ol>
+<li>当服务器接收到客户端的请求后，会解析请求的URL路径，获取访问的Servlet的资源路径</li>
+<li>查找web.xml文件，是否对应有的&lt; url-pattern &gt;标签体内容。</li>
+<li>如果有，则找到对应的&lt; servlet-class &gt;全类名</li>
+<li>tomcat会将字节码文件加载进内存，并创建其对象</li>
+<li>调用其方法。<br><img src="/images/9.png" alt="Servlet"></li>
+</ol>
+<h2 id="Servle中的生命周期："><a href="#Servle中的生命周期：" class="headerlink" title="Servle中的生命周期："></a><strong>Servle中的生命周期：</strong></h2><ol>
+<li><p><strong>被创建：执行init方法，只执行一次</strong></p>
+<ul>
+<li>默认情况下，第一次被访问时，Servlet被创建</li>
+<li>可以配置执行Servlet的创建时机。在&lt; servlet&gt;标签下配置<ol>
+<li>第一次被访问时，创建<ul>
+<li>&lt; load-on-startup&gt;的值为负数，默认值就是-1.</li>
+</ul>
+</li>
+<li>在服务器启动时，创建<ul>
+<li>&lt; load-on-startup&gt;的值为0或正整数</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+<li>解决：尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要对修改值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>提供服务：执行service方法，执行多次</strong><br>每次访问Servlet时，Service方法都会执行。</p>
+</li>
+<li><p><strong>被销毁：执行destroy方法，执行一次。</strong><br>Servlet被销毁时执行。服务器关闭时，Servlet被销毁。<br>只有服务器正常关闭时，才会执行destroy方法<br>destroy方法在Servlet被销毁之前执行，一般用于释放资源。</p>
+</li>
+</ol>
+<hr>
+<h2 id="Servlet3-0"><a href="#Servlet3-0" class="headerlink" title="Servlet3.0"></a><strong>Servlet3.0</strong></h2><p><strong>好处</strong><br>    支持注解配置。可以不用web.xml了。<br><strong>步骤：</strong></p>
+<ol>
+<li>创建JavaEE项目，选择Servlet3.0以上版本，可以不创建web.xml</li>
+<li>定义一个类，实现Servlet接口</li>
+<li>复写方法</li>
+<li>在类上使用@WebServlet注解，进行配置。<strong>@WebServlet(“虚拟路径”)</strong></li>
+</ol>
+<hr>
+<h2 id="IEDA与tomcat的相关配置"><a href="#IEDA与tomcat的相关配置" class="headerlink" title="IEDA与tomcat的相关配置"></a><strong>IEDA与tomcat的相关配置</strong></h2><ol>
+<li>IDEA会为每一个tomcat部署的项目单独建立一份配置文件</li>
+<li>工作空间项目和tomcat部署的web</li>
+</ol>
+<ul>
+<li>tomcat真正访问的是”tomcat部署的web项目”，”tomcat部署的web项目”对应着”工作空间项目”的web目录下的所有资源</li>
+<li>WEB-INF下的资源不能直接被浏览器直接访问到。</li>
+</ul>
+<ol start="3">
+<li>断点调试：使用小虫子debug启动。</li>
+</ol>
+<h2 id="Servlet的体系结构"><a href="#Servlet的体系结构" class="headerlink" title="Servlet的体系结构"></a><strong>Servlet的体系结构</strong></h2><ul>
+<li>Servlet–接口</li>
+<li>GenericServlet–抽象类（实现Servlet），若继承他则只需要复写service方法，将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象方法。</li>
+<li>HttpServlet–抽象类（GenericServlet的子类），对HTTP协议的一种封装，可以简化造作<ol>
+<li>定义类继承HttpServlet</li>
+<li>复写doGet/doPost方法</li>
+</ol>
+</li>
+</ul>
+<p><strong>推荐使用HttpServlet</strong></p>
+<h2 id="Servlet相关配置"><a href="#Servlet相关配置" class="headerlink" title="Servlet相关配置"></a><strong>Servlet相关配置</strong></h2><p><strong>urlpattern：Servlet访问路径</strong></p>
+<ol>
+<li>一个Servlet可以定义多个访问路径 ： @WebServlet({“/d4”,”/dd4”,”/ddd4”})</li>
+<li>路径定义规则：<ul>
+<li>/xxx：路径匹配</li>
+<li>/xxx/xxx:多层路径，目录结构。/* 表示所有的都可以。</li>
+<li><ul>
+<li>.do：扩展名匹配，.之后加什么都可以，不一定是.do</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="路径写法："><a href="#路径写法：" class="headerlink" title="路径写法："></a><strong>路径写法：</strong></h2><h3 id="1-相对路径："><a href="#1-相对路径：" class="headerlink" title="1.相对路径："></a><strong>1.相对路径：</strong></h3><p>通过相对路径不可以确定唯一资源 <strong>不以/开头，以.开头路径</strong></p>
+<ul>
+<li>如：./index.html</li>
+<li>规则：找到当前资源和目标资源之间的相对位置关系<ul>
+<li>./：当前目录，./是可以省略的</li>
+<li>../:后退一级目录</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-绝对路径："><a href="#2-绝对路径：" class="headerlink" title="2.绝对路径："></a><strong>2.绝对路径：</strong></h3><p>通过绝对路径可以确定唯一资源，<strong>以/开头的路径。</strong><br><strong>如：</strong><br>完整绝对路径：<a href="http://localhost/day15/responseDemo2" target="_blank" rel="noopener">http://localhost/day15/responseDemo2</a><br>简化绝对路径：/day15/responseDemo2<br><strong>规则：</strong><br>判断定义的路径是给谁用的？判断请求将来从哪儿发出</p>
+<ul>
+<li>给客户端浏览器使用：需要加虚拟目录(项目的访问路径),(重定向redirect)<ul>
+<li>建议虚拟目录动态获取：request.getContextPath()</li>
+<li>&lt; a&gt; , &lt; form&gt; 重定向…</li>
+</ul>
+</li>
+<li>给服务器使用：不需要加虚拟目录,(转发forword)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/03/Web/Servlet/" data-id="ckb22iuf5006izwu89tmf7lb6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/Tomcat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/02/Web/Tomcat/" class="article-date">
+  <time datetime="2019-11-02T06:21:41.000Z" itemprop="datePublished">2019-11-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/02/Web/Tomcat/">Tomcat(服务器软件)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Web服务器软件"><a href="#Web服务器软件" class="headerlink" title="Web服务器软件"></a><strong>Web服务器软件</strong></h2><ul>
+<li><strong>服务器：</strong>安装了服务器软件的计算机</li>
+<li><strong>服务器软件：</strong>接收用户的请求，处理请求，做出响应</li>
+<li><strong>Web服务器软件：</strong>接收用户的请求，处理请求，作出响应。<ul>
+<li>在Web服务器软件中，可以部署Web项目，让用户通过浏览器来访问这些项目。</li>
+</ul>
+</li>
+</ul>
+<p><strong>常见的java相关的Web服务器软件</strong></p>
+<ul>
+<li>webLogic：Oracle公司，大型的JavaEE服务器，收费的，支持所有的JavaEE规范。<ul>
+<li>JavaEE:Java语言在企业级开发中使用的技术规范的综合，一共规定了13项大的规范</li>
+</ul>
+</li>
+<li>webSphere：IBM公司的，大型的JavaEE服务器，收费的，支持所有的JavaEE规范。</li>
+<li>JBOSS：JBOSS公司的，大型的JavaEE服务器，收费的，支持所有的JavaEE规范。</li>
+<li>Tomcat：Apache基金组织，中小型JavaEE服务器，仅仅支持少量的JavaEE规范servlet/jsp。开源的免费的。</li>
+</ul>
+<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a><strong>Tomcat</strong></h2><p><strong>安装</strong><br><strong>目录结构</strong><br>    <img src="/images/5.png" alt=""><br><strong>启动</strong></p>
+<ul>
+<li>bin/startup.bat,双击运行文件即可</li>
+<li>访问：浏览器输入：<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a>  http:// 别人的ip:8080，ip地址查询：CMD–&gt;ipconfig–&gt;回车</li>
+<li>启动过程中的问题<ul>
+<li>黑窗口一闪而过<ul>
+<li>没有正确配置java的环境变量 </li>
+</ul>
+</li>
+<li>启动报错:端口号被占用<ol>
+<li>暴力：找到占用的端口号，并且找到对应的进程，杀死该进程<ul>
+<li>netstat -ano</li>
+</ul>
+</li>
+<li>温柔：修改自身的端口号<ul>
+<li>conf/server.xml</li>
+<li>&lt;Connector port=”8888” </li>
+<li>http默认端口号80</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>关闭</strong></p>
+<ul>
+<li>1.正常关闭；<ul>
+<li>shutdown.bat</li>
+<li>在黑窗口Ctrl+C</li>
+</ul>
+</li>
+<li>2.强制关闭：点击启动窗口的关闭</li>
+</ul>
+<p><strong>配置</strong></p>
+<ul>
+<li>部署项目的方式：<ul>
+<li>1.直接将项目放到webapps目录下即可。（不方便）<ul>
+<li>/Hello：项目的访问路径-&gt;虚拟目录</li>
+<li>简化部署：将项目打包成war包，再将war包放置在webapps目录下war包自动回解压缩</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>配置conf/server.xml文件，必须重启服务器（不安全）<br>在<Host>标签体中配置<Context docBase="D:\hello" path="/hehe" />
+* docBase:项目存放的路径
+* path：虚拟目录</li>
+</ol>
+</li>
+<li>3.在conf/Catalina/localhost创建任意名称的xml文件。在文件中编写（热部署）  <Context docBase="项目存放的路径"/>
+  虚拟目录就是xml文件的名称</li>
+</ul>
+</li>
+<li>静态项目和动态项目<ul>
+<li>目录结构<ul>
+<li>java动态项目目录结构：<br>  项目的根目录<pre><code>WEB-INF目录
+    web.xml：web核心的配置文件
+    classes目录：放置字节码文件的目录
+    lib目录：放置依赖jar包的</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将Tomcat集成到IDEA中<br><img src="/images/6.png" alt="第一步"><br><img src="/images/7.png" alt="第二步"></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/02/Web/Tomcat/" data-id="ckb22iufa0070zwu8cggn64xa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/Jsoup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/" class="article-date">
+  <time datetime="2019-10-27T04:46:32.000Z" itemprop="datePublished">2019-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/">Jsoup(XML解析工具)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="作用：解析HTML，xml。可以做爬虫"><a href="#作用：解析HTML，xml。可以做爬虫" class="headerlink" title="作用：解析HTML，xml。可以做爬虫"></a><strong>作用：解析HTML，xml。可以做爬虫</strong></h2><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a><strong>步骤</strong></h2><ol>
+<li>导入JAR包</li>
+<li>获取Document对象</li>
+<li>获取队形标签Element</li>
+<li>获取数据</li>
+</ol>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  /<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsoupDemo1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//2.获取Document对象，根据xml文档获取</span></span><br><span class="line">        <span class="comment">//2.1获取student.xml的path</span></span><br><span class="line">        String path = JsoupDemo1.class.getClassLoader().getResource("student.xml").getPath();</span><br><span class="line">        <span class="comment">//2.2解析xml文档，加载文档进内存，获取dom树---&gt;Document</span></span><br><span class="line">        Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">//3.获取元素对象 Element</span></span><br><span class="line">        Elements elements = document.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(elements.size());</span><br><span class="line">        <span class="comment">//3.1获取第一个name的Element对象</span></span><br><span class="line">        Element element = elements.get(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//3.2获取数据</span></span><br><span class="line">        String name = element.text();</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象的使用："><a href="#对象的使用：" class="headerlink" title="对象的使用："></a><strong>对象的使用</strong>：</h2><ol>
+<li><p><strong>Jsoup：</strong>工具类，可以解析HTML或者XML文档，返回Document<br>方法：</p>
+<ul>
+<li>parse解析HTML或者XML文档，返回Document</li>
+<li>parse​(File in, String charsetName)：解析XML或者HTML文件，参数1：File文件，参数2：编码方式</li>
+<li>parse​(String HTMl)：解析HTML或者XML字符串</li>
+<li>parse​(URL url, int timeoutMillis)：通过网络路径获取指定的HTML或者XML文档对象,timeoutMillis超时时间毫秒值，可以用来作爬虫。<br>  URL url=newURL(“网址”);Document document = Jsoup.parse​(url,10000);</li>
+</ul>
+</li>
+<li><p><strong>Document：</strong>文档对象。代表内存的dom树<br> 获取Element对象，可以获取任意的Element对象</p>
+<pre><code>getElementsByTag​(String tagName)：根据标签名称获取元素对象集合。
+getElementsByAttribute​(String key)：根据属性名称
+getElementsByAttributeValue​(String key, String value)：根据属性名称和对性的值来获取元素对象集合Elements。
+getElementsById(String id);根据id属性值获取**唯一的**element对象</code></pre></li>
+<li><p><strong>Elements：</strong>元素Element对象的集合。可以当做ArrayList<Element>使用</p>
+</li>
+<li><p><strong>Element：</strong>元素对象</p>
+<ul>
+<li>获取自元素对象，只能获取该对象的子对象<br>  getElementsByTag​(String tagName)：根据标签名称获取元素对象集合。<br>  getElementsByAttribute​(String key)：根据属性名称<br>  getElementsByAttributeValue​(String key, String value)：根据属性名称和对性的值来获取元素对象集合Elements。<br>  getElementsById(String id);根据id属性值获取<strong>唯一的</strong>element对象</li>
+<li>获取属性值<br>  public String attr​(String attributeKey)；根据属性名称来获取属性值</li>
+<li>获取文本内容<br>  String text():获取文本内容<br>  String html():获取标签体所有内容（包括子标签的字符串内容）</li>
+</ul>
+</li>
+<li><p><strong>Node：</strong>节点对象<br> 是Document和Element的父类</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过Document对象获取name标签，获取所有的name标签，可以获取到两个</span></span><br><span class="line">       Elements elements = document.getElementsByTag(<span class="string">"name"</span>);                              </span><br><span class="line">       System.out.println(elements.size());</span><br><span class="line">       System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line">       <span class="comment">//通过Element对象获取子标签对象</span></span><br><span class="line">       Element element_student = document.getElementsByTag(<span class="string">"student"</span>).get(<span class="number">0</span>);</span><br><span class="line">       Elements ele_name = element_student.getElementsByTag(<span class="string">"name"</span>);</span><br><span class="line">       System.out.println(ele_name.size());</span><br><span class="line"></span><br><span class="line">       <span class="comment">//获取student对象的属性值</span></span><br><span class="line">       String number = element_student.attr(<span class="string">"NUMBER"</span>);</span><br><span class="line">       System.out.println(number);</span><br><span class="line">       System.out.println(<span class="string">"------------"</span>);</span><br><span class="line">       <span class="comment">//获取文本内容</span></span><br><span class="line">       String text = ele_name.text();</span><br><span class="line">       String html = ele_name.html();</span><br><span class="line">       System.out.println(text);</span><br><span class="line">       System.out.println(html);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="快捷的查询方式："><a href="#快捷的查询方式：" class="headerlink" title="快捷的查询方式："></a><strong>快捷的查询方式：</strong></h2><ol>
+<li>selector：选择器<br>使用的方法：Elements select​(String cssQuery)<br>语法：参考selector类中的语法</li>
+</ol>
+<ul>
+<li>普通选择器：ID选择器    #id，class选择器    .class</li>
+<li>标签选择器：div</li>
+<li>属性选择器：[attr]</li>
+<li>属性值选择器：[attr=xx]</li>
+<li>组合选择器：<br>  标签名.类名：div.one    class属性为one的div标签，<br>  标签名[属性名]：a[href]    有href属性的a标签<br>  父元素 子元素    ：div  a，div内的a标签，<br>  兄弟标签A+兄弟标签B：div+span，取到与div标签同级的span标签<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Elements elements = document.select(<span class="string">"name"</span>);</span><br><span class="line">System.out.println(elements);</span><br><span class="line">System.out.println(<span class="string">"=----------------"</span>);</span><br><span class="line"><span class="comment">//4.查询id值为itcast的元素</span></span><br><span class="line">Elements elements1 = document.select(<span class="string">"#itcast"</span>);</span><br><span class="line">System.out.println(elements1);</span><br><span class="line">System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"><span class="comment">//5.获取student标签并且number属性值为heima_0001的age子标签</span></span><br><span class="line"><span class="comment">//5.1.获取student标签并且number属性值为heima_0001</span></span><br><span class="line">Elements elements2 = document.select(<span class="string">"student[number=\"heima_0001\"]"</span>);                 </span><br><span class="line">System.out.println(elements2);</span><br><span class="line">System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//5.2获取student标签并且number属性值为heima_0001的age子标签</span></span><br><span class="line">Elements elements3 = document.select(<span class="string">"student[number=\"heima_0001\"] &gt; age"</span>);</span><br><span class="line">System.out.println(elements3);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>XPath： XPath 是一门在 XML 文档中查找信息的语言。XPath 用于在 XML 文档中通过元素和属性进行导航。<br> 使用Jsoup的Xpath需要额外导入Jar包<br> 查看W3cschool的参考手册,完成XPath的查询。</li>
+</ol>
+<p>例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, XpathSyntaxErrorException </span>&#123;</span><br><span class="line">       <span class="comment">//1.获取student.xml的path</span></span><br><span class="line">       String path = JsoupDemo6.class.getClassLoader().getResource("student.xml").getPath();</span><br><span class="line">       <span class="comment">//2.获取Document对象</span></span><br><span class="line">       Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//3.根据document对象，创建JXDocument对象</span></span><br><span class="line">       JXDocument jxDocument = <span class="keyword">new</span> JXDocument(document);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.结合xpath语法查询</span></span><br><span class="line">       <span class="comment">//4.1查询所有student标签</span></span><br><span class="line">       List&lt;JXNode&gt; jxNodes = jxDocument.selN(<span class="string">"//student"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.2查询所有student标签下的name标签</span></span><br><span class="line">       List&lt;JXNode&gt; jxNodes2 = jxDocument.selN(<span class="string">"//student/name"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes2) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.3查询student标签下带有id属性的name标签</span></span><br><span class="line">       List&lt;JXNode&gt; jxNodes3 = jxDocument.selN(<span class="string">"//student/name[@id]"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes3) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line">       System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line">       <span class="comment">//4.4查询student标签下带有id属性的name标签 并且id属性值为itcast</span></span><br><span class="line"></span><br><span class="line">       List&lt;JXNode&gt; jxNodes4 = jxDocument.selN(<span class="string">"//student/name[@id='itcast']"</span>);</span><br><span class="line">       <span class="keyword">for</span> (JXNode jxNode : jxNodes4) &#123;</span><br><span class="line">           System.out.println(jxNode);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/" data-id="ckb22iuff007ozwu8hkqg73db" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/XML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/22/%E5%89%8D%E7%AB%AF/XML/" class="article-date">
+  <time datetime="2019-10-22T12:51:45.000Z" itemprop="datePublished">2019-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/%E5%89%8D%E7%AB%AF/XML/">XML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a><strong>概念：</strong></h2><p>Extensible Markup Language 可扩展标记语言<br><strong>可扩展：</strong>标签都是自定义的<br><strong>功能</strong>：存储数据</p>
+<ol>
+<li>配置文件</li>
+<li>在网络中传输</li>
+</ol>
+<p><strong>XML发展史：</strong>XML和HTML的爹都是W3C（万维网联盟World Wide Wed Consortium)从和HTML竞争展示数据竞争失败后，转头和properties竞争存储文件并取得成功。</p>
+<h2 id="XML与HTML的区别"><a href="#XML与HTML的区别" class="headerlink" title="XML与HTML的区别"></a><strong>XML与HTML的区别</strong></h2><ol>
+<li>XML标签都是自定义的，HTML标签是预定义。</li>
+<li>XML语法严格，HTML语法松散</li>
+<li>XML存储数据，HTML展示数据</li>
+</ol>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a><strong>语法</strong></h2><h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a><strong>基本语法：</strong></h3><ol>
+<li>xml文档的后缀名为XML</li>
+<li>xml第一行必须定义为文档声明</li>
+<li>xml文档中有且仅有一个根标签</li>
+<li>属性值必须使用引号引起来</li>
+<li>标签必须正确关闭</li>
+<li>标签名称区分大小写</li>
+</ol>
+<h3 id="组成部分"><a href="#组成部分" class="headerlink" title="组成部分"></a><strong>组成部分</strong></h3><ol>
+<li><strong>文档声明</strong><br> 1.格式：&lt; ?xml 属性列表 ?&gt;<br> 2.属性列表：<br> version:版本号，必须的属性<br> encoding：编码当时，默认值ISO-8859-1<br> standalone：是否独立<br> 取值：yes和no</li>
+<li><strong>指令：</strong>（了解）结合CSS的：&lt; ?xml-stylesheet type=”text/css” href=”a.css” ?&gt;</li>
+<li><strong>标签：</strong>标签名称自定义的<ul>
+<li>名称可以含字母、数字以及其他的字符</li>
+<li>名称不能以数字或者标点符号开始</li>
+<li>名称不能以字符 “xml”（或者 XML、Xml）开始</li>
+<li>名称不能包含空格</li>
+</ul>
+</li>
+<li><strong>属性：</strong>id属性值唯一</li>
+<li><strong>文本内容</strong><ul>
+<li>CDATA区：在该区域的数据会被原样展示</li>
+<li>格式&lt; ![CDATA[要展示的数据]]&gt;</li>
+</ul>
+</li>
+</ol>
+<h3 id="约束："><a href="#约束：" class="headerlink" title="约束："></a><strong>约束：</strong></h3><p>规定XML文档的书写规则<br><img src="/images/147.png" alt=""><br>作为框架使用者，，能在XML中引入约束文档，能简单的读懂约束文档<br><strong>分类：</strong></p>
+<ul>
+<li><p><strong>DTD：</strong>一种简单的约束技术,不能规定标签体的内容范围。<br>  引入dtd文档到xml文档中</p>
+<pre><code>1.内部dtd：将约束规则定义在xml文档中
+2.外部dtd：定义在文档中
+本地：&lt; !DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;
+网络：&lt; !DOCTYPE 根标签名 PUBLIC &quot;dtd文件名字&quot; &quot;dtd文件的URL&quot;&gt; </code></pre></li>
+<li><p><em>DTD文件*</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="function">ELEMENT <span class="title">students</span> <span class="params">(student+)</span> &gt;</span></span><br><span class="line"><span class="function">&lt;!ELEMENT <span class="title">student</span> <span class="params">(name,age,sex)</span>&gt;</span></span><br><span class="line"><span class="function">&lt;!ELEMENT <span class="title">name</span> <span class="params">(#PCDATA)</span>&gt;</span></span><br><span class="line"><span class="function">&lt;!ELEMENT <span class="title">age</span> <span class="params">(#PCDATA)</span>&gt;</span></span><br><span class="line"><span class="function">&lt;!ELEMENT <span class="title">sex</span> <span class="params">(#PCDATA)</span>&gt;</span></span><br><span class="line"><span class="function">&lt;!ATTLIST student number ID #REQUIRED&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p><em>xml文件*</em></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE students SYSTEM <span class="string">"student.dtd"</span>&gt;</span><br><span class="line">&lt;students&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;student number=<span class="string">"s001"</span>&gt;</span><br><span class="line">		&lt;name&gt;zhangsan&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;abc&lt;/age&gt;</span><br><span class="line">		&lt;sex&gt;hehe&lt;/sex&gt;</span><br><span class="line">	&lt;/student&gt;</span><br><span class="line"></span><br><span class="line">	&lt;student number=<span class="string">"s002"</span>&gt;</span><br><span class="line">		&lt;name&gt;lisi&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;24&lt;/age&gt;</span><br><span class="line">		&lt;sex&gt;female&lt;/sex&gt;</span><br><span class="line">	&lt;/student&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/students&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Schema：</strong>一种复杂的约束技术，可以规定标签体的内容。</p>
+</li>
+<li><p><em>引入：*</em>在新建的xml文档中加入声明后, 引入schema的约束文档。<br>   首先声明约束来自哪个名称空间, 使用xmlns=”” 来指定,<br>   引入的名称空间和哪个xsd文件对应, 使用schemaLocation=”” 来指定, 第一个为名称空间, 第二个为xsd文件路径.<br>   &lt; beans xmlns=”<a href="http://www.springframework.org/schema/beans&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/beans&quot;</a><br>   xmlns:xsi=”<a href="http://www.w3.org/2001/XMLSchema-instance&quot;" target="_blank" rel="noopener">http://www.w3.org/2001/XMLSchema-instance&quot;</a><br>   xsi:schemaLocation=”<a href="http://www.springframework.org/schema/beans" target="_blank" rel="noopener">http://www.springframework.org/schema/beans</a><br>   <a href="http://www.springframework.org/schema/beans/spring-beans.xsd&quot;" target="_blank" rel="noopener">http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</a> &gt;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!-- </span><br><span class="line">	<span class="number">1</span>.填写xml文档的根元素</span><br><span class="line">	<span class="number">2</span>.引入xsi前缀.  xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	<span class="number">3</span>.引入xsd文件命名空间.  xsi:schemaLocation=<span class="string">"http://www.itcast.cn/xml  student.xsd"</span></span><br><span class="line">	<span class="number">4</span>.为每一个xsd约束声明一个前缀,作为标识  xmlns=<span class="string">"http://www.itcast.cn/xml"</span> </span><br><span class="line"> --&gt;</span><br><span class="line">&lt;students   xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">			xmlns=<span class="string">"http://www.itcast.cn/xml"</span></span><br><span class="line">			xsi:schemaLocation=<span class="string">"http://www.itcast.cn/xml  student.xsd"</span></span><br><span class="line">&gt;</span><br><span class="line">	&lt;student number=<span class="string">"heima_0001"</span>&gt;</span><br><span class="line">		&lt;name&gt;tom&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">		&lt;sex&gt;male&lt;/sex&gt;</span><br><span class="line">	&lt;/student&gt;</span><br><span class="line"></span><br><span class="line">&lt;/students&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a><strong>解析：</strong></h2><p>操作XML文档，将文档中的数据读取到内存中<br><strong>操作XML文档</strong></p>
+<ul>
+<li><strong>解析（读取）：</strong>将文档的数据读取到内存中</li>
+<li><strong>写入：</strong>将内存中的数据保存到XML文档中。持久化的存储<br><strong>解析XML的方式</strong></li>
+<li><strong>DOM思想：(服务器端)</strong>将标记语言文档一次性加载进内存，在内存中会形成一颗DOM树<pre><code>优点：操作方便，可以对文档进行CRUD的所有操作
+缺点：占内存，不适用于内存较小的设备</code></pre></li>
+<li><strong>SAX思想：(移动端)</strong>逐行读取，基于事件驱动的<pre><code>优点：不占内存
+缺点：只能读取</code></pre></li>
+</ul>
+<p><strong>XML常见的解析器：</strong></p>
+<ul>
+<li><strong>JAXP：</strong>SUN公司提供的个解析器，支持DOM和SAX两种思想，没人用</li>
+<li><strong>DOM4J：</strong>一款非常优秀的解析器</li>
+<li><strong>Jsoup：</strong>本事解析HTML的，但也可以解析XML</li>
+<li><strong>PULL：</strong>安卓操作系统内置的解析器，sax方式的        </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/22/%E5%89%8D%E7%AB%AF/XML/" data-id="ckb22iufe007izwu86quabn8x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/BootStrap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/21/Web/BootStrap/" class="article-date">
+  <time datetime="2019-10-21T11:52:32.000Z" itemprop="datePublished">2019-10-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/21/Web/BootStrap/">BootStrap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="BootStrap"><a href="#BootStrap" class="headerlink" title="BootStrap:"></a><strong>BootStrap:</strong></h2><ul>
+<li><strong>概念：</strong>一个前端开发的框架<br>  框架：一个半成品软件</li>
+<li><strong>好处：</strong><br>  1.定义了很多的css样式和js插件。直接可以使用<br>  2.响应式布局<pre><code>同一套页面可以兼容不同分辨率的设备。</code></pre></li>
+<li><strong>快速入门</strong><br>  1.下载BootStrap<br>  2.在项目中将这三个文件复制<br>  3.创建HTML页面，引入必要的资源文件</li>
+</ul>
+<h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a><strong>响应式布局</strong></h2><p>同一套页面可以兼容不同分辨率的设备。<br><strong>实现：</strong>依赖于栅格系统：将一行平均分为12个格子，可以指定元素占几个格子<br><strong>步骤：</strong></p>
+<ol>
+<li>定义容器。相当于table<br> 分类：<pre><code>* .container ：两边有留白的
+* .container-fluid 每一种设备都是百分百宽度</code></pre></li>
+<li>定义行。相当于tr    样式：row</li>
+<li>定义元素。指定该元素在不同设备上，所占的格子数目。<br> 样式：col-设备代号-格子数目<pre><code>设备代号：.col-xs-超小屏幕 手机
+        .col-sm-小屏幕 平板
+        .col-md-中等屏幕
+        .col-lg-大型屏幕</code></pre></li>
+<li>注意：<ul>
+<li>如果一行中格子超过十二，则会自动换行</li>
+<li>栅格类属性可以向上兼容。向下不兼容。</li>
+<li>如果设备的宽度小于了设置的栅格类属性的设备代码的最小值，默认会一个元素占满一整行。</li>
+</ul>
+</li>
+</ol>
+<h2 id="CSS样式和JS插件"><a href="#CSS样式和JS插件" class="headerlink" title="CSS样式和JS插件"></a><strong>CSS样式和JS插件</strong></h2><ol>
+<li>全局CSS样式：</li>
+</ol>
+<ul>
+<li>按钮：class=”btn btn-default”</li>
+<li>图片：<ul>
+<li>class=”img-responsive”：图片在任意尺寸都占100%</li>
+<li>图片形状<ul>
+<li>&lt; img src=”…” alt=”…” class=”img-rounded”&gt;：方形</li>
+<li>&lt; img src=”…” alt=”…” class=”img-circle”&gt; ： 圆形</li>
+<li>&lt; img src=”…” alt=”…” class=”img-thumbnail”&gt; ：相框</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>表格<ul>
+<li>table</li>
+<li>table-bordered</li>
+<li>table-hover</li>
+</ul>
+</li>
+<li>表单<ul>
+<li>给表单项添加：class=”form-control” </li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>组件：</li>
+</ol>
+<ul>
+<li>导航条</li>
+<li>分页条</li>
+</ul>
+<ol start="3">
+<li>插件：</li>
+</ol>
+<ul>
+<li>轮播图 Carousel</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/21/Web/BootStrap/" data-id="ckb22iuer0056zwu85ff15v8q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/BootStrap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/21/%E5%89%8D%E7%AB%AF/BootStrap/" class="article-date">
+  <time datetime="2019-10-21T11:52:32.000Z" itemprop="datePublished">2019-10-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/21/%E5%89%8D%E7%AB%AF/BootStrap/">BootStrap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="BootStrap"><a href="#BootStrap" class="headerlink" title="BootStrap:"></a><strong>BootStrap:</strong></h2><ul>
+<li><strong>概念：</strong>一个前端开发的框架<br>  框架：一个半成品软件</li>
+<li><strong>好处：</strong><br>  1.定义了很多的css样式和js插件。直接可以使用<br>  2.响应式布局<pre><code>同一套页面可以兼容不同分辨率的设备。</code></pre></li>
+<li><strong>快速入门</strong><br>  1.下载BootStrap<br>  2.在项目中将这三个文件复制<br>  3.创建HTML页面，引入必要的资源文件</li>
+</ul>
+<h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a><strong>响应式布局</strong></h2><p>同一套页面可以兼容不同分辨率的设备。<br><strong>实现：</strong>依赖于栅格系统：将一行平均分为12个格子，可以指定元素占几个格子<br><strong>步骤：</strong></p>
+<ol>
+<li>定义容器。相当于table<br> 分类：<pre><code>* .container ：两边有留白的
+* .container-fluid 每一种设备都是百分百宽度</code></pre></li>
+<li>定义行。相当于tr    样式：row</li>
+<li>定义元素。指定该元素在不同设备上，所占的格子数目。<br> 样式：col-设备代号-格子数目<pre><code>设备代号：.col-xs-超小屏幕 手机
+        .col-sm-小屏幕 平板
+        .col-md-中等屏幕
+        .col-lg-大型屏幕</code></pre></li>
+<li>注意：<ul>
+<li>如果一行中格子超过十二，则会自动换行</li>
+<li>栅格类属性可以向上兼容。向下不兼容。</li>
+<li>如果设备的宽度小于了设置的栅格类属性的设备代码的最小值，默认会一个元素占满一整行。</li>
+</ul>
+</li>
+</ol>
+<h2 id="CSS样式和JS插件"><a href="#CSS样式和JS插件" class="headerlink" title="CSS样式和JS插件"></a><strong>CSS样式和JS插件</strong></h2><ol>
+<li>全局CSS样式：</li>
+</ol>
+<ul>
+<li>按钮：class=”btn btn-default”</li>
+<li>图片：<ul>
+<li>class=”img-responsive”：图片在任意尺寸都占100%</li>
+<li>图片形状<ul>
+<li>&lt; img src=”…” alt=”…” class=”img-rounded”&gt;：方形</li>
+<li>&lt; img src=”…” alt=”…” class=”img-circle”&gt; ： 圆形</li>
+<li>&lt; img src=”…” alt=”…” class=”img-thumbnail”&gt; ：相框</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>表格<ul>
+<li>table</li>
+<li>table-bordered</li>
+<li>table-hover</li>
+</ul>
+</li>
+<li>表单<ul>
+<li>给表单项添加：class=”form-control” </li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>组件：</li>
+</ol>
+<ul>
+<li>导航条</li>
+<li>分页条</li>
+</ul>
+<ol start="3">
+<li>插件：</li>
+</ol>
+<ul>
+<li>轮播图 Carousel</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/21/%E5%89%8D%E7%AB%AF/BootStrap/" data-id="ckb22iuf9006wzwu8as5a06sj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/JS-事件监听机制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/12/%E5%89%8D%E7%AB%AF/JS-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E6%9C%BA%E5%88%B6/" class="article-date">
+  <time datetime="2019-10-12T15:50:11.000Z" itemprop="datePublished">2019-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/12/%E5%89%8D%E7%AB%AF/JS-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E6%9C%BA%E5%88%B6/">JS-事件监听机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念：-Event"><a href="#概念：-Event" class="headerlink" title="概念：(Event)"></a><strong>概念：(Event)</strong></h2><p>某组件被执行了某些操作后，触发某些代码的执行<br><strong>事件：</strong>某些操作，如：单机，双击，按键按下，鼠标移动<br><strong>事件源：</strong>组件。如：按钮，文本输入框…<br><strong>监听器：</strong>代码。<br><strong>注册监听：</strong>将事件事件源，监听器结合在一起。当事件源上发生了某个事件，则触发执行某个监听器代码。</p>
+<h2 id="常见的事件"><a href="#常见的事件" class="headerlink" title="常见的事件"></a><strong>常见的事件</strong></h2><ol>
+<li><strong>点击事件</strong><ul>
+<li>onclick：当用户点击某个对象时调用的事件句柄。</li>
+<li>ondblclick：当用户双击某个对象时调用的事件句柄。</li>
+</ul>
+</li>
+<li><strong>焦点事件</strong><ul>
+<li>onblur：元素失去焦点。一般用于表单验证</li>
+<li>onfocus：元素获得焦点。</li>
+</ul>
+</li>
+<li><strong>加载事件</strong><ul>
+<li>onload：一张页面或一副图像完成加载。</li>
+</ul>
+</li>
+<li><strong>鼠标事件：</strong><ul>
+<li>onmousedown    鼠标按钮被按下。在定义方法时定义一个形参接收event属性,event属性0，1,2分别代表鼠标的三个按钮</li>
+<li>onmousemove    鼠标被移动。</li>
+<li>onmouseout    鼠标从某元素移开。</li>
+<li>onmouseover    鼠标移到某元素之上。</li>
+<li>onmouseup    鼠标按键被松开。</li>
+</ul>
+</li>
+<li><strong>键盘事件：</strong><ul>
+<li>onkeydown    某个键盘按键被按下。</li>
+<li>onkeypress    某个键盘按键被按下并松开。</li>
+<li>onkeyup    某个键盘按键被松开。</li>
+</ul>
+</li>
+<li><strong>选中和改变</strong><ul>
+<li>onchange    域的内容被改变。</li>
+<li>onselect    文本被选中</li>
+</ul>
+</li>
+<li><strong>表单事件</strong><ul>
+<li>onsubmit    确认按钮被点击。可以阻止表单提交,方法返回false则表单被阻止提交.</li>
+<li>onreset    重置按钮被点击。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/12/%E5%89%8D%E7%AB%AF/JS-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E6%9C%BA%E5%88%B6/" data-id="ckb22iufd007czwu840tg0les" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/JS-DOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-DOM/" class="article-date">
+  <time datetime="2019-10-09T13:12:31.000Z" itemprop="datePublished">2019-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-DOM/">JS-DOM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a><strong>概念：</strong></h2><p>Document Object Model 文档对象模型<br>将标记语言的各个组成部分，封装成对象。可以使用这些对象，对标记语言文档进行CRUD的动态操作。<br><strong>当HTML文档进内存，就会被转成树形结构，称为DOM树</strong><br><img src="/images/145.png" alt=""><br><strong>W3C DOM 标准被分为 3 个不同的部分：</strong></p>
+<ul>
+<li>核心 DOM - 针对任何结构化文档的标准模型<br>  Document：文档对象<br>  Element：元素对象<br>  Attribute：属性对象<br>  Text：文本对象<br>  Comment：注释对象。<br>  Node：节点对象，其他5个的父对象。</li>
+<li>XML DOM - 针对 XML 文档的标准模型</li>
+<li>HTML DOM - 针对 HTML 文档的标准模型</li>
+</ul>
+<hr>
+<h2 id="核心DOM模型"><a href="#核心DOM模型" class="headerlink" title="核心DOM模型"></a><strong>核心DOM模型</strong></h2><h3 id="Document：文本对象"><a href="#Document：文本对象" class="headerlink" title="Document：文本对象"></a><strong>Document：文本对象</strong></h3><ol>
+<li>创建（获取）:在Html dom模型中可以使用window对象来获取<ul>
+<li>window.document</li>
+<li>document</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>获取Element对象：<br>  getElementById():根据id属性值获取元素对象。id属性一般唯一<br>  getElementsByTagName()：返回所有具有指定名称的元素对象们。返回值是一个数组。<br>  getElementsByClassName()：返回所有具有指定class名称的元素对象们。返回值是一个数组。<br>  getElementsByName()：根据name属性值获取元素对象。们。返回值是一个数组。</li>
+<li>创建DOM方法<br>  createAttribute(name)    创建拥有指定名称的属性节点，并返回新的 Attr 对象。<br>  createComment()<br>  createElement()    创建元素节点。<br>  createTextNode()    创建文本节点。<br>  …</li>
+</ul>
+</li>
+<li>属性</li>
+</ol>
+<h3 id="Element-元素对象"><a href="#Element-元素对象" class="headerlink" title="Element:元素对象"></a><strong>Element:元素对象</strong></h3><p>1.获取/创建：通过document来获取和创建<br>2方法：<br>    removeAttribute()：删除指定的属性。<br>    setAttribute()：添加新属性。</p>
+<p><strong>Node：节点对象，其他5个的父对象</strong>。<br>    &gt; 特点：所有DOM对象都可以被认为是一个结点<br>    &gt; 方法：<br>        &gt; &gt; CRUD（增删改查） DOM树<br>            appendChild()：向节点的子节点列表的结尾添加新的子节点。<br>            removeChild()：删除（并返回）当前节点的指定子节点。<br>            replaceChild()：用新节点替换一个子节点。<br>    &gt; 属性：<br>        parentNode():获取父节点</p>
+<p>案例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;动态表格&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        table&#123;</span><br><span class="line">            border: 1px solid;</span><br><span class="line">            margin: auto;</span><br><span class="line">            width: 500px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        td,th&#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            border: 1px solid;</span><br><span class="line">        &#125;</span><br><span class="line">        div&#123;</span><br><span class="line">            text-align: center;</span><br><span class="line">            margin: 50px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;id&quot; placeholder&#x3D;&quot;请输入编号&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;name&quot;  placeholder&#x3D;&quot;请输入姓名&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;gender&quot;  placeholder&#x3D;&quot;请输入性别&quot;&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;添加&quot; id&#x3D;&quot;btn_add&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;table&gt;</span><br><span class="line">    &lt;caption&gt;学生信息表&lt;&#x2F;caption&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;编号&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;th&gt;姓名&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;th&gt;性别&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;th&gt;操作&lt;&#x2F;th&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line"></span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;令狐冲&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;男&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;&lt;a href&#x3D;&quot;javascript:void(0);&quot; onclick&#x3D;&quot;delTr(this);&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line"></span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;任我行&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;男&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;&lt;a href&#x3D;&quot;javascript:void(0);&quot; onclick&#x3D;&quot;delTr(this);&quot;&gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line"></span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;3&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;岳不群&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;?&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;&lt;a href&#x3D;&quot;javascript:void(0);&quot; onclick&#x3D;&quot;delTr(this);&quot; &gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;&#x2F;table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">&#x2F;&#x2F;使用innerHTML添加</span><br><span class="line">    document.getElementById(&quot;btn_add&quot;).onclick &#x3D; function() &#123;</span><br><span class="line">        &#x2F;&#x2F;2.获取文本框的内容</span><br><span class="line">        var id &#x3D; document.getElementById(&quot;id&quot;).value;</span><br><span class="line">        var name &#x3D; document.getElementById(&quot;name&quot;).value;</span><br><span class="line">        var gender &#x3D; document.getElementById(&quot;gender&quot;).value;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;获取table</span><br><span class="line">        var table &#x3D; document.getElementsByTagName(&quot;table&quot;)[0];</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;追加一行</span><br><span class="line">        table.innerHTML +&#x3D; &quot;&lt;tr&gt;\n&quot; +</span><br><span class="line">            &quot;        &lt;td&gt;&quot;+id+&quot;&lt;&#x2F;td&gt;\n&quot; +</span><br><span class="line">            &quot;        &lt;td&gt;&quot;+name+&quot;&lt;&#x2F;td&gt;\n&quot; +</span><br><span class="line">            &quot;        &lt;td&gt;&quot;+gender+&quot;&lt;&#x2F;td&gt;\n&quot; +</span><br><span class="line">            &quot;        &lt;td&gt;&lt;a href&#x3D;\&quot;javascript:void(0);\&quot; onclick&#x3D;\&quot;delTr(this);\&quot; &gt;删除&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;\n&quot; +</span><br><span class="line">            &quot;    &lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;删除方法</span><br><span class="line">    function delTr(obj)&#123;</span><br><span class="line">        var table &#x3D; obj.parentNode.parentNode.parentNode;</span><br><span class="line">        var tr &#x3D; obj.parentNode.parentNode;</span><br><span class="line"></span><br><span class="line">        table.removeChild(tr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="HTML-DOM"><a href="#HTML-DOM" class="headerlink" title="HTML DOM"></a><strong>HTML DOM</strong></h2><ol>
+<li>标签体内容的设置和获取：innerHTML</li>
+<li>使用HTML元素对象的属性</li>
+<li>控制样式<ul>
+<li>使用元素的style属性来设置,例div1.style.css里的属性;若属性中有-相连则要更改写法,如font-size,div1.style.fontSize;</li>
+<li>提前定义好类选择器的样式，通过元素的className属性来设置class属性值。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/09/%E5%89%8D%E7%AB%AF/JS-DOM/" data-id="ckb22iufc0078zwu8eegub9ib" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/JS-BOM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-BOM/" class="article-date">
+  <time datetime="2019-10-09T11:46:41.000Z" itemprop="datePublished">2019-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-BOM/">JS-BOM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>Browser Object Model 浏览器对象模型<br>将浏览器的各个组件部分封装成对象</p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a><strong>组成</strong></h2><h3 id="Window：窗口对象"><a href="#Window：窗口对象" class="headerlink" title="Window：窗口对象"></a><strong>Window：窗口对象</strong></h3><ol>
+<li>创建<br>Window对象不需要创建，可以直接window.方法名();<br>也可以直接使用方法名；</li>
+<li>方法<ul>
+<li>与弹出框有关的方法<br>alert()：显示带有一段消息和一个确认按钮的警告框。<br>confirm()：显示带有一段消息以及确认按钮和取消按钮的对话框。如果用户点击确定按钮,则方法返回true,取消则返回false；<br>prompt()：显示可提示用户输入的对话框。返回值获取用户输入的值。</li>
+<li>与打开与关闭有关的方法<br>close():关闭当前浏览器窗口,谁调用就关谁<br>open():打开一个新的浏览器窗口或查找一个已命名的窗口。返回新打开的窗口的对象。</li>
+<li>与定时器有关的方法<br>setTimeout()：在指定的毫秒数后调用函数或计算表达式。;<strong>参数</strong>：1.JS的代码片段，或者方法对象2.毫秒值;    <strong>返回值</strong>：返回setTimeout对象的编号。用于取消定时器。<br>clearTimeout()：取消由 setTimeout()方法设置的 timeout。<strong>参数：</strong>参数setTimeout对象的唯一编号。<br>setInterval()：按照指定的周期（以毫秒计）来调用函数或计算表达式。<strong>参数：</strong>1.JS的代码片段，或者方法对象。2.毫秒值<br>clearInterval()    取消由 setInterval() 设置的 timeout。</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>获取其他BOM对象：<br>history<br>location<br>Navigator<br>Screen</li>
+<li>获取DOM对象<br>docunment=window.document</li>
+</ul>
+</li>
+<li>特点<br> Window对象不需要创建，可以直接window.方法名();也可以直接使用方法名；</li>
+</ol>
+<hr>
+<h3 id="History：当前页面历史记录对象"><a href="#History：当前页面历史记录对象" class="headerlink" title="History：当前页面历史记录对象"></a><strong>History：当前页面历史记录对象</strong></h3><p>1.获取<br>    1.window.history<br>    2.history<br>2.方法<br>    back()：加载 history 列表中的前一个 URL。<br>    forward()：加载 history 列表中的下一个 URL。<br>    go()：加载 history 列表中的某个具体页面。<br>3.属性<br>    length:返回当前窗口的历史列表中URL个数</p>
+<hr>
+<h3 id="Location：地址栏对象"><a href="#Location：地址栏对象" class="headerlink" title="Location：地址栏对象"></a><strong>Location：地址栏对象</strong></h3><p>1.创建(获取)<br>window.location或者直接location<br>2.方法<br>reload()：重新加载当前文档。刷新<br>3.属性<br>href：设置或返回完整的 URL。</p>
+<hr>
+<p><strong>Navigator：浏览器对象</strong><br><strong>Screen：显示器屏幕对象</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/09/%E5%89%8D%E7%AB%AF/JS-BOM/" data-id="ckb22iufb0076zwu84b3895td" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/09/%E5%89%8D%E7%AB%AF/JavaScript/" class="article-date">
+  <time datetime="2019-10-09T08:40:51.000Z" itemprop="datePublished">2019-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/%E5%89%8D%E7%AB%AF/JavaScript/">JavaScript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a><strong>JavaScript</strong></h2><p><strong>概念:</strong>一门客户端脚本语言，运行在客户端浏览器中的。每一个浏览器都有JavaScript的解析引擎，脚本语言：不需要编译，直接就可以被浏览器解析执行。<br><strong>功能:</strong>增强用户和HTML的交互过程，可以来控制HTML，让页面有一些动态效果，增强用户的体验。<br><strong>JavaScript发展史：</strong></p>
+<ol>
+<li>1992年，Nombase公司开发出第一门客户端脚本语言，专门用于表单校验，命名为：C–，后来更名为ScriptEase。</li>
+<li>1995年，Netscape（网景）公司，开发了一门客户端脚本语言：LiveScript。并且95年Java1.0面世。后来网景请来Sun公司的专家，修改LiveScript，命名JavaScript，想蹭Java的热度。</li>
+<li>1996，微软推出IE浏览器，抄袭了JavaScript开发出了JScript语言。</li>
+<li>1997，ECMA（欧洲计算机制造协会）统一所有的客户端脚本语言，根据JavaScript制定了ECMAScript。所以JavaScript=ECMAScript+JavaScript自己的（BOM+DOM)</li>
+</ol>
+<hr>
+<h2 id="ECMAScript：客户端脚本语言的标准"><a href="#ECMAScript：客户端脚本语言的标准" class="headerlink" title="ECMAScript：客户端脚本语言的标准"></a><strong>ECMAScript：客户端脚本语言的标准</strong></h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a><strong>基本语法</strong></h3><ol>
+<li><strong>与HTML的结合方式</strong><ul>
+<li>内部JS<br>定义&lt; script&gt;&lt; /script&gt;标签，标签体就是js代码</li>
+<li>外部JS<br>定义&lt; script&gt;标签，通过src属性引入外部的js文件</li>
+</ul>
+</li>
+</ol>
+<p><strong>注意：</strong>可以定义多个，可以定义在任意位置，不过会影响执行顺序。<br>2. <strong>注释</strong><br>    单行注释：//<br>    多行注释/ * * /<br>3. <strong>数据类型</strong><br>    * <strong>原始数据类型：（基本数据类型）</strong><br>         number:数字。  整数，小数，NAN（not a number）<br>         string：字符串’abc’ “abc”<br>         boolean：true或false<br>         null：一个对象为空的占位符<br>         undefinrd：未定义。如果一个变量没有初始化值，则会被默认为undefined。<br>    * <strong>引用数据类型：</strong>对象<br>4. <strong>变量</strong><br>一小块存储数据的内存空间，java语言是强类型的语言，而JavaScript是弱类型的语言<br>强类型：在开辟变量存储空间时，定义了空间将来存储的数据类型。只能存储固定的数据类型<br>弱类型：在开辟空间时，不定义将来的存储类型，可以存放任意类型的数据<br>语法：var 变量名=初始化值；typeof可以查出是哪种数据类型。<br>5. <strong>运算符</strong><br>    * <strong>一元运算符：</strong>只有一个运算数的运算符<br>        ++，–，+（正号）<br>        在JS中，如果运算数不是运算符所要求的类型，那么JS会自动将运算数进行类型转换<br>        其他类型转number<br>        string转number：按照字面值转换。如果字符串字面值不是数字，则转为NaN；<br>        boolean转number：true转为1，false转为0；<br>    * <strong>算术运算符：</strong><br>        +，-，* ， /,/ %…<br>    * <strong>比较运算符：</strong><br>        &lt; &gt; &gt;= &lt;= == ===(全等于)<br>        比较方式：<br>        1. 类型相同：直接比较<br>        字符串：按照字典顺序比较，按位逐一比较，直到得出大小。<br>        2. 类型不同：先进行类型转换再比较<br>            ===：再比较之前，先判断类型，如果类型不一样，则返回false。<br>    * <strong>逻辑运算符</strong><br>    &amp;&amp;：与（短路） ，||：或（短路），！：非<br>     <strong>其他类型转boolean</strong><br>          1.number：0或NaN为假，其他为真<br>        2.string：除了空字符串，其他都是true<br>        3.null&amp;undefined：都是false<br>        4.所有对象都为true<br>    * <strong>三元运算符</strong><br>        ？ ：<br>        例：a&gt;b?1:0<br>6. 流程控制语句<br>    &gt; 1.if else<br>        2.switch，在java中switch可以接受的数据类型：byte short int char 枚举 字符串，在js中，什么类型都可以接收<br>        3.while<br>        4.do while<br>        5.for<br>7. 特殊语法<br>    * 在JS中如果一行只有一条语句，则分号可以省略，不推荐<br>    * 变量的定义可以使用var关键字，也可以不使用，也不推荐；用：定义的变量为局部变量，不用：定义的变量为全局变量</p>
+<h3 id="基本的对象"><a href="#基本的对象" class="headerlink" title="基本的对象"></a><strong>基本的对象</strong></h3><p><strong>Function：函数（方法）对象</strong></p>
+<ol>
+<li>创建<ul>
+<li>var fun=new Function（形式参数列表，方法体）  不建议使用</li>
+<li>function 方法名称（形式参数列表）<br>{<br>方法体<br>}</li>
+<li>var 方法名=function（形式参数列表）<br>{<br>方法体<br>}</li>
+</ul>
+</li>
+<li>方法</li>
+<li>属性<br> length：形式参数的个数</li>
+<li>特点<ul>
+<li>方法定义时形参的类型不用写</li>
+<li>方法是一个对象，如果定义一个名称相同的方法，则会覆盖</li>
+<li>在js中方法的调用只与方法的名称有关，和方法的参数列表无关</li>
+<li>在方法声明中有一个隐藏的对象（数组）arguments，封装所有实际参数</li>
+</ul>
+</li>
+<li>调用</li>
+</ol>
+<p><strong>Array：数组对象</strong></p>
+<ol>
+<li>创建：<ul>
+<li>var arr=new array（元素列表）；</li>
+<li>var arr=new Array（默认长度）</li>
+<li>var arr=[元素列表]；</li>
+</ul>
+</li>
+<li>方法<br> join：将数组中的元素按照指定的分隔符拼接为字符串<br> push：向数组的末尾添加一个或更多元素，并返回新的长度。</li>
+<li>属性<br> length</li>
+<li>特点<ul>
+<li>JS中，数组的元素类型可变，如var arr=[1，”abc”,true];</li>
+<li>JS中数组的长度是可变的。</li>
+</ul>
+</li>
+</ol>
+<p><strong>Data：日期对象</strong></p>
+<ol>
+<li>创建：var date=new Date（）；</li>
+<li>方法：toLocaleString()：根据本地时间格式，把 Date 对象转换为字符串。<br>getTime()：返回 1970 年 1 月 1 日至今的毫秒数。</li>
+</ol>
+<p><strong>Math：数学对象</strong></p>
+<ol>
+<li>创建：Math对象不用创建直接使用。Math.方法名();</li>
+<li>方法：<br>random()：返回 0 ~ 1 之间的随机数。包含0，不包含1。<br>ceil(x)：对数进行上舍入<br>floor(x)：对数进行下舍入。<br>round(x)：把数四舍五入为最接近的整数。</li>
+<li>属性：PI</li>
+</ol>
+<p><strong>RegExp：正则表达式对象：定义字符串的组成规则</strong><br><em>正则表达式</em></p>
+<ol>
+<li><strong>单个字符:[]</strong><br> 如：[a]：a， [ab]：a或者b ，[a-z]a到z<br> \d：单个数字字符[0-9]<br> \w:单个单词字符[a-zA-Z0-9_]</li>
+<li><strong>量词符号</strong><br> ？：表示出现0次或1次<br> 星号：表示0次或多次<br> +：出现一次或多次<br> {m,n}:数量大于等于m小于等于n；m要是缺省，最多n次；n要是缺省，最少m次。</li>
+<li>开始符号：^</li>
+<li>结束符号:$</li>
+</ol>
+<p><em>正则对象</em></p>
+<ol>
+<li>创建：<ul>
+<li>var reg=new RegExp(“正则表达式”)；</li>
+<li>var reg=/正则表达式/</li>
+</ul>
+</li>
+<li>方法<br> test（参数）：验证指定的字符串是否符合正则定义的规范<pre><code>var flag=reg.test(&quot;  ...  &quot;);返回true或者false；</code></pre></li>
+</ol>
+<p><strong>Global</strong></p>
+<ol>
+<li>特点：全局对象，这个Global中封装的方法不需要对象就可以直接调用，方法名（）；</li>
+<li>方法：<br> encodeURI()    把字符串编码为 URL。<br> decodeURI()    解码某个编码的 URL。<br> encodeURIComponent()    把字符串编码为 URL组件。和上面的区别：编码的字符更多，冒号斜杠之列的也会编码。<br> decodeURIComponent()    解码一个编码的 URL 组件。<br> parseInt():将字符串转为数字。逐一判断每一个字符是否是数字，直到不是数字为止，将前面的数字部分转换为数字。<br> isNaN():判断一个值是否是NaN，NaN六亲不认，连自己都不认，NaN参与的==比较，全部为false<br> eval()：计算 JavaScript 字符串，并把它作为脚本代码来执行。<pre><code>var jscode=&quot;alert(123)&quot;;
+eval(jscode);</code></pre></li>
+<li>urL编码<br> 把字符的每个字节前用%<br> 如王佳豪=%E7%8E%8B %E4%BD%B3 %E8%B1%AA<br> 这里使用的utf-8编码，所以3个汉字有9个字节</li>
+<li>例：<br> var str=”王佳豪”;<br> var encode=encodeURI(str);<br> var s=decodeURI(encode);</li>
+</ol>
+<p><strong>Number对象和String对象和java的相似</strong></p>
+<hr>
+<h2 id="DOM简单学习"><a href="#DOM简单学习" class="headerlink" title="DOM简单学习"></a><strong>DOM简单学习</strong></h2><p><strong>功能：</strong>控制html文档内容<br><strong>代码：</strong>获取页面的标签（元素）对象Element<br>document.getElementById(“id值”)：通过元素的id获取元素的对象。<br><strong>操作Element对象：</strong></p>
+<ol>
+<li>修改属性值<ul>
+<li>明确获取的对象是哪一个</li>
+<li>查看API文档查找其中有哪些属性可以修改</li>
+</ul>
+</li>
+<li>修改标签体内容<br> 属性：innerHTML<ul>
+<li>获取元素对象</li>
+<li>使用innerHTML属性修改标签体内容</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="事件简单学习"><a href="#事件简单学习" class="headerlink" title="事件简单学习"></a><strong>事件简单学习</strong></h2><p><strong>功能：</strong>某些组件被执行了某些操作后，触发某些代码的执行。<br><strong>如何绑定事件：</strong></p>
+<ol>
+<li><p>直接在HTML标签上，指定事件的属性（操作），属性值就是js代码。<strong>(耦合度比较高，不推荐使用)</strong><br>onclick<br> &lt; img id=”qq” src=”q.jpg” onclick=”alert(“….”)”&gt;<br> &lt; img id=”qq” src=”q.jpg” onclick=”fun()”&gt;</p>
+</li>
+<li><p>通过JS获取元素对象，指定事件属性，设置一个函数。<br>&lt; img id=”qq” src=”q.jpg” &gt;<br>var qas=document.getElementById(“qq”);<br>qas.onclick=f;</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;																																		</span><br><span class="line">    &lt;title&gt;Title&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;img  id&#x3D;&quot;1&quot; src&#x3D;&quot;q.jpg&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var flag&#x3D;true;</span><br><span class="line">    i1&#x3D; document.getElementById(&quot;1&quot;);</span><br><span class="line">    function f() &#123;</span><br><span class="line">        if(flag)</span><br><span class="line">        &#123;</span><br><span class="line">            i1.src&#x3D;&quot;123.jpeg&quot;;</span><br><span class="line">            flag&#x3D;false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            i1.src&#x3D;&quot;q.jpg&quot;;</span><br><span class="line">            flag&#x3D;true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    i1.onclick&#x3D;f;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/09/%E5%89%8D%E7%AB%AF/JavaScript/" data-id="ckb22iufd007ezwu841em0mu9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

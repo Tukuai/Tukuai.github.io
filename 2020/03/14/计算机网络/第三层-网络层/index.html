@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>第三层:网络层 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="网络层功能在数据链路层的支持下，为传输层提供源&#x2F;目的主机间的报文分组传输服务。 网络层要解决主要问题：路由选择拥塞控制异构网络互联网络安全 结点间数据交换方式主要有以下三种：电路交换分组交换信元交换 1.电路交换方式起源于电话系统。建立电路传送数据拆除电路  优点实时性，可靠性好。 缺点信道利用率低。  2.分组交换报文一份完整的信息称为一个报文。分组（Packet）报文分组的简称，又叫信息包，将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三层:网络层">
+<meta property="og:url" content="https://tukuai.github.io/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="网络层功能在数据链路层的支持下，为传输层提供源&#x2F;目的主机间的报文分组传输服务。 网络层要解决主要问题：路由选择拥塞控制异构网络互联网络安全 结点间数据交换方式主要有以下三种：电路交换分组交换信元交换 1.电路交换方式起源于电话系统。建立电路传送数据拆除电路  优点实时性，可靠性好。 缺点信道利用率低。  2.分组交换报文一份完整的信息称为一个报文。分组（Packet）报文分组的简称，又叫信息包，将">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/113.png">
+<meta property="og:image" content="https://tukuai.github.io/images/114.png">
+<meta property="og:image" content="https://tukuai.github.io/images/115.png">
+<meta property="og:image" content="https://tukuai.github.io/images/117.png">
+<meta property="og:image" content="https://tukuai.github.io/images/116.png">
+<meta property="og:image" content="https://tukuai.github.io/images/118.png">
+<meta property="og:image" content="https://tukuai.github.io/images/120.png">
+<meta property="og:image" content="https://tukuai.github.io/images/119.png">
+<meta property="og:image" content="https://tukuai.github.io/images/121.png">
+<meta property="og:image" content="https://tukuai.github.io/images/122.png">
+<meta property="article:published_time" content="2020-03-14T07:24:19.000Z">
+<meta property="article:modified_time" content="2020-03-16T03:49:29.561Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/113.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-计算机网络/第三层-网络层" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82/" class="article-date">
+  <time datetime="2020-03-14T07:24:19.000Z" itemprop="datePublished">2020-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第三层:网络层
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="网络层功能"><a href="#网络层功能" class="headerlink" title="网络层功能"></a><strong>网络层功能</strong></h2><p>在数据链路层的支持下，为传输层提供源/目的主机间的报文分组传输服务。</p>
+<h2 id="网络层要解决主要问题："><a href="#网络层要解决主要问题：" class="headerlink" title="网络层要解决主要问题："></a><strong>网络层要解决主要问题：</strong></h2><p>路由选择<br>拥塞控制<br>异构网络互联<br>网络安全</p>
+<h2 id="结点间数据交换方式主要有以下三种："><a href="#结点间数据交换方式主要有以下三种：" class="headerlink" title="结点间数据交换方式主要有以下三种："></a><strong>结点间数据交换方式主要有以下三种：</strong></h2><p>电路交换<br>分组交换<br>信元交换</p>
+<p><strong>1.电路交换方式起源于电话系统。</strong><br>建立电路<br>传送数据<br>拆除电路</p>
+<ul>
+<li>优点<br>实时性，可靠性好。</li>
+<li>缺点<br>信道利用率低。</li>
+</ul>
+<p><strong>2.分组交换</strong><br>报文<br>一份完整的信息称为一个报文。<br>分组（Packet）<br>报文分组的简称，又叫信息包，将报文划分为若干格式化信息单位作为网络层的数据传输单元，这样的格式化信息单位称为报文分组。<br><img src="/images/113.png" alt=""></p>
+<ul>
+<li>基本原理 ：将一份完整的报文划分为若干组，每个分组以存储/转发方式独立的从源结点传输到目的结点，目的结点收到这些分组重新组装成原报文。<br>特点：化整为零，存储转发<br>优点：使多路数据能够复用一条链路，提高链路的利用率。有利于差错控制。减少结点缓冲区容量。<br>缺点：当网络拥塞时，会导致分组传输延迟增加，尽管对传输的文本文件，二进制文件影响并不大，但对流媒体影响较大</li>
+</ul>
+<p>分组交换技术的两种实现方式 </p>
+<ul>
+<li>虚电路<br>数据报</li>
+</ul>
+<p><strong>虚电路</strong><br>主机HA要和HC进行数据交换<br>首先主机HA向HC发一虚呼叫（虚电路连接请求），该虚呼叫选择一条适当的路径传送到Hc,记下沿途所经过的路程作为虚电路，如HA-A-E-B-C-Hc，并给其赋一个虚电路号VC1。<br>如果Hc准备就绪，则发一响应给HA，HA收到该响应，则虚电路VC1已建立完毕。<br><strong>HA和HC的数据交换必须通过该虚电路进行。<br>数据交换完毕，则释放虚电路。</strong><br><img src="/images/114.png" alt=""></p>
+<p>通信前发送方和接收方之间必须建立连接（虚电路），所以虚电路是面向连接的网络服务。<br>虚电路只是一种逻辑电路，而不是真正的物理电路。报文分组在虚电路上传输不像再物理线路上那样中畅通无阻。而是要中间节点的存储转发。<br>一条链路上允许建立多个虚电路。<br>一旦虚电路建立完毕，本地通信的所有分组必须经过该虚电路进行。因此，虚电路能够保证分组的顺序接收。<br>仅当建立虚电路时需要源/目的结点地址，数据分组需分配一个虚电路号而无须源/目的结点地址。<br>虚呼叫沿途经过每一结点要向该结点提出请求，任一结点拒绝请求（由于资源不足），均导致虚电路建立失败<br>一条链路上允许建立多个虚电路。如VC1和VC2共同复用了BC链路。</p>
+<p><strong>数据报</strong><br>数据报无需建立连接，每个报文分组携带完整的源/目的地址，独立的选择路径，通过不同的路径到达目的主机<br>无需建立连接就可传输报文分组，因此数据报称为无连接网络服务。<br>不同的报文分组可以通过不同的路由到达目的主机，先发出的分组未必先到达，因此数据报服务不能保证报文分组顺序接收。<br>每个报文分组携带完整的源/目的地址，独立的选择路径<br><img src="/images/115.png" alt=""></p>
+<h1 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a><strong>路由选择</strong></h1><p>无论是虚电路，还是数据报都要进行路由选择。</p>
+<ul>
+<li><p>虚电路：需要一次路由选择<br>数据报：每个分组要进行路由选择。<br>路由选择<br>根据某种策略，选择一条最佳的路径到达目的主机，对路由器而言，路由选择实质上是选择最佳输出端口。</p>
+</li>
+<li><p><strong>分类</strong><br>静态策略<br>动态策略</p>
+</li>
+</ul>
+<h2 id="静态策略"><a href="#静态策略" class="headerlink" title="静态策略"></a><strong>静态策略</strong></h2><p>按某种固定的规则进行路由选择，不随网络流量和拓扑结构变化而变化<br><strong>1.扩散法（洪泛法）</strong><br>当结点收到一个分组后，把该分组向除进来的链路外的所有其他链路转发，结果至少有一个分组以最快的速度到达目的结点。<br>问题：扩散过程产生大量重复分组，导致网络无法运行。<br>解决措施：<br>每个分组设置一个下跳数字段，每经过一个结点，下跳数减1，当下跳数为0时，丢弃该分组。<br><strong>2.固定式路由选择</strong><br>每个结点保存一张固定的路由表，当某一分组到达时，根据分组的目的结点，在路由表中找到其对应的输出链路，然后将分组从该链路转发出去。<br>一般由网管中心根据最佳路由算法为每个路由产生固定路由表并发给该结点。固定路由表一旦生成，就不再改变，除非网管中心重新生成新的路由表<br>优点：简单<br>缺点：无法适应网络流量和拓扑结构的变化</p>
+<h2 id="动态策略"><a href="#动态策略" class="headerlink" title="动态策略"></a><strong>动态策略</strong></h2><ul>
+<li>动态策略根据当前拓扑结构和流量的变化来动态改变路由，又称为自适应路由。<br>孤立路由算法。<br>集中路由选择。<br>分布路由选择。</li>
+</ul>
+<p><strong>1.孤立路由算法</strong><br><strong>热土豆算法</strong><br>基本思想：当你手里拿着一个烫手的热土豆时，你一定会想办法以最快的速度脱手。当一个结点收到一个分组后，选择一条输出队列最短的链路尽快的将其转发出去，而不管目的节点位于何方。<br>优点：提高链路的利用率。<br>缺点：具有很大盲目性。<br>改进：与固定路由算法混合使用。<br>首先根据固定路由算法选择可能链路，并给这些链路赋上一定权值，再根据链路队列长度给赋上一定权值，选择这两个权值和最小的链路。</p>
+<p><strong>2.集中路由选择</strong><br>逆向自学习算法<br>每个分组中包含一个结点计数器，每经过一个结点，该结点计数器加1。<br>当一个结点R从链路L收到一个来自源结点S的分组时，如果结点计数器为n，就知道经L到达S的路径的距离不会超过n。<br>若它以前纪录到S的最短路径超过n时，则将链路L作为到达S的最短输出链路，纪录当前最短路径长度n。<br>经过一段时间的自学习，结点R会找到它到其它结点的最短路径及最小距离值。<br>优点<br>对好消息反应灵敏<br>缺点<br>对于坏消息无法了解到（如一条链路崩溃）。<br>改进<br>每隔一段时间T，删除这段时间内没有刷新的记录。</p>
+<p><strong>3.分布路由选择</strong><br><strong>3.1距离向量路由选择 (D-V算法)</strong><br>基本思想：每个结点都保存一张路由表，路由表包括三个主要字段，即目的地址，最短距离、最佳输出链路。与固定路由选择不同的是：相邻结点之间定期交换路由信息（如每隔十秒），并根据最新路由信息，刷新路由表。<br>要交换的路由信息由二元组（V,D）组成，其中V为目的地址，D为到达目的地址的距离。又称距离向量算法。<br>优点：运算量和交换的信息量较小<br>缺点：对网络变化需经若干周期才能作出反应。特别是对好消息反应快，对坏消息反应迟钝。<br><img src="/images/117.png" alt=""><br>结点A加入网络的消息（好消息）经过4次,交换路由信息后即可传遍全网<br>结点A崩溃的消息（坏消息）要经过无穷次交换才能传遍全网。这就是距离向量法的无穷计数问题。</p>
+<ul>
+<li>无穷计数问题的解决方法 </li>
+</ul>
+<p>1.规定足够大的数作为无穷大，如RIP规定无穷大为16，负作用是限制了网络规模<br>2.水平分割法<br>基本思想：结点不向相邻结点报告从该相邻结点获取的路由信息<br>若链路AB出现故障，由于C不会向B报告到A的路由，所以B把到A的距离置为∞<br>水平分割有时会失败</p>
+<p><strong>3.2链路状态路由选择（L-S算法）</strong><br>从1979年开始，ARPANET以及后来的Internet的内部网关协议由距离向量改为链路状态。<br>基本思想：每个结点定期广播路由信息，并根据最新路由信息刷新路由表。<br>发现邻居结点。<br>当一个路由器启动以后，它的第一个任务就是要知道谁是它的邻居结点。通过向每个端口发送特殊的HELLO分组来发现邻居结点，收到HELLO分组的路由器应返回一个应答来说明它的网络地址。<br>测量链路开销。<br>通过发送一个特殊的ECHO分组来实现，测量其往返时间再除以2。<br>向所有结点广播L-S分组<br>结点获得最新L-S状态后，用最短路径算法计算到每个其他结点的最短路由，并刷新路由表。<br>优点：对网络反应迅速<br>缺点：广播L-S分组占用信道容量大<br>应用：OSPF（开放路径优先）采用L-S算法，作为Internet的AS内标准路由协议。<br><img src="/images/116.png" alt=""></p>
+<h2 id="路由协议简介"><a href="#路由协议简介" class="headerlink" title="路由协议简介"></a><strong>路由协议简介</strong></h2><p>1.路由信息协议（RIP）<br>RIP采用D-V算法，用于小规模网络。<br>技术特点<br>距离：下跳数，允许对下跳数加权。<br>交换路由信息周期：30秒<br>为了解决无穷计算问题，RIP选择16作为∞；为了加快收敛速度，RIP采用水平分割技术。<br>RIP消息通过UDP协议传输，端口号为520</p>
+<p>2.开放最短路由优先协议（OSPF）<br>OSPF采用L-S算法，是目前Internet的主要内部网关协议。<br>技术特点：<br>距离：允许网管人员配置选择多种距离度量，如延迟，数据率，通信费用，下跳数等。<br>OSPF支持区域概念<br>OSPF支持认证服务，防止非法向路由器发送假路由信息来愚弄路由。</p>
+<p>3.边界网关协议（BGP）<br>BGP采用改进型的D-V算法，作为Internet外部网关协议。<br>技术特点：<br>路由表中记录到达目的地的确切路由，而不是“距离”，从而解决无穷计算问题。<br>支持策略路由。</p>
+<h1 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a><strong>IP协议</strong></h1><p>概述<br>IP协议是Internet体系结构的核心协议，已成为连接异构网络的工业标准。<br>IP提供无连接的数据报服务，每个IP分组长度≤64K字节，<strong>不能保证分组可靠的、按序到达，这些留给高层协议解决。</strong><br>IP协议需要路由协议ICMP，ARP，RARP等协议支持<br><img src="/images/118.png" alt=""><br>版本：4位，表示IP协议版本，通常为0100（v4），若为0110则表示为v6版<br>首部检验和：16位，只检验数据报首部，不检验数据部分。<br>源地址：32位，发送端主机IP地址。<br>目的地址：32位，接收端主机IP地址。</p>
+<h2 id="IP地址及管理"><a href="#IP地址及管理" class="headerlink" title="IP地址及管理"></a><strong>IP地址及管理</strong></h2><p>TCP/IP网络模型将整个Internet视为一个单一的、抽象的网络，IP地址就是给每个连接在这个网络上的主机、路由器或其他设备分配的一个在全世界范围唯一的 32 位标识符。<br><strong>分类IP地址：</strong>基本的编址方法，由1981年的标准协议所确定。<br><strong>子网划分IP地址：</strong>基于分类IP地址编址方法的改进，其标准[RFC 950]在1985年成为国际标准。<br><strong>超网IP地址：</strong>目前应用最广泛的方法，对于缓解IPv4地址耗尽和路由表过于臃肿庞大有一定的作用。1993年提出后很快就得到推广应用。<br><img src="/images/120.png" alt=""></p>
+<p><strong>分类IP地址</strong></p>
+<blockquote>
+<p>IP地址被分为五类，分别称为A类、B类、C类、D类和E类。<br>A、B和C类地址分别有两个固定长度的字段组成，其中一个字段是网络号（net-id），表示联网主机（或网络设备）所在的网络，另一个字段是主机号（host-id），表示联网主机（或网络设备）本身。<br>D类和E类地址不区分网络和主机。<br><img src="/images/119.png" alt=""></p>
+</blockquote>
+<p><strong>划分子网IP地址</strong></p>
+<blockquote>
+<p>划分子网法是在1985年提出一种IP地址表示方式（RFC 950）<br>将一个IP类网划分成几个较小的子网（subnet）<br>多个物理网共享同一个IP类网前缀<br>IP地址 ::= {&lt;网络号&gt;, &lt;子网号&gt;, &lt;主机号&gt;}<br>对外，网络号仍然表示整个网络；对内，则由子网号表示多个不同的子网。IP地址具体所属的子网以及子网规模，则由子网掩码（subnet mask）加以表示。<br>子网的规模与借用主机字段的位数有关。借用位数越多，子网规模越小。<br>子网掩码格式：32比特，网络号(包括子网号)部分全为“1”，主机号部分全为“0”。<br><img src="/images/121.png" alt=""><br>前面的例子中：网络号24位，子网号3位，总共27位。所以子网掩码为：<br> 11111111   11111111   11111111   11100000<br>即 255   .  255     .  255     .  224<br>子网掩码∧ IP地址，结果就是该 IP地址的网络号。<br>主机之间要能够通信，它们必须在同一子网内，否则需要使用路由器（或网关）实现互联。<br>举例<br>网络分配了一个C类地址：201.222.5.0。假设需要20个子网，每个子网有5台主机。<br>试确定各子网地址和子网掩码。<br>1）对C类地址，要从最后8位中分出几位作为子网地址：<br>      ∵2^4＜20＜2^5，∴选择5位作为子网地址，共可提供<br>          30个子网地址。<br>2）检查剩余的位数能否满足每个子网中主机台数的要求：<br>      ∵ 子网地址为5位，故还剩3位可以用作主机地址。而<br>           2^3＞5+2，所以可以满足每子网5台主机的要求。<br>3）子网掩码为255.255.255.248。<br>    （11111000B = 248 ）<br>4）子网地址可在8、16、24、32、……、240共30个地<br>      址中任意选择20个。</p>
+</blockquote>
+<p><strong>超网IP地址</strong></p>
+<blockquote>
+<p>超网也称为无分类域间路由（Classless Inter-Domain Routing，CIDR）编址方法<br>CIDR中，不再有传统的A类、B类和C类等地址以及划分子网的概念，因而可以更加有效地分配IPv4 的地址空间。<br>CIDR使用各种长度的“网络前缀”(network-prefix)来代替分类地址中的网络号和子网号。<br>IP地址 ::= {&lt;网络前缀&gt;, &lt;主机号&gt;}<br>CIDR常使用“斜线记法”(Slash notation)，即在IP地址后面加上一个斜线“/”和一个代表网络前缀所占位数的数字，如/20。<br>将网络前缀都相同的连续的IP地址称为“CIDR地址块”<br>一个CIDR地址块可以表示很多地址，因此这种地址的聚合被称为路由聚合(route aggregation) 。利用路由聚合可以在路由表中用一个项目代表很多个传统分类地址的路由项目，从而大大缓解了路由表的臃肿现象。<br>因为路由聚合相当于把原来的多个子网聚合成为一个网络，所以也称为超网(Supernetting)。<br>CIDR虽然不使用子网，但仍然使用“掩码”这一名词（但不叫子网掩码）。<br>CIDR地址块中的IP地址数量一定是2的整数次幂。<br><img src="/images/122.png" alt=""></p>
+</blockquote>
+<p><strong>IP寻址</strong><br>每个路由器中都保存一张路由表（无论是静态还是动态）。路由表的主要项目有两个：网络号、下一跳地址（最佳输出链路）。</p>
+<h2 id="网际控制报文协议-ICMP"><a href="#网际控制报文协议-ICMP" class="headerlink" title="网际控制报文协议 ICMP"></a><strong>网际控制报文协议 ICMP</strong></h2><p>为了提高IP数据报交付成功的机会，在网际层使用了网际控制报文协议 ICMP (Internet Control Message Protocol)。<br>ICMP 允许主机或路由器报告差错情况和提供有关异常情况的报告。<br>ICMP 不是高层协议，而是 IP 层的协议。<br>ICMP 报文作为 IP 层数据报的数据，加上数据报的首部，组成 IP 数据报发送出去。<br>1、ICMP 作用和主要功能<br>IP协议提供了以无连接为特征的“尽力而为”的数据通信服务，并不能解决数据报丢失、重复、延迟或乱序等问题。<br>ICMP的目的就是希望对IP包无法传输时提供报告，这些差错报告帮助发送方了解网络中发生了什么问题，以确定应用程序后续操作。<br><strong>ICMP的主要功能包括：</strong></p>
+<blockquote>
+<p>通告网络错误<br>通告网络拥塞<br>协助解决故障<br>通告超时</p>
+</blockquote>
+<p>ICMP是少数几个可以直接从应用层操作的协议，不经过传输层。<br>ICMP是一个网际层协议，但却需要利用另一个网际层协议–IP协议进行封装，因此ICMP是一种需要两次封装的网际层协议。<br>首先由网络层的IP协议对ICMP协议报文进行封装，其次再由数据链路层协议对相应的IP报文进行封装。经过两次封装后的ICMP报文才能被传输。<br>ICMP报文是由IP协议封装，因此其也和IP协议一样是一个不可靠的协议，既不能保证报文的到达，也不能保证报文按序到达。</p>
+<p>ICMP 报文的种类有两种，即ICMP差错报告报文和 ICMP 询问报文。 </p>
+<p><strong>ICMP的应用举例</strong><br>PING (Packet InterNet Groper)用来测试两个主机之间的连通性。</p>
+<h2 id="地址解析协议ARP"><a href="#地址解析协议ARP" class="headerlink" title="地址解析协议ARP"></a><strong>地址解析协议ARP</strong></h2><p><strong>1、MAC地址</strong><br>无论OSI还是TCP/IP，都奉行的是对等层通信原则。在这一原则下，低层只是向上层提供支持，即将上层的协议报文作为载荷封装在本层相关协议的数据单元中。在低层，无法获得也不能理解被封装的高层协议报文的内容。一句话，低层协议看不见高层数据。<br>当IP报文被数据链路层协议封装后，包括IP地址在内的IP协议细节均无法被数据链路层协议获得。<strong>为了能够在数据链路层的协议中描述源/目的节点，需要在数据链路层设计相应的节点标识符，即数据链路层地址。<br>在以太网中，这个地址就称为MAC（Media Access Control）地址。</strong>由于数据链路层向下紧邻物理层，受到物理层许多因素的影响，因此也被称为物理地址或硬件地址或机器地址。对应的，IP地址也常常被称为逻辑地址。</p>
+<p>MAC地址有48位二进制数表示。为了便于记忆，用12个16进制数代表，每2个16进制数之间用冒号分割，比如如：08:00:20:0A:8C:6D就是一个合适的MAC地址。<br>在48位二进制数字中，IEEE负责向从事以太网产品生产的厂商分配前24位，由厂商负责编写后24位，并确保所有MAC地址的唯一性。</p>
+<p><strong>2、ARP协议</strong><br>地址解析协议（Address Resolution Protocol，ARP）是IP协议最重要的配套协议之一，其目的就是是将IP地址转化成MAC（物理或硬件）地址。</p>
+<p>ARP协议工作原理：</p>
+<blockquote>
+<p>当主机A有信息向主机B发送时：<br>主机A查找本地ARP表，若表中有主机B的IP地址，则按照对应的MAC地址，将要发送的IP包封装成以太帧，并向主机B发送。<br>若ARP表中没有主机B的数据项，则以广播方式发出ARP请求包，在本网段内寻找与主机B的MAC地址。<br>主机B收到主机A的ARP请求报文后，向主机A发出单播的ARP响应包，并将主机A的IP地址和MAC地址填入自己的ARP表中。<br>主机A在收到响应报文后，将主机B的MAC地址填写到自己的ARP表中，按照获得的MAC地址将IP包封装到以太帧，并向主机B发送。</p>
+</blockquote>
+<p>根据报文中地址项的填写内容，ARP分为标准（也称有偿）和无偿（gratuitous，也称免费）两种类型：<br>标准ARP<br>ARP请求报文的各相关地址项：源IP和源MAC为发出ARP请求的主机的IP地址和MAC地址，目标IP为希望获得其MAC地址的主机的IP地址，目标MAC为全“0”。<br>无偿ARP<br>也称为免费ARP，是一种特殊的ARP请求报文，当一个ARP请求报文满足以下条件时：<br>源IP地址和目标IP地址都是发出这个ARP报文的主机的IP地址。<br>源MAC地址是发出这个ARP报文的MAC地址。<br>目的MAC地址是广播地址。</p>
+<p>无偿ARP有什么作用？<br>答：1. 确定其它设备的IP地址是否与本机的IP地址冲突。当其它设备收到免费ARP报文后，如果发现报文中的IP地址和自己的IP地址相同，则给发送免费ARP报文的设备返回一个ARP应答，告知该设备IP地址冲突。<br>2.设备改变了硬件地址，通过发送免费ARP报文通知其它设备更新ARP表项。<br>3.定时发送免费ARP功能可以及时通知下行设备更新ARP表项或者MAC地址表项，可防止仿冒网关的ARP攻击，防止主机ARP表项老化，防止VRRP虚拟IP地址冲突。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82/" data-id="ckb22iugn00cezwu86o88h9gu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E5%B1%82-%E4%BC%A0%E8%BE%93%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第四层-传输层
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第二层:数据链路层</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

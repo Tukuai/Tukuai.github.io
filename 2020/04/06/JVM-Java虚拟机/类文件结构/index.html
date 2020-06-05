@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>类文件结构 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="类文件结构一个简单的 HelloWorld.java package cn.itcast.jvm.t5;  &#x2F;&#x2F; HelloWorld 示例  public class HelloWorld  { public static void main(String[] args)  { System.out.println(&quot;hello world&quot;);  }  }执行 javac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类文件结构">
+<meta property="og:url" content="https://tukuai.github.io/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="类文件结构一个简单的 HelloWorld.java package cn.itcast.jvm.t5;  &#x2F;&#x2F; HelloWorld 示例  public class HelloWorld  { public static void main(String[] args)  { System.out.println(&quot;hello world&quot;);  }  }执行 javac">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/197.png">
+<meta property="og:image" content="https://tukuai.github.io/images/198.png">
+<meta property="og:image" content="https://tukuai.github.io/images/199.jpg">
+<meta property="article:published_time" content="2020-04-06T02:20:28.000Z">
+<meta property="article:modified_time" content="2020-04-15T03:12:06.315Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/197.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JVM-Java虚拟机/类文件结构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2020-04-06T02:20:28.000Z" itemprop="datePublished">2020-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JVM/">JVM</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      类文件结构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a><strong>类文件结构</strong></h2><p>一个简单的 HelloWorld.java</p>
+<pre><code>package cn.itcast.jvm.t5; 
+// HelloWorld 示例 
+public class HelloWorld 
+{ public static void main(String[] args) 
+{ System.out.println(&quot;hello world&quot;); 
+} 
+}</code></pre><p>执行 javac -parameters -d . HellowWorld.java<br>编译为 HelloWorld.class 后是这个样子的：</p>
+<pre><code>[root@localhost ~]# od -t xC HelloWorld.class 
+0000000 ca fe ba be 00 00 00 34 00 23 0a 00 06 00 15 09 
+0000020 00 16 00 17 08 00 18 0a 00 19 00 1a 07 00 1b 07 
+0000040 00 1c 01 00 06 3c 69 6e 69 74 3e 01 00 03 28 29 
+0000060 56 01 00 04 43 6f 64 65 01 00 0f 4c 69 6e 65 4e 
+0000100 75 6d 62 65 72 54 61 62 6c 65 01 00 12 4c 6f 63 
+0000120 61 6c 56 61 72 69 61 62 6c 65 54 61 62 6c 65 01 
+0000140 00 04 74 68 69 73 01 00 1d 4c 63 6e 2f 69 74 63 
+0000160 61 73 74 2f 6a 76 6d 2f 74 35 2f 48 65 6c 6c 6f 
+0000200 57 6f 72 6c 64 3b 01 00 04 6d 61 69 6e 01 00 16 
+0000220 28 5b 4c 6a 61 76 61 2f 6c 61 6e 67 2f 53 74 72 
+0000240 69 6e 67 3b 29 56 01 00 04 61 72 67 73 01 00 13 
+0000260 5b 4c 6a 61 76 61 2f 6c 61 6e 67 2f 53 74 72 69 
+0000300 6e 67 3b 01 00 10 4d 65 74 68 6f 64 50 61 72 61 
+0000320 6d 65 74 65 72 73 01 00 0a 53 6f 75 72 63 65 46 
+0000340 69 6c 65 01 00 0f 48 65 6c 6c 6f 57 6f 72 6c 64 
+0000360 2e 6a 61 76 61 0c 00 07 00 08 07 00 1d 0c 00 1e 
+0000400 00 1f 01 00 0b 68 65 6c 6c 6f 20 77 6f 72 6c 64 
+0000420 07 00 20 0c 00 21 00 22 01 00 1b 63 6e 2f 69 74 
+0000440 63 61 73 74 2f 6a 76 6d 2f 74 35 2f 48 65 6c 6c 
+0000460 6f 57 6f 72 6c 64 01 00 10 6a 61 76 61 2f 6c 61 
+0000500 6e 67 2f 4f 62 6a 65 63 74 01 00 10 6a 61 76 61 
+0000520 2f 6c 61 6e 67 2f 53 79 73 74 65 6d 01 00 03 6f 
+0000540 75 74 01 00 15 4c 6a 61 76 61 2f 69 6f 2f 50 72 
+0000560 69 6e 74 53 74 72 65 61 6d 3b 01 00 13 6a 61 76 
+0000600 61 2f 69 6f 2f 50 72 69 6e 74 53 74 72 65 61 6d 
+0000620 01 00 07 70 72 69 6e 74 6c 6e 01 00 15 28 4c 6a 
+0000640 61 76 61 2f 6c 61 6e 67 2f 53 74 72 69 6e 67 3b 
+0000660 29 56 00 21 00 05 00 06 00 00 00 00 00 02 00 01 
+0000700 00 07 00 08 00 01 00 09 00 00 00 2f 00 01 00 01 
+0000720 00 00 00 05 2a b7 00 01 b1 00 00 00 02 00 0a 00 
+0000740 00 00 06 00 01 00 00 00 04 00 0b 00 00 00 0c 00 
+0000760 01 00 00 00 05 00 0c 00 0d 00 00 00 09 00 0e 00 
+0001000 0f 00 02 00 09 00 00 00 37 00 02 00 01 00 00 00 
+0001020 09 b2 00 02 12 03 b6 00 04 b1 00 00 00 02 00 0a 
+0001040 00 00 00 0a 00 02 00 00 00 06 00 08 00 07 00 0b 
+0001060 00 00 00 0c 00 01 00 00 00 09 00 10 00 11 00 00 
+0001100 00 12 00 00 00 05 01 00 10 00 00 00 01 00 13 00 
+0001120 00 00 02 00 14</code></pre><p><strong>根据 JVM 规范，类文件结构如下</strong></p>
+<pre><code>注明：u多少，代表占多少字节。
+ClassFile {
+    u4                 magic; 
+    u2                 minor_version; 
+    u2                 major_version; 
+    u2                 constant_pool_count; 
+    cp_info         constant_pool[constant_pool_count-1]; 
+    u2                 access_flags; 
+    u2                 this_class; 
+    u2                 super_class; 
+    u2                 interfaces_count; 
+    u2                 interfaces[interfaces_count]; 
+    u2                 fields_count; 
+    field_info         fields[fields_count]; 
+    u2                 methods_count; 
+    method_info     methods[methods_count]; 
+    u2                 attributes_count; 
+    attribute_info     attributes[attributes_count]; 
+}</code></pre><h3 id="魔数，magic"><a href="#魔数，magic" class="headerlink" title="魔数，magic"></a><strong>魔数，magic</strong></h3><p>0~ 3 字节，表示它是否是【class】类型的文件<br>0000000 ca fe ba be 00 00 00 34 00 23 0a 00 06 00 15 09</p>
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a><strong>版本</strong></h3><p>minor_version：小版本;major_version：主版本<br>4~ 7 字节，表示类的版本 00 34（52） 表示是 Java 8<br>0000000 ca fe ba be 00 00 00 34 00 23 0a 00 06 00 15 09</p>
+<h3 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a><strong>常量池</strong></h3><p>紧接着主次版本号之后是常量池入口，由于常量池中常量的数量是不固定的，所以在常量池的入口需要放置一个常量池容量计数值（constant_pool_count）,这个容量计数是从1而不是0开始的，设计者这样设计的目的是为了满足后面某些指向常量池的索引值的数据在特殊情况下需要表达“不引用任何一个常量池项目”的含义。Class文件结构中只有常量池的容量计数是从1开始的，索引集合、字段集合、方法集合、属性集合的容量计数都是从0开始的。注意，Long和Double型占用两个计数（这样设计可能设计时没想好）。<br>常量池中主要存放两大类常量：字面量（Literal）和符号引用。<br>字面量接近Java语言层面的常量概念，如文本字符串、声明为final的常量值等。<br>符号引用属于编译原理的概念，包括三类常量：</p>
+<ul>
+<li>类和接口的全限定名；</li>
+<li>字段的名称和描述符；</li>
+<li>方法的名称和描述符。<br>常量池中每一项常量都是一个表，在JDK1.7之后共有14种表结构，它们有一个共同的特点，就是表开始的第一位是一个u1类型的标志位（tag，取值见下表），代表当前这个常量属于哪种常量类型</li>
+</ul>
+<p><strong>常量池的项目类型：</strong></p>
+<pre><code>类型                                 标志                 描述
+CONSTANT_Utf8_info                    1                    UTF-8编码字符串
+CONSTANT_Integer_info                3                    整型字面量
+CONSTANT_Float_info                    4                    浮点型字面量
+CONSTANT_Long_info                    5                    长整型字面量
+CONSTANT_Double_info                6                    双精度浮点型字面量
+CONSTANT_Class_info                    7                    类或接口的符号引用
+CONSTANT_String_info                8                    字符串类型字面量
+CONSTANT_Fieldref_info                9                    字段的符号引用
+CONSTANT_Methodref_info             10                    类中方法的符号引用
+CONSTANT_InterfaceMethodref_info    11                    接口中方法的符号引用
+CONSTANT_NameAndType_info            12                    字段或方法的部分符号引用
+CONSTANT_MethodHandle_info            15                    标识方法句柄
+CONSTANT_MethodType_info            16                    标识方法类型
+CONSTANT_InvokeDtnamic_info            18                    表示一个动态方法调用点</code></pre><p>常量池中的14种常量项的结构总表：<br><img src="/images/197.png" alt=""></p>
+<p>8 ~ 9 字节，表示常量池长度，00 23 （35） 表示常量池有 #1~ #34项，注意 #0 项不计入，也没有值<br>0000000 ca fe ba be 00 00 00 34 <strong>00 23</strong> 0a 00 06 00 15 09</p>
+<ul>
+<li>第#1项 0a 表示一个 Method 信息，00 06 和 00 15（21） 表示它引用了常量池中 #6 和 #21 项来获得<br>这个方法的【所属类】和【方法名】<br>0000000 ca fe ba be 00 00 00 34 00 23 <strong>0a 00 06 00 15</strong> 09</li>
+</ul>
+<ul>
+<li><p>第#2项 09 表示一个 Field 信息，00 16（22）和 00 17（23） 表示它引用了常量池中 #22 和 # 23 项<br>来获得这个成员变量的【所属类】和【成员变量名】<br>0000000 ca fe ba be 00 00 00 34 00 23 0a 00 06 00 15 09<br>0000020 00 16 00 17 08 00 18 0a 00 19 00 1a 07 00 1b 07</p>
+</li>
+<li><p>第#3项 08 表示一个字符串常量名称，00 18（24）表示它引用了常量池中 #24 项<br>0000020 00 16 00 17 08 00 18 0a 00 19 00 1a 07 00 1b 07</p>
+</li>
+<li><p>第#4项 0a 表示一个 Method 信息，00 19（25） 和 00 1a（26） 表示它引用了常量池中 #25 和 #26项来获得这个方法的【所属类】和【方法名】<br>0000020 00 16 00 17 08 00 18 0a 00 19 00 1a 07 00 1b 07</p>
+</li>
+<li><p>第#5项 07 表示一个 Class 信息，00 1b（27） 表示它引用了常量池中 #27 项<br>0000020 00 16 00 17 08 00 18 0a 00 19 00 1a 07 00 1b 07</p>
+</li>
+<li><p>第#6项 07 表示一个 Class 信息，00 1c（28） 表示它引用了常量池中 #28 项<br>0000020 00 16 00 17 08 00 18 0a 00 19 00 1a 07 00 1b 07<br>0000040 00 1c 01 00 06 3c 69 6e 69 74 3e 01 00 03 28 29</p>
+</li>
+<li><p>第#7项 01 表示一个 utf8 串，00 06 表示长度，3c 69 6e 69 74 3e 是【 <init> 】<br>0000040 00 1c 01 00 06 3c 69 6e 69 74 3e 01 00 03 28 29</p>
+</li>
+<li><p>第#8项 01 表示一个 utf8 串，00 03 表示长度，28 29 56 是【()V】其实就是表示无参、无返回值<br>0000040 00 1c 01 00 06 3c 69 6e 69 74 3e 01 00 03 28 29<br>0000060 56 01 00 04 43 6f 64 65 01 00 0f 4c 69 6e 65 4e</p>
+</li>
+<li><p>第#9项 01 表示一个 utf8 串，00 04 表示长度，43 6f 64 65 是【Code】<br>0000060 56 01 00 04 43 6f 64 65 01 00 0f 4c 69 6e 65 4e</p>
+</li>
+<li><p>第#10项 01 表示一个 utf8 串，00 0f（15） 表示长度，4c 69 6e 65 4e 75 6d 62 65 72 54 61 62 6c 65是【LineNumberTable】<br>0000060 56 01 00 04 43 6f 64 65 01 00 0f 4c 69 6e 65 4e<br>0000100 75 6d 62 65 72 54 61 62 6c 65 01 00 12 4c 6f 63</p>
+</li>
+<li><p>第#11项 01 表示一个 utf8 串，00 12（18） 表示长度，4c 6f 63 61 6c 56 61 72 69 61 62 6c 65 54 61<br>62 6c 65是【LocalVariableTable】<br>0000100 75 6d 62 65 72 54 61 62 6c 65 01 00 12 4c 6f 63<br>0000120 61 6c 56 61 72 69 61 62 6c 65 54 61 62 6c 65 01</p>
+</li>
+<li><p>第#12项 01 表示一个 utf8 串，00 04 表示长度，74 68 69 73 是【this】<br>0000120 61 6c 56 61 72 69 61 62 6c 65 54 61 62 6c 65 01<br>0000140 00 04 74 68 69 73 01 00 1d 4c 63 6e 2f 69 74 63</p>
+</li>
+<li><p>第#13项 01 表示一个 utf8 串，00 1d（29） 表示长度，是【Lcn/itcast/jvm/t5/HelloWorld;】<br>0000140 00 04 74 68 69 73 01 00 1d 4c 63 6e 2f 69 74 63<br>0000160 61 73 74 2f 6a 76 6d 2f 74 35 2f 48 65 6c 6c 6f<br>0000200 57 6f 72 6c 64 3b 01 00 04 6d 61 69 6e 01 00 16</p>
+</li>
+<li><p>第#14项 01 表示一个 utf8 串，00 04 表示长度，74 68 69 73 是【main】<br>0000200 57 6f 72 6c 64 3b 01 00 04 6d 61 69 6e 01 00 16</p>
+</li>
+<li><p>第#15项 01 表示一个 utf8 串，00 16（22） 表示长度，是【([Ljava/lang/String;)V】其实就是参数为<br>字符串数组，无返回值<br>0000200 57 6f 72 6c 64 3b 01 00 04 6d 61 69 6e 01 00 16<br>0000220 28 5b 4c 6a 61 76 61 2f 6c 61 6e 67 2f 53 74 72<br>0000240 69 6e 67 3b 29 56 01 00 04 61 72 67 73 01 00 13</p>
+</li>
+<li><p>第#16项 01 表示一个 utf8 串，00 04 表示长度，是【args】<br>0000240 69 6e 67 3b 29 56 01 00 04 61 72 67 73 01 00 13</p>
+</li>
+<li><p>第#17项 01 表示一个 utf8 串，00 13（19） 表示长度，是【[Ljava/lang/String;】<br>0000240 69 6e 67 3b 29 56 01 00 04 61 72 67 73 01 00 13 0000260 5b 4c 6a 61 76 61 2f 6c 61 6e<br>67 2f 53 74 72 69 0000300 6e 67 3b 01 00 10 4d 65 74 68 6f 64 50 61 72 61</p>
+</li>
+<li><p>第#18项 01 表示一个 utf8 串，00 10（16） 表示长度，是【MethodParameters】<br>0000300 6e 67 3b 01 00 10 4d 65 74 68 6f 64 50 61 72 61<br>0000320 6d 65 74 65 72 73 01 00 0a 53 6f 75 72 63 65 46</p>
+</li>
+<li><p>第#19项 01 表示一个 utf8 串，00 0a（10） 表示长度，是【SourceFile】<br>0000320 6d 65 74 65 72 73 01 00 0a 53 6f 75 72 63 65 46<br>0000340 69 6c 65 01 00 0f 48 65 6c 6c 6f 57 6f 72 6c 64</p>
+</li>
+<li><p>第#20项 01 表示一个 utf8 串，00 0f（15） 表示长度，是【HelloWorld.java】<br>0000340 69 6c 65 01 00 0f 48 65 6c 6c 6f 57 6f 72 6c 64 0000360 2e 6a 61 76 61 0c 00 07 00 08 07<br>00 1d 0c 00 1e</p>
+</li>
+<li><p>第#21项 0c 表示一个 【名+类型】，00 07 00 08 引用了常量池中 #7 #8 两项<br>0000360 2e 6a 61 76 61 0c 00 07 00 08 07 00 1d 0c 00 1e</p>
+</li>
+<li><p>第#22项 07 表示一个 Class 信息，00 1d（29） 引用了常量池中 #29 项<br>0000360 2e 6a 61 76 61 0c 00 07 00 08 07 00 1d 0c 00 1e</p>
+</li>
+<li><p>第#23项 0c 表示一个 【名+类型】，00 1e（30） 00 1f （31）引用了常量池中 #30 #31 两项<br>0000360 2e 6a 61 76 61 0c 00 07 00 08 07 00 1d 0c 00 1e<br>0000400 00 1f 01 00 0b 68 65 6c 6c 6f 20 77 6f 72 6c 64</p>
+</li>
+<li><p>第#24项 01 表示一个 utf8 串，00 0f（15） 表示长度，是【hello world】<br>0000400 00 1f 01 00 0b 68 65 6c 6c 6f 20 77 6f 72 6c 64</p>
+</li>
+<li><p>第#25项 07 表示一个 Class 信息，00 20（32） 引用了常量池中 #32 项<br>0000420 07 00 20 0c 00 21 00 22 01 00 1b 63 6e 2f 69 74</p>
+</li>
+<li><p>第#26项 0c 表示一个 【名+类型】，00 21（33） 00 22（34）引用了常量池中 #33 #34 两项<br>0000420 07 00 20 0c 00 21 00 22 01 00 1b 63 6e 2f 69 74</p>
+</li>
+<li><p>第#27项 01 表示一个 utf8 串，00 1b（27） 表示长度，是【cn/itcast/jvm/t5/HelloWorld】<br>0000420 07 00 20 0c 00 21 00 22 01 00 1b 63 6e 2f 69 74<br>0000440 63 61 73 74 2f 6a 76 6d 2f 74 35 2f 48 65 6c 6c<br>0000460 6f 57 6f 72 6c 64 01 00 10 6a 61 76 61 2f 6c 61</p>
+</li>
+<li><p>第#28项 01 表示一个 utf8 串，00 10（16） 表示长度，是【java/lang/Object】<br>0000460 6f 57 6f 72 6c 64 01 00 10 6a 61 76 61 2f 6c 61<br>0000500 6e 67 2f 4f 62 6a 65 63 74 01 00 10 6a 61 76 61</p>
+</li>
+<li><p>第#29项 01 表示一个 utf8 串，00 10（16） 表示长度，是【java/lang/System】<br>0000500 6e 67 2f 4f 62 6a 65 63 74 01 00 10 6a 61 76 61<br>0000520 2f 6c 61 6e 67 2f 53 79 73 74 65 6d 01 00 03 6f</p>
+</li>
+<li><p>第#30项 01 表示一个 utf8 串，00 03 表示长度，是【out】<br>0000520 2f 6c 61 6e 67 2f 53 79 73 74 65 6d 01 00 03 6f<br>0000540 75 74 01 00 15 4c 6a 61 76 61 2f 69 6f 2f 50 72</p>
+</li>
+<li><p>第#31项 01 表示一个 utf8 串，00 15（21） 表示长度，是【Ljava/io/PrintStream;】<br>0000540 75 74 01 00 15 4c 6a 61 76 61 2f 69 6f 2f 50 72<br>0000560 69 6e 74 53 74 72 65 61 6d 3b 01 00 13 6a 61 76</p>
+</li>
+<li><p>第#32项 01 表示一个 utf8 串，00 13（19） 表示长度，是【java/io/PrintStream】<br>0000560 69 6e 74 53 74 72 65 61 6d 3b 01 00 13 6a 61 76<br>0000600 61 2f 69 6f 2f 50 72 69 6e 74 53 74 72 65 61 6d</p>
+</li>
+<li><p>第#33项 01 表示一个 utf8 串，00 07 表示长度，是【println】<br>0000620 01 00 07 70 72 69 6e 74 6c 6e 01 00 15 28 4c 6a</p>
+</li>
+<li><p>第#34项 01 表示一个 utf8 串，00 15（21） 表示长度，是【(Ljava/lang/String;)V】<br>0000620 01 00 07 70 72 69 6e 74 6c 6e 01 00 15 28 4c 6a<br>0000640 61 76 61 2f 6c 61 6e 67 2f 53 74 72 69 6e 67 3b<br>0000660 29 56 00 21 00 05 00 06 00 00 00 00 00 02 00 01</p>
+</li>
+</ul>
+<h2 id="访问标识与继承信息access-flags"><a href="#访问标识与继承信息access-flags" class="headerlink" title="访问标识与继承信息access_flags"></a><strong>访问标识与继承信息access_flags</strong></h2><p><img src="/images/198.png" alt=""><br>21 表示该 class 是一个类，公共的<br>0000660 29 56 <strong>00 21</strong> 00 05 00 06 00 00 00 00 00 02 00 01<br>05 表示根据常量池中 #5 找到本类全限定名<br>0000660 29 56 00 21 <strong>00 05</strong> 00 06 00 00 00 00 00 02 00 01<br>06 表示根据常量池中 #6 找到父类全限定名<br>0000660 29 56 00 21 00 05 <strong>00 06</strong> 00 00 00 00 00 02 00 01<br>表示接口的数量，本类为 0<br>0000660 29 56 00 21 00 05 00 06 <strong>00 00</strong> 00 00 00 02 00 01</p>
+<h2 id="Field成员变量-信息"><a href="#Field成员变量-信息" class="headerlink" title="Field成员变量 信息"></a><strong>Field成员变量 信息</strong></h2><p><img src="/images/199.jpg" alt=""><br>表示成员变量数量，本类为 0<br>0000660 29 56 00 21 00 05 00 06 00 00 <strong>00 00</strong> 00 02 00 01</p>
+<h2 id="Method-信息"><a href="#Method-信息" class="headerlink" title="Method 信息"></a><strong>Method 信息</strong></h2><p>0000660 29 56 00 21 00 05 00 06 00 00 00 00 00 02 <strong>00 01<br>0000700 00 07 00 08 00 01 00 09 00 00 00 2f 00 01 00 01<br>0000720 00 00 00 05 2a b7 00 01 b1 00 00 00 02 00 0a 00<br>0000740 00 00 06 00 01 00 00 00 04 00 0b 00 00 00 0c 00<br>0000760 01 00 00 00 05 00 0c 00 0d 00 00</strong> 00 09 00 0e 00</p>
+<pre><code>00 01（本类中是 public）
+00 07 项作为方法名称
+00 08 项作为方法参数描述
+00 01 方法属性数量，本方法是 1
+00 09 表示引用了常量池 #09 项，发现是【Code】属性
+00 00 00 2f 表示此属性的长度是 47
+00 01 表示【操作数栈】最大深度
+00 01 表示【局部变量表】最大槽（slot）数
+00 00 00 05 表示字节码长度，本例是 5
+2a b7 00 01 b1 是字节码指令
+00 00 00 02 表示方法细节属性数量，本例是 2
+00 0a 表示引用了常量池 #10 项，发现是【LineNumberTable】属性
+00 00 00 06 表示此属性的总长度，本例是 6
+00 01 表示【LineNumberTable】长度
+00 00 表示【字节码】行号 00 04 表示【java 源码】行号
+00 0b 表示引用了常量池 #11 项，发现是【LocalVariableTable】属性
+00 00 00 0c 表示此属性的总长度，本例是 12
+00 01 表示【LocalVariableTable】长度
+00 00 表示局部变量生命周期开始，相对于字节码的偏移量
+00 05 表示局部变量覆盖的范围长度
+00 0c 表示局部变量名称，本例引用了常量池 #12 项，是【this】
+00 0d 表示局部变量的类型，本例引用了常量池 #13 项，是【Lcn/itcast/jvm/t5/HelloWorld;】
+00 00 表示局部变量占有的槽位（slot）编号，本例是 0</code></pre><p>0000760 01 00 00 00 05 00 0c 00 0d 00 00 <strong>00 09 00 0e 00<br>0001000 0f 00 02 00 09 00 00 00 37 00 02 00 01 00 00 00<br>0001020 09 b2 00 02 12 03 b6 00 04 b1 00 00 00 02 00 0a<br>0001040 00 00 00 0a 00 02 00 00 00 06 00 08 00 07 00 0b<br>0001060 00 00 00 0c 00 01 00 00 00 09 00 10 00 11 00 00<br>0001100 00 12 00 00 00 05 01 00 10 00 00</strong> 00 01 00 13 00<br>0001120 00 00 02 00 14</p>
+<pre><code>00 09（本类中是 public static）
+00 0e 项作为方法名称,mian
+00 0f 项作为方法参数描述
+00 02 方法属性数量，本方法是 2
+00 09 表示引用了常量池 #09 项，发现是【Code】属性
+00 00 00 37 表示此属性的长度是 55
+00 02 表示【操作数栈】最大深度
+00 01 表示【局部变量表】最大槽（slot）数
+00 00 00 05 表示字节码长度，本例是 9
+b2 00 02 12 03 b6 00 04 b1 是字节码指令
+00 00 00 02 表示方法细节属性数量，本例是 2
+00 0a 表示引用了常量池 #10 项，发现是【LineNumberTable】属性
+00 00 00 0a 表示此属性的总长度，本例是 10
+00 02 表示【LineNumberTable】长度
+00 00 表示【字节码】行号 00 06 表示【java 源码】行号
+00 08 表示【字节码】行号 00 07 表示【java 源码】行号
+00 0b 表示引用了常量池 #11 项，发现是【LocalVariableTable】属性
+00 00 00 0c 表示此属性的总长度，本例是 12
+00 01 表示【LocalVariableTable】长度
+00 00 表示局部变量生命周期开始，相对于字节码的偏移量
+00 09 表示局部变量覆盖的范围长度
+00 10 表示局部变量名称，本例引用了常量池 #16 项，是【args】
+00 11 表示局部变量的类型，本例引用了常量池 #17 项，是【[Ljava/lang/String;】
+00 00 表示局部变量占有的槽位（slot）编号，本例是 0
+00 12 表示引用了常量池 #18 项，发现是【MethodParameters】属性
+00 00 00 05 表示此属性的总长度，本例是 5
+01       参数数量
+00 10 表示引用了常量池 #16 项，是【args】
+00 00 访问修饰符</code></pre><h2 id="附加属性"><a href="#附加属性" class="headerlink" title="附加属性"></a><strong>附加属性</strong></h2><pre><code>00 01 表示附加属性数量
+00 13 表示引用了常量池 #19 项，即【SourceFile】
+00 00 00 02 表示此属性的长度
+00 14 表示引用了常量池 #20 项，即【HelloWorld.java】
+0001100 00 12 00 00 00 05 01 00 10 00 00 00 01 00 13 00
+0001120 00 00 02 00 14</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" data-id="ckb22iuds0022zwu82i4mf0um" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          字节码指令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/05/IO/%E5%BA%8F%E5%88%97%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">序列化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

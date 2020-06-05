@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Redis主从复制 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主从复制简介互联网“三高”架构  高并发 高性能 高可用  单机redis的风险与问题  问题1.机器故障  现象：硬盘故障、系统崩溃 本质：数据丢失，很可能对业务造成灾难性打击 结论：基本上会放弃使用redis.   问题2.容量瓶颈  现象：内存不足，从16G升级到64G，从64G升级到128G，无限升级内存 本质：穷，硬件条件跟不上 结论：放弃使用redis   结论：为了避免单点Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis主从复制">
+<meta property="og:url" content="https://tukuai.github.io/2020/05/21/Redis/Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="主从复制简介互联网“三高”架构  高并发 高性能 高可用  单机redis的风险与问题  问题1.机器故障  现象：硬盘故障、系统崩溃 本质：数据丢失，很可能对业务造成灾难性打击 结论：基本上会放弃使用redis.   问题2.容量瓶颈  现象：内存不足，从16G升级到64G，从64G升级到128G，无限升级内存 本质：穷，硬件条件跟不上 结论：放弃使用redis   结论：为了避免单点Redis">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/335.png">
+<meta property="og:image" content="https://tukuai.github.io/images/336.png">
+<meta property="og:image" content="https://tukuai.github.io/images/337.png">
+<meta property="og:image" content="https://tukuai.github.io/images/338.png">
+<meta property="og:image" content="https://tukuai.github.io/images/339.png">
+<meta property="og:image" content="https://tukuai.github.io/images/340.png">
+<meta property="og:image" content="https://tukuai.github.io/images/341.png">
+<meta property="og:image" content="https://tukuai.github.io/images/342.png">
+<meta property="og:image" content="https://tukuai.github.io/images/343.png">
+<meta property="og:image" content="https://tukuai.github.io/images/344.png">
+<meta property="article:published_time" content="2020-05-21T06:23:24.000Z">
+<meta property="article:modified_time" content="2020-05-21T08:41:22.122Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/335.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Redis/Redis主从复制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/21/Redis/Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/" class="article-date">
+  <time datetime="2020-05-21T06:23:24.000Z" itemprop="datePublished">2020-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis主从复制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="主从复制简介"><a href="#主从复制简介" class="headerlink" title="主从复制简介"></a><strong>主从复制简介</strong></h2><p><strong>互联网“三高”架构</strong></p>
+<ul>
+<li>高并发</li>
+<li>高性能</li>
+<li>高可用</li>
+</ul>
+<p><strong>单机redis的风险与问题</strong></p>
+<ul>
+<li><p>问题1.机器故障</p>
+<ul>
+<li>现象：硬盘故障、系统崩溃</li>
+<li>本质：数据丢失，很可能对业务造成灾难性打击</li>
+<li>结论：基本上会放弃使用redis.</li>
+</ul>
+</li>
+<li><p>问题2.容量瓶颈</p>
+<ul>
+<li>现象：内存不足，从16G升级到64G，从64G升级到128G，无限升级内存</li>
+<li>本质：穷，硬件条件跟不上</li>
+<li>结论：放弃使用redis</li>
+</ul>
+</li>
+<li><p>结论：为了避免单点Redis服务器故障，准备多台服务器，互相连通。将数据复制多个副本保存在不同的服务器上，连接在一起，并保证数据是同步的。即使有其中一台服务器宕机，其他服务器依然可以继续提供服务，实现Redis的高可用，同时实现数据冗余备份。</p>
+</li>
+</ul>
+<p><strong>多台服务器连接方案</strong><br><img src="/images/335.png" alt=""></p>
+<ul>
+<li>提供数据方：master主服务器，主节点，主库，主客户端</li>
+<li>接收数据方：slave从服务器，从节点，从库，从客户端</li>
+<li>需要解决的问题：数据同步</li>
+<li>核心工作：master的数据复制到slave中</li>
+</ul>
+<p><strong>主从复制</strong><br>主从复制即将master中的数据即时、有效的复制到slave中<br>特征：一个master可以拥有多个slave，一个slave只对应一个master<br>职责：</p>
+<ul>
+<li><p>master:</p>
+<ul>
+<li>写数据</li>
+<li>执行写操作时，将出现变化的数据自动同步到slave</li>
+<li>读数据（可忽略）</li>
+</ul>
+</li>
+<li><p>slave:</p>
+<ul>
+<li>读数据</li>
+<li>写数据（禁止）</li>
+</ul>
+</li>
+</ul>
+<p><strong>主从复制的作用</strong></p>
+<ul>
+<li>读写分离：master写、slave读，提高服务器的读写负载能力</li>
+<li>负载均衡：基于主从结构，配合读写分离，由slave分担master负载，并根据需求的变化，改变slave的数量，通过多个从节点分担数据读取负载，大大提高Redis服务器并发量与数据吞吐量</li>
+<li>故障恢复：当master出现问题时，由slave提供服务，实现快速的故障恢复</li>
+<li>数据冗余：实现数据热备份，是持久化之外的一种数据冗余方式</li>
+<li>高可用基石：基于主从复制，构建哨兵模式与集群，实现Redis的高可用方案</li>
+</ul>
+<h1 id="主从复制工作流程"><a href="#主从复制工作流程" class="headerlink" title="主从复制工作流程"></a><strong>主从复制工作流程</strong></h1><p><img src="/images/336.png" alt=""><br><img src="/images/337.png" alt=""></p>
+<ul>
+<li>主从复制过程大体可以分为3个阶段<ul>
+<li>建立连接阶段（即准备阶段）</li>
+<li>数据同步阶段</li>
+<li>命令传播阶段 master slave</li>
+</ul>
+</li>
+</ul>
+<h2 id="阶段一-建立连接阶段工作流程"><a href="#阶段一-建立连接阶段工作流程" class="headerlink" title="阶段一:建立连接阶段工作流程"></a><strong>阶段一:建立连接阶段工作流程</strong></h2><p>建立slave到master的连接，使master能够识别slave，并保存slave端口号</p>
+<ul>
+<li>步骤1：设置master的地址和端口，保存master信息</li>
+<li>步骤2：建立socket连接</li>
+<li>步骤3：发送ping命令（定时器任务）</li>
+<li>步骤4：身份验证</li>
+<li>步骤5：发送slave端口信息<br>至此，主从连接成功！<br><img src="/images/338.png" alt=""></li>
+</ul>
+<p><strong>主从连接（slave连接master）</strong></p>
+<ul>
+<li><p>方式一：客户端发送命令</p>
+<pre><code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code></pre></li>
+<li><p>方式二：启动服务器参数</p>
+<pre><code>redis-server -slaveof &lt;masterip&gt; &lt;masterport&gt;</code></pre></li>
+<li><p>方式三：服务器配置</p>
+<pre><code>slaveof &lt;masterip&gt; &lt;masterport&gt;</code></pre></li>
+</ul>
+<p><strong>主从断开连接</strong></p>
+<ul>
+<li><p>从客户端发送命令<br>slaveof no one</p>
+</li>
+<li><p>说明：<br>slave断开连接后，不会删除已有数据，只是不再接受master发送的数据</p>
+</li>
+</ul>
+<p><strong>授权访问</strong></p>
+<ul>
+<li><p>master客户端发送命令设置密码</p>
+<pre><code>config set requirepass &lt;password&gt;
+config get requirepass </code></pre></li>
+<li><p>master配置文件设置密码</p>
+<pre><code>requirepass &lt;password&gt;</code></pre></li>
+<li><p>slave客户端发送命令设置密码</p>
+<pre><code>auth &lt;password&gt;</code></pre></li>
+<li><p>slave配置文件设置密码</p>
+<pre><code>masterauth &lt;password&gt; </code></pre></li>
+<li><p>slave启动服务器设置密码</p>
+<pre><code>redis-server –a &lt;password&gt;</code></pre></li>
+</ul>
+<h2 id="阶段二：数据同步阶段工作流程"><a href="#阶段二：数据同步阶段工作流程" class="headerlink" title="阶段二：数据同步阶段工作流程"></a><strong>阶段二：数据同步阶段工作流程</strong></h2><ul>
+<li>在slave初次连接master后，复制master中的所有数据到slave</li>
+<li>将slave的数据库状态更新成master当前的数据库状态</li>
+</ul>
+<p><strong>数据同步阶段工作流程</strong></p>
+<ul>
+<li>步骤1：请求同步数据</li>
+<li>步骤2：创建RDB同步数据</li>
+<li>步骤3：恢复RDB同步数据</li>
+<li>步骤4：请求部分同步数据</li>
+<li>步骤5：恢复部分同步数据<br>至此，数据同步工作完成！<br><img src="/images/339.png" alt=""></li>
+</ul>
+<p>状态：<br>slave：具有master端全部数据，包含RDB过程接收的数据<br>master：保存slave当前数据同步的位置<br>总体：之间完成了数据克隆</p>
+<p><strong>数据同步阶段master说明</strong></p>
+<ol>
+<li><p>如果master数据量巨大，数据同步阶段应避开流量高峰期，避免造成master阻塞，影响业务正常执行</p>
+</li>
+<li><p>复制缓冲区大小设定不合理，会导致数据溢出。如进行全量复制周期太长，进行部分复制时发现数据已经存在丢失的情况，必须进行第二次全量复制，致使slave陷入死循环状态。</p>
+<pre><code>repl-backlog-size 1mb</code></pre></li>
+<li><p>master单机内存占用主机内存的比例不应过大，建议使用50%-70%的内存，留下30%-50%的内存用于执行bgsave命令和创建复制缓冲区</p>
+</li>
+</ol>
+<p><strong>数据同步阶段slave说明</strong></p>
+<ol>
+<li><p>为避免slave进行全量复制、部分复制时服务器响应阻塞或数据不同步，建议关闭此期间的对外服务</p>
+<pre><code>slave-serve-stale-data yes|no</code></pre></li>
+<li><p>数据同步阶段，master发送给slave信息可以理解master是slave的一个客户端，主动向slave发送命令</p>
+</li>
+<li><p>多个slave同时对master请求数据同步，master发送的RDB文件增多，会对带宽造成巨大冲击，如果master带宽不足，因此数据同步需要根据业务需求，适量错峰</p>
+</li>
+<li><p>slave过多时，建议调整拓扑结构，由一主多从结构变为树状结构，中间的节点既是master，也是slave。注意使用树状结构时，由于层级深度，导致深度越高的slave与最顶层master间数据同步延迟较大，数据一致性变差，应谨慎选择</p>
+</li>
+</ol>
+<h2 id="阶段三：命令传播阶段"><a href="#阶段三：命令传播阶段" class="headerlink" title="阶段三：命令传播阶段"></a><strong>阶段三：命令传播阶段</strong></h2><ul>
+<li>当master数据库状态被修改后，导致主从服务器数据库状态不一致，此时需要让主从数据同步到一致的状态，同步的动作称为命令传播</li>
+<li>master将接收到的数据变更命令发送给slave，slave接收命令后执行命令</li>
+</ul>
+<p><strong>命令传播阶段的部分复制</strong></p>
+<ul>
+<li><p>命令传播阶段出现了断网现象</p>
+<ul>
+<li>网络闪断闪连</li>
+<li>短时间网络中断</li>
+<li>长时间网络中断</li>
+</ul>
+</li>
+<li><p>部分复制的三个核心要素</p>
+<ul>
+<li>服务器的运行 id（run id）</li>
+<li>主服务器的复制积压缓冲区</li>
+<li>主从服务器的复制偏移量</li>
+</ul>
+</li>
+</ul>
+<p><strong>服务器运行ID（runid）</strong></p>
+<ul>
+<li><p>概念：服务器运行ID是每一台服务器每次运行的身份识别码，一台服务器多次运行可以生成多个运行id</p>
+</li>
+<li><p>组成：运行id由40位字符组成，是一个随机的十六进制字符<br>例如：fdc9ff13b9bbaab28db42b3d50f852bb5e3fcdce</p>
+</li>
+<li><p>作用：运行id被用于在服务器间进行传输，识别身份如果想两次操作均对同一台服务器进行，必须每次操作携带对应的运行id，用于对方识别</p>
+</li>
+<li><p>实现方式：运行id在每台服务器启动时自动生成的，master在首次连接slave时，会将自己的运行ID发送给slave，slave保存此ID，通过info Server命令，可以查看节点的runid</p>
+</li>
+</ul>
+<p><strong>复制缓冲区</strong><br><img src="/images/340.png" alt=""></p>
+<p><strong>复制缓冲区内部工作原理</strong><br><img src="/images/341.png" alt=""></p>
+<ul>
+<li><p>组成</p>
+<ul>
+<li>偏移量</li>
+<li>字节值<br><img src="/images/342.png" alt=""></li>
+</ul>
+</li>
+<li><p>工作原理</p>
+<ul>
+<li>通过offset区分不同的slave当前数据传播的差异</li>
+<li>master记录已发送的信息对应的offset</li>
+<li>slave记录已接收的信息对应的offset</li>
+</ul>
+</li>
+<li><p>概念：复制缓冲区，又名复制积压缓冲区，是一个先进先出（FIFO）的队列，用于存储服务器执行过的命令，每次传播命令，master都会将传播的命令记录下来，并存储在复制缓冲区</p>
+<ul>
+<li>复制缓冲区默认数据存储空间大小是1M，由于存储空间大小是固定的，当入队元素的数量大于队列长度时，最先入队的元素会被弹出，而新元素会被放入队列</li>
+</ul>
+</li>
+<li><p>由来：每台服务器启动时，如果开启有AOF或被连接成为master节点，即创建复制缓冲区</p>
+</li>
+<li><p>作用：用于保存master收到的所有指令（仅影响数据变更的指令，例如set，select） </p>
+</li>
+<li><p>数据来源：当master接收到主客户端的指令时，除了将指令执行，会将该指令存储到缓冲区中</p>
+</li>
+</ul>
+<p><strong>主从服务器复制偏移量（offset）</strong> </p>
+<ul>
+<li>概念：一个数字，描述复制缓冲区中的指令字节位置</li>
+<li>分类：<ul>
+<li>master复制偏移量：记录发送给所有slave的指令字节对应的位置（多个）</li>
+<li>slave复制偏移量：记录slave接收master发送过来的指令字节对应的位置（一个）</li>
+</ul>
+</li>
+<li>数据来源：<br>  master端：发送一次记录一次<br>  slave端：接收一次记录一次</li>
+<li>作用：同步信息，比对master与slave的差异，当slave断线后，恢复数据使用</li>
+</ul>
+<h2 id="数据同步-命令传播阶段工作流程"><a href="#数据同步-命令传播阶段工作流程" class="headerlink" title="数据同步+命令传播阶段工作流程"></a><strong>数据同步+命令传播阶段工作流程</strong></h2><p><img src="/images/343.png" alt=""></p>
+<p><strong>心跳机制</strong></p>
+<ul>
+<li><p>进入命令传播阶段候，master与slave间需要进行信息交换，使用心跳机制进行维护，实现双方连接保持在线</p>
+</li>
+<li><p>master心跳：</p>
+<ul>
+<li>指令：PING</li>
+<li>周期：由repl-ping-slave-period决定，默认10秒 </li>
+<li>作用：判断slave是否在线</li>
+<li>查询：INFO replication 获取slave最后一次连接时间间隔，lag项维持在0或1视为正常</li>
+</ul>
+</li>
+<li><p>slave心跳任务</p>
+<ul>
+<li>指令：REPLCONF ACK {offset}</li>
+<li>周期：1秒 </li>
+<li>作用1：汇报slave自己的复制偏移量，获取最新的数据变更指令</li>
+<li>作用2：判断master是否在线</li>
+</ul>
+</li>
+</ul>
+<p><strong>心跳阶段注意事项</strong></p>
+<ul>
+<li><p>当slave多数掉线，或延迟过高时，master为保障数据稳定性，将拒绝所有信息同步操作</p>
+<pre><code>min-slaves-to-write 2
+min-slaves-max-lag 8  ，连接延迟时长</code></pre><p>slave数量少于2个，或者所有slave的延迟都大于等于8秒时，强制关闭master写功能，停止数据同步</p>
+</li>
+<li><p>slave数量由slave发送REPLCONF ACK命令做确认</p>
+</li>
+<li><p>slave延迟由slave发送REPLCONF ACK命令做确认</p>
+</li>
+</ul>
+<p><strong>完整主从复制流程</strong><br><img src="/images/344.png" alt=""></p>
+<h2 id="主从复制常见问题"><a href="#主从复制常见问题" class="headerlink" title="主从复制常见问题"></a><strong>主从复制常见问题</strong></h2><p><strong>频繁的全量复制（1）</strong><br>伴随着系统的运行，master的数据量会越来越大，一旦master重启，runid将发生变化，会导致全部slave的全量复制操作<br>内部优化调整方案：</p>
+<ol>
+<li>master内部创建master_replid变量，使用runid相同的策略生成，长度41位，并发送给所有slave</li>
+<li>在master关闭时执行命令 shutdown save，进行RDB持久化,将runid与offset保存到RDB文件中<ul>
+<li>repl-id repl-offset </li>
+<li>通过redis-check-rdb命令可以查看该信息</li>
+</ul>
+</li>
+<li>master重启后加载RDB文件，恢复数据，重启后，将RDB文件中保存的repl-id与repl-offset加载到内存中<ul>
+<li>master_repl_id = repl master_repl_offset = repl-offset</li>
+<li>通过info命令可以查看该信息<br>作用：本机保存上次runid，重启后恢复该值，使所有slave认为还是之前的master</li>
+</ul>
+</li>
+</ol>
+<p><strong>频繁的全量复制（2）</strong> </p>
+<ul>
+<li><p>问题现象</p>
+<ul>
+<li>网络环境不佳，出现网络中断，slave不提供服务</li>
+</ul>
+</li>
+<li><p>问题原因</p>
+<ul>
+<li>复制缓冲区过小，断网后slave的offset越界，触发全量复制</li>
+</ul>
+</li>
+<li><p>最终结果</p>
+<ul>
+<li>slave反复进行全量复制</li>
+</ul>
+</li>
+<li><p>解决方案</p>
+<ul>
+<li><p>修改复制缓冲区大小</p>
+<p>  repl-backlog-size</p>
+</li>
+</ul>
+</li>
+<li><p>建议设置如下：<br>  1.测算从master到slave的重连平均时长second<br>  2.获取master平均每秒产生写命令数据总量write_size_per_second<br>  3.最优复制缓冲区空间 = 2 * second * write_size_per_second</p>
+</li>
+</ul>
+<p><strong>频繁的网络中断（1）</strong> </p>
+<ul>
+<li><p>问题现象</p>
+<ul>
+<li>master的CPU占用过高 或 slave频繁断开连接</li>
+</ul>
+</li>
+<li><p>问题原因</p>
+<ul>
+<li>slave每1秒发送REPLCONF ACK命令到master</li>
+<li>当slave接到了慢查询时（keys * ，hgetall等），会大量占用CPU性能</li>
+<li>master每1秒调用复制定时函数replicationCron()，比对slave发现长时间没有进行响应</li>
+</ul>
+</li>
+<li><p>最终结果</p>
+<ul>
+<li>master各种资源（输出缓冲区、带宽、连接等）被严重占用</li>
+</ul>
+</li>
+<li><p>解决方案</p>
+<ul>
+<li><p>通过设置合理的超时时间，确认是否释放slave</p>
+<p>  repl-timeout<br>该参数定义了超时时间的阈值（默认60秒），超过该值，释放slave</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>频繁的网络中断（2）</strong></p>
+<ul>
+<li><p>问题现象</p>
+<ul>
+<li>slave与master连接断开</li>
+</ul>
+</li>
+<li><p>问题原因</p>
+<ul>
+<li>master发送ping指令频度较低</li>
+<li>master设定超时时间较短</li>
+<li>ping指令在网络中存在丢包</li>
+</ul>
+</li>
+<li><p>解决方案</p>
+</li>
+<li><p>提高ping指令发送的频度<br>超时时间repl-time的时间至少是ping指令频度的5到10倍，否则slave很容易判定超时</p>
+<pre><code>repl-ping-slave-period</code></pre></li>
+</ul>
+<p><strong>数据不一致</strong></p>
+<ul>
+<li><p>问题现象</p>
+<ul>
+<li>多个slave获取相同数据不同步</li>
+</ul>
+</li>
+<li><p>问题原因</p>
+<ul>
+<li>网络信息不同步，数据发送有延迟</li>
+</ul>
+</li>
+<li><p>解决方案</p>
+<ul>
+<li><p>优化主从间的网络环境，通常放置在同一个机房部署，如使用阿里云等云服务器时要注意此现象</p>
+</li>
+<li><p>监控主从节点延迟（通过offset）判断，如果slave延迟过大，暂时屏蔽程序对该slave的数据访问</p>
+<p>  slave-serve-stale-data yes|no<br>开启后仅响应info、slaveof等少数命令（慎用，除非对数据一致性要求很高）</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/05/21/Redis/Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/" data-id="ckb22iueh0046zwu8fhgq0v2z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/23/Redis/Redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis哨兵模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/21/Redis/Redis%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis高级数据类型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

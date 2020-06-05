@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>普利姆(Prim)算法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="算法六：普利姆(Prim)算法应用场景-修路问题看一个应用场景和问题：有胜利乡有7个村庄(A, B, C, D, E, F, G) ，现在需要修路把7个村庄连通各个村庄的距离用边线表示(权) ，比如 A – B 距离 5公里问：如何修路保证各个村庄都能连通，并且总的修建公路总里程最短?思路: 将10条边，连接即可，但是总的里程数不是最小.正确的思路，就是尽可能的选择少的路线，并且每条路线最小，保证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="普利姆(Prim)算法">
+<meta property="og:url" content="https://tukuai.github.io/2020/03/11/%E7%AE%97%E6%B3%95/%E6%99%AE%E5%88%A9%E5%A7%86(Prim)%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="算法六：普利姆(Prim)算法应用场景-修路问题看一个应用场景和问题：有胜利乡有7个村庄(A, B, C, D, E, F, G) ，现在需要修路把7个村庄连通各个村庄的距离用边线表示(权) ，比如 A – B 距离 5公里问：如何修路保证各个村庄都能连通，并且总的修建公路总里程最短?思路: 将10条边，连接即可，但是总的里程数不是最小.正确的思路，就是尽可能的选择少的路线，并且每条路线最小，保证">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/90.png">
+<meta property="og:image" content="https://tukuai.github.io/images/91.png">
+<meta property="og:image" content="https://tukuai.github.io/images/90.png">
+<meta property="article:published_time" content="2020-03-11T01:23:10.000Z">
+<meta property="article:modified_time" content="2020-03-16T14:43:16.419Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/90.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-算法/普利姆(Prim)算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/11/%E7%AE%97%E6%B3%95/%E6%99%AE%E5%88%A9%E5%A7%86(Prim)%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-03-11T01:23:10.000Z" itemprop="datePublished">2020-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      普利姆(Prim)算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="算法六：普利姆-Prim-算法"><a href="#算法六：普利姆-Prim-算法" class="headerlink" title="算法六：普利姆(Prim)算法"></a><strong>算法六：普利姆(Prim)算法</strong></h2><p><strong>应用场景-修路问题</strong><br>看一个应用场景和问题：<br><img src="/images/90.png" alt=""><br>有胜利乡有7个村庄(A, B, C, D, E, F, G) ，现在需要修路把7个村庄连通<br>各个村庄的距离用边线表示(权) ，比如 A – B 距离 5公里<br>问：如何修路保证各个村庄都能连通，并且总的修建公路总里程最短?<br>思路: 将10条边，连接即可，但是总的里程数不是最小.<br>正确的思路，就是尽可能的选择少的路线，并且每条路线最小，保证总里程数最少. </p>
+<h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a><strong>最小生成树</strong></h3><p>修路问题本质就是就是最小生成树问题， 先介绍一下最小生成树(Minimum Cost Spanning Tree)，简称MST。</p>
+<ol>
+<li>给定一个带权的无向连通图,如何选取一棵生成树,使树上所有边上权的总和为最小,这叫最小生成树 . </li>
+<li>N个顶点，一定有N-1条边</li>
+<li>包含全部顶点</li>
+<li>N-1条边都在图中</li>
+<li>举例说明(如图:)<br><img src="/images/91.png" alt=""></li>
+<li>求最小生成树的算法主要是普里姆算法和克鲁斯卡尔算法</li>
+</ol>
+<h3 id="普里姆算法介绍"><a href="#普里姆算法介绍" class="headerlink" title="普里姆算法介绍"></a><strong>普里姆算法介绍</strong></h3><p>普利姆(Prim)算法求最小生成树，也就是在包含n个顶点的连通图中，找出只有(n-1)条边包含所有n个顶点的连通子图，也就是所谓的极小连通子图<br>普利姆的算法如下:</p>
+<ol>
+<li>设G=(V,E)是连通网，T=(U,D)是最小生成树，V,U是顶点集合，E,D是边的集合 </li>
+<li>若从顶点u开始构造最小生成树，则从集合V中取出顶点u放入集合U中，标记顶点v的visited[u]=1</li>
+<li>若集合U中顶点ui与集合V-U中的顶点vj之间存在边，则寻找这些边中权值最小的边，但不能构成回路，将顶点vj加入集合U中，将边（ui,vj）加入集合D中，标记visited[vj]=1</li>
+<li>重复步骤②，直到U与V相等，即所有顶点都被标记为访问过，此时D中有n-1条边</li>
+<li>提示: 单独看步骤很难理解，我们通过代码来讲解，比较好理解.<br><img src="/images/90.png" alt=""><blockquote>
+<p>从A开始的话，找到已有节点A的最小边(连接未有结点)<br> 是A–&gt;G:2<br> 然后G-&gt;B:3<br> G-&gt;E:4<br> G-&gt;F:5<br> F-&gt;D:4<br> A-&gt;C:7</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">class PrimDeom</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">            Prim P&#x3D;new Prim();</span><br><span class="line">            P.prim(3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Prim &#123;</span><br><span class="line"></span><br><span class="line">    ArrayList&lt;NodeP&gt; nop&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">    ArrayList&lt;NodeP&gt; yes&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">    Prim()</span><br><span class="line">    &#123;</span><br><span class="line">        NodeP A&#x3D;new NodeP(&#39;A&#39;);</span><br><span class="line">        NodeP B&#x3D;new NodeP(&#39;B&#39;);</span><br><span class="line">        NodeP C&#x3D;new NodeP(&#39;C&#39;);</span><br><span class="line">        NodeP D&#x3D;new NodeP(&#39;D&#39;);</span><br><span class="line">        NodeP E&#x3D;new NodeP(&#39;E&#39;);</span><br><span class="line">        NodeP F&#x3D;new NodeP(&#39;F&#39;);</span><br><span class="line">        NodeP G&#x3D;new NodeP(&#39;G&#39;);</span><br><span class="line">        A.add(B,5);A.add(C,7);A.add(G,2);</span><br><span class="line">        B.add(A,5);B.add(G,3);B.add(D,9);</span><br><span class="line">        C.add(A,7);C.add(E,8);</span><br><span class="line">        D.add(B,9);D.add(F,4);</span><br><span class="line">        F.add(G,6);F.add(D,4);F.add(E,5);</span><br><span class="line">        E.add(F,5);E.add(C,8);E.add(G,4);</span><br><span class="line">        G.add(A,2);G.add(B,3);G.add(F,6);G.add(E,4);</span><br><span class="line">        nop.add(A);nop.add(B);nop.add(C);nop.add(D);</span><br><span class="line">        nop.add(E);nop.add(F);nop.add(G);</span><br><span class="line">    &#125;</span><br><span class="line">    public void prim(int n)</span><br><span class="line">    &#123;   yes.add(nop.get(n));</span><br><span class="line">        nop.remove(n);</span><br><span class="line">        while(nop.size()&gt;0)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;求出最小边，v1记录yes中的NodeP，v2记录nop中的NodeP</span><br><span class="line">            &#x2F;&#x2F;并随便假定一个最小边</span><br><span class="line">            NodeP v1&#x3D;yes.get(0);</span><br><span class="line">            NodeP v2&#x3D;nop.get(0);</span><br><span class="line">            for (NodeP py : yes)</span><br><span class="line">            &#123;</span><br><span class="line">                for (NodeP pn : nop)</span><br><span class="line">                &#123;</span><br><span class="line">                    if(py.neighbour.get(pn)!&#x3D;null</span><br><span class="line">                            &amp;&amp;v1.neighbour.get(v2)&#x3D;&#x3D;null)</span><br><span class="line">                    &#123;</span><br><span class="line">                        v1&#x3D;py;v2&#x3D;pn;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(py.neighbour.get(pn)!&#x3D;null</span><br><span class="line">                       &amp;&amp;v1.neighbour.get(v2)!&#x3D;null</span><br><span class="line">                       &amp;&amp;py.neighbour.get(pn)&lt;v1.neighbour.get(v2))</span><br><span class="line">                    &#123;</span><br><span class="line">                        v1&#x3D;py;v2&#x3D;pn;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(v1.c+&quot;-&gt;&quot;+v2.c+&quot;权值&quot;+v1.neighbour.get(v2));</span><br><span class="line">            yes.add(v2);</span><br><span class="line">            nop.remove(v2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class NodeP</span><br><span class="line">&#123;</span><br><span class="line">    char c;</span><br><span class="line">    HashMap&lt;NodeP,Integer&gt;  neighbour&#x3D;new HashMap&lt;&gt;();</span><br><span class="line">    public NodeP(char c) &#123;</span><br><span class="line">        this.c &#x3D; c;</span><br><span class="line">    &#125;</span><br><span class="line">    public void add(NodeP np,int i)</span><br><span class="line">    &#123;</span><br><span class="line">        neighbour.put(np,i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/03/11/%E7%AE%97%E6%B3%95/%E6%99%AE%E5%88%A9%E5%A7%86(Prim)%E7%AE%97%E6%B3%95/" data-id="ckb22iugf00blzwu8emm6hr6b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/13/%E7%AE%97%E6%B3%95/%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          迪杰斯特拉算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/10/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">贪心算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

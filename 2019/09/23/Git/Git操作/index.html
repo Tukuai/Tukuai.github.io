@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git操作 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Git 命令行操作##本地库初始化  命令：git init 效果： wjh@LAPTOP-FR8RF00H MINGW64 &#x2F;f&#x2F;JAVA学习&#x2F;Git&amp;github学习资料&#x2F;.git (GIT_DIR!) $ ll total 7 -rw-r--r-- 1 wjh 197121 130  5月 10 15:03 config -rw-r--r-- 1 wjh 197121  73  5月">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git操作">
+<meta property="og:url" content="https://tukuai.github.io/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Git 命令行操作##本地库初始化  命令：git init 效果： wjh@LAPTOP-FR8RF00H MINGW64 &#x2F;f&#x2F;JAVA学习&#x2F;Git&amp;github学习资料&#x2F;.git (GIT_DIR!) $ ll total 7 -rw-r--r-- 1 wjh 197121 130  5月 10 15:03 config -rw-r--r-- 1 wjh 197121  73  5月">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/278.png">
+<meta property="og:image" content="https://tukuai.github.io/images/279.png">
+<meta property="og:image" content="https://tukuai.github.io/images/280.png">
+<meta property="og:image" content="https://tukuai.github.io/images/281.png">
+<meta property="og:image" content="https://tukuai.github.io/images/282.png">
+<meta property="article:published_time" content="2019-09-23T06:31:37.000Z">
+<meta property="article:modified_time" content="2020-05-11T08:06:47.752Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/278.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Git/Git操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time datetime="2019-09-23T06:31:37.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-命令行操作"><a href="#Git-命令行操作" class="headerlink" title="Git 命令行操作"></a><strong>Git 命令行操作</strong></h1><p>##<strong>本地库初始化</strong> </p>
+<p><strong>命令：</strong>git init</p>
+<p><strong>效果：</strong></p>
+<pre><code>wjh@LAPTOP-FR8RF00H MINGW64 /f/JAVA学习/Git&amp;github学习资料/.git (GIT_DIR!)
+$ ll
+total 7
+-rw-r--r-- 1 wjh 197121 130  5月 10 15:03 config
+-rw-r--r-- 1 wjh 197121  73  5月 10 15:03 description
+-rw-r--r-- 1 wjh 197121  23  5月 10 15:03 HEAD
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 hooks/
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 info/
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 objects/
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 refs/ </code></pre><p><strong>注意：</strong>.git 目录中存放的是本地库相关的子目录和文件，不要删除，也不要胡乱修改。 </p>
+<h2 id="设置签名"><a href="#设置签名" class="headerlink" title="设置签名"></a><strong>设置签名</strong></h2><p><strong>形式</strong><br>用户名：tom<br>Email 地址：<a href="mailto:goodMorning@atguigu.com">goodMorning@atguigu.com</a> </p>
+<p><strong>作用：</strong>区分不同开发人员的身份 </p>
+<p><strong>辨析：</strong>这里设置的签名和登录远程库(代码托管中心)的账号、密码没有任何关系。 </p>
+<p><strong>命令</strong><br>项目级别/仓库级别：仅在当前本地库范围内有效 </p>
+<ul>
+<li>git config user.name tom_pro </li>
+<li>git config user.email <a href="mailto:goodMorning_pro@atguigu.com">goodMorning_pro@atguigu.com</a> </li>
+<li>信息保存位置：当前项目目录/.git/config 文件  </li>
+</ul>
+<p>系统用户级别：登录当前操作系统的用户范围 </p>
+<ul>
+<li>git config –global user.name tom_glb </li>
+<li>git config –global <a href="mailto:goodMorning_pro@atguigu.com">goodMorning_pro@atguigu.com</a> </li>
+<li>信息保存位置：~ /.gitconfig 文件  </li>
+</ul>
+<p>级别优先级 </p>
+<ul>
+<li>就近原则：项目级别优先于系统用户级别，二者都有时采用项目级别的签名 </li>
+<li>如果只有系统用户级别的签名，就以系统用户级别的签名为准 </li>
+<li>二者都没有不允许 </li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a><strong>基本操作</strong></h2><p><strong>状态查看</strong><br>git status<br>查看工作区、暂存区状态  </p>
+<p><strong>添加</strong><br>git add [file name]<br>将工作区的“新建/修改”添加到暂存区 </p>
+<p><strong>提交</strong><br>git commit -m “commit message” [file name]<br>将暂存区的内容提交到本地库 </p>
+<p><strong>查看历史记录</strong><br>git log<br>多屏显示控制方式：<br>    * 空格向下翻页<br>    * b 向上翻页<br>    * q 退出<br>git log –pretty=oneline ，以最简洁的方式显示<br>git log –oneline ，以更简洁的方式显示<br>git reflog ，表示的时候可以查看指针的指向。HEAD@{移动到当前版本需要多少步} ，<br>HEAD就是指向当前版本的指针</p>
+<p><strong>HEAD前进后退</strong><br>本质<br><img src="/images/278.png" alt=""><br>基于索引值操作[推荐] </p>
+<ul>
+<li>git reset –hard [局部索引值] </li>
+<li>git reset –hard a6ace91 </li>
+</ul>
+<p>使用^符号：只能后退 ，以前版本</p>
+<ul>
+<li>git reset –hard HEAD^ </li>
+<li>注：一个^表示后退一步，n 个表示后退 n 步 </li>
+</ul>
+<p>使用~ 符号：只能后退 ，以前版本</p>
+<ul>
+<li>git reset –hard HEAD~ n </li>
+<li>注：表示后退 n 步 </li>
+</ul>
+<p><strong>reset 命令的三个参数对比</strong> </p>
+<ul>
+<li>–soft 参数 ：仅仅在本地库移动 HEAD 指针<br><img src="/images/279.png" alt=""></li>
+<li>–mixed 参数 ：在本地库移动 HEAD 指针 ，重置暂存区<br><img src="/images/280.png" alt=""></li>
+<li>–hard 参数 ：在本地库移动 HEAD 指针 ，重置暂存区 ，重置工作区  </li>
+</ul>
+<p><strong>删除文件并找回</strong> </p>
+<p>前提：删除前，文件存在时的状态提交到了本地库。 </p>
+<p>操作：git reset –hard [指针位置] </p>
+<ul>
+<li>删除操作已经提交到本地库：指针位置指向历史记录 </li>
+<li>删除操作尚未提交到本地库：指针位置使用 HEAD </li>
+</ul>
+<p><strong>比较文件差异</strong> </p>
+<ul>
+<li>git diff [文件名] ，将工作区中的文件和暂存区进行比较 </li>
+<li>git diff [本地库中历史版本] [文件名] ，将工作区中的文件和本地库历史记录比较 ，不带文件名比较多个文件 </li>
+</ul>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a><strong>分支管理</strong></h2><p><strong>什么是分支？</strong><br>在版本控制过程中，使用多条线同时推进多个任务。<br> <img src="/images/281.png" alt=""><br><strong>分支的好处？</strong><br>同时并行推进多个功能开发，提高开发效率<br>各个分支在开发过程中，如果某一个分支开发失败，不会对其他分支有任何影响。失败的分支删除重新开始即可。 </p>
+<p><strong>分支操作</strong> </p>
+<ul>
+<li><p>创建分支 git branch [分支名] </p>
+</li>
+<li><p>查看分支 git branch -v </p>
+</li>
+<li><p>切换分支 git checkout [分支名] </p>
+</li>
+<li><p>合并分支 </p>
+<ul>
+<li>第一步：切换到接受修改的分支（被合并，增加新内容）上 git checkout [被合并分支名]  </li>
+<li>第二步：执行 merge 命令 git merge [有新内容分支名] </li>
+</ul>
+</li>
+</ul>
+<p><strong>解决冲突</strong><br>冲突的表现<br><img src="/images/282.png" alt=""></p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;HEAD,========,&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;master都是系统自己添加的。</code></pre><p>冲突的解决 </p>
+<ul>
+<li>第一步：编辑文件，删除特殊符号 </li>
+<li>第二步：把文件修改到满意的程度，保存退出 </li>
+<li>第三步：git add [文件名] </li>
+<li>第四步：git commit -m “日志信息” ，注意：此时 commit 一定不能带具体文件名</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/" data-id="ckb22iudc000izwu8diu0128s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/23/Git/Git%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git基本原理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/23/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">多线程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

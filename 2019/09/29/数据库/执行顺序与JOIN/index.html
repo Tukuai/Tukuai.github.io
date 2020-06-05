@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>执行顺序与JOIN | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SQL 的执行顺序手写的顺序：  真正执行的顺序： 随着 Mysql 版本的更新换代，其优化器也在不断的升级，优化器会分析不同执行顺序产生的性能消耗不同而动 态调整执行顺序。下面是经常出现的查询顺序：  七种JOIN常见的 Join 查询图oracle里面有full join,但是在mysql中没有full join。我们可以使用union来达到目的。 Join 示例1.建表语句  CREATE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="执行顺序与JOIN">
+<meta property="og:url" content="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SQL 的执行顺序手写的顺序：  真正执行的顺序： 随着 Mysql 版本的更新换代，其优化器也在不断的升级，优化器会分析不同执行顺序产生的性能消耗不同而动 态调整执行顺序。下面是经常出现的查询顺序：  七种JOIN常见的 Join 查询图oracle里面有full join,但是在mysql中没有full join。我们可以使用union来达到目的。 Join 示例1.建表语句  CREATE">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/244.png">
+<meta property="og:image" content="https://tukuai.github.io/images/245.png">
+<meta property="og:image" content="https://tukuai.github.io/images/246.png">
+<meta property="og:image" content="https://tukuai.github.io/images/247.png">
+<meta property="article:published_time" content="2019-09-29T13:20:36.000Z">
+<meta property="article:modified_time" content="2020-04-28T02:45:59.332Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/244.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-数据库/执行顺序与JOIN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/" class="article-date">
+  <time datetime="2019-09-29T13:20:36.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      执行顺序与JOIN
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQL-的执行顺序"><a href="#SQL-的执行顺序" class="headerlink" title="SQL 的执行顺序"></a><strong>SQL 的执行顺序</strong></h2><p>手写的顺序：<br><img src="/images/244.png" alt=""> </p>
+<p>真正执行的顺序： 随着 Mysql 版本的更新换代，其优化器也在不断的升级，优化器会分析不同执行顺序产生的性能消耗不同而动 态调整执行顺序。下面是经常出现的查询顺序：<br><img src="/images/245.png" alt=""><br><img src="/images/246.png" alt=""> </p>
+<h2 id="七种JOIN"><a href="#七种JOIN" class="headerlink" title="七种JOIN"></a><strong>七种JOIN</strong></h2><p><strong>常见的 Join 查询图</strong><br><img src="/images/247.png" alt=""><br>oracle里面有full join,但是在mysql中没有full join。我们可以使用union来达到目的。</p>
+<p><strong>Join 示例</strong><br><strong>1.建表语句</strong> </p>
+<pre><code>CREATE TABLE `t_dept` ( 
+`id` INT(11) NOT NULL AUTO_INCREMENT, 
+`deptName` VARCHAR(30) DEFAULT NULL, 
+`address` VARCHAR(40) DEFAULT NULL, 
+PRIMARY KEY (`id`) 
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
+CREATE TABLE `t_emp` ( 
+`id` INT(11) NOT NULL AUTO_INCREMENT, 
+`name` VARCHAR(20) DEFAULT NULL, 
+`age` INT(3) DEFAULT NULL, 
+`deptId` INT(11) DEFAULT NULL, 
+empno int not null, 
+PRIMARY KEY (`id`), 
+KEY `idx_dept_id` (`deptId`) 
+#CONSTRAINT `fk_dept_id` FOREIGN KEY (`deptId`) REFERENCES `t_dept` (`id`) 
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
+
+INSERT INTO t_dept(deptName,address) VALUES(&apos;华山&apos;,&apos;华山&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;丐帮&apos;,&apos;洛阳&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;峨眉&apos;,&apos;峨眉山&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;武当&apos;,&apos;武当山&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;明教&apos;,&apos;光明顶&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;少林&apos;,&apos;少林寺&apos;); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;风清扬&apos;,90,1,100001);  
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;岳不群&apos;,50,1,100002); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;令狐冲&apos;,24,1,100003); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;洪七公&apos;,70,2,100004); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;乔峰&apos;,35,2,100005); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;灭绝师太&apos;,70,3,100006); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;周芷若&apos;,20,3,100007); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;张三丰&apos;,100,4,100008); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;张无忌&apos;,25,5,100009); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;韦小宝&apos;,18,null,100010);</code></pre><p><strong>案例</strong> </p>
+<pre><code>1.所有有门派人员的信息（要求显示门派名称） 
+SELECT e.`name`,d.`deptName` FROM t_emp e INNER JOIN t_dept d ON e.`deptId`=d.`id`; 
+2. 列出所有人员及其门派信息 
+SELECT e.`name`,d.`deptName` FROM t_emp e LEFT JOIN t_dept d ON e.`deptId`=d.`id`; 
+3. 列出所有门派 
+SELECT * FROM t_dept; 
+4. 所有无门派人士 
+SELECT * FROM t_emp WHERE deptId IS NULL; 
+5. 所有无人门派 
+SELECT d.* FROM t_dept d LEFT JOIN t_emp e ON d.`id`=e.`deptId` WHERE e.`deptId` IS NULL; 
+6. 所有人员和门派的对应关系 
+SELECT * FROM t_emp e LEFT JOIN t_dept d ON e.`deptId`=d.`id` 
+UNION 
+SELECT * FROM t_emp e RIGHT JOIN t_dept d ON e.`deptId`=d.`id`;  
+7. 所有没有入门派的人员和没人入的门派 
+SELECT * FROM t_emp e LEFT JOIN t_dept d ON e.`deptId`=d.`id` WHERE e.deptId IS NULL 
+UNION 
+SELECT * FROM t_dept d LEFT JOIN t_emp e ON d.`id`=e.`deptId` WHERE e.`deptId` IS NULL; 
+8. 添加 CEO 字段 
+ALTER TABLE `t_dept` 
+add CEO INT(11) ; 
+update t_dept set CEO=2 where id=1; 
+update t_dept set CEO=4 where id=2; 
+update t_dept set CEO=6 where id=3; 
+update t_dept set CEO=8 where id=4; 
+update t_dept set CEO=9 where id=5; 
+8.1 求各个门派对应的掌门人名称 
+SELECT d.deptName,e.name FROM t_dept d LEFT JOIN t_emp e ON d.ceo=e.id 
+8.2 求所有当上掌门人的平均年龄 
+SELECT AVG(e.age) FROM t_dept d LEFT JOIN t_emp e ON d.ceo=e.id 
+8.3 求所有人物对应的掌门名称 
+SELECT ed.name &apos;人物&apos;,c.name &apos;掌门&apos; FROM 
+(SELECT e.name,d.ceo from t_emp e LEFT JOIN t_dept d on e.deptid=d.id) ed 
+LEFT JOIN t_emp c on ed.ceo= c.id; 
+SELECT e.name &apos;人物&apos;,tmp.name &apos;掌门&apos; 
+FROM t_emp e LEFT JOIN (SELECT d.id did,e.name FROM t_dept d LEFT JOIN t_emp e ON d.ceo=e.id)tmp 
+ON e.deptId=tmp.did; 
+SELECT e1.name &apos;人物&apos;,e2.name &apos;掌门&apos; 
+FROM t_emp e1 
+LEFT JOIN t_dept d on e1.deptid = d.id 
+LEFT JOIN t_emp e2 on d.ceo = e2.id ;  
+SELECT e2.name &apos;人物&apos;, 
+(SELECT e1.name FROM t_emp e1 where e1.id= d.ceo) &apos;掌门&apos; 
+from t_emp e2 LEFT JOIN t_dept d on e2.deptid=d.id;</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/" data-id="ckb22iufv009gzwu8f6jth489" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mysql逻辑架构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据库数据类型详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

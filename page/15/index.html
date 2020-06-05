@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://tukuai.github.io/page/15/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Tukuai">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Git/Git基本原理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/Git/Git%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="article-date">
+  <time datetime="2019-09-23T06:31:37.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/Git/Git%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">Git基本原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a><strong>哈希</strong></h2><p>哈希是一个系列的加密算法，各个不同的哈希算法虽然加密强度不同，但是有以下几个共同点：<br>①不管输入数据的数据量有多大，输入同一个哈希算法，得到的加密结果长度固定。<br>②哈希算法确定，输入数据确定，输出数据能够保证不变<br>③哈希算法确定，输入数据有变化，输出数据一定有变化，而且通常变化很大<br>④哈希算法不可逆 </p>
+<p>Git 底层采用的是 SHA-1 算法。 生成的是32位16进制数。<br>哈希算法可以被用来验证文件。原理如下图所示：<br><img src="/images/283.png" alt=""><br>Git 就是靠这种机制来从根本上保证数据完整性的。 </p>
+<h2 id="Git-保存版本的机制"><a href="#Git-保存版本的机制" class="headerlink" title="Git 保存版本的机制"></a><strong>Git 保存版本的机制</strong></h2><p><strong>集中式版本控制工具的文件管理机制</strong><br>以文件变更列表的方式存储信息。这类系统将它们保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异。<br><img src="/images/284.png" alt=""></p>
+<p><strong>Git 的文件管理机制</strong><br>Git 把数据看作是小型文件系统的一组快照。每次提交更新时 Git 都会对当前的全部文件制作一个快照并保存这个快照的索引。为了高效，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。所以 Git 的工作方式可以称之为快照流。<br><img src="/images/285.png" alt=""><br><strong>文件管理机制细节</strong><br>Git 的“提交对象”<br><img src="/images/286.png" alt=""><br>提交对象及其父对象形成的链条<br><img src="/images/287.png" alt=""></p>
+<h2 id="Git-分支管理机制"><a href="#Git-分支管理机制" class="headerlink" title="Git 分支管理机制"></a><strong>Git 分支管理机制</strong></h2><p>其中testing是分支<br><strong>分支的创建</strong><br><img src="/images/288.png" alt=""><br><strong>分支的切换</strong><br><img src="/images/289.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/23/Git/Git%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" data-id="ckb22iud9000dzwu876o2bujv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git/Git操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time datetime="2019-09-23T06:31:37.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/">Git操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-命令行操作"><a href="#Git-命令行操作" class="headerlink" title="Git 命令行操作"></a><strong>Git 命令行操作</strong></h1><p>##<strong>本地库初始化</strong> </p>
+<p><strong>命令：</strong>git init</p>
+<p><strong>效果：</strong></p>
+<pre><code>wjh@LAPTOP-FR8RF00H MINGW64 /f/JAVA学习/Git&amp;github学习资料/.git (GIT_DIR!)
+$ ll
+total 7
+-rw-r--r-- 1 wjh 197121 130  5月 10 15:03 config
+-rw-r--r-- 1 wjh 197121  73  5月 10 15:03 description
+-rw-r--r-- 1 wjh 197121  23  5月 10 15:03 HEAD
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 hooks/
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 info/
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 objects/
+drwxr-xr-x 1 wjh 197121   0  5月 10 15:03 refs/ </code></pre><p><strong>注意：</strong>.git 目录中存放的是本地库相关的子目录和文件，不要删除，也不要胡乱修改。 </p>
+<h2 id="设置签名"><a href="#设置签名" class="headerlink" title="设置签名"></a><strong>设置签名</strong></h2><p><strong>形式</strong><br>用户名：tom<br>Email 地址：<a href="mailto:goodMorning@atguigu.com">goodMorning@atguigu.com</a> </p>
+<p><strong>作用：</strong>区分不同开发人员的身份 </p>
+<p><strong>辨析：</strong>这里设置的签名和登录远程库(代码托管中心)的账号、密码没有任何关系。 </p>
+<p><strong>命令</strong><br>项目级别/仓库级别：仅在当前本地库范围内有效 </p>
+<ul>
+<li>git config user.name tom_pro </li>
+<li>git config user.email <a href="mailto:goodMorning_pro@atguigu.com">goodMorning_pro@atguigu.com</a> </li>
+<li>信息保存位置：当前项目目录/.git/config 文件  </li>
+</ul>
+<p>系统用户级别：登录当前操作系统的用户范围 </p>
+<ul>
+<li>git config –global user.name tom_glb </li>
+<li>git config –global <a href="mailto:goodMorning_pro@atguigu.com">goodMorning_pro@atguigu.com</a> </li>
+<li>信息保存位置：~ /.gitconfig 文件  </li>
+</ul>
+<p>级别优先级 </p>
+<ul>
+<li>就近原则：项目级别优先于系统用户级别，二者都有时采用项目级别的签名 </li>
+<li>如果只有系统用户级别的签名，就以系统用户级别的签名为准 </li>
+<li>二者都没有不允许 </li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a><strong>基本操作</strong></h2><p><strong>状态查看</strong><br>git status<br>查看工作区、暂存区状态  </p>
+<p><strong>添加</strong><br>git add [file name]<br>将工作区的“新建/修改”添加到暂存区 </p>
+<p><strong>提交</strong><br>git commit -m “commit message” [file name]<br>将暂存区的内容提交到本地库 </p>
+<p><strong>查看历史记录</strong><br>git log<br>多屏显示控制方式：<br>    * 空格向下翻页<br>    * b 向上翻页<br>    * q 退出<br>git log –pretty=oneline ，以最简洁的方式显示<br>git log –oneline ，以更简洁的方式显示<br>git reflog ，表示的时候可以查看指针的指向。HEAD@{移动到当前版本需要多少步} ，<br>HEAD就是指向当前版本的指针</p>
+<p><strong>HEAD前进后退</strong><br>本质<br><img src="/images/278.png" alt=""><br>基于索引值操作[推荐] </p>
+<ul>
+<li>git reset –hard [局部索引值] </li>
+<li>git reset –hard a6ace91 </li>
+</ul>
+<p>使用^符号：只能后退 ，以前版本</p>
+<ul>
+<li>git reset –hard HEAD^ </li>
+<li>注：一个^表示后退一步，n 个表示后退 n 步 </li>
+</ul>
+<p>使用~ 符号：只能后退 ，以前版本</p>
+<ul>
+<li>git reset –hard HEAD~ n </li>
+<li>注：表示后退 n 步 </li>
+</ul>
+<p><strong>reset 命令的三个参数对比</strong> </p>
+<ul>
+<li>–soft 参数 ：仅仅在本地库移动 HEAD 指针<br><img src="/images/279.png" alt=""></li>
+<li>–mixed 参数 ：在本地库移动 HEAD 指针 ，重置暂存区<br><img src="/images/280.png" alt=""></li>
+<li>–hard 参数 ：在本地库移动 HEAD 指针 ，重置暂存区 ，重置工作区  </li>
+</ul>
+<p><strong>删除文件并找回</strong> </p>
+<p>前提：删除前，文件存在时的状态提交到了本地库。 </p>
+<p>操作：git reset –hard [指针位置] </p>
+<ul>
+<li>删除操作已经提交到本地库：指针位置指向历史记录 </li>
+<li>删除操作尚未提交到本地库：指针位置使用 HEAD </li>
+</ul>
+<p><strong>比较文件差异</strong> </p>
+<ul>
+<li>git diff [文件名] ，将工作区中的文件和暂存区进行比较 </li>
+<li>git diff [本地库中历史版本] [文件名] ，将工作区中的文件和本地库历史记录比较 ，不带文件名比较多个文件 </li>
+</ul>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a><strong>分支管理</strong></h2><p><strong>什么是分支？</strong><br>在版本控制过程中，使用多条线同时推进多个任务。<br> <img src="/images/281.png" alt=""><br><strong>分支的好处？</strong><br>同时并行推进多个功能开发，提高开发效率<br>各个分支在开发过程中，如果某一个分支开发失败，不会对其他分支有任何影响。失败的分支删除重新开始即可。 </p>
+<p><strong>分支操作</strong> </p>
+<ul>
+<li><p>创建分支 git branch [分支名] </p>
+</li>
+<li><p>查看分支 git branch -v </p>
+</li>
+<li><p>切换分支 git checkout [分支名] </p>
+</li>
+<li><p>合并分支 </p>
+<ul>
+<li>第一步：切换到接受修改的分支（被合并，增加新内容）上 git checkout [被合并分支名]  </li>
+<li>第二步：执行 merge 命令 git merge [有新内容分支名] </li>
+</ul>
+</li>
+</ul>
+<p><strong>解决冲突</strong><br>冲突的表现<br><img src="/images/282.png" alt=""></p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;HEAD,========,&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;master都是系统自己添加的。</code></pre><p>冲突的解决 </p>
+<ul>
+<li>第一步：编辑文件，删除特殊符号 </li>
+<li>第二步：把文件修改到满意的程度，保存退出 </li>
+<li>第三步：git add [文件名] </li>
+<li>第四步：git commit -m “日志信息” ，注意：此时 commit 一定不能带具体文件名</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/" data-id="ckb22iudc000izwu8diu0128s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-多线程/多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2019-09-23T06:31:37.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a><strong>多线程</strong></h1><p>我们在之前，学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那现在想要设计一个程序，边打游戏边听歌，怎么设计？</p>
+<p>要解决上述问题,咱们得使用多进程或者多线程来解决.</p>
+<h2 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a><strong>并发与并行</strong></h2><ul>
+<li><strong>并发:Concurrent</strong>：指两个或多个事件在<strong>同一个时间段内</strong>发生。单核串行。</li>
+<li><strong>并行:Parallel</strong>：指两个或多个事件在<strong>同一时刻</strong>发生（同时发生）。多核并行。</li>
+</ul>
+<p><strong>例子</strong></p>
+<ul>
+<li>家庭主妇做饭、打扫卫生、给孩子喂奶，她一个人轮流交替做这多件事，这时就是并发</li>
+<li>家庭主妇雇了个保姆，她们一起这些事，这时既有并发，也有并行（这时会产生竞争，例如锅只有一口，一个人用锅时，另一个人就得等待）</li>
+<li>雇了3个保姆，一个专做饭、一个专打扫卫生、一个专喂奶，互不干扰，这时是并行<br><img src="/images/%E5%B9%B6%E8%A1%8C%E4%B8%8E%E5%B9%B6%E5%8F%91.bmp" alt=""></li>
+</ul>
+<p>在操作系统中，安装了多个程序，并发指的是在一段时间内宏观上有多个程序同时运行，这在单 CPU 系统中，每一时刻只能有一道程序执行，即微观上这些程序是分时的交替运行，只不过是给人的感觉是同时运行，那是因为分时交替运行的时间是非常短的。</p>
+<p>而在多个 CPU 系统中，则这些可以并发执行的程序便可以分配到多个处理器上（CPU），实现多任务并行执行，即利用每个处理器来处理一个可以并发执行的程序，这样多个程序便可以同时执行。目前电脑市场上说的多核 CPU，便是多核处理器，核 越多，并行处理的程序越多，能大大的提高电脑运行的效率。</p>
+<blockquote>
+<p>注意：单核处理器的计算机肯定是不能并行的处理多个任务的，只能是多个任务在单个CPU上并发运行。同理,线程也是一样的，从宏观角度上理解线程是并行运行的，但是从微观角度上分析却是串行运行的，即一个线程一个线程的去运行，当系统只有一个CPU时，线程会以某种顺序执行多个线程，我们把这种情况称之为线程调度。</p>
+</blockquote>
+<h2 id="线程与进程"><a href="#线程与进程" class="headerlink" title="线程与进程"></a><strong>线程与进程</strong></h2><ul>
+<li><p><strong>进程</strong>：是指一个内存中运行的应用程序，每个进程都有一个独立的内存空间，一个应用程序可以同时运行多个进程；进程也是程序的一次执行过程，是系统运行程序的基本单位；系统运行一个程序即是一个进程从创建、运行到消亡的过程。</p>
+</li>
+<li><p><strong>线程</strong>：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。 </p>
+<p>简而言之：一个程序运行后至少有一个进程，一个进程中可以包含多个线程 </p>
+</li>
+</ul>
+<p>我们可以再电脑底部任务栏，右键—–&gt;打开任务管理器,可以查看当前任务的进程：</p>
+<p><strong>进程</strong></p>
+<p><img src="/images/%E8%BF%9B%E7%A8%8B%E6%A6%82%E5%BF%B5.png" alt=""></p>
+<p><strong>线程</strong></p>
+<p><img src="/images/%E7%BA%BF%E7%A8%8B%E6%A6%82%E5%BF%B5.png" alt=""></p>
+<p><strong>线程调度:</strong></p>
+<ul>
+<li><p>分时调度</p>
+<p>所有线程轮流使用 CPU 的使用权，平均分配每个线程占用 CPU 的时间。</p>
+</li>
+<li><p>抢占式调度(JAVA)</p>
+<p>优先让优先级高的线程使用 CPU，如果线程的优先级相同，那么会随机选择一个(线程随机性)，Java使用的为抢占式调度。</p>
+<ul>
+<li>设置线程的优先级</li>
+</ul>
+<p><img src="/images/%E8%AE%BE%E7%BD%AE%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7.bmp" alt="设置线程优先级"></p>
+<ul>
+<li><p>抢占式调度详解</p>
+<p>大部分操作系统都支持多进程并发运行，现在的操作系统几乎都支持同时运行多个程序。比如：现在我们上课一边使用编辑器，一边使用录屏软件，同时还开着画图板，dos窗口等软件。此时，这些程序是在同时运行，”感觉这些软件好像在同一时刻运行着“。</p>
+<p>实际上，CPU(中央处理器)使用抢占式调度模式在多个线程间进行着高速的切换。对于CPU的一个核而言，某个时刻，只能执行一个线程，而 CPU的在多个线程间切换速度相对我们的感觉要快，看上去就是在同一时刻运行。<br>其实，多线程程序并不能提高程序的运行速度，但能够提高程序运行效率，让CPU的使用率更高。</p>
+<p><img src="/images/%E6%8A%A2%E5%8D%A0%E5%BC%8F%E8%B0%83%E5%BA%A6.bmp" alt="抢占式调度"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="main线程"><a href="#main线程" class="headerlink" title="main线程"></a><strong>main线程</strong></h2><p><strong>主线程:</strong>执行主(main)方法的线程<br>单线程程序:java程序中只有一个线程<br>执行从main方法开始,从上到下依次执行<br>JVM执行main方法, main方法会进入到栈内存<br>JVM会找操作系统开辟一条main方法通 向cpu的执行路径<br>cpu就可以通过这个路径来执行main方法<br>而这个路径有一个名字,叫main(主)线程</p>
+<h2 id="创建线程类"><a href="#创建线程类" class="headerlink" title="创建线程类"></a><strong>创建线程类</strong></h2><p>Java使用<code>java.lang.Thread</code>类代表<strong>线程</strong>，所有的线程对象都必须是Thread类或其子类的实例。每个线程的作用是完成一定的任务，实际上就是执行一段程序流即一段顺序执行的代码。Java使用线程执行体来代表这段程序流。Java中通过继承Thread类来<strong>创建</strong>并<strong>启动多线程</strong>的步骤如下：</p>
+<h3 id="1、定义Thread类的子类，并重写该类的run-方法"><a href="#1、定义Thread类的子类，并重写该类的run-方法" class="headerlink" title="1、定义Thread类的子类，并重写该类的run()方法"></a><strong>1、定义Thread类的子类，并重写该类的run()方法</strong></h3><p>该run()方法的方法体就代表了线程需要完成的任务,因此把run()方法称为线程执行体。<br><strong>实现步骤:</strong></p>
+<ol>
+<li>创建一个Thread类的子类</li>
+<li>在Thread类的子类中重写Thread类中的run方法,设置线程任务(开启线程要做什么?)</li>
+<li>创建Thread类的子类对象</li>
+<li>调用Thread类中的方法start方法,开启新的线程,执行run方法</li>
+</ol>
+<ul>
+<li>void start() 使该线程开始执行; Java虚拟机调用该线程的run方法。</li>
+<li>结果是两个线程并发地运行;当前线程(main线程)和另一个线程(创建的新线程,执行其run 方法)。</li>
+<li>多次启动-个线程是非法的。特别是当线程已经结束执行后，不能再重新启动。</li>
+<li>java程序属于抢占式调度,那个线程的优先级高,那个线程优先执行;同一个优先级,随机选择-一个执行</li>
+</ul>
+<p><strong>方法</strong></p>
+<ol>
+<li>使用Thread类中的方法getName()<br>String getName() 返回该线程的名称。</li>
+<li>可以先获取到当前正在执行的线程,使用线程中的方法getName( )获取线程的名称<br>static Thread currentThread()返回对当前正在执行的线程对象的引用。</li>
+<li>public static void sleep(long millis):使当前正在执行的线程以指定的毫秒数暂停(暂时停止执行)。毫秒数结束之后，线程继续执行</li>
+</ol>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02_Thread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Demo01_Thread demo01_thread = <span class="keyword">new</span> Demo01_Thread();																					</span><br><span class="line">        demo01_thread.start();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"main"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01_Thread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;																																	</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Run:"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果：</strong>随机性打印，每次结果不会不太一样。</p>
+<h2 id="2、实现Runnable接口"><a href="#2、实现Runnable接口" class="headerlink" title="2、实现Runnable接口"></a><strong>2、实现Runnable接口</strong></h2><p>创建多线程程序的第二种方式:实现Runnable接口</p>
+<ul>
+<li>java. Lang. Runnable<br>  Runnable接口应该由那些打算通过某-线程执行其实例的类来实现。 类必须定义一个称为run 的无参数方法。</li>
+<li>java. lang. Thread类的构造方法<br>  Thread(Runnable target) 分配新的Thread 对象。<br>  Thread(Runnable target, String name)分配新的Thread 对象。</li>
+</ul>
+<p><strong>实现步骤:</strong></p>
+<ol>
+<li>创建一个Runnable接口的实现类I</li>
+<li>在实现类中重写Runnable接口的run方法,设置线程任务</li>
+<li>创建一个Runnable接口的实现类对象</li>
+<li>创建Thread类对象,构造方法中传递Runnable接口的实现类对象</li>
+<li>调用Thread类中的start方法，开启新的线程执行run方法</li>
+</ol>
+<p><strong>使用Runnable的好处</strong></p>
+<ol>
+<li>避免了单继承的局限性<br>一个类只能继承一个类(-个人只能有一个亲爹),类继承了Thread类就不能继承其他的类，实现了Runnable接口,还可以继承其他的类,实现其他的接口</li>
+<li>增强了程序的扩展性,降低了程序的耦合性(解耦)<br>实现Runnable接口的方式,把设置线程任务和开启新线程进行了分离(解耦)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04_Runnable</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;																								</span><br><span class="line">        Demo05_Runnable demo05_runnable = <span class="keyword">new</span> Demo05_Runnable();</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(demo05_runnable);</span><br><span class="line">        t.start();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"main"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo05_Runnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;																							</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"run"</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、匿名内部类实现多线程，本质上还是定义Thread类的子类"><a href="#3、匿名内部类实现多线程，本质上还是定义Thread类的子类" class="headerlink" title="3、匿名内部类实现多线程，本质上还是定义Thread类的子类"></a><strong>3、匿名内部类实现多线程，本质上还是定义Thread类的子类</strong></h2><p>匿名:没有名字<br>内部类:写在其他类内部的类<br>匿名内部类作用:简化代码<br>把子类继承父类,重写父类的方法,创建子类对象合-步完成<br>把实现类实现类接口, 重写接口中的方法,创建实现类对象合成一-步完成<br>匿名内部类的最终产物:子类/实现类对象,而这个类没有名字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;																								</span><br><span class="line">    <span class="keyword">new</span> Thread()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">20</span> ; i++) &#123;</span><br><span class="line">                System.out.println(<span class="string">"线程0 "</span>+i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">                System.out.println(<span class="string">"线程1 "</span>+i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Main "</span>+i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/23/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckb22iufi0082zwu89bo8hdcu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/数据库的安全性与完整性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/" class="article-date">
+  <time datetime="2019-09-23T02:10:46.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/">数据库的完整性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a><strong>数据库完整性</strong></h2><p><strong>概述</strong><br>数据库中数据的完整性：   指数据的正确、有效、相容。<br>数据库的完整性控制：（DBMS）采取有效方法保证数据的完整性。</p>
+<p><strong>数据库管理系统采取的方法：</strong><br>提供完整性约束条件（规则）的定义机制<br>提供完整性检查的方法<br>进行违约处理</p>
+<ol>
+<li>关系的完整性约束规则定义<br>在 CREATE TABLE 语句中定义</li>
+</ol>
+<p><strong>实体完整性约束：</strong>PRIMARY KEY<br><strong>参照完整性约束：</strong>FOREIGN KEY … REFERENCES  …<br><strong>用户定义的完整性：</strong>NOT  NULL,  UNIQUE ,  CHECK(&lt;约束条件&gt;)</p>
+<ol start="2">
+<li><p>完整性检查<br>当数据修改时由DBMS自动完成。</p>
+</li>
+<li><p>完整性规则违约处理<br>用户定义规则的违约处理：拒绝操作<br>实体完整性的违约处理：拒绝操作<br>参照完整性的违约处理：</p>
+<ul>
+<li>参照关系违约处理：拒绝操作</li>
+<li>被参照关系的违约处理：拒绝（NO ACTION）、级联（CASCADE）、置空值（SET NULL）</li>
+</ul>
+</li>
+</ol>
+<pre><code>CREATE   TABLE   SC (Sno   CHAR(10)，Cno   CHAR(4),  Grade  SMALLINT,  PRIMARY KEY（Sno，Cno），                 
+FOREIGN KEY (Sno) REFERENCES Student(Sno)  ON DELETE CASCADE    
+ON UPDATE CASCADE，
+FOREIGN KEY (Cno) REFERENCES Course(Cno)  ON DELETE NO ACTION   
+ON UPDATE CASCADE )；</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/23/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/" data-id="ckb22iug400adzwu85ic73bgb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/约束" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BA%A6%E6%9D%9F/" class="article-date">
+  <time datetime="2019-09-22T12:34:06.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BA%A6%E6%9D%9F/">约束</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a><strong>约束</strong></h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a><strong>概念：</strong></h3><p>对表中的数据进行限定，保证数据的正确性、有效性和完整性。</p>
+<h3 id="非空约束：not-null，某一列的值不能为null"><a href="#非空约束：not-null，某一列的值不能为null" class="headerlink" title="非空约束：not null，某一列的值不能为null"></a><strong>非空约束：not null，某一列的值不能为null</strong></h3><p>1.创建表时添加约束</p>
+<pre><code>CREATE TABLE stu(
+    id INT,
+    NAME VARCHAR(20) NOT NULL -- name为非空
+);</code></pre><p>2.创建表完后，添加非空约束<br>    ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL;<br>3.删除name的非空约束<br>    ALTER TABLE stu MODIFY NAME VARCHAR(20);</p>
+<h3 id="唯一约束：unique，某一列的值不能重复"><a href="#唯一约束：unique，某一列的值不能重复" class="headerlink" title="唯一约束：unique，某一列的值不能重复"></a><strong>唯一约束：unique，某一列的值不能重复</strong></h3><p>1.注意：<br>    * 唯一约束可以有NULL值，但是只能有一条记录为null<br>2.在创建表时，添加唯一约束</p>
+<pre><code>CREATE TABLE stu(
+    id INT,
+    phone_number VARCHAR(20) UNIQUE -- 手机号
+);</code></pre><p>3.删除唯一约束</p>
+<pre><code>ALTER TABLE stu DROP INDEX phone_number;</code></pre><p>4.在表创建完后，添加唯一约束</p>
+<pre><code>ALTER TABLE temp ADD UNIQUE (name, password);
+ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;</code></pre><h3 id="主键约束：primary-key。"><a href="#主键约束：primary-key。" class="headerlink" title="主键约束：primary key。"></a><strong>主键约束：primary key。</strong></h3><p>1.注意：</p>
+<ul>
+<li>含义：非空且唯一</li>
+<li>一张表只能有一个字段为主键</li>
+<li>主键就是表中记录的唯一标识</li>
+</ul>
+<p>2.在创建表时，添加主键约束</p>
+<pre><code>create table stu(
+    id int primary key,-- 给id添加主键约束
+    name varchar(20)
+);</code></pre><p>3.删除主键</p>
+<pre><code>-- 错误 alter table stu modify id int ;
+-- 正确    ALTER TABLE stu DROP PRIMARY KEY;</code></pre><p>4.创建完表后，添加主键</p>
+<pre><code>ALTER TABLE temp ADD PRIMARY KEY(id,name);
+ALTER TABLE stu MODIFY id INT PRIMARY KEY;</code></pre><p>5.自动增长：</p>
+<ul>
+<li><p>概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长</p>
+</li>
+<li><p>在创建表时，添加主键约束，并且完成主键自增长</p>
+<pre><code>create table stu(
+    id int primary key auto_increment,-- 给id添加主键约束
+    name varchar(20)
+);</code></pre></li>
+<li><p>删除自动增长</p>
+<pre><code>ALTER TABLE stu MODIFY id INT;</code></pre></li>
+<li><p>添加自动增长</p>
+<pre><code>ALTER TABLE stu MODIFY id INT AUTO_INCREMENT;</code></pre></li>
+</ul>
+<h3 id="外键约束：foreign-key-让表于表产生关系，从而保证数据的正确性。"><a href="#外键约束：foreign-key-让表于表产生关系，从而保证数据的正确性。" class="headerlink" title="外键约束：foreign key,让表于表产生关系，从而保证数据的正确性。"></a><strong>外键约束：foreign key,让表于表产生关系，从而保证数据的正确性。</strong></h3><p>1.在创建表时，可以添加外键</p>
+<pre><code>create table 表名(
+    ....
+    外键列
+    constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
+);
+-- 基本模式
+-- 主表
+create table temp(
+    id int primary key,
+    name varchar(20)
+);
+-- 副表
+create table temp2(
+    id int,
+    name varchar(20),
+    classes_id int,
+    foreign key(id) references temp(id)
+);
+-- 多列外键组合，必须用表级别约束语法
+-- 主表
+create table classes(
+    id int,
+    name varchar(20),
+    number int,
+    primary key(name,number)
+);
+-- 副表
+create table student(
+    id int auto_increment primary key,
+    name varchar(20),
+    classes_name varchar(20),
+    classes_number int,
+    /*表级别联合外键*/
+    foreign key(classes_name, classes_number) references classes(name, number) 
+);</code></pre><p>2.删除外键</p>
+<pre><code>ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;
+ALTER TABLE student DROP FOREIGN KEY student_id;</code></pre><p>3.创建表之后，添加外键</p>
+<pre><code>ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);
+ALTER TABLE student ADD FOREIGN KEY(classes_name, classes_number) REFERENCES classes(name, number);</code></pre><p>4.级联操作</p>
+<ul>
+<li><p>添加级联操作<br>  语法：</p>
+<pre><code>ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE ON DELETE CASCADE;</code></pre></li>
+<li><p>分类：</p>
+<ul>
+<li>级联更新：ON UPDATE CASCADE </li>
+<li>级联删除：ON DELETE CASCADE </li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BA%A6%E6%9D%9F/" data-id="ckb22iug500ahzwu821y3doqc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java进阶/注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time datetime="2019-09-21T10:46:26.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E6%B3%A8%E8%A7%A3/">注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a><strong>注解</strong></h2><p>注释：用文字描述程序，给程序员看的；<br>注解：说明程序的，给计算机看的；</p>
+<p>定义：注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。@后跟注解名称</p>
+<p><strong>作用分类：</strong><br>    1.编写文档：通过代码里标识的注解生成文档【生成文档doc文档】，在命令行窗口输入javadoc 类名.java  可以生成文档<br>    2.代码分析：通过代码里标识的注解对代码进行分析【使用反射】<br>    3.编译检查：通过代码里标识的注解让编译器能够实现基本的编译检查【Override】</p>
+<h2 id="JDK中常见的预定义的内置注解"><a href="#JDK中常见的预定义的内置注解" class="headerlink" title="JDK中常见的预定义的内置注解"></a><strong>JDK中常见的预定义的内置注解</strong></h2><ol>
+<li>@override：检测被该注解标注的方法是否是继承自父类</li>
+<li>@Deprecated：表示该注解内容已过时</li>
+<li>@SuppressWarnings：压制警告的，一般传递参数all；</li>
+</ol>
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a><strong>自定义注解</strong></h2><h3 id="格式："><a href="#格式：" class="headerlink" title="格式："></a><strong>格式：</strong></h3><pre><code>元注解
+public @interface 注解名称{}</code></pre><p>元注解是格式中的一部分，在下面有介绍</p>
+<h3 id="本质：本质就是一个接口"><a href="#本质：本质就是一个接口" class="headerlink" title="本质：本质就是一个接口"></a><strong>本质：本质就是一个接口</strong></h3><p>讲一个自定义的MyAn注解反编译得到下面代码（反编译步骤1.javac 2.javap）<br>public interface MyAn extends java.lang.annotation.Annotation {}</p>
+<h3 id="属性：接口中的抽象方法"><a href="#属性：接口中的抽象方法" class="headerlink" title="属性：接口中的抽象方法"></a><strong>属性：接口中的抽象方法</strong></h3><p>要求：</p>
+<ul>
+<li><p>属性的返回值类型</p>
+<ol>
+<li>基本数据类型</li>
+<li>String</li>
+<li>枚举</li>
+<li>注解</li>
+<li>以上类型的数组<br>没有void</li>
+</ol>
+</li>
+<li><p>在使用时需要给属性赋值</p>
+<ol>
+<li><p>如果定义属性时，使用default关键字给属性默认的初始化值，则使用注释时可以不给属性赋值；如</p>
+</li>
+<li><p>如果只有一个属性需要赋值，并且属性名是value则value可以省略；</p>
+</li>
+<li><p>给数组赋值时，值使用{}包裹，如果数组中只有一个值，则{}可以省略；    </p>
+<p>  @Target({ElementType.TYPE})<br>  @Retention(RetentionPolicy.RUNTIME)<br>  public @interface Pro {</p>
+<pre><code>String name() deflaut &quot;张三&quot;；
+int age() deflaut 123;
+int value();</code></pre><p>  }</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="元注解：用于描述注解的注解"><a href="#元注解：用于描述注解的注解" class="headerlink" title="元注解：用于描述注解的注解"></a><strong>元注解：用于描述注解的注解</strong></h3><p><strong>常见的元注解</strong></p>
+<ol>
+<li>@Target:描述注解能够作用的位置<br>其中抽象方法为ElementType[] value();因为这是一个数组，所以可以取多个值。<br>枚举类型ElementType三个取值<pre><code>1. TYPE（只能定义在类上）
+2. METHOD（只能定义在成员方法上）
+3. FIELD（只能定义在成员变量上）</code></pre></li>
+<li>@Retention:描述注解能被保留的阶段<br>其中抽象方法为RetentionPolicy[] value();<br>枚举类型RetentionPolicy三个取值（一般只使用3）<pre><code>1. SOURCE
+2. CLASS
+3. RUNTIME(当前被描述的注解会保留到class字节码文件中，并被JVM读取)</code></pre></li>
+<li>@Documented:描述注解是否被抽取到api文档中</li>
+<li>@Inherited:描述注解是否被子类继承<br>   若父类有这个注解，则子类也会有这个注解</li>
+</ol>
+<h2 id="在程序中使用（解析）注解：获取注解中定义的属性值"><a href="#在程序中使用（解析）注解：获取注解中定义的属性值" class="headerlink" title="在程序中使用（解析）注解：获取注解中定义的属性值"></a><strong>在程序中使用（解析）注解：获取注解中定义的属性值</strong></h2><ol>
+<li>获取定义位置注解的对象</li>
+<li>获取指定的注解getAnnotation(Class(自定义注解.class))</li>
+<li>调用注解中的抽象方法获取配置的属性值</li>
+</ol>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a><strong>小结</strong></h1><ol>
+<li><p>以后大多数会自己使用注解，而不是自定义注解</p>
+</li>
+<li><p>注解给谁用</p>
+<pre><code>1.编译器
+2.给解析程序用</code></pre></li>
+</ol>
+<p>3.注解不是程序的一部分，可以理解为是一个标签。    </p>
+<h3 id="作用：替换配置文件"><a href="#作用：替换配置文件" class="headerlink" title="作用：替换配置文件"></a><strong>作用：替换配置文件</strong></h3><p>示例代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface Pro &#123;</span><br><span class="line">    String className();</span><br><span class="line">    String methodName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Pro(className &#x3D; &quot;Annotation.Student&quot;,methodName &#x3D; &quot;show&quot;)</span><br><span class="line">public class Demo &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;1.解析注解</span><br><span class="line">        &#x2F;&#x2F;1.1获取该类的字节码文件对象</span><br><span class="line">        Class&lt;Demo&gt; demoClass &#x3D; Demo.class;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;2.获取上面的注解对象</span><br><span class="line">        &#x2F;&#x2F;其实就是在内存中生成了一个该注释接口的子类的实现类对象，其返回值就是属性的赋值</span><br><span class="line">        Pro an &#x3D; demoClass.getAnnotation(Pro.class);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;3.调用注解对象中定义的抽象方法，获取返回值</span><br><span class="line">        String className&#x3D;an.className();</span><br><span class="line">        String s &#x3D; an.methodName();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;4.加载该类进内存</span><br><span class="line">        Class cls&#x3D;Class.forName(className);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;5.创建对象</span><br><span class="line">        Object obj&#x3D;cls.newInstance();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;6.创建方法对象</span><br><span class="line">        Method method&#x3D;cls.getMethod(s);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;7.执行方法</span><br><span class="line">        method.invoke(obj);</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>注解的使用方法之一 if(method（获取到的方法对象）.isAnnotationPresent(Check（注解名称）.class))<br>判断该方法是否被该注解注释，若是则对该方法进行操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;小明定义的计算器类</span><br><span class="line">public class Calculator &#123;</span><br><span class="line">    @Check</span><br><span class="line">    public void add()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;1+0&#x3D;&quot;+(1+0));</span><br><span class="line">    &#125;</span><br><span class="line">    @Check</span><br><span class="line">    public void sub()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;1-0&#x3D;&quot;+(1-0));</span><br><span class="line">    &#125;</span><br><span class="line">    @Check</span><br><span class="line">    public void mul()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;1*0&#x3D;&quot;+(1*0));</span><br><span class="line">    &#125;</span><br><span class="line">    @Check</span><br><span class="line">    public void div()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(&quot;1&#x2F;0&#x3D;&quot;+(1&#x2F;0));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.METHOD)</span><br><span class="line">public @interface Check &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class TestCheck &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        &#x2F;&#x2F;1.创建Calculator对象</span><br><span class="line">        Calculator c&#x3D;new Calculator();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;2.获取字节码文件对象</span><br><span class="line">        Class cls&#x3D;c.getClass();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;3.获取所有方法</span><br><span class="line">        Method[] methods&#x3D;cls.getMethods();</span><br><span class="line">        int number&#x3D;0;</span><br><span class="line">        BufferedWriter bw&#x3D;new BufferedWriter(new FileWriter(&quot;bug.txt&quot;));</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;4.判断方法上是否有Check注解</span><br><span class="line">        for (Method method : methods) &#123;</span><br><span class="line">            &#x2F;&#x2F;5.有 执行</span><br><span class="line">            if(method.isAnnotationPresent(Check.class))</span><br><span class="line">            &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    method.invoke(c);</span><br><span class="line">                &#125;</span><br><span class="line">                    &#x2F;&#x2F;6.捕获异常</span><br><span class="line">                 catch (Exception e) &#123;</span><br><span class="line">                    number++;</span><br><span class="line">                    bw.write(method.getName()+&quot;方法出异常了&quot;);</span><br><span class="line">                    bw.newLine();</span><br><span class="line">                    bw.write(&quot;异常的名称&quot;+e.getCause().getClass().getSimpleName());</span><br><span class="line">                    bw.newLine();</span><br><span class="line">                    bw.write(&quot;异常的原因：&quot;+e.getCause().getMessage());</span><br><span class="line">                    bw.newLine();</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        bw.write(&quot;本次测试一共出现&quot;+number+&quot;次异常&quot;);</span><br><span class="line">        bw.flush();</span><br><span class="line">        bw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E6%B3%A8%E8%A7%A3/" data-id="ckb22iudz002izwu8avo86kvi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java进阶/反射" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E5%8F%8D%E5%B0%84/" class="article-date">
+  <time datetime="2019-09-21T06:31:37.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E5%8F%8D%E5%B0%84/">反射</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="反射（框架的设计灵魂）"><a href="#反射（框架的设计灵魂）" class="headerlink" title="反射（框架的设计灵魂）"></a><strong>反射（框架的设计灵魂）</strong></h1><p><strong>框架</strong><br>：半成品软件。可以在框架的基础上进行软件的开发，简化编码。<br><strong>反射</strong><br>：将类的各个组成部分封装成其他对象，这就是反射机制。</p>
+<p><strong>Java代码在计算机中经历的三个阶段：</strong></p>
+<ul>
+<li>1.Source 源代码阶段<br>编译javac，生成字节码文件，有类的个部分信息</li>
+<li>2.类加载器（ClassLoader）将class文件加载到内存中(反射机制)<ul>
+<li>Class类对象，三部分重要东西：<br>1.成员变量Fied[] fieds对象<br>2.构造方法Constructor[] cons对象<br>3.成员方法Method[] methods对象</li>
+</ul>
+</li>
+<li>3.Runtime运行时阶段</li>
+</ul>
+<p><strong>反射的好处</strong></p>
+<ol>
+<li>可以在程序的运行过程中，操作这些对象。</li>
+<li>可以解耦，降低耦合性，提高程序的可扩展性。</li>
+</ol>
+<h2 id="获取class对象的三种方式（对应Java代码的三个阶段）"><a href="#获取class对象的三种方式（对应Java代码的三个阶段）" class="headerlink" title="获取class对象的三种方式（对应Java代码的三个阶段）"></a><strong>获取class对象的三种方式（对应Java代码的三个阶段）</strong></h2><ol>
+<li><p>Class.forName（”全类名（包名.类名）”）:将字节码文件加载进内存，返回class对象。<br> 多用于配置文件将类名定义在配置文件中。读取文件，加载类。</p>
+</li>
+<li><p>类名.class：通过类名的属性class来获取。<br> 多用于参数的传递</p>
+</li>
+<li><p>对象.getClass():getClass方法在Object类中定义着。<br> 多用于对象的获取字节码方式</p>
+</li>
+</ol>
+<p><strong>例子</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">psvm&#123;</span><br><span class="line">	Class cls1&#x3D;Class.forName(&quot;~~~~~&quot;);</span><br><span class="line"></span><br><span class="line">	Class cls2&#x3D;Person.class;</span><br><span class="line"></span><br><span class="line">	Class cls3&#x3D;p.getClass();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong><br>cls1,cls2,cls3的地址是一样的</p>
+<p><strong>结论</strong><br>同一个字节码文件（* .class）文件在一次程序的运行过程中，只会被加载一次，不管通过哪种方式获得。</p>
+<h1 id="Class对象的功能"><a href="#Class对象的功能" class="headerlink" title="Class对象的功能"></a><strong>Class对象的功能</strong></h1><h2 id="获取功能"><a href="#获取功能" class="headerlink" title="获取功能"></a><strong>获取功能</strong></h2><h3 id="1-获取成员变量们"><a href="#1-获取成员变量们" class="headerlink" title="1.获取成员变量们"></a><strong>1.获取成员变量们</strong></h3><p>Field[] getFields();(获取所有public修饰的)<br>Field   getField(String name)(获取指定名称的public修饰的)<br>Field[] getDeclaredFields()(获取所有成员变量，不考虑修饰符)<br>Field   getDeclaredField(String name)</p>
+<p><strong>Field:成员变量</strong></p>
+<ol>
+<li>设置值<br>void set(Object obj,Object value);obj为该成员变量所在的对象，value可以是装箱类型;<br>为什么要确定对象？：因为所有该类创建的不同对象都是同一个Class对象。</li>
+<li>获取值<br>get(Object obj);obj为该成员变量所在的对象</li>
+<li>忽略访问权限修饰符的安全检查<br>setAccessible(true);<strong>暴力反射</strong></li>
+</ol>
+<h3 id="2-获取构造方法们"><a href="#2-获取构造方法们" class="headerlink" title="2.获取构造方法们"></a><strong>2.获取构造方法们</strong></h3><p>Constructor<T>      getConstructor(Class<?>... parameterTypes)
+Constructor<?>[]    getConstructors()<br>Constructor<T>      getDeclaredConstructor(Class<?>... parameterTypes)
+Constructor<?>[]    getDeclaredConstructors()</p>
+<p><strong>成员方法：</strong></p>
+<ol>
+<li>newInstance();用来创建对象，括号内为构造方法的参数。<br>如果构造使用空参数创建对象，操作可以简化：该Class对象的方法newInstance();</li>
+<li>setAccessible(true);</li>
+</ol>
+<h3 id="3-获取成员方法们"><a href="#3-获取成员方法们" class="headerlink" title="3.获取成员方法们"></a><strong>3.获取成员方法们</strong></h3><p>Method      getMethod(String name, Class<?>... parameterTypes)
+Method[]    getMethods()      注意（也会获取到Object类（父类）中的方法）
+Method      getDeclaredMethod(String name, Class<?>… parameterTypes)<br>Method[]    getDeclaredMethods()<br><strong>注意</strong></p>
+<ul>
+<li>parameterTypes 参数是按声明顺序标识该方法形参类型的 Class 对象的一个数组。如果 parameterTypes 为 null，则按空数组处理。 </li>
+<li>getMethods()获得的是自己以及父类的所有方法，也就是还有Object的方法</li>
+</ul>
+<p><strong>成员方法：</strong><br>1.Object invoke(Object obj,Object …args);方法的执行，obj为真实对象，args为参数列表；返回值为该方法原本的返回值。可以用Object接收。<br>2.setAccessiable(true);<br>3.getName();</p>
+<h3 id="4-获取类名"><a href="#4-获取类名" class="headerlink" title="4.获取类名"></a><strong>4.获取类名</strong></h3><p>String getName(); (全类名)</p>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a><strong>案例</strong></h1><p><strong>properties文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">className&#x3D;Reflect_.Person   &#x2F;&#x2F;全类名：Reflect_为包名，Person为类名</span><br><span class="line">methodName&#x3D;eat</span><br></pre></td></tr></table></figure>
+
+<p><strong>AnLi代码实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class AnLi &#x2F;&#x2F;框架类</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        &#x2F;&#x2F;1加载配置文件</span><br><span class="line">        &#x2F;&#x2F;1.1创建Properties对象</span><br><span class="line">        Properties pro &#x3D; new Properties();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;1.2加载配置文件，转化为一个集合</span><br><span class="line">        &#x2F;&#x2F;1.2.1获取class目录下的配置文件</span><br><span class="line">        ClassLoader classLoader &#x3D; AnLi.class.getClassLoader();               &#x2F;&#x2F;获取类加载器</span><br><span class="line">        InputStream is &#x3D; classLoader.getResourceAsStream(&quot;pr.properties&quot;);   &#x2F;&#x2F;获取资源对应的字节流</span><br><span class="line">        pro.load(is);     &#x2F;&#x2F;把硬盘中保存的文件（键值对），读取到集合中使用；</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;2.获取配置文件中定义的数据</span><br><span class="line">        String className &#x3D; pro.getProperty(&quot;className&quot;);&#x2F;&#x2F;相当于map中的get();</span><br><span class="line">        String methodName &#x3D; pro.getProperty(&quot;methodName&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;3.加载该类进内存</span><br><span class="line">        Class cls&#x3D;Class.forName(className);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;4.创建对象</span><br><span class="line">        Object obj&#x3D;cls.newInstance();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;5.创建方法对象</span><br><span class="line">        Method method&#x3D;cls.getMethod(methodName);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;6.执行方法</span><br><span class="line">        method.invoke(obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E5%8F%8D%E5%B0%84/" data-id="ckb22iudt0025zwu8cp0qc13u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java进阶/Junit单元测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="article-date">
+  <time datetime="2019-09-21T02:43:26.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">Junit单元测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="测试分类"><a href="#测试分类" class="headerlink" title="测试分类"></a>测试分类</h2><pre><code>1.黑盒测试：不需要写代码，给输入值，看程序能否狗输出期望的值
+
+2.白盒测试：需要写代码。管住程序具体的执行流程。</code></pre><hr>
+<h2 id="Junit：白盒测试"><a href="#Junit：白盒测试" class="headerlink" title="Junit：白盒测试"></a>Junit：白盒测试</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p><strong>1</strong>. 导入Junit包org.junit.Test;</p>
+<p><strong>2</strong>. 定义一个测试类（测试用例）</p>
+<p><strong>3</strong>. 定义测试方法：可以独立运行<br>     * 建议：<br>       * 方法名：test测试的方法名  testAdd（）<br>       * 返回值：void<br>       * 参数列表：空参</p>
+<p><strong>4</strong>. 给方法加@Test</p>
+<h2 id="判定结果"><a href="#判定结果" class="headerlink" title="判定结果"></a>判定结果</h2><pre><code>正确与否看颜色
+红色错误绿色正确
+一般会用断言来处理这个结果</code></pre><h2 id="Assert类（断言）"><a href="#Assert类（断言）" class="headerlink" title="Assert类（断言）"></a>Assert类（断言）</h2><p><code>Assert.assertEquals(expected:  ,result);</code><br>expected:期望值   result:得到的结果</p>
+<h2 id="初始化方法"><a href="#初始化方法" class="headerlink" title="初始化方法"></a>初始化方法</h2><p>@Befor：用于资源的申请，所有测试方法在执行之前都会执行该方法<br>在方法前面加上@Befor，</p>
+<p>@After：结束的时候用一个专门方法释放资源<br>在方法前面加上@After，在测试方法之后会执行。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/21/Java%E8%BF%9B%E9%98%B6/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" data-id="ckb22iudy002fzwu8grls19x0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/表内数据的CRUD" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93/%E8%A1%A8%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84CRUD/" class="article-date">
+  <time datetime="2019-09-19T05:21:35.000Z" itemprop="datePublished">2019-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93/%E8%A1%A8%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84CRUD/">表内数据的CRUD</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DML：增删改表中的工具"><a href="#DML：增删改表中的工具" class="headerlink" title="DML：增删改表中的工具"></a>DML：增删改表中的工具</h1><p><strong>DML（Data Manipulation Language)数据操作语言</strong><br>用来对数据库中表的数据进行增删改。关键字：insert,delete,update等</p>
+<h2 id="1-添加数据"><a href="#1-添加数据" class="headerlink" title="1.添加数据"></a><strong>1.添加数据</strong></h2><p><strong>语法：</strong><br>    insert into 表名 （列名1，列名2，…列名n）values（值1，…值n），（值1，…值n）….；<br><strong>注意：</strong><br>1.列名要和值一一对应<br>2.如果表名后不定义列名，则默认给所有列添加值；<br>3.除了数字类型外，其他的都需要添加单引或者双引号（都可以）</p>
+<h2 id="2-删除数据："><a href="#2-删除数据：" class="headerlink" title="2.删除数据："></a><strong>2.删除数据：</strong></h2><p><strong>语法：</strong><br>    delete from 表名 where 条件;  where 为可选<br><strong>注意：</strong><br>如果不加条件，则会删除掉所有数据(记录）；<br>如果想要删除所有记录，则不推荐delete from 表名；因为速度太慢；<br><strong>truncate table 表名</strong>：先删除表，再创建一样的空表；</p>
+<h2 id="3-修改数据："><a href="#3-修改数据：" class="headerlink" title="3.修改数据："></a><strong>3.修改数据：</strong></h2><p><strong>语法：</strong><br>    update 表名 set 列名1=值1，列名2=值2… where 条件；where 为可选<br><strong>注意：</strong><br>如果不加任何条件则会改掉所有的数据（记录)；</p>
+<h1 id="DQL：查询表中的记录（数据）"><a href="#DQL：查询表中的记录（数据）" class="headerlink" title="DQL：查询表中的记录（数据）"></a><strong>DQL：查询表中的记录（数据）</strong></h1><p><strong>DQL（Data Query Language）数据查询语言</strong><br>用来查询数据库中表的记录（数据）。关键字：select where等</p>
+<h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a><strong>第一部分</strong></h1><ul>
+<li>select * from 表名;</li>
+</ul>
+<h3 id="1-语法："><a href="#1-语法：" class="headerlink" title="1. 语法："></a><strong>1. 语法：</strong></h3><pre><code>select
+    字段列表
+from
+    表名列表
+where
+    条件列表
+group by
+    分组字段
+having
+    分组之后的条件
+order by
+    排序
+limit
+    分页限定</code></pre><h3 id="2-基础查询"><a href="#2-基础查询" class="headerlink" title="2. 基础查询"></a><strong>2. 基础查询</strong></h3><p>1.多个字段的查询<br>    select 字段名1，字段名2… from 表名；<br>    注意：如果查询所有字段，则可以使用* 来替代字段列表。<br>2.去除重复：distinct<br>3.计算列</p>
+<ul>
+<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）</li>
+<li>ifnull(表达式1,表达式2),null参与的运算，计算结果都为null<ul>
+<li>表达式1：哪个字段需要判断是否为null</li>
+<li>如果该字段为null后的替换值。</li>
+</ul>
+</li>
+</ul>
+<p>4.起别名：as,as也可以省略</p>
+<h3 id="3-条件查询"><a href="#3-条件查询" class="headerlink" title="3. 条件查询"></a><strong>3. 条件查询</strong></h3><p>1.where子句后跟条件<br>2.运算符</p>
+<pre><code>&gt; 、&lt; 、&lt;= 、&gt;= 、= 、&lt;&gt;
+BETWEEN...AND  
+IN( 集合) 
+LIKE：模糊查询
+    占位符：
+        _:单个任意字符
+        %：多个任意字符
+IS NULL  
+and  或 &amp;&amp;
+or  或 || 
+not  或 !</code></pre><p><strong>例</strong></p>
+<pre><code>//查询年龄大于20岁
+SELECT * FROM student WHERE age &gt; 20;
+
+SELECT * FROM student WHERE age &gt;= 20;
+
+//查询年龄等于20岁
+SELECT * FROM student WHERE age = 20;
+
+//查询年龄不等于20岁
+SELECT * FROM student WHERE age != 20;
+SELECT * FROM student WHERE age &lt;&gt; 20;
+
+//查询年龄大于等于20 小于等于30
+
+SELECT * FROM student WHERE age &gt;= 20 &amp;&amp;  age &lt;=30;
+SELECT * FROM student WHERE age &gt;= 20 AND  age &lt;=30;
+SELECT * FROM student WHERE age BETWEEN 20 AND 30;
+
+//查询年龄22岁，18岁，25岁的信息
+SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
+SELECT * FROM student WHERE age IN (22,18,25);
+
+//查询英语成绩为null
+错误示范：SELECT * FROM student WHERE english = NULL; //不对的。null值不能使用 = （!=） 判断
+
+正确示范：SELECT * FROM student WHERE english IS NULL;
+
+//查询英语成绩不为null
+SELECT * FROM student WHERE english  IS NOT NULL;
+
+//查询姓马的有哪些？ like
+SELECT * FROM student WHERE NAME LIKE &apos;马%&apos;;
+
+//查询姓名第二个字是化的人        
+SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;
+
+//查询姓名是3个字的人
+SELECT * FROM student WHERE NAME LIKE &apos;___&apos;;
+
+//查询姓名中包含德的人
+SELECT * FROM student WHERE NAME LIKE &apos;%德%&apos;;</code></pre><h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a><strong>第二部分</strong></h1><h2 id="1-排序查询"><a href="#1-排序查询" class="headerlink" title="1. 排序查询"></a><strong>1. 排序查询</strong></h2><ul>
+<li><p>语法：order by 子句</p>
+<ul>
+<li>order by 排序字段1 排序方式1 ，  排序字段2 排序方式2…</li>
+</ul>
+</li>
+<li><p>排序方式：</p>
+<ul>
+<li>ASC：升序，默认的。</li>
+<li>DESC：降序。</li>
+</ul>
+</li>
+<li><p>注意：</p>
+<ul>
+<li><p>如果有多个排序条件，则当前边的条件值一样时，才会判断第二条件。<br>  例如SELECT age,NAME FROM student ORDER BY age ASC name DESC;<br>  只有当age排完序之后，且有age相同的部分才去进行name的排序。</p>
+<p>  SELECT age,NAME FROM student ORDER BY age ASC;<br>  SELECT age,name FROM student ORDER BY age ASC,name DESC;<br>  SELECT * FROM student WHERE gender = ‘male’ ORDER BY age ASC;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-聚合函数：将一列数据作为一个整体，进行纵向的计算。"><a href="#2-聚合函数：将一列数据作为一个整体，进行纵向的计算。" class="headerlink" title="2. 聚合函数：将一列数据作为一个整体，进行纵向的计算。"></a><strong>2. 聚合函数：将一列数据作为一个整体，进行纵向的计算。</strong></h2><p>1.count：计算个数一般选择非空的列：主键,count(* )<br>2.max：计算最大值<br>3.min：计算最小值<br>4.sum：计算和<br>5.avg：计算平均值</p>
+<ul>
+<li><p>注意：聚合函数的计算，排除null值。<br>  解决方案：</p>
+<pre><code>1.选择不包含非空的列进行计算
+2.IFNULL函数
+
+SELECT COUNT(* ) FROM student;
+SELECT COUNT(* ) AS total FROM student;
+SELECT name,COUNT(* ) FROM student GROUP BY name;  
+SELECT name,SUM(grade) FROM student GROUP BY name; 
+//若此语句没有GROUP BY name，则查询结果为第一个name，和所有name的grade总和
+//一般来说多列聚合函数查询必须配合GROUP BY来查询。
+SELECT NAME,AVG(grade) FROM student GROUP BY NAME;
+SELECT NAME,MAX(grade)  FROM student GROUP BY NAME;
+SELECT NAME,MIN(grade)  FROM student GROUP BY NAME;</code></pre></li>
+</ul>
+<h2 id="3-分组查询"><a href="#3-分组查询" class="headerlink" title="3. 分组查询:"></a><strong>3. 分组查询:</strong></h2><p><strong>语法：</strong>group by 分组字段；<br><strong>注意：</strong><br>1.分组之后查询的字段：分组字段、聚合函数<br>2.where 和 having 的区别？<br>    * where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之后进行限定，如果不满足结果，则不会被查询出来<br>    * where 后不可以跟聚合函数，having可以进行聚合函数的判断。</p>
+<pre><code>//按照性别分组。分别查询男、女同学的平均分
+SELECT sex , AVG(math) FROM student GROUP BY sex;
+
+//按照性别分组。分别查询男、女同学的平均分,人数        
+SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
+
+// 按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
+SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;
+
+// 按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
+SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;
+
+SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;</code></pre><h2 id="4-分页查询"><a href="#4-分页查询" class="headerlink" title="4. 分页查询"></a><strong>4. 分页查询</strong></h2><p>1.语法：limit 开始的索引,每页查询的条数;<br>2.公式：开始的索引 = （当前的页码 - 1） * 每页显示的条数</p>
+<pre><code>//每页显示3条记录 
+SELECT * FROM student LIMIT 0,3; //第1页    
+SELECT * FROM student LIMIT 3,3; //第2页    
+SELECT * FROM student LIMIT 6,3; //第3页</code></pre><p>3.limit 是一个MySQL”方言”</p>
+<h1 id="第三部分：多表查询"><a href="#第三部分：多表查询" class="headerlink" title="第三部分：多表查询"></a><strong>第三部分：多表查询</strong></h1><h2 id="查询语法："><a href="#查询语法：" class="headerlink" title="查询语法："></a><strong>查询语法：</strong></h2><pre><code>select
+    列名列表
+from
+    表名列表
+where....</code></pre><h3 id="笛卡尔积："><a href="#笛卡尔积：" class="headerlink" title="笛卡尔积："></a><strong>笛卡尔积：</strong></h3><ul>
+<li>有两个集合A,B .取这两个集合的所有组成情况。</li>
+<li>要完成多表查询，需要消除无用的数据</li>
+</ul>
+<h3 id="准备sql"><a href="#准备sql" class="headerlink" title="准备sql"></a><strong>准备sql</strong></h3><pre><code># 创建部门表
+CREATE TABLE dept(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    NAME VARCHAR(20)
+);
+INSERT INTO dept (NAME) VALUES (&apos;开发部&apos;),(&apos;市场部&apos;),(&apos;财务部&apos;);
+# 创建员工表
+CREATE TABLE emp (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    NAME VARCHAR(10),
+    gender CHAR(1), //性别
+    salary DOUBLE, //工资
+    join_date DATE, //入职日期
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES dept(id) //外键，关联部门表(部门表的主键)
+);</code></pre><h2 id="多表查询的分类："><a href="#多表查询的分类：" class="headerlink" title="多表查询的分类："></a><strong>多表查询的分类：</strong></h2><h3 id="1-内连接查询："><a href="#1-内连接查询：" class="headerlink" title="1.内连接查询："></a><strong>1.内连接查询：</strong></h3><p>1.隐式内连接：使用where条件消除无用数据,也称为多表联合查询<br>    * 例子：</p>
+<pre><code>//查询所有员工信息和对应的部门信息
+SELECT * FROM emp,dept WHERE emp.`dept_id` = dept.`id`;
+//查询员工表的名称，性别。部门表的名称
+SELECT emp.name,emp.gender,dept.name FROM emp,dept WHERE emp.`dept_id` = dept.`id`;
+
+SELECT 
+    t1.name, //员工表的姓名
+    t1.gender,//员工表的性别
+    t2.name //部门表的名称
+FROM
+    emp t1,
+    dept t2
+WHERE 
+    t1.`dept_id` = t2.`id`;</code></pre><p>2.显式内连接：<br>    * 语法： select 字段列表 from 表名1 [inner] join 表名2 on 条件<br>    * 例如：</p>
+<pre><code>SELECT * FROM emp INNER JOIN dept ON emp.`dept_id` = dept.`id`;    
+SELECT * FROM emp JOIN dept ON emp.`dept_id` = dept.`id`;    </code></pre><p>3.内连接查询：<br>    1. 从哪些表中查询数据<br>    2. 条件是什么<br>    3. 查询哪些字段</p>
+<h3 id="2-外链接查询："><a href="#2-外链接查询：" class="headerlink" title="2. 外链接查询："></a><strong>2. 外链接查询：</strong></h3><p>1.左外连接：<br>    * 语法：select 字段列表 from 表1 left [outer] join 表2 on 条件；<br>    * 查询的是左表所有数据以及其交集部分。<br>    <img src="/images/237.png" alt=""><br>    * 例子：</p>
+<pre><code>//查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称
+SELECT     t1.*,t2.`name` FROM emp t1 LEFT JOIN dept t2 ON t1.`dept_id` = t2.`id`;
+//效果:人员表中的数据全部都显示,而 部门表中的数据符合条件的才会显示,不符合条件的会以 null 进行填充.</code></pre><p>2.右外连接：</p>
+<pre><code>* 语法：select 字段列表 from 表1 right [outer] join 表2 on 条件；
+* 查询的是右表所有数据以及其交集部分。
+* 例子：
+    SELECT     * FROM dept t2 RIGHT JOIN emp t1 ON t1.`dept_id` = t2.`id`;</code></pre><h3 id="3-子查询："><a href="#3-子查询：" class="headerlink" title="3. 子查询："></a><strong>3. 子查询：</strong></h3><p><strong>概念：</strong>查询中嵌套查询，称嵌套查询为子查询。</p>
+<pre><code>//查询工资最高的员工信息
+//1 查询最高的工资是多少 9000
+SELECT MAX(salary) FROM emp;
+//2 查询员工信息，并且工资等于9000的
+SELECT * FROM emp WHERE emp.`salary` = 9000;
+
+//一条sql就完成这个操作。子查询
+SELECT * FROM emp WHERE emp.`salary` = (SELECT MAX(salary) FROM emp);</code></pre><p><strong>子查询不同情况</strong><br>1.子查询的结果是单行单列的：子查询可以作为条件，使用运算符去判断。 运算符： &gt; &gt;= &lt; &lt;= =</p>
+<pre><code>//查询员工工资小于平均工资的人
+SELECT * FROM emp WHERE emp.salary &lt; (SELECT AVG(salary) FROM emp);</code></pre><p>2.子查询的结果是多行单列的：子查询可以作为条件，使用运算符in来判断</p>
+<pre><code>//查询&apos;财务部&apos;和&apos;市场部&apos;所有的员工信息
+SELECT id FROM dept WHERE NAME = &apos;财务部&apos; OR NAME = &apos;市场部&apos;;
+SELECT * FROM emp WHERE dept_id = 3 OR dept_id = 2;
+//子查询
+SELECT * FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE NAME = &apos;财务部&apos; OR NAME = &apos;市场部&apos;);</code></pre><p>3.子查询的结果是多行多列的：子查询可以作为一张虚拟表参与查询</p>
+<pre><code>//查询员工入职日期是2011-11-11日之后的员工信息和部门信息
+//子查询
+SELECT * FROM dept t1 ,(SELECT * FROM emp WHERE emp.`join_date` &gt; &apos;2011-11-11&apos;) t2 WHERE t1.id = t2.dept_id;    
+//普通内连接
+SELECT * FROM emp t1,dept t2 WHERE t1.`dept_id` = t2.`id` AND t1.`join_date` &gt;  &apos;2011-11-11&apos;</code></pre><p><strong>多表查询练习</strong></p>
+<pre><code>//部门表
+CREATE TABLE dept (
+  id INT PRIMARY KEY PRIMARY KEY, //部门id
+  dname VARCHAR(50), //部门名称
+  loc VARCHAR(50) //部门所在地
+);
+
+//添加4个部门
+INSERT INTO dept(id,dname,loc) VALUES 
+(10,&apos;教研部&apos;,&apos;北京&apos;),
+(20,&apos;学工部&apos;,&apos;上海&apos;),
+(30,&apos;销售部&apos;,&apos;广州&apos;),
+(40,&apos;财务部&apos;,&apos;深圳&apos;);
+
+
+
+//职务表，职务名称，职务描述
+CREATE TABLE job (
+  id INT PRIMARY KEY,
+  jname VARCHAR(20),
+  description VARCHAR(50)
+);
+
+//添加4个职务
+INSERT INTO job (id, jname, description) VALUES
+(1, &apos;董事长&apos;, &apos;管理整个公司，接单&apos;),
+(2, &apos;经理&apos;, &apos;管理部门员工&apos;),
+(3, &apos;销售员&apos;, &apos;向客人推销产品&apos;),
+(4, &apos;文员&apos;, &apos;使用办公软件&apos;);
+
+
+
+//员工表
+CREATE TABLE emp (
+  id INT PRIMARY KEY, //员工id
+  ename VARCHAR(50), //员工姓名
+  job_id INT, //职务id
+  mgr INT , //上级领导
+  joindate DATE, //入职日期
+  salary DECIMAL(7,2), //工资
+  bonus DECIMAL(7,2), //奖金
+  dept_id INT, //所在部门编号
+  CONSTRAINT emp_jobid_ref_job_id_fk FOREIGN KEY (job_id) REFERENCES job (id),
+  CONSTRAINT emp_deptid_ref_dept_id_fk FOREIGN KEY (dept_id) REFERENCES dept (id)
+);
+
+//添加员工
+INSERT INTO emp(id,ename,job_id,mgr,joindate,salary,bonus,dept_id) VALUES 
+(1001,&apos;孙悟空&apos;,4,1004,&apos;2000-12-17&apos;,&apos;8000.00&apos;,NULL,20),
+(1002,&apos;卢俊义&apos;,3,1006,&apos;2001-02-20&apos;,&apos;16000.00&apos;,&apos;3000.00&apos;,30),
+(1003,&apos;林冲&apos;,3,1006,&apos;2001-02-22&apos;,&apos;12500.00&apos;,&apos;5000.00&apos;,30),
+(1004,&apos;唐僧&apos;,2,1009,&apos;2001-04-02&apos;,&apos;29750.00&apos;,NULL,20),
+(1005,&apos;李逵&apos;,4,1006,&apos;2001-09-28&apos;,&apos;12500.00&apos;,&apos;14000.00&apos;,30),
+(1006,&apos;宋江&apos;,2,1009,&apos;2001-05-01&apos;,&apos;28500.00&apos;,NULL,30),
+(1007,&apos;刘备&apos;,2,1009,&apos;2001-09-01&apos;,&apos;24500.00&apos;,NULL,10),
+(1008,&apos;猪八戒&apos;,4,1004,&apos;2007-04-19&apos;,&apos;30000.00&apos;,NULL,20),
+(1009,&apos;罗贯中&apos;,1,NULL,&apos;2001-11-17&apos;,&apos;50000.00&apos;,NULL,10),
+(1010,&apos;吴用&apos;,3,1006,&apos;2001-09-08&apos;,&apos;15000.00&apos;,&apos;0.00&apos;,30),
+(1011,&apos;沙僧&apos;,4,1004,&apos;2007-05-23&apos;,&apos;11000.00&apos;,NULL,20),
+(1012,&apos;李逵&apos;,4,1006,&apos;2001-12-03&apos;,&apos;9500.00&apos;,NULL,30),
+(1013,&apos;小白龙&apos;,4,1004,&apos;2001-12-03&apos;,&apos;30000.00&apos;,NULL,20),
+(1014,&apos;关羽&apos;,4,1007,&apos;2002-01-23&apos;,&apos;13000.00&apos;,NULL,10);
+
+
+
+//工资等级表
+CREATE TABLE salarygrade (
+  grade INT PRIMARY KEY,   //级别
+  losalary INT,  //最低工资
+  hisalary INT //最高工资
+);
+
+//添加5个工资等级
+INSERT INTO salarygrade(grade,losalary,hisalary) VALUES 
+(1,7000,12000),
+(2,12010,14000),
+(3,14010,20000),
+(4,20010,30000),
+(5,30010,99990);
+
+//需求：
+
+//1.查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述
+/*
+    分析：
+        1.员工编号，员工姓名，工资，需要查询emp表  职务名称，职务描述 需要查询job表
+        2.查询条件 emp.job_id = job.id
+
+*/
+SELECT 
+    t1.`id`, //员工编号
+    t1.`ename`, //员工姓名
+    t1.`salary`,//工资
+    t2.`jname`, //职务名称
+    t2.`description` //职务描述
+FROM 
+    emp t1, job t2
+WHERE 
+    t1.`job_id` = t2.`id`;
+
+
+
+//2.查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置
+/*
+    分析：
+        1. 员工编号，员工姓名，工资 emp  职务名称，职务描述 job  部门名称，部门位置 dept
+        2. 条件： emp.job_id = job.id and emp.dept_id = dept.id
+*/
+
+SELECT 
+    t1.`id`, //员工编号
+    t1.`ename`, //员工姓名
+    t1.`salary`,//工资
+    t2.`jname`, //职务名称
+    t2.`description`, //职务描述
+    t3.`dname`, //部门名称
+    t3.`loc` //部门位置
+FROM 
+    emp t1, job t2,dept t3
+WHERE 
+    t1.`job_id` = t2.`id` AND t1.`dept_id` = t3.`id`;
+
+//3.查询员工姓名，工资，工资等级
+/*
+    分析：
+        1.员工姓名，工资 emp  工资等级 salarygrade
+        2.条件 emp.salary &gt;= salarygrade.losalary and emp.salary &lt;= salarygrade.hisalary
+            emp.salary BETWEEN salarygrade.losalary and salarygrade.hisalary
+*/
+SELECT 
+    t1.ename ,
+    t1.`salary`,
+    t2.*
+FROM emp t1, salarygrade t2
+WHERE t1.`salary` BETWEEN t2.`losalary` AND t2.`hisalary`;
+
+
+
+//4.查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级
+/*
+    分析：
+        1. 员工姓名，工资 emp ， 职务名称，职务描述 job 部门名称，部门位置，dept  工资等级 salarygrade
+        2. 条件： emp.job_id = job.id and emp.dept_id = dept.id and emp.salary BETWEEN salarygrade.losalary and salarygrade.hisalary
+
+*/
+SELECT 
+    t1.`ename`,
+    t1.`salary`,
+    t2.`jname`,
+    t2.`description`,
+    t3.`dname`,
+    t3.`loc`,
+    t4.`grade`
+FROM 
+    emp t1,job t2,dept t3,salarygrade t4
+WHERE 
+    t1.`job_id` = t2.`id` 
+    AND t1.`dept_id` = t3.`id`
+    AND t1.`salary` BETWEEN t4.`losalary` AND t4.`hisalary`;
+
+
+
+//5.查询出部门编号、部门名称、部门位置、部门人数
+
+/*
+    分析：
+        1.部门编号、部门名称、部门位置 dept 表。 部门人数 emp表
+        2.使用分组查询。按照emp.dept_id完成分组，查询count(id)
+        3.使用子查询将第2步的查询结果和dept表进行关联查询
+
+*/
+SELECT 
+    t1.`id`,t1.`dname`,t1.`loc` , t2.total
+FROM 
+    dept t1,
+    (SELECT
+        dept_id,COUNT(id) total
+    FROM 
+        emp
+    GROUP BY dept_id) t2
+WHERE t1.`id` = t2.dept_id;
+
+
+//6.查询所有员工的姓名及其直接上级的姓名,没有领导的员工也需要查询
+
+/*
+    分析：
+        1.姓名 emp， 直接上级的姓名 emp
+            * emp表的id 和 mgr 是自关联
+        2.条件 emp.id = emp.mgr
+        3.查询左表的所有数据，和 交集数据
+            * 使用左外连接查询
+
+*/
+/*
+select
+    t1.ename,
+    t1.mgr,
+    t2.`id`,
+    t2.ename
+from emp t1, emp t2
+where t1.mgr = t2.`id`;
+
+*/
+
+SELECT 
+    t1.ename,
+    t1.mgr,
+    t2.`id`,
+    t2.`ename`
+FROM emp t1
+LEFT JOIN emp t2
+ON t1.`mgr` = t2.`id`;</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93/%E8%A1%A8%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84CRUD/" data-id="ckb22iug100a0zwu88d9a6uvn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/数据库和表的CRUD" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84CRUD/" class="article-date">
+  <time datetime="2019-09-15T00:17:51.000Z" itemprop="datePublished">2019-09-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84CRUD/">数据库和表的CRUD</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DDL-操作数据库，表"><a href="#DDL-操作数据库，表" class="headerlink" title="DDL:操作数据库，表"></a><strong>DDL:操作数据库，表</strong></h1><p><strong>DDL（Data Definition Language)数据定义语句</strong><br>用来定义数据库对象：<strong>数据库，表，列</strong>。关键字：create，drop，alter等</p>
+<h2 id="1-操作数据库：CRUD"><a href="#1-操作数据库：CRUD" class="headerlink" title="1.操作数据库：CRUD"></a><strong>1.操作数据库：CRUD</strong></h2><p><strong>1.C（Create）：创建</strong></p>
+<ul>
+<li>创建某个数据库<br>create database 数据库名称；</li>
+<li>安全代码：<br>create database if not exists 数据库名称；</li>
+<li>指定字符集：<br>creat database db3 character  set gbk；<br>例：create database if not exists db4 character set gbk;</li>
+</ul>
+<p><strong>2.R（Retrieve）：查询</strong></p>
+<ul>
+<li>查询所有数据库的名称：<br>show databases；</li>
+<li>查看某个数据库的字符集：查询某个数据库的创建语句<br>show create database 数据库名称；</li>
+</ul>
+<p><strong>3.U（Update）：修改</strong></p>
+<ul>
+<li>修改数据库的字符集:<br>alter database 数据库名称 character set 字符集名称;</li>
+</ul>
+<p><strong>4.D（Delete）：删除</strong></p>
+<ul>
+<li>删除数据库：<br>drop database 数据库名称；<br>drop database if exist 数据库名称；</li>
+</ul>
+<p><strong>5.使用数据库</strong></p>
+<ul>
+<li>查询当前正在使用的数据库的名称：<br>select database();</li>
+<li>使用数据库：<br>use 数据库名称；</li>
+</ul>
+<hr>
+<h2 id="2-操作表-CRUD"><a href="#2-操作表-CRUD" class="headerlink" title="2.操作表(CRUD)"></a><strong>2.操作表(CRUD)</strong></h2><h3 id="1-C（Create）：创建"><a href="#1-C（Create）：创建" class="headerlink" title="1.C（Create）：创建"></a><strong>1.C（Create）：创建</strong></h3><p><strong>语法</strong><br>    create table 表名(列名1 数据类型1，….）；</p>
+<p><strong>常见数据类型</strong></p>
+<blockquote>
+<p><strong>int</strong>:          age int<br>  <strong>double</strong>:          score double（5,2） ,  5：一共多少位，2：小数点后面表六多少位<br>  <strong>date：</strong>          日期，只包含年月日，yyyy-mm-dd<br>  <strong>datetime：</strong>        日期，包含年月日时分秒yyyy-mm-dd HH：mm：ss<br>  <strong>timestamp：</strong>    时间戳类型,格式如上，如果不给赋值，则会用系统时间赋值。<br>  <strong>varchar：</strong>        字符串:name varchar（20）：表示该列姓名最大20字符</p>
+</blockquote>
+<p><strong>创建表</strong><br><strong>create table student(<br>    id int,<br>    name varchar(32),<br>    age int,<br>    score double(4,1),<br>    birthday  date,<br>    insert_time timestamp<br>    );</strong><br>    create table 表名 like 表名2；模仿表2创建表；</p>
+<h3 id="2-R（Retrieve）：查询"><a href="#2-R（Retrieve）：查询" class="headerlink" title="2.R（Retrieve）：查询"></a><strong>2.R（Retrieve）：查询</strong></h3><ul>
+<li>查询某个数据库中的所有列表名称<br>  show tables；</li>
+<li>查询表结构<br>  desc 表名；</li>
+</ul>
+<h3 id="3-U（Update）：修改"><a href="#3-U（Update）：修改" class="headerlink" title="3.U（Update）：修改"></a><strong>3.U（Update）：修改</strong></h3><p><strong>1.修改表名</strong><br>    alter table 表名 rename to新的表名；<br><strong>2.修改表的字符集</strong><br>    alter table 表名 character set 字符集名称<br><strong>3.添加一列</strong><br>    alter table 表名 add 列名 数据类型<br><strong>4.改列名称</strong><br>    alter table 表名 change 列名 新列明 新数据类型；<br>    alter table 表名 modify 列名 新数据类型 ;<br><strong>5.删除表</strong><br>    alter table 表名 drop 列名；</p>
+<h3 id="4-D（Delete）：删除"><a href="#4-D（Delete）：删除" class="headerlink" title="4.D（Delete）：删除"></a><strong>4.D（Delete）：删除</strong></h3><p><strong>删除表：</strong><br>drop table 表名称；<br> drop table if exist 表名称；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84CRUD/" data-id="ckb22iufz009szwu8fcao31qq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/14/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

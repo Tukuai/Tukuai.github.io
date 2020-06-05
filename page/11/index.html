@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://tukuai.github.io/page/11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Tukuai">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-数据结构/栈" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/" class="article-date">
+  <time datetime="2020-02-18T07:01:47.000Z" itemprop="datePublished">2020-02-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/">栈</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="栈的一个实际需求"><a href="#栈的一个实际需求" class="headerlink" title="栈的一个实际需求"></a>栈的一个实际需求</h3><p>请输入一个表达式<br>计算式:[7<em>2</em>2-5+1-5+3-3] 点击计算</p>
+<p>请问: 计算机底层是如何运算得到结果的？ 注意不是简单的把算式列出运算,因为我们看这个算式 7 * 2 * 2 - 5, 但是计算机怎么理解这个算式的(对计算机而言，它接收到的就是一个字符串)，我们讨论的是这个问题。-&gt; 栈</p>
+<h3 id="栈的介绍"><a href="#栈的介绍" class="headerlink" title="栈的介绍"></a>栈的介绍</h3><blockquote>
+<p>1.栈的英文为(stack)<br>    2.栈是一个先入后出(FILO-First In Last Out)的有序列表。<br>    3.栈(stack)是限制线性表中元素的插入和删除只能在线性表的同一端进行的一种特殊线性表。允许插入和删除的一端，为变化的一端，称为栈顶(Top)，另一端为固定的一端，称为栈底(Bottom)。<br>    4.根据栈的定义可知，最先放入栈中元素在栈底，最后放入的元素在栈顶，而删除元素刚好相反，最后放入的元素最先删除，最先放入的元素最后删除</p>
+</blockquote>
+<h3 id="栈的应用场景"><a href="#栈的应用场景" class="headerlink" title="栈的应用场景"></a>栈的应用场景</h3><blockquote>
+<p>1.子程序的调用：在跳往子程序前，会先将下个指令的地址存到堆栈中，直到子程序执行完后再将地址取出，以回到原来的程序中。<br>    2.处理递归调用：和子程序的调用类似，只是除了储存下一个指令的地址外，也将参数、区域变量等数据存入堆栈中。<br>    3.表达式的转换[中缀表达式转后缀表达式]与求值(实际解决)。<br>    4.二叉树的遍历。<br>    5.图形的深度优先(depth一first)搜索法。</p>
+</blockquote>
+<h2 id="数组栈"><a href="#数组栈" class="headerlink" title="数组栈"></a>数组栈</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">class ArrayStack&#123;</span><br><span class="line">    private int maxSize;</span><br><span class="line">    private int[] stack;</span><br><span class="line">    private int top&#x3D;-1;</span><br><span class="line">    &#x2F;&#x2F;构造器</span><br><span class="line">    public  ArrayStack(int maxSize)</span><br><span class="line">    &#123;</span><br><span class="line">        this.maxSize&#x3D;maxSize;</span><br><span class="line">        stack&#x3D;new int[maxSize];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;判断栈满</span><br><span class="line"> public boolean isFull()</span><br><span class="line"> &#123;</span><br><span class="line">     return top&#x3D;&#x3D;maxSize;</span><br><span class="line"> &#125;</span><br><span class="line">    &#x2F;&#x2F;判断栈空</span><br><span class="line">public boolean isEmpty()</span><br><span class="line">&#123;</span><br><span class="line">    return top&#x3D;&#x3D;-1;</span><br><span class="line">&#125;</span><br><span class="line">    &#x2F;&#x2F;入栈</span><br><span class="line">public void push(int i)</span><br><span class="line">&#123;</span><br><span class="line">    if(isFull())</span><br><span class="line">    &#123;</span><br><span class="line">        throw new RuntimeException(&quot;栈满&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        top++;</span><br><span class="line">        stack[top]&#x3D;i;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;出栈</span><br><span class="line">public int pop()</span><br><span class="line">&#123;</span><br><span class="line">    if(isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        throw new RuntimeException(&quot;栈空&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        return stack[top--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    &#x2F;&#x2F;显示栈顶</span><br><span class="line">public int getpop()</span><br><span class="line">&#123;</span><br><span class="line">    if(isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        throw new RuntimeException(&quot;栈空&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        return stack[top];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    &#x2F;&#x2F;栈的有效元素个数</span><br><span class="line">public int Length()</span><br><span class="line">&#123;</span><br><span class="line">    return stack.length;</span><br><span class="line">&#125;</span><br><span class="line">    &#x2F;&#x2F;遍历栈</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            throw new RuntimeException(&quot;栈空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            for (int i &#x3D; top; i &gt;&#x3D;0 ; i--) &#123;</span><br><span class="line">                System.out.println(stack[i]);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用栈完成一个表达式的计算"><a href="#使用栈完成一个表达式的计算" class="headerlink" title="使用栈完成一个表达式的计算"></a>使用栈完成一个表达式的计算</h3><blockquote>
+<p>计算思路<br>    1.通过一个index值（索引），遍历我们的表达式。<br>    2.如果是一个数字，就直接入栈<br>    3.如果是一个符号，就分情况<br>     * 如果当前的符号栈为空，或者当前的操作符优先级大于栈中的操作符，就直接入栈。<br>     * 如果当前的操作符的优先级小于或者等于栈中的操作符，就从数栈pop两个数，符号栈pop一个运算符，计算结果存放入数栈，再将当前操作符入符号栈。<br>     4.当表达式扫描完毕后，就顺序从数栈和符号栈pop相应的数和符号，并运算<br>     5.最后符号栈为空，数栈只有一个数。</p>
+</blockquote>
+<h4 id="目前只实现了-四种运算"><a href="#目前只实现了-四种运算" class="headerlink" title="目前只实现了+ - * /四种运算"></a>目前只实现了+ - * /四种运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public static void BiaoDaShi(String B)</span><br><span class="line">    &#123;</span><br><span class="line">        ArrayStack A1&#x3D;new ArrayStack(20);</span><br><span class="line">        ArrayStack A2&#x3D;new ArrayStack(20);</span><br><span class="line">       char[] B1&#x3D; B.toCharArray();</span><br><span class="line">       int ii&#x3D;0;</span><br><span class="line">        for (char c : B1) &#123;</span><br><span class="line">            if(Character.isDigit(c))</span><br><span class="line">            &#123;</span><br><span class="line">                if(ii&#x3D;&#x3D;1)</span><br><span class="line">                &#123;</span><br><span class="line">                   int k&#x3D; A1.pop()*10+(c-48);</span><br><span class="line">                   A1.push(k);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                    A1.push(c-48);</span><br><span class="line">                    ii&#x3D;1;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(A2.isEmpty()||priority(c)&gt;priority(A2.getpop()))</span><br><span class="line">            &#123;</span><br><span class="line">                A2.push(c);</span><br><span class="line">                ii&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123; int i&#x3D;JiSuan(A1.pop(),A1.pop(),A2.pop());</span><br><span class="line">                A1.push(i);</span><br><span class="line">                A2.push(c);</span><br><span class="line">                ii&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(!A2.isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            int i&#x3D;JiSuan(A1.pop(),A1.pop(),A2.pop());</span><br><span class="line">            A1.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(A1.pop());</span><br><span class="line">    &#125;</span><br><span class="line">    public static int JiSuan(int i1,int i2,int c)</span><br><span class="line">    &#123;</span><br><span class="line">        int res&#x3D;0;</span><br><span class="line">        switch (c)</span><br><span class="line">        &#123;</span><br><span class="line">            case &#39;+&#39;:</span><br><span class="line">                res&#x3D; i1+i2;</span><br><span class="line">                break;</span><br><span class="line">            case &#39;-&#39;:</span><br><span class="line">                res&#x3D; i2-i1;</span><br><span class="line">                break;</span><br><span class="line">            case &#39;*&#39;:</span><br><span class="line">                res&#x3D; i2*i1;</span><br><span class="line">                break;</span><br><span class="line">            case &#39;&#x2F;&#39;:</span><br><span class="line">                res&#x3D; i2&#x2F;i1;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">           return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public static int priority(int c)</span><br><span class="line">    &#123;</span><br><span class="line">        if(c&#x3D;&#x3D;&#39;*&#39;||c&#x3D;&#x3D;&#39;&#x2F;&#39;)</span><br><span class="line">            return 1;</span><br><span class="line">        else</span><br><span class="line">            return 0;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三种表达式：前缀（波兰表达式）、中缀、后缀表达式（逆波兰表达式）"><a href="#三种表达式：前缀（波兰表达式）、中缀、后缀表达式（逆波兰表达式）" class="headerlink" title="三种表达式：前缀（波兰表达式）、中缀、后缀表达式（逆波兰表达式）"></a>三种表达式：前缀（波兰表达式）、中缀、后缀表达式（逆波兰表达式）</h3><h4 id="1-前缀表达式（波兰表达式）"><a href="#1-前缀表达式（波兰表达式）" class="headerlink" title="1.前缀表达式（波兰表达式）"></a>1.前缀表达式（波兰表达式）</h4><pre><code>1）前缀表达式又称为波兰式，前缀表达式的运算符位于操作数之前
+2）举例：（3+4）* 5-6对应的前缀表达式为 - × + 3 4 5 6 
+针对前缀表达式求值步骤如下:
+1.从右至左扫描，将6、5、4、3压入堆栈
+2.遇到+运算符，因此弹出3和4（3为栈顶元素，4为次顶元素），计算出3+4的值，得7，再将7入栈
+3.接下来是×运算符，因此弹出7和5，计算出7×5=35，将35入栈
+4.最后是-运算符，计算出35-6的值，即29，由此得出最终结果</code></pre><h4 id="2-中缀表达式"><a href="#2-中缀表达式" class="headerlink" title="2.中缀表达式"></a>2.中缀表达式</h4><pre><code>1.中缀表达式就是常见的运算表达式，如(3+4)×5-6
+2.中缀表达式的求值是我们人最熟悉的，但是对计算机来说却不好操作(前面我们讲的案例就能看的这个问题)，因此，在计算结果时，往往会将中缀表达式转成其它表达式来操作(一般转成后缀表达式.)</code></pre><h4 id="3-后缀表达式"><a href="#3-后缀表达式" class="headerlink" title="3.后缀表达式"></a>3.后缀表达式</h4><pre><code>1.后缀表达式又称逆波兰表达式,与前缀表达式相似，只是运算符位于操作数之后
+2.举例说明： (3+4)×5-6 对应的后缀表达式就是 3 4 + 5 × 6 –</code></pre><p>后缀表达式的计算机求值：<br>    从左至右扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶的两个数，用运算符对它们做相应的计算（次顶元素 和 栈顶元素），并将结果入栈；重复上述过程直到表达式最右端，最后运算得出的值即为表达式的结果</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class NiBolan</span><br><span class="line">&#123;</span><br><span class="line">    NiBolan(String B)</span><br><span class="line">    &#123;</span><br><span class="line">        String[] s &#x3D; B.split(&quot; &quot;);</span><br><span class="line">        Stack&lt;String&gt; A1&#x3D;new Stack&lt;&gt;();</span><br><span class="line">        for (String s1 : s) &#123;</span><br><span class="line"></span><br><span class="line">                if(s1.matches(&quot;\\d+&quot;))</span><br><span class="line">                &#123;</span><br><span class="line">                    A1.push(s1);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123; int i&#x3D;JiSuan(Integer.parseInt(A1.pop()),Integer.parseInt(A1.pop()),s1.toCharArray()[0]);</span><br><span class="line">                    A1.push(Integer.toString(i));</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(A1.pop());</span><br><span class="line">    &#125;</span><br><span class="line">    public  int JiSuan(int i1,int i2,int c)</span><br><span class="line">    &#123;</span><br><span class="line">        int res&#x3D;0;</span><br><span class="line">        switch (c)</span><br><span class="line">        &#123;</span><br><span class="line">            case &#39;+&#39;:</span><br><span class="line">                res&#x3D; i1+i2;</span><br><span class="line">                break;</span><br><span class="line">            case &#39;-&#39;:</span><br><span class="line">                res&#x3D; i2-i1;</span><br><span class="line">                break;</span><br><span class="line">            case &#39;*&#39;:</span><br><span class="line">                res&#x3D; i2*i1;</span><br><span class="line">                break;</span><br><span class="line">            case &#39;&#x2F;&#39;:</span><br><span class="line">                res&#x3D; i2&#x2F;i1;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="面试题：中缀表达式转后缀表达式"><a href="#面试题：中缀表达式转后缀表达式" class="headerlink" title="面试题：中缀表达式转后缀表达式"></a>面试题：中缀表达式转后缀表达式</h2><p>1.初始化两个栈：运算符栈s1和储存中间结果的栈s2；<br>2.从左至右扫描中缀表达式；<br>3.遇到操作数时，将其压s2；<br>4.遇到运算符时，比较其与s1栈顶运算符的优先级：</p>
+<ul>
+<li>如果s1为空，或栈顶运算符为左括号“(”，则直接将此运算符入栈；</li>
+<li>否则，若优先级比栈顶运算符的高，也将运算符压入s1；</li>
+<li>否则，将s1栈顶的运算符弹出并压入到s2中，再次转到(4-1)与s1中新的栈顶运算符相比较；</li>
+</ul>
+<p>5.遇到括号时：</p>
+<ul>
+<li>如果是左括号“(”，则直接压入s1</li>
+<li>如果是右括号“)”，则依次弹出s1栈顶的运算符，并压入s2，直到遇到左括号为止，此时将这一对括号丢弃</li>
+</ul>
+<p>6.重复步骤2至5，直到表达式的最右边<br>7.将s1中剩余的运算符依次弹出并压入s2<br>8.依次弹出s2中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">private LinkedList&lt;String&gt; ZZ_Zhuan_HZ(String B)</span><br><span class="line">    &#123;     </span><br><span class="line">        LinkedList&lt;String&gt; A1&#x3D;new LinkedList&lt;&gt;();</span><br><span class="line">        Stack&lt;Character&gt; A2&#x3D;new Stack&lt;&gt;();</span><br><span class="line">        char[] B1&#x3D; B.toCharArray();</span><br><span class="line">        int ii&#x3D;0;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;B1.length ; i++)</span><br><span class="line">         &#123;</span><br><span class="line">             char c&#x3D;B1[i];</span><br><span class="line">            if(Character.isDigit(c))</span><br><span class="line">            &#123;</span><br><span class="line">                if(ii&#x3D;&#x3D;1)</span><br><span class="line">                &#123;</span><br><span class="line">                    String k&#x3D; A1.removeLast()+&quot;&quot;+c;</span><br><span class="line">                    A1.addLast(k);</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                    A1.addLast(c+&quot;&quot;);</span><br><span class="line">                ii&#x3D;1;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(c&#x3D;&#x3D;&#39;)&#39;)</span><br><span class="line">            &#123;</span><br><span class="line">                while(A2.peek()!&#x3D;&#39;(&#39;)</span><br><span class="line">                &#123;</span><br><span class="line">                    A1.addLast(A2.pop()+&quot;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                A2.pop();</span><br><span class="line">                ii&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(A2.isEmpty()||A2.peek()&#x3D;&#x3D;&#39;(&#39;||c&#x3D;&#x3D;&#39;(&#39;)</span><br><span class="line">            &#123;</span><br><span class="line">                A2.push(c);</span><br><span class="line">                ii&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(priority(c)&gt;priority(A2.peek()))</span><br><span class="line">            &#123; A2.push(c);</span><br><span class="line">                ii&#x3D;0;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                A1.addLast(A2.pop()+&quot;&quot;);</span><br><span class="line">                ii&#x3D;0;</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">while(!A2.empty())</span><br><span class="line">&#123;</span><br><span class="line">    A1.addLast(A2.pop()+&quot;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">return A1;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归的概念：<br>简单的说: 递归就是方法自己调用自己,每次调用时传入不同的变量.递归有助于编程者解决复杂的问题,同时可以让代码变得简洁。</p>
+<p>递归的调用规则：<br>1.当程序执行到一个方法时，就会开辟一个独立的空间（栈）<br>2.每个空间的数据（局部变量）是独立的。</p>
+<p>递归解决的问题：<br>1.各种数学问题：八皇后，汉诺塔，阶乘，球和篮子问题……<br>2.各种算法：快拍，归并排序，二分查找</p>
+<h2 id="迷宫问题"><a href="#迷宫问题" class="headerlink" title="迷宫问题"></a>迷宫问题</h2><p>1.靠回溯，若是错了就回溯，并不能找到最短路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">class map</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;1表示墙，2标示通路，3表示已经走过，但是走不通</span><br><span class="line">    &#x2F;&#x2F;策略：下-&gt;右-&gt;上-&gt;左，如果走不通就回溯</span><br><span class="line">    int [][] map&#x3D;new int[8][7];</span><br><span class="line">    public  map()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt;8 ; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt;7 ; j++) &#123;</span><br><span class="line">                map[i][j]&#x3D;1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;6 ; i++) &#123;</span><br><span class="line">            map[1][i]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;7 ; i++) &#123;</span><br><span class="line">            map[i][1]&#x3D;0;</span><br><span class="line">            map[i][5]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;</span><br><span class="line">        for (int[] ints : map) &#123;</span><br><span class="line">            for (int anInt : ints) &#123;</span><br><span class="line">                System.out.print(anInt+&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public boolean setWay(int i,int j)</span><br><span class="line">    &#123;</span><br><span class="line">        if(map[6][5]&#x3D;&#x3D;2)</span><br><span class="line">        &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        if(map[i][j]&#x3D;&#x3D;0)</span><br><span class="line">        &#123;   map[i][j]&#x3D;2;</span><br><span class="line">            if(setWay(i+1,j)||setWay(i,j+1)||setWay(i-1,j)||setWay(i,j-1))</span><br><span class="line">                return true;</span><br><span class="line">            else</span><br><span class="line">            &#123;  map[i][j]&#x3D;3; return false;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h2><p><strong>简介</strong>：八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即：任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。【92】</p>
+<p><strong>思路</strong>：<br>1.第一个皇后先放第一行第一列<br>2.第二个皇后放在第二行第一列、然后判断是否OK， 如果不OK，继续放在第二列、第三列、依次把所有列都放完，找到一个合适<br>3.继续第三个皇后，还是第一列、第二列……直到第8个皇后也能放在一个不冲突的位置，算是找到了一个正确解<br>4.当得到一个正确解时，在栈回退到上一个栈时，就会开始回溯，即将第一个皇后，放到第一列的所有正确解，全部得到.<br>5.然后回头继续第一个皇后放第二列，后面继续循环执行 1,2,3,4的步骤 </p>
+<p><strong>说明</strong>：理论上应该创建一个二维数组来表示棋盘，但是实际上可以通过算法，用一个一维数组即可解决问题. arr[8] = {0 , 4, 7, 5, 2, 6, 1, 3} //对应arr 下标 表示第几行，即第几个皇后，arr[i] = val , val 表示第i+1个皇后，放在第i+1行的第val+1列</p>
+<p><strong>代码的灵魂在于行和列都在在不断地加，确保程序会一直进行到结束，而不会死循环。<br>1.首先第一个先到第八行皇后<br>2.然后前七行皇后不动，改变第八行皇后，求出所有解，<br>3.回溯到第七行，前六行不动，求出所有解<br>….<br>4.第一行不动求出所有解<br>5.第一行换列，求出所有解<br>6.程序结束</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class EightQueens &#123;</span><br><span class="line">    int maxSize&#x3D;8;</span><br><span class="line">    int Qp[] &#x3D;new int[maxSize];</span><br><span class="line">        int sum&#x3D;1;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">    EightQueens E1&#x3D;new EightQueens();</span><br><span class="line">    E1.Set(0);</span><br><span class="line">    &#125;</span><br><span class="line">&#x2F;&#x2F;用于放置第n行的皇后</span><br><span class="line">    public void Set(int n)</span><br><span class="line">    &#123;</span><br><span class="line">        if(n&#x3D;&#x3D;8)</span><br><span class="line">        &#123;</span><br><span class="line">            print();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;maxSize ; i++) &#123;&#x2F;&#x2F;每一行的列在不断地加</span><br><span class="line">            Qp[n]&#x3D;i;</span><br><span class="line">            if(Check(n))</span><br><span class="line">                Set(n+1);&#x2F;&#x2F;每一行也在不断地加</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#x2F;&#x2F;查看当我们放置第n个皇后，检查是否冲突。</span><br><span class="line">    private boolean Check(int n)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;n ; i++) &#123;</span><br><span class="line">            if(Qp[i]&#x3D;&#x3D;Qp[n]||Math.abs(n-i)&#x3D;&#x3D;Math.abs(Qp[n]-Qp[i]))</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">   private void print()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.print(&quot;第&quot;+sum+++&quot;种方法:&quot;);</span><br><span class="line">        for (int i : Qp) &#123;</span><br><span class="line">            System.out.print(i+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/02/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/" data-id="ckb22iuga00b2zwu8gzdpbxm9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据结构/链表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2020-02-13T06:13:19.000Z" itemprop="datePublished">2020-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/">链表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h2><blockquote>
+<p>1.链表是以结点的方式来存储的<br>    2.每个节点包含data域，next域：指向下一个节点<br>    3.链表的各个节点不一定是连续存储的<br>    4.链表分带头节点的链表和没有头结点的链表<br><img src="/images/29.png" alt=""></p>
+</blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">class LinkedList</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;头结点</span><br><span class="line">    private HeroNode head&#x3D;new HeroNode(0,&quot;&quot;,&quot;&quot;);</span><br><span class="line">    private HeroNode h1&#x3D;new HeroNode();</span><br><span class="line">    &#x2F;&#x2F;添加节点</span><br><span class="line">    public void add(HeroNode heroNode)</span><br><span class="line">    &#123;</span><br><span class="line">        h1&#x3D;head;</span><br><span class="line">       &#x2F;* while(h1.next!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        h1.next&#x3D;heroNode;*&#x2F;</span><br><span class="line">       while(true) &#123;</span><br><span class="line">           if (h1.no &#x3D;&#x3D; heroNode.no)</span><br><span class="line">           &#123;</span><br><span class="line">               System.out.println(&quot;已有&quot;+heroNode.name+&quot;节点，不能插入&quot;);</span><br><span class="line">               break;</span><br><span class="line">           &#125;</span><br><span class="line">           else if(h1.next &#x3D;&#x3D; null || h1.next.no &gt; heroNode.no)</span><br><span class="line">           &#123;      HeroNode h2&#x3D;h1.next;</span><br><span class="line">                   h1.next&#x3D;heroNode;</span><br><span class="line">                   heroNode.next&#x3D;h2;</span><br><span class="line">               System.out.println(heroNode.name+&quot;节点插入成功&quot;);</span><br><span class="line">                   break;</span><br><span class="line">           &#125;</span><br><span class="line">           else &#123;</span><br><span class="line">               h1&#x3D;h1.next;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;显示链表</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;  h1&#x3D;head.next;</span><br><span class="line">        if(h1&#x3D;&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;链表为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        while(h1!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(h1.no+&quot;  &quot;+h1.name+&quot; &quot;+h1.nickname);</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;删除节点</span><br><span class="line">    public void deleteInt(int i)</span><br><span class="line">    &#123;h1&#x3D;head;</span><br><span class="line">        HeroNode h2&#x3D;new HeroNode();</span><br><span class="line">        for (int j &#x3D; 0; j &lt;i ; j++) &#123;</span><br><span class="line">            if(h1.next!&#x3D;null)</span><br><span class="line">            &#123;</span><br><span class="line">                h2&#x3D;h1;</span><br><span class="line">                h1 &#x3D; h1.next;</span><br><span class="line">            &#125;else</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(&quot;不存在第&quot;+i+&quot;个节点&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        if(h2.next!&#x3D;null)</span><br><span class="line">        h2.next&#x3D;h2.next.next;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public void deleteNode(int j)</span><br><span class="line">    &#123;</span><br><span class="line">        h1&#x3D;head;</span><br><span class="line">        int i&#x3D;0;</span><br><span class="line">        while(h1.next!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            if(h1.next.no&#x3D;&#x3D;j)</span><br><span class="line">            &#123;</span><br><span class="line">                h1.next&#x3D;h1.next.next;</span><br><span class="line">                i&#x3D;1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if(i&#x3D;&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;不存在该节点&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Update(HeroNode H)</span><br><span class="line">    &#123;</span><br><span class="line">        h1&#x3D;head.next;</span><br><span class="line">        int i&#x3D;0;</span><br><span class="line">        while(h1!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            if(h1.no&#x3D;&#x3D;H.no)</span><br><span class="line">            &#123;</span><br><span class="line">               h1.name&#x3D;H.name;</span><br><span class="line">               h1.nickname&#x3D;H.nickname;</span><br><span class="line">               i&#x3D;1;</span><br><span class="line">            &#125;</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if(i&#x3D;&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;不存在该节点&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;用于存放水浒传英雄，定义HeroNode</span><br><span class="line">class  HeroNode&#123;</span><br><span class="line">    public int no;</span><br><span class="line">    public String name;</span><br><span class="line">    public String nickname;</span><br><span class="line">    public HeroNode next;</span><br><span class="line">    &#x2F;&#x2F;构造器</span><br><span class="line">    public HeroNode()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public  HeroNode(int hno,String hname,String hnickname)</span><br><span class="line">    &#123;</span><br><span class="line">        this.no&#x3D;hno;</span><br><span class="line">        this.name&#x3D;hname;</span><br><span class="line">        this.nickname&#x3D;hnickname;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;重写toString</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;HeroNode&#123;&quot; +</span><br><span class="line">                &quot;no&#x3D;&quot; + no +</span><br><span class="line">                &quot;, name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, nickname&#x3D;&#39;&quot; + nickname +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><blockquote>
+<p>单向链表缺点<br>  1.查找方向只能是一个方向<br>  2.单向链表不能实现自我删除，必须找到前一个节点</p>
+</blockquote>
+<p>双向链表的结点不仅有next属性，也设置了pre属性，在删除和添加的时候，不需要找到需要操作结点的前一个结点，可直接操作所需操作的结点。</p>
+<h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">class SXLinkedList</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;头结点</span><br><span class="line">    private SXHeroNode head&#x3D;new SXHeroNode(0,&quot;&quot;,&quot;&quot;);</span><br><span class="line">    private SXHeroNode h1&#x3D;new SXHeroNode();</span><br><span class="line"></span><br><span class="line">    public SXHeroNode getHead() &#123;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;添加节点</span><br><span class="line">    public void add(SXHeroNode SXHeroNode)</span><br><span class="line">    &#123;</span><br><span class="line">        h1&#x3D;head;</span><br><span class="line">       &#x2F;* while(h1.next!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        h1.next&#x3D;SXHeroNode;*&#x2F;</span><br><span class="line">        while(h1!&#x3D;null) &#123;</span><br><span class="line">            if (h1.no &#x3D;&#x3D; SXHeroNode.no)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(&quot;已有&quot;+SXHeroNode.name+&quot;节点，不能插入&quot;);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(h1.no &gt; SXHeroNode.no)</span><br><span class="line">            &#123;   SXHeroNode.pre&#x3D;h1.pre;</span><br><span class="line">                h1.pre.next&#x3D;SXHeroNode;</span><br><span class="line">                h1.pre&#x3D;SXHeroNode;</span><br><span class="line">                    SXHeroNode.next&#x3D;h1;</span><br><span class="line">                System.out.println(SXHeroNode.name+&quot;节点插入成功&quot;);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(h1.next&#x3D;&#x3D;null)&#123;</span><br><span class="line">               h1.next&#x3D;SXHeroNode;</span><br><span class="line">               SXHeroNode.pre&#x3D;h1;</span><br><span class="line">               break;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;显示链表</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;  h1&#x3D;head.next;</span><br><span class="line">        if(h1&#x3D;&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;链表为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            while(h1!&#x3D;null)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(h1.no+&quot;  &quot;+h1.name+&quot; &quot;+h1.nickname);</span><br><span class="line">                h1&#x3D;h1.next;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;删除节点</span><br><span class="line">    public void deleteInt(int i)</span><br><span class="line">    &#123;h1&#x3D;head;</span><br><span class="line">    if(i&lt;&#x3D;0)</span><br><span class="line">    &#123;</span><br><span class="line">        throw new RuntimeException(&quot;输入的参数有误&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">        for (int j &#x3D; 0; j &lt;i ; j++) &#123;</span><br><span class="line">            if(h1!&#x3D;null)</span><br><span class="line">                h1&#x3D;h1.next;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(&quot;不存在第&quot;+i+&quot;个节点&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(h1.next&#x3D;&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            h1.pre.next&#x3D;null;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            h1.pre.next&#x3D;h1.next;</span><br><span class="line">            h1.next.pre&#x3D;h1.pre;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void deleteNode(int j)</span><br><span class="line">    &#123;</span><br><span class="line">        h1&#x3D;head.next;</span><br><span class="line">        int i&#x3D;0;</span><br><span class="line">        while(h1!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            if(h1.no&#x3D;&#x3D;j)</span><br><span class="line">            &#123;</span><br><span class="line">                if(h1.next&#x3D;&#x3D;null)</span><br><span class="line">                    h1.pre.next&#x3D;null;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    h1.pre.next&#x3D;h1.next;</span><br><span class="line">                    h1.next.pre&#x3D;h1.pre;</span><br><span class="line">                &#125;</span><br><span class="line">                i&#x3D;1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if(i&#x3D;&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;不存在该节点&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;修改结点</span><br><span class="line">    public void Update(SXHeroNode H)</span><br><span class="line">    &#123;</span><br><span class="line">        h1&#x3D;head.next;</span><br><span class="line">        int i&#x3D;0;</span><br><span class="line">        while(h1!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            if(h1.no&#x3D;&#x3D;H.no)</span><br><span class="line">            &#123;</span><br><span class="line">                h1.name&#x3D;H.name;</span><br><span class="line">                h1.nickname&#x3D;H.nickname;</span><br><span class="line">                i&#x3D;1;</span><br><span class="line">            &#125;</span><br><span class="line">            h1&#x3D;h1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if(i&#x3D;&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;不存在该节点&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;用于存放水浒传英雄，定义SXHeroNode</span><br><span class="line">class  SXHeroNode&#123;</span><br><span class="line">    public int no;</span><br><span class="line">    public String name;</span><br><span class="line">    public String nickname;</span><br><span class="line">    public SXHeroNode pre;</span><br><span class="line">    public SXHeroNode next;</span><br><span class="line">    &#x2F;&#x2F;构造器</span><br><span class="line">    public SXHeroNode()</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public  SXHeroNode(int hno,String hname,String hnickname)</span><br><span class="line">    &#123;</span><br><span class="line">        this.no&#x3D;hno;</span><br><span class="line">        this.name&#x3D;hname;</span><br><span class="line">        this.nickname&#x3D;hnickname;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;重写toString</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;SXHeroNode&#123;&quot; +</span><br><span class="line">                &quot;no&#x3D;&quot; + no +</span><br><span class="line">                &quot;, name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, nickname&#x3D;&#39;&quot; + nickname +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="单向环形链表"><a href="#单向环形链表" class="headerlink" title="单向环形链表"></a>单向环形链表</h2><h3 id="带头节点的单向环形链表"><a href="#带头节点的单向环形链表" class="headerlink" title="带头节点的单向环形链表"></a>带头节点的单向环形链表</h3><p>创建思路：最后一个节点的next直接指向frist.next，frist只是起到引子作用，而不参与链表中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">class DXHX</span><br><span class="line">&#123;</span><br><span class="line">    private KidNode frist&#x3D;new KidNode();</span><br><span class="line"></span><br><span class="line">    public KidNode getFrist() &#123;</span><br><span class="line">        return frist;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(KidNode k)</span><br><span class="line">    &#123;</span><br><span class="line">        KidNode k1 &#x3D;frist.next;</span><br><span class="line">        while(true) &#123;</span><br><span class="line">            if (k1 &#x3D;&#x3D; null) &#123;</span><br><span class="line">                frist.next &#x3D; k;</span><br><span class="line">                k.next &#x3D; k;</span><br><span class="line">                return;</span><br><span class="line">            &#125; else if (k1.next &#x3D;&#x3D; frist.next) &#123;</span><br><span class="line">                k1.next &#x3D; k;</span><br><span class="line">                k.next &#x3D; frist.next;</span><br><span class="line">                return;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                k1 &#x3D; k1.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;</span><br><span class="line">        KidNode k1 &#x3D;frist.next;</span><br><span class="line">        if(k1!&#x3D;null)</span><br><span class="line">        do &#123;</span><br><span class="line">            System.out.println(k1);</span><br><span class="line">            k1&#x3D;k1.next;</span><br><span class="line">        &#125;while (k1!&#x3D;frist.next);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public int Length()</span><br><span class="line">    &#123;</span><br><span class="line">        int i&#x3D;0;</span><br><span class="line">        KidNode k1 &#x3D;frist.next;</span><br><span class="line">        if(k1!&#x3D;null)</span><br><span class="line">            do &#123;</span><br><span class="line">                i++;</span><br><span class="line">                k1&#x3D;k1.next;</span><br><span class="line">            &#125;while (k1!&#x3D;frist.next);</span><br><span class="line">           return i;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Delete(int i,int j)</span><br><span class="line">    &#123;</span><br><span class="line">        KidNode k1 &#x3D;frist;</span><br><span class="line">        if(this.Length()&#x3D;&#x3D;1&amp;&amp;i&#x3D;&#x3D;frist.next.Num1)</span><br><span class="line">        &#123;</span><br><span class="line">            frist.next.Num2&#x3D;j;</span><br><span class="line">            frist.next&#x3D;null;</span><br><span class="line">        &#125;</span><br><span class="line">        else for (int k &#x3D; 0; k &lt;this.Length() ; k++) &#123;</span><br><span class="line">            if(k1.next.Num1&#x3D;&#x3D;i)</span><br><span class="line">            &#123;</span><br><span class="line">                k1.next&#x3D;k1.next.next;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                k1&#x3D;k1.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class KidNode</span><br><span class="line">&#123;</span><br><span class="line">    public String name;</span><br><span class="line">    public int Num1;</span><br><span class="line">    public int Num2;</span><br><span class="line">    public KidNode next;</span><br><span class="line">    public KidNode(String name, int num1) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        Num1 &#x3D; num1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public KidNode()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;KidNode&#123;&quot; +</span><br><span class="line">                &quot;name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, Num1&#x3D;&quot; + Num1 +</span><br><span class="line">                &quot;, Num2&#x3D;&quot; + Num2 +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不带头节点的单向环形链表"><a href="#不带头节点的单向环形链表" class="headerlink" title="不带头节点的单向环形链表"></a>不带头节点的单向环形链表</h3><p>构建思路<br>1.先创建第一个结点，让frist指向该节点，并形成环形<br>2.后面我们每创建一个新的节点，就把该节点加入到已有的环形链表即可。<br>3.first是其中的一个实体节点，链表为空是frist==null;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">class DXHX</span><br><span class="line">&#123;</span><br><span class="line">    private KidNode frist&#x3D;null;</span><br><span class="line">public DXHX()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">    public KidNode getFrist() &#123;</span><br><span class="line">        return frist;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(KidNode k) &#123;</span><br><span class="line">        KidNode k1 &#x3D; frist;</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            if (k1&#x3D;&#x3D; null) &#123;</span><br><span class="line">                frist&#x3D;k;</span><br><span class="line">                frist.next&#x3D;frist;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(k1.next&#x3D;&#x3D;frist)</span><br><span class="line">            &#123;</span><br><span class="line">                k1.next&#x3D;k;</span><br><span class="line">                k.next&#x3D;frist;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                k1&#x3D;k1.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void Show() &#123;</span><br><span class="line">        KidNode k1 &#x3D; frist;</span><br><span class="line">        if (k1&#x3D;&#x3D; null) &#123;</span><br><span class="line">            System.out.println(&quot;链表为空&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(k1);</span><br><span class="line">            k1&#x3D;k1.next;</span><br><span class="line">            while(k1!&#x3D;frist)</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(k1);</span><br><span class="line">                k1&#x3D;k1.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public int Length()</span><br><span class="line">    &#123;</span><br><span class="line">        int i&#x3D;0;</span><br><span class="line">        KidNode k1 &#x3D;frist;</span><br><span class="line">        if(k1&#x3D;&#x3D;null);</span><br><span class="line"></span><br><span class="line">            else</span><br><span class="line">        &#123;   i++;</span><br><span class="line">        k1&#x3D;k1.next;</span><br><span class="line">            while(k1!&#x3D;frist)</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                k1&#x3D;k1.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return i;</span><br><span class="line">    &#125;</span><br><span class="line">    public KidNode Delete(int i,int j)</span><br><span class="line">    &#123;</span><br><span class="line">        KidNode k1 &#x3D;frist;</span><br><span class="line">        KidNode k2&#x3D;new KidNode();</span><br><span class="line">        if(k1&#x3D;&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(&quot;链表为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(this.Length()&#x3D;&#x3D;1)</span><br><span class="line">        &#123;</span><br><span class="line">            k2&#x3D;frist;</span><br><span class="line">            frist&#x3D;null;</span><br><span class="line">        &#125;</span><br><span class="line">       for (int k &#x3D; 0; k &lt;this.Length()+2 ; k++)</span><br><span class="line">       &#123;</span><br><span class="line">            if(k1.next.Num1&#x3D;&#x3D;i)</span><br><span class="line">            &#123;</span><br><span class="line">                if(k1.next&#x3D;&#x3D;frist)</span><br><span class="line">                &#123;</span><br><span class="line">                    k2&#x3D;frist;</span><br><span class="line">                    k1.next&#x3D;frist.next;</span><br><span class="line">                    frist&#x3D;k1.next;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    k2&#x3D;k1.next;</span><br><span class="line">                    k1.next&#x3D;k1.next.next;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                k1&#x3D;k1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return k2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class KidNode</span><br><span class="line">&#123;</span><br><span class="line">    public String name;</span><br><span class="line">    public int Num1;</span><br><span class="line">    public int Num2;</span><br><span class="line">    public KidNode next;</span><br><span class="line">    public KidNode(String name, int num1) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        Num1 &#x3D; num1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public KidNode()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;KidNode&#123;&quot; +</span><br><span class="line">                &quot;name&#x3D;&#39;&quot; + name + &#39;\&#39;&#39; +</span><br><span class="line">                &quot;, Num1&#x3D;&quot; + Num1 +</span><br><span class="line">                &quot;, Num2&#x3D;&quot; + Num2 +</span><br><span class="line">                &#39;&#125;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Josephu(约瑟夫、约瑟夫环) ：问题<br>    Josephu  问题为：设编号为1，2，… n的n个人围坐一圈，约定编号为k（1&lt;=k&lt;=n）的人从1开始报数，数到m 的那个人出列，它的下一位又从1开始报数，数到m的那个人又出列，依次类推，直到所有人出列为止，由此产生一个出队编号的序列。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        DXHX D1&#x3D;new DXHX();</span><br><span class="line">        YSF(125,20,D1);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void YSF(int n,int kkk,DXHX D1)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i &#x3D; 1; i &lt;&#x3D;n ; i++) &#123;</span><br><span class="line">            KidNode k&#x3D;new KidNode(&quot;W&quot;+i,i);</span><br><span class="line">            D1.add(k);</span><br><span class="line">        &#125;</span><br><span class="line">        KidNode kk&#x3D;D1.getFrist();</span><br><span class="line">        int j&#x3D;0;</span><br><span class="line">        ArrayList&lt;KidNode&gt; A&#x3D;new ArrayList&lt;&gt;();</span><br><span class="line">        while(D1.Length()!&#x3D;0)</span><br><span class="line">        &#123;        </span><br><span class="line">            for (int i &#x3D; 0; i &lt;kkk-1 ; i++) &#123;</span><br><span class="line">                kk&#x3D;kk.next;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">            A.add(D1.Delete(kk.Num1,j)) ;</span><br><span class="line">            kk&#x3D;kk.next;</span><br><span class="line">        &#125;</span><br><span class="line">        for (KidNode kidNode : A) &#123;</span><br><span class="line">            System.out.println(kidNode);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;&#96;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/" data-id="ckb22iug800awzwu8g3ycezoh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据结构/队列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/" class="article-date">
+  <time datetime="2020-02-12T04:16:15.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/">队列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数组实现的无循环队列"><a href="#数组实现的无循环队列" class="headerlink" title="数组实现的无循环队列"></a>数组实现的无循环队列</h2><p>front：指向一个元素前一个元素<br>rear：指向最后一个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">class ArrayQueue&#123;</span><br><span class="line">    private int maxSize;</span><br><span class="line">    private int front;</span><br><span class="line">    private int rear;</span><br><span class="line">    private int[] arr;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;创建队列的构造器</span><br><span class="line">    public ArrayQueue(int arrMaxSize)</span><br><span class="line">    &#123;</span><br><span class="line">        maxSize&#x3D;arrMaxSize;</span><br><span class="line">        arr&#x3D;new int[maxSize];</span><br><span class="line">        front&#x3D;-1;</span><br><span class="line">        rear&#x3D;-1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;判断是否满</span><br><span class="line">    public boolean isFull()</span><br><span class="line">    &#123;</span><br><span class="line">        return rear&#x3D;&#x3D;maxSize-1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;判断是否空</span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return rear &#x3D;&#x3D; front;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;入队列</span><br><span class="line">    public void pushQueue(int i)</span><br><span class="line">    &#123;</span><br><span class="line">        if(isFull())</span><br><span class="line">            System.out.println(&quot;队列已满&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            arr[++rear]&#x3D;i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;出队列</span><br><span class="line">    public int popQueue()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">            throw new RuntimeException(&quot;队列为空&quot;);</span><br><span class="line">        else</span><br><span class="line">            return arr[++front];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;显示队列所有数据</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">            throw new RuntimeException(&quot;队列为空&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            for (int i &#x3D; front+1; i &lt;&#x3D;rear ; i++) &#123;</span><br><span class="line">                System.out.println(arr[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;获取队列的头数据</span><br><span class="line">    public int getQueue()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            throw new RuntimeException(&quot;队列为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            return arr[front+1];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组模拟环形队列"><a href="#数组模拟环形队列" class="headerlink" title="数组模拟环形队列"></a>数组模拟环形队列</h2><p>思路：</p>
+<ul>
+<li>1.front变量的含义进行调整：front就指向第一个元素。初始值为0；<br> 2.rear变量：rear指向队列最后一个元素的后一个位置，因为希望空出一个空间。 用来使队列满的时候不至于rear=front。使得好判断队列到底是空还是满    初始值为0；<br> 3.当队列满的时候，条件是（rear+1）%maxSize=front。为什么加一？：因为需要预留一个空位置。<br> 4.队列为空：rear=front<br> 5.当我们这样分析，队列中有效的数据个数为(rear+maxSize-front)%maxSize。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public CircleArrayQueue(int arrMaxSize)</span><br><span class="line">    &#123;</span><br><span class="line">        maxSize&#x3D;arrMaxSize;</span><br><span class="line">        arr&#x3D;new int[maxSize];</span><br><span class="line">        front&#x3D;0;</span><br><span class="line">        rear&#x3D;0;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;判断是否满</span><br><span class="line">    public boolean isFull()</span><br><span class="line">    &#123;</span><br><span class="line">        return (rear+1)%maxSize&#x3D;&#x3D;front;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;判断是否空</span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return rear &#x3D;&#x3D; front;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;入队列</span><br><span class="line">    public void pushQueue(int i)</span><br><span class="line">    &#123;</span><br><span class="line">        if(isFull())</span><br><span class="line">            System.out.println(&quot;队列已满&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            arr[rear]&#x3D;i;</span><br><span class="line">            rear&#x3D;(rear+1)%maxSize;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;出队列</span><br><span class="line">    public int popQueue()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">            throw new RuntimeException(&quot;队列为空&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123; int v&#x3D;arr[front];</span><br><span class="line">        front&#x3D;(front+1)%maxSize;</span><br><span class="line">        return v;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;显示队列所有数据</span><br><span class="line">    public void Show()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">            throw new RuntimeException(&quot;队列为空&quot;);</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            for (int i &#x3D; front; i &lt;front+Size(); i++) &#123;</span><br><span class="line">                System.out.println(arr[i%maxSize]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public int Size()</span><br><span class="line">    &#123;</span><br><span class="line">        return (rear+maxSize-front)%maxSize;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;获取队列的头数据</span><br><span class="line">    public int getQueue()</span><br><span class="line">    &#123;</span><br><span class="line">        if(isEmpty())</span><br><span class="line">        &#123;</span><br><span class="line">            throw new RuntimeException(&quot;队列为空&quot;);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            return arr[front];</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/02/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/" data-id="ckb22iug900b0zwu88bw2cqlp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据结构/数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" class="article-date">
+  <time datetime="2020-02-10T08:14:22.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/">数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-稀疏数组"><a href="#1-稀疏数组" class="headerlink" title="1.稀疏数组"></a>1.稀疏数组</h2><ul>
+<li>当一个数组中大部分元素为０，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。<br>稀疏数组的处理方法是:<br>记录数组一共有几行几列，有多少个不同的值<br>把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">public class SparseArray &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int chessArr1[][]&#x3D;new int[11][11];</span><br><span class="line">        chessArr1[1][2]&#x3D;1;</span><br><span class="line">        chessArr1[2][3]&#x3D;2;</span><br><span class="line">        for (int[] ints : chessArr1) &#123;</span><br><span class="line">            for (int i : ints) &#123;</span><br><span class="line">                System.out.print(i+&quot;\t&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        int sum&#x3D;0;</span><br><span class="line">        for (int[] ints : chessArr1) &#123;</span><br><span class="line">            for (int i : ints) &#123;</span><br><span class="line">                if(i!&#x3D;0)</span><br><span class="line">                &#123;</span><br><span class="line">                    sum++;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int sparseArr[][]&#x3D;new int[sum+1][3];</span><br><span class="line">        sparseArr[0][0]&#x3D;11;</span><br><span class="line">        sparseArr[0][1]&#x3D;11;</span><br><span class="line">        sparseArr[0][2]&#x3D;sum;</span><br><span class="line">        int k&#x3D;1;</span><br><span class="line">        for (int i &#x3D; 0; i &lt;11 ; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt;10 ; j++) &#123;</span><br><span class="line">                if(chessArr1[i][j]!&#x3D;0)</span><br><span class="line">                &#123;</span><br><span class="line">                    sparseArr[k][0] &#x3D; i;</span><br><span class="line">                    sparseArr[k][1]&#x3D;j;</span><br><span class="line">                    sparseArr[k][2]&#x3D;chessArr1[i][j];</span><br><span class="line">                    k++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int[] ints : sparseArr) &#123;</span><br><span class="line">            for (int i : ints) &#123;</span><br><span class="line">                System.out.print(i+&quot;\t&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        int chessArr2[][]&#x3D;new int[11][11];</span><br><span class="line">        for (int i &#x3D; 1; i &lt;sparseArr.length ; i++) &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt;3 ; j++) &#123;</span><br><span class="line">                chessArr2[sparseArr[i][0]][sparseArr[i][1]]&#x3D;sparseArr[i][2];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int[] ints : chessArr2) &#123;</span><br><span class="line">            for (int i : ints) &#123;</span><br><span class="line">                System.out.print(i+&quot;\t&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/02/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/" data-id="ckb22iug800auzwu827ikhl4h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-算法/算法题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%A2%98/" class="article-date">
+  <time datetime="2020-02-10T06:32:16.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%A2%98/">算法题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2020/02/10/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%A2%98/" data-id="ckb22iugi00bwzwu8b1z2d17v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/Web/HTTP/" class="article-date">
+  <time datetime="2019-11-09T07:30:59.000Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/Web/HTTP/">HTTP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a><strong>HTTP</strong></h1><p><strong>概念</strong>：Hyper Text Transfer Protocol 超文本传输协议</p>
+<p><strong>传输协议：</strong>定义了，客户端和服务器端通信时，发送数据的格式。</p>
+<p><strong>特点：</strong></p>
+<ol>
+<li>基于TCP/IP的高级协议</li>
+<li>默认端口号/80</li>
+<li>基于请求响应模型的：一次请求对应一次响应</li>
+<li>无状态的：每次请求之间相互独立，不能交互数据。</li>
+</ol>
+<p><strong>历史版本</strong><br>    1.0:每次请求响应都会建立新的连接<br>    2.0：会复用连接</p>
+<h1 id="请求消息数据格式"><a href="#请求消息数据格式" class="headerlink" title="请求消息数据格式"></a><strong>请求消息数据格式</strong></h1><h3 id="1-请求行"><a href="#1-请求行" class="headerlink" title="1.请求行"></a><strong>1.请求行</strong></h3><p>请求方式 请求url       请求协议/版本<br>GET     /login.html   HTTP/1.1</p>
+<ul>
+<li><strong>HTTP协议中有7中请求方式，常用的有两种</strong><ul>
+<li>GET<ol>
+<li>请求参数在请求行中,在url之后</li>
+<li>请求的url长度是有限制的</li>
+</ol>
+</li>
+<li>Psot <ol>
+<li>请求参数在请求体中</li>
+<li>请求的url长度没有限制</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-请求头：客户端浏览器告诉服务器的一些信息"><a href="#2-请求头：客户端浏览器告诉服务器的一些信息" class="headerlink" title="2.请求头：客户端浏览器告诉服务器的一些信息"></a><strong>2.请求头：客户端浏览器告诉服务器的一些信息</strong></h3><p>请求头名称：请求头值<br><strong>常见的请求头：</strong></p>
+<ol>
+<li>User-Agent:浏览器告诉服务器，我访问你使用的浏览器版本信息<ul>
+<li>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</li>
+</ul>
+</li>
+<li>Referer: <a href="https://www.bilibili.com/" target="_blank" rel="noopener">https://www.bilibili.com/</a> ，现在用的不多<ul>
+<li>告诉服务器我（当前请求）从哪里来</li>
+<li><strong>作用</strong><ol>
+<li>防盗链(盗取超链接)判断该Referer是否等于自己想让访问的网页</li>
+<li>统计工作</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/154.png" alt=""></p>
+<h3 id="3-请求空行"><a href="#3-请求空行" class="headerlink" title="3.请求空行"></a><strong>3.请求空行</strong></h3><p>空行 分割作用</p>
+<h3 id="4-请求体（正文）：get方式没有请求体"><a href="#4-请求体（正文）：get方式没有请求体" class="headerlink" title="4.请求体（正文）：get方式没有请求体"></a><strong>4.请求体（正文）：get方式没有请求体</strong></h3><p><strong>封装Post请求消息的请求参数的</strong><br>参数=。。。<br>username=zhangsan<br>Host: cm.bilibili.com</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Host: cm.bilibili.com</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko&#x2F;20100101 Firefox&#x2F;70.0</span><br><span class="line">Accept: application&#x2F;json, text&#x2F;javascript, *&#x2F;*; q&#x3D;0.01</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.8,zh-TW;q&#x3D;0.7,zh-HK;q&#x3D;0.5,en-US;q&#x3D;0.3,en;q&#x3D;0.2</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Content-Type: application&#x2F;json</span><br><span class="line">Content-Length: 250</span><br><span class="line">Origin: https:&#x2F;&#x2F;www.bilibili.com</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Referer: https:&#x2F;&#x2F;www.bilibili.com&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h1 id="响应消息数据格式"><a href="#响应消息数据格式" class="headerlink" title="响应消息数据格式"></a><strong>响应消息数据格式</strong></h1><h3 id="1-响应行"><a href="#1-响应行" class="headerlink" title="1.响应行"></a><strong>1.响应行</strong></h3><ol>
+<li>组成：协议/版本 响应状态吗 状态码描述<br>HTTP/1.1 200 OK</li>
+<li><strong>响应状态码：</strong>服务器告诉客户端浏览器本次请求和响应的一个状态<ul>
+<li>状态码都是三位数字</li>
+<li>分类<ol>
+<li>1xx：了解：服务器接收客户端消息，但没有接收完成，等待一段时间后，发送1xx状态码</li>
+<li>2xx：成功。代表200</li>
+<li>3xx：<br>重定向:代表302<br><img src="/images/23.png" alt=""><br>304缓存本地<br><img src="/images/24.png" alt=""></li>
+<li>4xx：客户端错误。<br>代表404：路径没有对应的资源。<br>405：请求方式没有对应的doGet或者doPost方法。<br>408：请求超时</li>
+<li>5xx：服务器端错误。<br>代表：500：服务器内部代码异常</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-响应头"><a href="#2-响应头" class="headerlink" title="2.响应头"></a><strong>2.响应头</strong></h3><ol>
+<li>格式：头名称：值</li>
+<li>常见的响应头：<ol>
+<li>Content-Type:服务器告诉客户端本次响应体数据格式以及编码格式<br>Content-Type: text/html;charset=UTF-8</li>
+<li>Content-disposition：服务器告诉客户端以什么格式打开我的响应体数据<br>默认值：in-line，在当前页面内打开<ul>
+<li>attachment；filename=xxx：以附件形式打开响应体。文件下载</li>
+</ul>
+</li>
+<li>Location：表示客户应当到哪里去提取文档。Location通常不是直接设置的，而是通过HttpServletResponse的sendRedirect方法，该方法同时设置状态代码为302。等同于response.setHeader(“location”,”/day15/responseDemo2”);</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-响应空行"><a href="#3-响应空行" class="headerlink" title="3.响应空行"></a><strong>3.响应空行</strong></h3><p>空行 分割作用</p>
+<h3 id="4-响应体：传输的数据"><a href="#4-响应体：传输的数据" class="headerlink" title="4.响应体：传输的数据"></a><strong>4.响应体：传输的数据</strong></h3><ul>
+<li>响应的字符串格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;响应行：	         HTTP&#x2F;1.1 200 OK</span><br><span class="line">&#x2F;&#x2F;响应头：         Content-Type: text&#x2F;html;charset&#x3D;UTF-8</span><br><span class="line">        	         Content-Length: 90</span><br><span class="line">        	         Date: Sat, 09 Nov 2019 07:26:20 GMT</span><br><span class="line">&#x2F;&#x2F;响应空行：</span><br><span class="line">&#x2F;&#x2F;响应体          	 &lt;html&gt;</span><br><span class="line">                	  &lt;head&gt;</span><br><span class="line">                	    &lt;title&gt;$Title$&lt;&#x2F;title&gt;</span><br><span class="line">                	  &lt;&#x2F;head&gt;</span><br><span class="line">                	  &lt;body&gt;</span><br><span class="line">                	  $END$</span><br><span class="line">                	  &lt;&#x2F;body&gt;</span><br><span class="line">                	&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/09/Web/HTTP/" data-id="ckb22iuex005qzwu8b1kh3prv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/Web开发中遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/09/Web/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2019-11-09T06:16:54.000Z" itemprop="datePublished">2019-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/09/Web/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">Web开发中遇到的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-jar包中的类没正确引入所导致的java-lang-ClassNotFoundException"><a href="#1-jar包中的类没正确引入所导致的java-lang-ClassNotFoundException" class="headerlink" title="1.jar包中的类没正确引入所导致的java.lang.ClassNotFoundException"></a>1.jar包中的类没正确引入所导致的java.lang.ClassNotFoundException</h1><p>在测试类里运行的时候好好的，为什么到服务器就连连失败呢<br>被这个问题困扰了整整一早上<br>在引入包的时候并没有报异常<br><img src="/images/20.png" alt=""><br>但运行的时候却出现java.lang.ClassNotFoundException: org.springframework.dao.DataAccessException<br><img src="/images/21.png" alt=""></p>
+<p>所以我首先想到的是，jar包出现了问题，抱着必定成功的心态换了jar包<br>但并没有发生任何区别，依旧是报错</p>
+<p>经过长时间的搜索，最终了解到了是jar包的存放位置出现了错误</p>
+<p>我最初放置的地方时web目录下的WEB-INF，这样并不可行，然后加了一个WEB-INF下的libs目录，但依旧出错，这时就有点头大了，<br>最后将libs更名为lib，没想到居然成功了。<br><img src="/images/22.png" alt=""></p>
+<h3 id="所以得出结论：jar包要存放在web-–-WEB-INF-–-lib目录下，单词不能拼错，且大小写一致。"><a href="#所以得出结论：jar包要存放在web-–-WEB-INF-–-lib目录下，单词不能拼错，且大小写一致。" class="headerlink" title="所以得出结论：jar包要存放在web – WEB-INF – lib目录下，单词不能拼错，且大小写一致。"></a>所以得出结论：jar包要存放在web – WEB-INF – lib目录下，单词不能拼错，且大小写一致。</h3><h1 id="2-maven一直导不了某个jar包"><a href="#2-maven一直导不了某个jar包" class="headerlink" title="2.maven一直导不了某个jar包"></a>2.maven一直导不了某个jar包</h1><p>尝试改变&lt; groupId&gt;和&lt; artifactId&gt;为与本地地址对应的地址，而不是网络地址</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/09/Web/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckb22iuf8006qzwu865q4go3k" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/Servlet-Response" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/06/Web/Servlet-Response/" class="article-date">
+  <time datetime="2019-11-06T04:02:14.000Z" itemprop="datePublished">2019-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/06/Web/Servlet-Response/">Servlet-Response</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Response："><a href="#Response：" class="headerlink" title="Response："></a><strong>Response：</strong></h2><p><strong>功能：设置响应消息</strong></p>
+<ol>
+<li>设置响应行<ol>
+<li>格式HTTP/1.1 200 OK</li>
+<li>设置状态码：setStatus(int sc)</li>
+</ol>
+</li>
+<li>设置响应头<br> setHeader(String name, String value)</li>
+<li>设置响应体</li>
+</ol>
+<ul>
+<li>使用步骤：<ol>
+<li>获取输出流<ul>
+<li>字符输出流PrintWriter getWriter()</li>
+<li>字节输出流ServletOutputStream getOutputStream()</li>
+</ul>
+</li>
+<li>使用输出流，将数据输出到客户端浏览器</li>
+</ol>
+</li>
+</ul>
+<h2 id="案例："><a href="#案例：" class="headerlink" title="案例："></a><strong>案例：</strong></h2><h3 id="1-完成重定向"><a href="#1-完成重定向" class="headerlink" title="1.完成重定向"></a><strong>1.完成重定向</strong></h3><ul>
+<li><p>重定向：资源跳转的方式</p>
+</li>
+<li><p>代码实现：<br>  //1. 设置状态码为302<br>  response.setStatus(302);<br>  //2.设置响应头location,修改location头信息也可以完成重定向。但不推荐使用这种方法。<br>  response.setHeader(“location”,”/day15/responseDemo2”);<br>  //简单的重定向方法，推荐使用这种方法。<br>  response.sendRedirect(“/day15/responseDemo2”);</p>
+<p><strong>forward 和  redirect 区别</strong>    </p>
+<ul>
+<li>重定向的特点:redirect<ol>
+<li>地址栏发生变化</li>
+<li>重定向可以访问其他站点(服务器)的资源</li>
+<li>重定向是两次请求。不能使用request对象来共享数据，因为两次不是同一个request(不在同一个request域里面)。</li>
+</ol>
+</li>
+<li>转发的特点：forward<ol>
+<li>转发地址栏路径不变</li>
+<li>转发只能访问当前服务器下的资源</li>
+<li>转发是一次请求，可以使用request对象来共享数据            </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-服务器输出字符数据到浏览器"><a href="#2-服务器输出字符数据到浏览器" class="headerlink" title="2.服务器输出字符数据到浏览器"></a><strong>2.服务器输出字符数据到浏览器</strong></h3><ul>
+<li>步骤：<ol>
+<li>获取字符输出流</li>
+<li>输出数据<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//简单的形式，设置编码</span></span><br><span class="line">      response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);								</span><br><span class="line">      <span class="comment">//1.获取字符输出流</span></span><br><span class="line">      PrintWriter pw = response.getWriter();</span><br><span class="line">      <span class="comment">//2.输出数据</span></span><br><span class="line">      pw.write(<span class="string">"&lt;h1&gt;hello response&lt;/h1&gt;"</span>);</span><br><span class="line">      pw.write(<span class="string">"你好啊啊啊 response"</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>注意：<ul>
+<li>乱码问题：<ol>
+<li>PrintWriter pw = response.getWriter();获取的流的默认编码是ISO-8859-1</li>
+<li>设置该流的默认编码</li>
+<li>告诉浏览器响应体使用的编码</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>告诉浏览器，服务器发送的消息体数据的编码。建议浏览器使用该编码解码<br>response.setHeader(“content-type”,”text/html;charset=utf-8”);</li>
+<li>简单的形式，设置编码，<strong>在获取流之前设置</strong>，设置流的编码。<br>response.setContentType(“text/html;charset=utf-8”);</li>
+</ol>
+<h3 id="3-服务器输出字节数据到浏览器"><a href="#3-服务器输出字节数据到浏览器" class="headerlink" title="3.服务器输出字节数据到浏览器"></a><strong>3.服务器输出字节数据到浏览器</strong></h3><ul>
+<li>步骤：<ol>
+<li>获取字节输出流</li>
+<li>输出数据<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.获取字节输出流</span></span><br><span class="line">        ServletOutputStream sos = response.getOutputStream();</span><br><span class="line">        <span class="comment">//2.输出数据</span></span><br><span class="line">        sos.write(<span class="string">"你好"</span>.getBytes(<span class="string">"utf-8"</span>));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-验证码"><a href="#4-验证码" class="headerlink" title="4.验证码"></a><strong>4.验证码</strong></h3><ol>
+<li>本质：图片</li>
+<li>目的：防止恶意表单注册<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/checkCode"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckCode</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> width = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">int</span> height = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.创建一对象，在内存中图片(验证码图片对象)</span></span><br><span class="line">        BufferedImage image = <span class="keyword">new</span> BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.美化图片</span></span><br><span class="line">        <span class="comment">//2.1 填充背景色</span></span><br><span class="line">        Graphics g = image.getGraphics();<span class="comment">//画笔对象</span></span><br><span class="line">        g.setColor(Color.PINK);<span class="comment">//设置画笔颜色</span></span><br><span class="line">        g.fillRect(<span class="number">0</span>,<span class="number">0</span>,width,height);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.2画边框</span></span><br><span class="line">        g.setColor(Color.BLUE);</span><br><span class="line">        g.drawRect(<span class="number">0</span>,<span class="number">0</span>,width - <span class="number">1</span>,height - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        String str = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789"</span>;</span><br><span class="line">        <span class="comment">//生成随机角标</span></span><br><span class="line">        Random ran = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> index = ran.nextInt(str.length());</span><br><span class="line">            <span class="comment">//获取字符</span></span><br><span class="line">            <span class="keyword">char</span> ch = str.charAt(index);<span class="comment">//随机字符</span></span><br><span class="line">            <span class="comment">//2.3写验证码</span></span><br><span class="line">            g.drawString(ch+<span class="string">""</span>,width/<span class="number">5</span>*i,height/<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.4画干扰线</span></span><br><span class="line">        g.setColor(Color.GREEN);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//随机生成坐标点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x1 = ran.nextInt(width);</span><br><span class="line">            <span class="keyword">int</span> x2 = ran.nextInt(width);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> y1 = ran.nextInt(height);</span><br><span class="line">            <span class="keyword">int</span> y2 = ran.nextInt(height);</span><br><span class="line">            g.drawLine(x1,y1,x2,y2);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.将图片输出到页面展示</span></span><br><span class="line">        ImageIO.write(image,<span class="string">"jpg"</span>,response.getOutputStream());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">                    <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            分析：</span></span><br><span class="line"><span class="comment">                点击超链接或者图片，需要换一张</span></span><br><span class="line"><span class="comment">                1.给超链接和图片绑定单击事件</span></span><br><span class="line"><span class="comment">                2.重新设置图片的src属性值</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">    window.onload = function()&#123;</span><br><span class="line">        <span class="comment">//1.获取图片对象</span></span><br><span class="line">        <span class="keyword">var</span> img = document.getElementById(<span class="string">"checkCode"</span>);</span><br><span class="line">        <span class="comment">//2.绑定单击事件</span></span><br><span class="line">        img.onclick = function()&#123;</span><br><span class="line">            <span class="comment">//加时间戳</span></span><br><span class="line">            <span class="keyword">var</span> date = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">            img.src = <span class="string">"Servlet/checkCode?"</span>+date;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;img id=<span class="string">"checkCode"</span> src=<span class="string">"Servlet/checkCode"</span> /&gt;</span><br><span class="line">    &lt;a id="change" href=""&gt;看不清换一张？&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/06/Web/Servlet-Response/" data-id="ckb22iuf20068zwu8a1mx8fsn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/Servlet-Request" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/06/Web/Servlet-Request/" class="article-date">
+  <time datetime="2019-11-06T04:02:14.000Z" itemprop="datePublished">2019-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/06/Web/Servlet-Request/">Servlet-Request</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Request："><a href="#Request：" class="headerlink" title="Request："></a><strong>Request：</strong></h1><h2 id="一-request对象和response对象的原理"><a href="#一-request对象和response对象的原理" class="headerlink" title="一.request对象和response对象的原理"></a><strong>一.request对象和response对象的原理</strong></h2><ol>
+<li>request和response对象是由服务器创建的。我们来使用他们。</li>
+<li>request对象是来获取请求消息的，response对象是来设置响应消息<br><img src="/images/10.png" alt=""></li>
+</ol>
+<h2 id="二-request对象继承的体系结构："><a href="#二-request对象继承的体系结构：" class="headerlink" title="二.request对象继承的体系结构："></a><strong>二.request对象继承的体系结构：</strong></h2><pre><code>ServletRequest            -- 接口
+    |继承
+HttpServletRequest        -- 接口
+    |实现
+org.apache.catalina.connector.RequestFacade 类（Tomcat）</code></pre><h2 id="三-request功能："><a href="#三-request功能：" class="headerlink" title="三.request功能："></a><strong>三.request功能：</strong></h2><h3 id="1-获取请求行数据"><a href="#1-获取请求行数据" class="headerlink" title="1.获取请求行数据"></a><strong>1.获取请求行数据</strong></h3><ul>
+<li>请求方式      请求URL路径     请求协议/版本<br>GET/day14/demo1?name=zhangsan HTTP/1.1</li>
+</ul>
+<p><strong>方法：</strong></p>
+<ol>
+<li>获取请求方式：GET<ul>
+<li>String getMethod（）</li>
+</ul>
+</li>
+<li>获取虚拟目录:/day14<ul>
+<li>String getContextPath()</li>
+</ul>
+</li>
+<li>获取Servlet路径：/demo1<ul>
+<li>String getServletPath()</li>
+</ul>
+</li>
+<li>获取get方式请求参数：name=zhangsan<ul>
+<li>String getQueryString()</li>
+</ul>
+</li>
+<li>获取请求的URI：/day14/demo1<ul>
+<li>String getRequestURI():    /day14/demo1</li>
+<li>StringBuffer getRequestURL()   <a href="http://localhost/day14/demo1" target="_blank" rel="noopener">http://localhost/day14/demo1</a></li>
+<li>URL:统一资源定位符：相当于中华人民共和国</li>
+<li>URI:统一资源标识符：相当于共和国，代表的范围更大</li>
+</ul>
+</li>
+<li>获取协议及版本<ul>
+<li>String Protocol()</li>
+</ul>
+</li>
+<li>获取客户机的IP地址：<ul>
+<li>String getRemoteAddr()</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/servletDemo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;                   </span><br><span class="line">        <span class="comment">//1. 获取请求方式 ：GET</span></span><br><span class="line">        String method = request.getMethod();</span><br><span class="line">        System.out.println(method);</span><br><span class="line">        <span class="comment">//2.(*)获取虚拟目录：/day14</span></span><br><span class="line">        String contextPath = request.getContextPath();</span><br><span class="line">        System.out.println(contextPath);</span><br><span class="line">        <span class="comment">//3. 获取Servlet路径: /demo1</span></span><br><span class="line">        String servletPath = request.getServletPath();</span><br><span class="line">        System.out.println(servletPath);</span><br><span class="line">        <span class="comment">//4. 获取get方式请求参数：name=zhangsan</span></span><br><span class="line">        String queryString = request.getQueryString();</span><br><span class="line">        System.out.println(queryString);</span><br><span class="line">        <span class="comment">//5.(*)获取请求URI：/day14/demo1</span></span><br><span class="line">        String requestURI = request.getRequestURI();</span><br><span class="line">        StringBuffer requestURL = request.getRequestURL();</span><br><span class="line">        System.out.println(requestURI);</span><br><span class="line">        System.out.println(requestURL);</span><br><span class="line">        <span class="comment">//6. 获取协议及版本：HTTP/1.1</span></span><br><span class="line">        String protocol = request.getProtocol();</span><br><span class="line">        System.out.println(protocol);</span><br><span class="line">        <span class="comment">//7. 获取客户机的IP地址：</span></span><br><span class="line">        String remoteAddr = request.getRemoteAddr();</span><br><span class="line">        System.out.println(remoteAddr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-获取请求头数据"><a href="#2-获取请求头数据" class="headerlink" title="2.获取请求头数据"></a><strong>2.获取请求头数据</strong></h3><p><strong>方法</strong></p>
+<ul>
+<li>String getHeader(String name):通过请求头的名称获取请求头的值</li>
+<li>Enumeration<String> getHeaderNames():获取所有的请求头信息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//演示获取请求头数据:user-agent</span></span><br><span class="line"></span><br><span class="line">        String agent = request.getHeader(<span class="string">"user-agent"</span>);</span><br><span class="line">        <span class="comment">//判断agent的浏览器版本</span></span><br><span class="line">        <span class="keyword">if</span>(agent.contains(<span class="string">"Chrome"</span>))&#123;</span><br><span class="line">            <span class="comment">//谷歌</span></span><br><span class="line">            System.out.println(<span class="string">"谷歌来了..."</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(agent.contains(<span class="string">"Firefox"</span>))&#123;</span><br><span class="line">            <span class="comment">//火狐</span></span><br><span class="line">            System.out.println(<span class="string">"火狐来了..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestDemo4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//演示获取请求头数据:referer</span></span><br><span class="line"></span><br><span class="line">        String referer = request.getHeader(<span class="string">"referer"</span>);</span><br><span class="line">        System.out.println(referer);<span class="comment">//http://localhost/day14/login.html</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//防盗链</span></span><br><span class="line">        <span class="keyword">if</span>(referer != <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="keyword">if</span>(referer.contains(<span class="string">"/day14"</span>))&#123;</span><br><span class="line">                <span class="comment">//正常访问</span></span><br><span class="line">               <span class="comment">// System.out.println("播放电影....");</span></span><br><span class="line">                response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);<span class="comment">//如果要写中文就要更改编码集</span></span><br><span class="line">                response.getWriter().write(<span class="string">"播放电影...."</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//盗链</span></span><br><span class="line">                <span class="comment">//System.out.println("想看电影吗？来优酷吧...");</span></span><br><span class="line">                response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">                response.getWriter().write(<span class="string">"想看电影吗？来优酷吧..."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-获取请求体数据"><a href="#3-获取请求体数据" class="headerlink" title="3.获取请求体数据"></a><strong>3.获取请求体数据</strong></h3><ul>
+<li>只有Post请求方式才有请求体，在请求体中封装了post请求的请求参数</li>
+<li>步骤：<ol>
+<li>获取流对象<ul>
+<li>BufferedReader getReader():获取字符输入流，只能操作字符数据</li>
+<li>ServletInputStream getInputStream():获取字节输入流，可以操作所有的类型数据。</li>
+</ul>
+</li>
+<li>再从流对象中拿数据</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/requestDemo5"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestDemo5</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//获取请求消息体--请求参数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.获取字符流</span></span><br><span class="line">        BufferedReader br = request.getReader();</span><br><span class="line">        <span class="comment">//2.读取数据</span></span><br><span class="line">        String line = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span>((line = br.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-其他功能-都是常用功能"><a href="#4-其他功能-都是常用功能" class="headerlink" title="4.其他功能,都是常用功能"></a><strong>4.其他功能,都是常用功能</strong></h3><ol>
+<li><strong>获取请求参数的通用方式，不论是get还是post都可以使用。</strong><ol>
+<li>String getParameter(String name):根据参数名称获取<strong>参数值</strong>username=zs&amp;password=123</li>
+<li>String[] getParameterValues(String name):根据参数名称获取<strong>参数值的数组</strong> hobby=xx&amp;hobby=game</li>
+<li>Enumeration<String> getParameterNames():获取所有<strong>请求参数的参数名称</strong></li>
+<li>Map&lt;String,String[]&gt; getParameterMap():获取所有<strong>参数的Map集合</strong>。</li>
+<li>方法1和方法4比较常用</li>
+</ol>
+<strong>中文乱码问题</strong><ul>
+<li>get方式：tomcat8已经将get方式乱码问题解决了</li>
+<li>post方式：会乱码,解决：设置流的字符集:request.setCharacterEncoding(“utf-8”);</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@WebServlet</span>(<span class="string">"/requestDemo6"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestDemo6</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//post 获取请求参数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据参数名称获取参数值</span></span><br><span class="line">        String username = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">       <span class="comment">/* System.out.println("post");</span></span><br><span class="line"><span class="comment">        System.out.println(username);*/</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">//根据参数名称获取参数值的数组</span></span><br><span class="line">        String[] hobbies = request.getParameterValues(<span class="string">"hobby"</span>);</span><br><span class="line">        <span class="comment">/*for (String hobby : hobbies) &#123;</span></span><br><span class="line"><span class="comment">            System.out.println(hobby);</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取所有请求的参数名称</span></span><br><span class="line"></span><br><span class="line">        Enumeration&lt;String&gt; parameterNames = request.getParameterNames();</span><br><span class="line">        <span class="comment">/*while(parameterNames.hasMoreElements())&#123;</span></span><br><span class="line"><span class="comment">            String name = parameterNames.nextElement();</span></span><br><span class="line"><span class="comment">            System.out.println(name);</span></span><br><span class="line"><span class="comment">            String value = request.getParameter(name);</span></span><br><span class="line"><span class="comment">            System.out.println(value);</span></span><br><span class="line"><span class="comment">            System.out.println("----------------");</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取所有参数的map集合</span></span><br><span class="line">        Map&lt;String, String[]&gt; parameterMap = request.getParameterMap();</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        Set&lt;String&gt; keyset = parameterMap.keySet();</span><br><span class="line">        <span class="keyword">for</span> (String name : keyset) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//获取键获取值</span></span><br><span class="line">            String[] values = parameterMap.get(name);</span><br><span class="line">            System.out.println(name);</span><br><span class="line">            <span class="keyword">for</span> (String value : values) &#123;</span><br><span class="line">                System.out.println(value);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">"-----------------"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//get 获取请求参数</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        //根据参数名称获取参数值</span></span><br><span class="line"><span class="comment">        String username = request.getParameter("username");</span></span><br><span class="line"><span class="comment">        System.out.println("get");</span></span><br><span class="line"><span class="comment">        System.out.println(username);*/</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>请求转发:一种在服务器内部的资源跳转方式。</strong><ol>
+<li><strong>步骤</strong><ol>
+<li>通过request对象获取请求转发器对象public RequestDispatcher getRequestDispatcher(String path)</li>
+<li>使用RequestDispatcher对象来进行转发，使用forward(ServletRequest request, ServletResponse response)<br><img src="/images/14.png" alt=""><br><img src="/images/15.png" alt=""></li>
+</ol>
+</li>
+<li><strong>特点：</strong><ol>
+<li>浏览器的地址栏路径不发生变化</li>
+<li>只能转发到当前的服务器内部的资源中,不能访问本服务器外部的资源</li>
+<li>转发是一次请求，浏览器f12抓包只能查到一次请求。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>共享数据</strong><ul>
+<li>域对象：一个有作用范围的对象，可以在范围内共享数据</li>
+<li>request域：代表一次请求的范围内，一般用于请求转发多个资源的共享数据</li>
+<li>方法<ol>
+<li>setAttribute(String name,Object obj);存储数据</li>
+<li>Object getAttribute(String name):通过name获取值，若要获取指定类型的对象，需要用强制类型转换，<br>如User user =(User) request.getAttribute(“user”);</li>
+<li>void removeAttribute(String name);通过键移除键值对</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><strong>获取ServletContext</strong><ol>
+<li>ServletContext getServletContext();</li>
+</ol>
+</li>
+</ol>
+<h2 id="Request案例"><a href="#Request案例" class="headerlink" title="Request案例"></a><strong>Request案例</strong></h2><p><strong>用户登录案例需求</strong></p>
+<ol>
+<li>编写login.html登录页面，<strong>login.html中form表单的action路径的写法：虚拟目录/虚拟资源路径</strong><br>username &amp; password 两个输入框</li>
+<li>使用Druid数据库连接池技术,操作mysql，day14数据库中user表</li>
+<li>使用JdbcTemplate技术封装JDBC</li>
+<li>登录成功跳转到SuccessServlet展示：登录成功！用户名,欢迎您</li>
+<li>登录失败跳转到FailServlet展示：登录失败，用户名或密码错误</li>
+</ol>
+<p><strong>分析</strong><br>  <img src="/images/19.png" alt=""><br><em>*开发步骤</em></p>
+<ol>
+<li>创建项目，导入html页面，配置文件，jar包</li>
+<li>创建数据库环境</li>
+<li>创建包domain，创建类User    </li>
+<li>创建util包，存放JDBCUtils类</li>
+<li>创建包dao，创建UserDao，提供login方法</li>
+<li>编写LoginServlet类</li>
+<li>编写FailServlet和SuccessServlet类</li>
+<li>login.Html中form表单action路径的写法<ul>
+<li>虚拟目录+Servlet的资源路径</li>
+</ul>
+</li>
+<li>BeanUtils的简化<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String[]&gt; map &#x3D; req.getParameterMap();</span><br><span class="line">      User loginuser&#x3D;new User();</span><br><span class="line">      &#x2F;&#x2F;使用BeanUtils封装</span><br><span class="line">      try &#123;</span><br><span class="line">          BeanUtils.populate(loginuser,map);</span><br><span class="line">      &#125; catch (IllegalAccessException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; catch (InvocationTargetException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>BeanUtils工具类，简化数据封装：用于封装JavaBean</strong></p>
+<ol>
+<li>JavaBean：标准的Java类<ol>
+<li>要求：<ul>
+<li>类必须被public修饰</li>
+<li>必须提供空参的构造器</li>
+<li>成员变量必须使用private修饰</li>
+<li>提供公共setter和getter方法</li>
+</ul>
+</li>
+<li>功能：封装数据</li>
+</ol>
+</li>
+<li>概念：<br>成员变量：private修饰的变量。<br>属性：setter和getter方法截取后的产物，大多数时候与成员变量相同。<br> 例如：getUsername() –&gt; Username–&gt; username，而如果是getHehe() –&gt;Hehe –&gt;hehe,但成员变量里可以没有hehe。</li>
+<li>方法：<ol>
+<li>setProperty()，设置属性（不一定是成员变量）。</li>
+<li>getProperty()，获取属性。</li>
+<li>populate(Object obj , Map map):将map集合的键值对信息，封装到对应的JavaBean对象中</li>
+</ol>
+</li>
+</ol>
+<p><strong>例如</strong><br><strong>未使用BeanUtils</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取请求参数</span></span><br><span class="line">        String username= request.getParameter(<span class="string">"username"</span>);                  </span><br><span class="line">        String password=request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">        <span class="comment">//封装User对象</span></span><br><span class="line">        User loginUser=<span class="keyword">new</span> User();</span><br><span class="line">        loginUser.setUsername(username);</span><br><span class="line">        loginUser.setPassword(password);</span><br></pre></td></tr></table></figure>
+<p><strong>使用BeanUtils,在变量参数较多时有明显的优势</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取所有请求参数</span></span><br><span class="line">        Map&lt;String, String[]&gt; pM = request.getParameterMap();</span><br><span class="line">        <span class="comment">//创建User对象</span></span><br><span class="line">        User loginUser=<span class="keyword">new</span> User();</span><br><span class="line">        <span class="comment">//使用BeanUtils封装</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            BeanUtils.populate(loginUser,pM);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/06/Web/Servlet-Request/" data-id="ckb22iuf3006czwu8hs8xeftk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/ServletContext对象" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/06/Web/ServletContext%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time datetime="2019-11-06T04:02:14.000Z" itemprop="datePublished">2019-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/06/Web/ServletContext%E5%AF%B9%E8%B1%A1/">ServletContext对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a><strong>1.概念</strong></h2><p>代表整个web应用，可以和程序的容器(服务器)来通信,交互数据</p>
+<h2 id="2-获取："><a href="#2-获取：" class="headerlink" title="2.获取："></a><strong>2.获取：</strong></h2><ol>
+<li>通过request对象获取<br> request.getServletContext();</li>
+<li>通过HttpServlet获取<br> this.getServletContext();<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 通过request对象获取</span></span><br><span class="line">       ServletContext context1 = request.getServletContext();                                                                      </span><br><span class="line">       <span class="comment">//2. 通过HttpServlet获取</span></span><br><span class="line">       ServletContext context2 = <span class="keyword">this</span>.getServletContext();</span><br><span class="line">       System.out.println(context1);</span><br><span class="line">       System.out.println(context2);</span><br><span class="line">       System.out.println(context1 == context2);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="3-功能："><a href="#3-功能：" class="headerlink" title="3.功能："></a><strong>3.功能：</strong></h2><ol>
+<li>获取MIME类型：<ul>
+<li>MIME类型:在互联网通信过程中定义的一种文件数据类型<ul>
+<li>格式： 大类型/小类型  如：text/html     或   image/jpeg</li>
+</ul>
+</li>
+<li>获取：String getMimeType(String file)  </li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2. 通过HttpServlet获取</span></span><br><span class="line">ServletContext context = <span class="keyword">this</span>.getServletContext();</span><br><span class="line"><span class="comment">//3. 定义文件名称</span></span><br><span class="line">String filename = <span class="string">"a.jpg"</span>;<span class="comment">//image/jpeg</span></span><br><span class="line"><span class="comment">//4.获取MIME类型</span></span><br><span class="line">String mimeType = context.getMimeType(filename);</span><br><span class="line">System.out.println(mimeType);</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>域对象：共享数据<ol>
+<li>setAttribute(String name,Object value)</li>
+<li>getAttribute(String name)</li>
+<li>removeAttribute(String name)</li>
+</ol>
+</li>
+</ol>
+<p><strong>ServletContext对象范围：所有用户所有请求的数据<br>不需要转发(forword)或者重定向(redirect)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/servletContextDemo3"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContextDemo3</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;    </span><br><span class="line">        <span class="comment">//2. 通过HttpServlet获取</span></span><br><span class="line">        ServletContext context = <span class="keyword">this</span>.getServletContext();</span><br><span class="line">        <span class="comment">//设置数据</span></span><br><span class="line">        context.setAttribute(<span class="string">"msg"</span>,<span class="string">"haha"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/servletContextDemo4"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContextDemo4</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//2. 通过HttpServlet获取</span></span><br><span class="line">        ServletContext context = <span class="keyword">this</span>.getServletContext();</span><br><span class="line">        <span class="comment">//获取数据</span></span><br><span class="line">        Object msg = context.getAttribute(<span class="string">"msg"</span>);</span><br><span class="line">        System.out.println(msg);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>获取文件的真实(服务器)路径</li>
+</ol>
+<p><strong>方法：</strong>String getRealPath(String path)  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/servletContextDemo5"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServletContextDemo5</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 通过HttpServlet获取</span></span><br><span class="line">        ServletContext context = <span class="keyword">this</span>.getServletContext();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取文件的服务器路径</span></span><br><span class="line">        String b = context.getRealPath(<span class="string">"/b.txt"</span>);<span class="comment">//web目录下资源访问</span></span><br><span class="line">        System.out.println(b);</span><br><span class="line">       <span class="comment">// File file = new File(realPath);</span></span><br><span class="line"></span><br><span class="line">        String c = context.getRealPath(<span class="string">"/WEB-INF/c.txt"</span>);<span class="comment">//WEB-INF目录下的资源访问</span></span><br><span class="line">        System.out.println(c);</span><br><span class="line"></span><br><span class="line">        String a = context.getRealPath(<span class="string">"/WEB-INF/classes/a.txt"</span>);<span class="comment">//src目录下的资源访问</span></span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span>  </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="案例："><a href="#案例：" class="headerlink" title="案例："></a><strong>案例：</strong></h2><ul>
+<li>文件下载需求：<ol>
+<li>页面显示超链接</li>
+<li>点击超链接后弹出下载提示框</li>
+<li>完成图片文件下载</li>
+</ol>
+</li>
+<li>分析：<ol>
+<li>超链接指向的资源如果能够被浏览器解析，则在浏览器中展示，如果不能解析，则弹出下载提示框。不满足需求</li>
+<li>任何资源都必须弹出下载提示框</li>
+<li>使用响应头设置资源的打开方式：<ul>
+<li>content-disposition:attachment;filename=xxx<br>  Content-disposition：服务器告诉客户端以什么格式打开我的响应体数据<br>  默认值：in-line，在当前页面内打开,<br>  attachment；filename=xxx：以附件形式打开响应体。文件下载</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>步骤：<ol>
+<li>定义页面，编辑超链接href属性，指向Servlet，传递资源名称filename</li>
+<li>定义Servlet<ol>
+<li>获取文件名称</li>
+<li>使用字节输入流加载文件进内存</li>
+<li>指定response的响应头： content-disposition:attachment;filename=xxx</li>
+<li>将数据写出到response输出流</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>问题：<ul>
+<li>中文文件问题<ul>
+<li>解决思路：<ol>
+<li>获取客户端使用的浏览器版本信息</li>
+<li>根据不同的版本信息，设置filename的编码方式不同</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/download"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DownloadServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1.获取请求参数，文件名称</span></span><br><span class="line">        String filename = request.getParameter(<span class="string">"filename"</span>);</span><br><span class="line">        <span class="comment">//2.使用字节输入流加载文件进内存</span></span><br><span class="line">        <span class="comment">//2.1找到文件服务器路径</span></span><br><span class="line">        ServletContext servletContext = <span class="keyword">this</span>.getServletContext();</span><br><span class="line">        String realPath = servletContext.getRealPath(<span class="string">"/img/"</span> + filename);</span><br><span class="line">        <span class="comment">//2.2用字节流关联</span></span><br><span class="line">        FileInputStream fis = <span class="keyword">new</span> FileInputStream(realPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//解决中文文件名问题</span></span><br><span class="line">        <span class="comment">//1.获取user-agent请求头、</span></span><br><span class="line">        String agent = request.getHeader(<span class="string">"user-agent"</span>);</span><br><span class="line">        <span class="comment">//2.使用工具类方法编码文件名即可</span></span><br><span class="line">        filename = DownLoadUtils.getFileName(agent, filename);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.设置response的响应头</span></span><br><span class="line">        <span class="comment">//3.1设置响应头类型：content-type</span></span><br><span class="line">        String mimeType = servletContext.getMimeType(filename);<span class="comment">//获取文件的mime类型</span></span><br><span class="line">        response.setHeader(<span class="string">"content-type"</span>,mimeType);</span><br><span class="line">        <span class="comment">//3.2设置响应头打开方式:content-disposition</span></span><br><span class="line">        response.setHeader(<span class="string">"content-disposition"</span>,<span class="string">"attachment;filename="</span>+filename);</span><br><span class="line">        <span class="comment">//4.将输入流的数据写出到输出流中</span></span><br><span class="line">        ServletOutputStream sos = response.getOutputStream();</span><br><span class="line">        <span class="keyword">byte</span>[] buff = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">8</span>];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>((len = fis.read(buff)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            sos.write(buff,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fis.close();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;a href="/d01/img/2.jpg"&gt;图片1&lt;/a&gt;</span><br><span class="line">    &lt;a href="/d01/九尾.jpg"&gt;图片1&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a href="/d01/1.avi"&gt;视频&lt;/a&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;a href="/d01/download?filename=九尾.jpg"&gt;图片1&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a href="/d01/download?filename=1.avi"&gt;视频&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/11/06/Web/ServletContext%E5%AF%B9%E8%B1%A1/" data-id="ckb22iuf4006ezwu82uvv5yb2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

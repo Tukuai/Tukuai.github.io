@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://tukuai.github.io/page/13/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Tukuai">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Tukuai.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-前端/CSS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/05/%E5%89%8D%E7%AB%AF/CSS/" class="article-date">
+  <time datetime="2019-10-05T07:52:32.000Z" itemprop="datePublished">2019-10-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/05/%E5%89%8D%E7%AB%AF/CSS/">CSS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS：页面的美化和布局的控制"><a href="#CSS：页面的美化和布局的控制" class="headerlink" title="CSS：页面的美化和布局的控制"></a><strong>CSS：页面的美化和布局的控制</strong></h1><p><strong>概念</strong>：<br>Cascading Style Sheets 层叠样式表<br>层叠：多个样式可以作用在同一个html的元素上，同时生效</p>
+<p><strong>好处：</strong></p>
+<ol>
+<li>功能强大</li>
+<li>将内容的展示和样式的控制分离。降低耦合度，解耦让分工协作更容易,提高开发效率。</li>
+</ol>
+<hr>
+<h1 id="CSS的使用：CSS与HTML的结合"><a href="#CSS的使用：CSS与HTML的结合" class="headerlink" title="CSS的使用：CSS与HTML的结合"></a><strong>CSS的使用：CSS与HTML的结合</strong></h1><h3 id="内联样式：-了解，不推荐使用"><a href="#内联样式：-了解，不推荐使用" class="headerlink" title="内联样式：(了解，不推荐使用)"></a><strong>内联样式：</strong>(了解，不推荐使用)</h3><p>在标签内使用style属性指定css代码<br>如：<strong>&lt; div style=”color:red”&gt;helloworld&lt; /div&gt;</strong></p>
+<h3 id="内部样式：-作用域只是在当前页面"><a href="#内部样式：-作用域只是在当前页面" class="headerlink" title="内部样式：(作用域只是在当前页面)"></a><strong>内部样式：</strong>(作用域只是在当前页面)</h3><p>在head标签内，定义style标签，style标签的标签体内容就是CSS代码<br><strong>&lt; style&gt;<br>div{<br>color: blue;<br>}<br>&lt; /style&gt;</strong></p>
+<h3 id="外部样式-所有页面，只要你引用了"><a href="#外部样式-所有页面，只要你引用了" class="headerlink" title="外部样式(所有页面，只要你引用了)"></a><strong>外部样式</strong>(所有页面，只要你引用了)</h3><p>定义css资源文件<br>在head标签内定义link标签，引入外部资源文件</p>
+<p><strong>&lt; link rel=”stylesheet” href=”a.css”&gt;</strong><br>或者<br><strong>&lt; style&gt;<br>@import “a.css”<br>&lt; /style&gt;</strong></p>
+<hr>
+<h1 id="css的基本语法"><a href="#css的基本语法" class="headerlink" title="css的基本语法"></a><strong>css的基本语法</strong></h1><p><strong>格式：</strong><br>    选择器{<br>    属性名1：属性值1；<br>    属性名2：属性值2；<br>    }<br><strong>注意：</strong>：每一对属性需要使用分号;隔开</p>
+<h2 id="选择器：筛选具有相似特征的元素"><a href="#选择器：筛选具有相似特征的元素" class="headerlink" title="选择器：筛选具有相似特征的元素"></a><strong>选择器：</strong>筛选具有相似特征的元素</h2><p><strong>1.基础选择器</strong></p>
+<ol>
+<li>id选择器：选择具体的id属性值的元素，语法：#id名称{}，id设置的时候建议不唯一。</li>
+<li>元素选择器：选择具有相同标签名称的元素，语法：标签名称{}，如：div{}<br>注意：id和class选择器优先级高于元素选择器</li>
+<li>类选择器：选择具有相同class属性值的元素，语法：.class名称{}，多个标签的class名称可以一样</li>
+</ol>
+<p><strong>2.扩展选择器</strong></p>
+<ol>
+<li>选择所有元素：语法：    * {}</li>
+<li>并集选择器：语法：        选择器1，选择器2{}</li>
+<li>子选择器：筛选选择器1下的选择器2，语法：        选择器1 空格 选择器2{}</li>
+<li>父选择器：筛选选择器2的父级元素选择器1，语法：    选择器1 &gt; 大于号 选择器2{}</li>
+<li>属性选择器：选择元素名称，属性名=属性值，语法：    元素名称[属性名=”属性值”]{}<br>例input[type=’text’]{}</li>
+<li>伪类选择器：选择一些元素所具有的状态，语法：        元素：状态{}<br>状态：<br>link：初始化的状态<br>visited：被访问过的状态<br>active：正在访问的状态<br>hover：鼠标悬浮的状态</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a:link&#123;</span><br><span class="line">    color: darkturquoise;</span><br><span class="line">&#125;</span><br><span class="line">a:hover&#123;</span><br><span class="line">    color: green;</span><br><span class="line">&#125;</span><br><span class="line">a:active&#123;</span><br><span class="line">    color: black;</span><br><span class="line">&#125;</span><br><span class="line">a:visited&#123;</span><br><span class="line">    color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a><strong>属性</strong></h2><ol>
+<li>文本、字体<br> font-size：字体大小<br> color：文本颜色<br> text-align：对齐方式<br> line-height</li>
+<li>背景<br> background：<br> URL：设置背景图片</li>
+<li>边框<br> border：设置边框，符合属性<br> solid：实线<br> <strong>border: 1px black solid;</strong></li>
+<li>尺寸<br> 宽度：width<br> 高度：hight</li>
+<li>盒子模型：控制布局<br> 属性：margin：外边距 auto：居中<br> padding：内边距<br> 默认情况下，内边距会影响盒子的大小，<br> 解决方案：设置盒子的属性，让width和height是最总的属性box-sizing:border-box;<br> float:浮动，可以让盒子存在在一行里。right和left</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/05/%E5%89%8D%E7%AB%AF/CSS/" data-id="ckb22iuf9006uzwu8264r3g0a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端/HTML" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/04/%E5%89%8D%E7%AB%AF/HTML/" class="article-date">
+  <time datetime="2019-10-04T02:06:33.000Z" itemprop="datePublished">2019-10-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/04/%E5%89%8D%E7%AB%AF/HTML/">HTML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a><strong>HTML</strong></h1><h2 id="概念：最基础的网页开发语言"><a href="#概念：最基础的网页开发语言" class="headerlink" title="概念：最基础的网页开发语言"></a><strong>概念：最基础的网页开发语言</strong></h2><p><strong>Hyper Text Markup Language 超文本标记语言</strong><br><strong>超文本：</strong><br>    超文本是用超链接的方法，将各种不同空间的文字信息组织在一起的网状文本。<br><strong>标记语言：</strong><br>    由标签构成的语言。&lt;标签名称&gt;如HTML，XML<br>    标记语言不是编程语言</p>
+<h2 id="快速入门："><a href="#快速入门：" class="headerlink" title="快速入门："></a><strong>快速入门：</strong></h2><ol>
+<li><strong>HTML文档后缀名：</strong>.html或者.htm</li>
+<li><strong>标签分为</strong><ul>
+<li><strong>围堵标签：</strong>有开始标签和结束标签，如&lt; html&gt; &lt; /html&gt;</li>
+<li><strong>自闭和标签：</strong>开始标签和结束标签在一起。如&lt; br/&gt;</li>
+</ul>
+</li>
+<li><strong>标签可以嵌套</strong><br> 需要正确嵌套,不能你中有我，我中有你<br> 错误：&lt; a&gt;&lt; b&gt;&lt; /a&gt;&lt; /b&gt;<br> 正确&lt; a&gt;&lt; b&gt;&lt; /b&gt;&lt; /a&gt;</li>
+<li><strong>在开始标签中可以定义属性，属性是由键值对构成，值需要用引号(单双都可)引起来</strong></li>
+<li><strong>html不区分大小写，但建议使用小写</strong></li>
+</ol>
+<h2 id="标签学习："><a href="#标签学习：" class="headerlink" title="标签学习："></a><strong>标签学习：</strong></h2><h3 id="1-文件标签：构成html的最基本的标签"><a href="#1-文件标签：构成html的最基本的标签" class="headerlink" title="1.文件标签：构成html的最基本的标签"></a><strong>1.文件标签：构成html的最基本的标签</strong></h3><p>html：html文档的根标签<br>head：头标签。用于指定html文档的一些属性，引入外部的资源<br>title:标题标签<br>body：体标签<br>&lt; !DOCTYPE&gt;?:定义文档类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;																</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;文本标签&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">...</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-文本标签：和文本有关的标签"><a href="#2-文本标签：和文本有关的标签" class="headerlink" title="2.文本标签：和文本有关的标签"></a><strong>2.文本标签：和文本有关的标签</strong></h3><p><strong>注释：&lt;! –注释内容–&gt;<br>&lt; h1&gt; to &lt; h6&gt;：标题标签<br>    h1到h6字体大小逐渐递减<br>&lt; p&gt;：段落标签<br>&lt; br&gt;：换行标签<br>&lt; hr&gt;：展示一条水平线:属性:color,width：宽度,size：高度,align：对齐方式center,left,right<br>&lt; b&gt;：字体加粗<br>&lt; i&gt;：字体斜体<br>&lt; center&gt;:字体居中<br>&lt; font&gt;：字体标签:属性:,color:颜色,size：大小,face：字体</strong></p>
+<blockquote>
+<p><strong>属性定义</strong>：<br><strong>color：</strong><br>    1.英文单词<br>    2.rgb：0~ 255<br>    3.#值1值2值3:00~ FF之间<br><strong>width：</strong><br>    1.数值：width=’20’,数值的单位，默认是px<br>    2.数值%：占比相对于父元素的比例</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--注释--&gt;																								</span><br><span class="line">白日依山尽，&lt;br&#x2F;&gt;</span><br><span class="line">黄河入海流。</span><br><span class="line">&lt;!--标题标签h1-h6--&gt;</span><br><span class="line">&lt;h1&gt;标题标签&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;h2&gt;标题标签&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;h3&gt;标题标签&lt;&#x2F;h3&gt;</span><br><span class="line">&lt;h4&gt;标题标签&lt;&#x2F;h4&gt;</span><br><span class="line">&lt;h5&gt;标题标签&lt;&#x2F;h5&gt;</span><br><span class="line">&lt;h6&gt;标题标签&lt;&#x2F;h6&gt;</span><br><span class="line">&lt;!--段落标签 p--&gt;</span><br><span class="line">&lt;p&gt;1.熟练掌握队列的顺序存储结构和链式存储结构。</span><br><span class="line">    熟练掌握队列的有关算法设计，并在循环顺序队列和链队列上实现。</span><br><span class="line">    根据具体给定的需求，合理设计并实现相关结构和算法。&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p&gt;2.熟练掌握队列的顺序存储结构和链式存储结构。</span><br><span class="line">    熟练掌握队列的有关算法设计，并在循环顺序队列和链队列上实现。</span><br><span class="line">    根据具体给定的需求，合理设计并实现相关结构和算法。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;2.熟练掌握队列的顺序存储结构和链式存储结构。</span><br><span class="line">    熟练掌握队列的有关算法设计，并在循环顺序队列和链队列上实现。</span><br><span class="line">    根据具体给定的需求，合理设计并实现相关结构和算法。&lt;&#x2F;p&gt;</span><br><span class="line">&lt;!--显示一条水平线 hr--&gt;</span><br><span class="line">&lt;hr&#x2F;&gt;</span><br><span class="line">白日依山尽&lt;br&gt;</span><br><span class="line">&lt;center&gt;&lt;b&gt;黄河入海流&lt;&#x2F;b&gt;&lt;&#x2F;center&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;i&gt;欲穷千里目&lt;&#x2F;i&gt;&lt;br&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;red&quot; size&#x3D;&quot;4&quot; face&#x3D;&quot;楷体&quot;&gt;更上一层楼&lt;&#x2F;font&gt;&lt;br&gt;&lt;br&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-图片标签：和图片有关的标签"><a href="#3-图片标签：和图片有关的标签" class="headerlink" title="3.图片标签：和图片有关的标签"></a><strong>3.图片标签：和图片有关的标签</strong></h3><p><strong>&lt; img src=””/&gt;</strong><br><strong>src:</strong>相对路径, ./：代表当前目录(默认), ../：上一级目录<br><strong>alt:</strong>规定图像的代替文本<br><strong>&lt; img src=”timg.jpg” wdith=”400” height=”300”/&gt;</strong></p>
+<h3 id="4-列表标签："><a href="#4-列表标签：" class="headerlink" title="4.列表标签："></a><strong>4.列表标签：</strong></h3><ol>
+<li><strong>有序列表</strong><br> ol：order list<br> li</li>
+<li><strong>无序列表</strong><br> ul:unorder list<br> li</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">早上起来干的事情</span><br><span class="line">&lt;ol type&#x3D;&quot;A&quot;&gt;															</span><br><span class="line">&lt;li&gt;睁眼&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt;看手机&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt;穿衣服&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt;洗漱&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ol&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;ul type&#x3D;&quot;circle&quot;&gt;</span><br><span class="line">    &lt;li&gt;睁眼&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;看手机&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;穿衣服&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;洗漱&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-链接标签："><a href="#5-链接标签：" class="headerlink" title="5.链接标签："></a><strong>5.链接标签：</strong></h3><p><strong>&lt; a&gt;:定义一个超链接</strong><br><strong>属性：</strong><br>    <em>href：</em>指定访问资源的URl（统一资源定位符）<br>    <em>target：</em>打开方式,_ self表示在本页面内打开，_ blank表示打开新的页面<br><strong>功能</strong>：</p>
+<ol>
+<li>可以被点击：样式</li>
+<li>点击后跳转到href指定的url<br>若只想保留第一个功能：<strong>&lt; a href=”javascript:void(0);”  id=”del”&gt;删除子节点&lt; /a&gt;</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&quot; target&#x3D;&quot;_blank&quot;&gt;点我&lt;&#x2F;a&gt;						</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;yanyupingshengh.github.io&#x2F;&quot;&gt;&lt;img src&#x3D;&quot;123.jpeg&quot; height&#x3D;&quot;500&quot; width&#x3D;&quot;700&quot;&gt;&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-块标签-和CSS结合使用，本身没有什么作用，但可用于CSS控制样式"><a href="#6-块标签-和CSS结合使用，本身没有什么作用，但可用于CSS控制样式" class="headerlink" title="6.块标签(和CSS结合使用，本身没有什么作用，但可用于CSS控制样式)"></a><strong>6.块标签(和CSS结合使用，本身没有什么作用，但可用于CSS控制样式)</strong></h3><p><strong>span：</strong>文本信息在一行内展示，行内标签，内联标签，不会换行<br><strong>div：</strong>每一个div占满一整行，块级标签，会换行。          </p>
+<h3 id="7-语义化标签-html5中为了提高程序的可读性，提供的标签"><a href="#7-语义化标签-html5中为了提高程序的可读性，提供的标签" class="headerlink" title="7.语义化标签:html5中为了提高程序的可读性，提供的标签"></a><strong>7.语义化标签:html5中为了提高程序的可读性，提供的标签</strong></h3><p>&lt; header&gt;<br>&lt; footer&gt;</p>
+<h4 id="8-表格标签："><a href="#8-表格标签：" class="headerlink" title="8.表格标签："></a><strong>8.表格标签：</strong></h4><p><strong>&lt; table&gt;：定义一个表格<br>&lt; tr&gt;:行标签<br>&lt; td&gt;:单元格 属性:colspan:列的长度，rowspan：行的宽度，都是用来合并<br>&lt; th&gt;:表头单元格<br>&lt; caption&gt;:定义表格标题<br>&lt; thead&gt;:表示表格的头部分，增强可读性<br>&lt; tbody&gt;：体<br>&lt; tfoot&gt;：脚</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border&#x3D;&quot;1&quot; width&#x3D;&quot;30%&quot; &gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;编号&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;th&gt;姓名&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;th&gt;成绩&lt;&#x2F;th&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;1&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;小龙女&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;100&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;2&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;杨过&lt;&#x2F;td&gt;</span><br><span class="line">        &lt;td&gt;50&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;&#x2F;tr&gt;</span><br><span class="line">&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="9-表单标签"><a href="#9-表单标签" class="headerlink" title="9.表单标签"></a><strong>9.表单标签</strong></h3><p><strong>概念：</strong>用于采集用户输入的数据的。用于和服务器进行交互。</p>
+<p><strong>标签：</strong>form用于定义表单的。可以定义一个范围，范围代表采集用户数据范围。</p>
+<ul>
+<li>属性：action：指定提交的url，method：指定提交方式</li>
+<li>method分类：一共七种，常用的有两种<ul>
+<li>get：<br>  1.请求参数会在地址栏中显示。<br>  2.请求参的长度是有限制的<br>  3.不太安全</li>
+<li>post：<br>  1.请求参数不会在地址栏中显示，会封装在请求体中。<br>  2.请求参数的长度是没有限制的<br>  3.较为安全<br>表单项的数据要想被提交，必须指定其name属性</li>
+</ul>
+</li>
+</ul>
+<p><strong>表单项标签：</strong></p>
+<ol>
+<li><strong>input：</strong>可以通过type属性值改变展示的样式<ul>
+<li>type属性：<blockquote>
+<p>1.text：文本输入框，默认的</p>
+<pre><code>placeholder：提示输入信息，如请输入用户名</code></pre><p>  2.password：密码输入框<br>  3.radio：单选框</p>
+<pre><code>要想让多个单选框实现单选的效果，则name属性必须一样。
+一般会给每一个单选框提供value属性，指定其被选后提交的值
+checked属性可以指定默认值</code></pre><p>  4.checkbox：复选框</p>
+<pre><code>要想让多个复选框实现复选的效果，则name属性必须一样。
+一般会给每一个复选框提供value属性，指定其被选后提交的值
+checked属性可以指定默认值</code></pre><p>  5.file：文件选择框<br>  6.hidden：隐藏域，用于提交一些信息<br>  7.按钮</p>
+<pre><code>submit：提交按钮。可以提交表单
+button：普通按钮
+image：图片提交按钮,src：图片路径</code></pre><p>  8.color：取色器<br>  9.date：日期</p>
+</blockquote>
+</li>
+<li>label：指定输入项的文字信息<br>label的for属性一般会和input的id属性对应，如果对应了，则点击label会让input输入框获取焦点</li>
+</ul>
+</li>
+<li><strong>select：下拉列表</strong><br> 子元素：option，列表项</li>
+<li><strong>textarea：文本域</strong><br> cols：指定列数，每行有多少字符<br> rows：指定行数，会自动扩容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action&#x3D;&quot;#&quot; method&#x3D;&quot;get&quot;&gt;</span><br><span class="line">    &lt;label for&#x3D;&quot;username&quot;&gt;用户名&lt;&#x2F;label&gt;</span><br><span class="line">    ：&lt;input name&#x3D;&quot;username&quot; placeholder&#x3D;&quot;请输入用户名&quot; id&#x3D;&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">    &lt;label for&#x3D;&quot;password&quot;&gt;密码&lt;&#x2F;label&gt;</span><br><span class="line">    &lt;input name&#x3D;&quot;password&quot; type&#x3D;&quot;password&quot; placeholder&#x3D;&quot;请输入密码&quot;</span><br><span class="line">    id &#x3D;&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">    性别：</span><br><span class="line">    &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;male&quot; checked&gt; 男</span><br><span class="line">    &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;gender&quot; value&#x3D;&quot;female&quot;&gt; 女&lt;br&gt;</span><br><span class="line"></span><br><span class="line">    爱好：</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;逛街&quot;&gt;逛街</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;java&quot;&gt;java</span><br><span class="line">    &lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;hobby&quot; value&#x3D;&quot;游戏&quot;&gt;游戏&lt;br&gt;</span><br><span class="line"></span><br><span class="line">    图片：</span><br><span class="line">    &lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;file&quot;&gt; &lt;br&gt;</span><br><span class="line"></span><br><span class="line">    隐藏域</span><br><span class="line">    &lt;input type&#x3D;&quot;hidden&quot; name&#x3D;&quot;id&quot; value&#x3D;&quot;aaa&quot;&gt; &lt;br&gt;</span><br><span class="line"></span><br><span class="line">    按钮</span><br><span class="line">    &lt;input type&#x3D;&quot;submit&quot;value&#x3D;&quot;登录&quot;&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;一个按钮&quot;&gt;&lt;br&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;image&quot; src&#x3D;&quot;q.jpg&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">    取色器：&lt;input type&#x3D;&quot;color&quot;&gt;&lt;br&gt;</span><br><span class="line">    生日&lt;input type&#x3D;&quot;date&quot; name&#x3D;&quot;birthday&quot;&gt;&lt;br&gt;</span><br><span class="line">    生日&lt;input type&#x3D;&quot;datetime-local&quot; name&#x3D;&quot;birthday&quot;&gt;&lt;br&gt;</span><br><span class="line">    邮箱&lt;input type&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot;&gt;&lt;br&gt;</span><br><span class="line">    年龄&lt;input type&#x3D;&quot;number&quot; name&#x3D;&quot;age&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">    省份：</span><br><span class="line">    &lt;select name&#x3D;&quot;province&quot;&gt;&lt;br&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;&quot;&gt;</span><br><span class="line">            请选择</span><br><span class="line">        &lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;1&quot;&gt;</span><br><span class="line">            北京</span><br><span class="line">        &lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;2&quot;&gt;</span><br><span class="line">            上海</span><br><span class="line">        &lt;&#x2F;option&gt;</span><br><span class="line">        &lt;option value&#x3D;&quot;3&quot;&gt;</span><br><span class="line">            陕西</span><br><span class="line">        &lt;&#x2F;option&gt;</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    自我描述：&lt;br&gt;</span><br><span class="line">    &lt;textarea cols&#x3D;&quot;50&quot; rows&#x3D;&quot;30&quot;&gt;&lt;&#x2F;textarea&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/04/%E5%89%8D%E7%AB%AF/HTML/" data-id="ckb22iufb0072zwu83sg27hxz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Web/初识Web" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/04/Web/%E5%88%9D%E8%AF%86Web/" class="article-date">
+  <time datetime="2019-10-04T01:09:36.000Z" itemprop="datePublished">2019-10-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Web/">Web</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/04/Web/%E5%88%9D%E8%AF%86Web/">初识Web</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Web概念概述"><a href="#Web概念概述" class="headerlink" title="Web概念概述"></a><strong>Web概念概述</strong></h2><p><strong>JavaWeb：</strong><br>使用java语言开发基于互联网的项目。</p>
+<p><strong>软件架构：</strong></p>
+<ul>
+<li><strong>C/S:Client/Server 客户端/服务器端</strong><br>  在本地有一个客户端程序，在远程有一个服务器端程序<ul>
+<li>优点：<br>  1.用户体验好</li>
+<li>缺点：<br>  1.开发，安装，部署，维护麻烦</li>
+</ul>
+</li>
+<li><strong>B/S：Browser/Server 浏览器/服务器端</strong><br>  只需要通过浏览器，用户通过不同的网址(URL)，客户访问不同的服务端程序<ul>
+<li>优点：<br>  1.开发，安装，部署，维护简单</li>
+<li>缺点：<br>  1.如果应用过大，用户体验不好<br>  2.硬件要求较高。服务器内存硬存，用户带宽</li>
+</ul>
+</li>
+</ul>
+<h2 id="B-S详解"><a href="#B-S详解" class="headerlink" title="B/S详解"></a><strong>B/S详解</strong></h2><ul>
+<li><p><strong>静态资源</strong><br>  HTMl，CSS，JavaScript<br>  使用静态网页开发技术发布的资源</p>
+<ul>
+<li>特点：<br>所有用户访问，得到的结果一样</li>
+<li>如：文本，图片，音频，视频。<br>如果用户请求的是静态资源，那么服务器直接将静态资源发给浏览器，浏览器中内置了静态资源的解析引擎，可以展示静态资源</li>
+</ul>
+</li>
+<li><p><strong>动态资源</strong><br>  使用动态网页技术即时发布的资源</p>
+<ul>
+<li>特点：<br>  所有用户访问，得到的结果可能不一样</li>
+<li>如：jsp/servlet，php，ahp…<br>  如果用户请求的是动态资源，那么服务器会将执行动态资源并转化为静态资源，再将静态资源发给浏览器。</li>
+</ul>
+</li>
+</ul>
+<h3 id="所以要学习动态资源，必须先学习静态资源"><a href="#所以要学习动态资源，必须先学习静态资源" class="headerlink" title="所以要学习动态资源，必须先学习静态资源"></a><strong>所以要学习动态资源，必须先学习静态资源</strong></h3><ul>
+<li><strong>静态资源</strong><br>  HTML：用于搭建基础网页，展示页面的内容<br>  CSS：用于美化页面，布局页面<br>  JavaScript：控制页面的元素，让页面有一些动态的效果。</li>
+</ul>
+<h2 id="网络通信三要素"><a href="#网络通信三要素" class="headerlink" title="网络通信三要素"></a><strong>网络通信三要素</strong></h2><ul>
+<li>IP：电子设备在网络中的唯一标识</li>
+<li>端口：应用程序在计算机中的唯一标识。0 ~ 65536</li>
+<li>传输协议：规定了数据传输的规则<ul>
+<li>基础协议：<ul>
+<li>TCP：安全协议，三次握手</li>
+<li>UDP：不安全协议，速度快</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/04/Web/%E5%88%9D%E8%AF%86Web/" data-id="ckb22iuf7006ozwu8eowo4ob5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/JDBCTemplate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBCTemplate/" class="article-date">
+  <time datetime="2019-10-02T08:13:20.000Z" itemprop="datePublished">2019-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBCTemplate/">JDBCTemplate</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a><strong>Spring JDBC</strong></h2><p>Spring框架对JDBC的简单封装。提供了一个JDBCTemplate对象，简化JDBC的开发</p>
+<ol>
+<li>导入jar包</li>
+<li>创建JdbcTemplate对象，依赖于数据源（数据库连接池）DataSouce，<br>JdbcTemplate template=new Jdbctemplate（ds）；</li>
+<li>调用JdbcTemplat的方法来完成CRUD的操作</li>
+</ol>
+<p><strong>update()：</strong>执行DML语句，增删改<br><strong>queryForMap():</strong>查询结果，封装为map集合，注意：这个方法查询的结果集长度只能是一，将名为key，value为值。<br><strong>queryForList()</strong>：List&lt;Map&lt;String,Object&gt;&gt; list=template.queryForList(“sql语句”);将每一行记录封装为一个map集合，再将map封装为list集合<br><strong>query():</strong>查询结果，将结果封装为JavaBean对象，query的参数：RowMapper<br>一般我们使用BeanPropertyRowMapper实现类。可以完成数据到JavaBean的自动封装。<br>new BeanPropertyRowMapper&lt;类型&gt;(类型.class)<br><strong>queryForObject():</strong>查询结果，封装为对象，一般用于聚合函数的查询</p>
+<p>例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">psvm&#123;</span><br><span class="line">	JdbcTemplate tem&#x3D;new JdbcTemplate(JDBCUtils.getDataSouce());</span><br><span class="line">	String sql&#x3D;&quot;update account set balance &#x3D;500 where id &#x3D; ?&quot;;</span><br><span class="line">	template.update(aql,3);&#x2F;&#x2F;将？设置为3</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;增删改操作</span><br><span class="line">@Test</span><br><span class="line">public void test1()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;获取jDBCtmp对象</span><br><span class="line">    JdbcTemplate template&#x3D;new JdbcTemplate(JDBCDruidUtils.getDataSource());</span><br><span class="line">    &#x2F;&#x2F;SQL</span><br><span class="line">    String sql&#x3D;&quot;update stu set age &#x3D; 30 where id &#x3D; 1&quot;;</span><br><span class="line">    String sql1&#x3D;&quot;insert into stu(id,age) values (?,?)&quot;;</span><br><span class="line">    String sql2&#x3D;&quot;delete from stu where id &#x3D; 6&quot;;</span><br><span class="line">    int c&#x3D;template.update(sql2);</span><br><span class="line">    System.out.println(c);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;查询并封装成map(1条)，或者list&lt;map&gt;(多条)</span><br><span class="line">@Test</span><br><span class="line">public void test2()</span><br><span class="line">&#123;</span><br><span class="line">    JdbcTemplate template&#x3D;new JdbcTemplate(JDBCDruidUtils.getDataSource());</span><br><span class="line">    String  sql&#x3D;&quot;select * from stu where id &#x3D; ?&quot;;</span><br><span class="line">    Map&lt;String, Object&gt; sm &#x3D; template.queryForMap(sql, 2);</span><br><span class="line">    System.out.println(sm);</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; maps &#x3D; template.queryForList(sql, 1);</span><br><span class="line">    for (Map&lt;String, Object&gt; map : maps) &#123;</span><br><span class="line">        System.out.println(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;查询并封装成自己写的类，该类需要与数据库表对应</span><br><span class="line">@Test</span><br><span class="line">public void test3()</span><br><span class="line">&#123;</span><br><span class="line">    String sql&#x3D;&quot;select * from stu&quot;;</span><br><span class="line">    JdbcTemplate template&#x3D;new JdbcTemplate(JDBCDruidUtils.getDataSource());</span><br><span class="line">    List&lt;stu&gt; query &#x3D; template.query(sql, new BeanPropertyRowMapper&lt;stu&gt;(stu.class));</span><br><span class="line">    for (stu stu : query) &#123;</span><br><span class="line">        System.out.println(stu);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;聚合函数的查询</span><br><span class="line">@Test</span><br><span class="line">    public void test4()</span><br><span class="line">    &#123;</span><br><span class="line">        JdbcTemplate template&#x3D;new JdbcTemplate(JDBCDruidUtils.getDataSource());</span><br><span class="line">        String sql&#x3D;&quot;select count(id) from stu&quot;;</span><br><span class="line">        Long total &#x3D; template.queryForObject(sql, Long.class);</span><br><span class="line">        System.out.println(total);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBCTemplate/" data-id="ckb22iufo008qzwu82czfce6y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/JDBC连接池" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0/" class="article-date">
+  <time datetime="2019-10-02T01:32:54.000Z" itemprop="datePublished">2019-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0/">JDBC连接池(DataSource)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a><strong>数据库连接池</strong></h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h2><p>存放数据库连接的容器，当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户访问数据库时，从容器获取连接对象用户访问完之后，会将连接的独享归还给容器。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h2><pre><code>1.节约资源
+2.用户访问高效</code></pre><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a><strong>实现</strong></h2><p><strong>标准接口：</strong>DataBase javax.sql包下的</p>
+<ol>
+<li><strong>方法</strong><br> 获取连接：getConnection()<br> 归还连接：Connection.close(),不会关闭连接，而是归还连接。</li>
+<li><strong>我们一般不去实现它，有数据库厂商实现</strong><br> 1.C3P0：数据库连接池技术<br> 2.Druid：数据库连接池实现技术，阿里的，号称世界第一；</li>
+</ol>
+<h2 id="C3P0"><a href="#C3P0" class="headerlink" title="C3P0"></a><strong>C3P0</strong></h2><ol>
+<li><strong>导入jar包</strong>：c3p0-0.9.5.2.jar和mchange-commons-java-0.2.12.jar，不要忘记导入数据库的驱动jar包。</li>
+<li><strong>定义配置文件</strong><br> 名称：c3p0.properties或者c3p0-config.xml<br> 路径：直接降将文件放在src目录下就行</li>
+<li><strong>创建核心对象</strong>：数据库连接池对象ComboPooledDataSource</li>
+<li>获取连接：getConnection<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws SQLException &#123;</span><br><span class="line">  &#x2F;&#x2F;1.创建数据库连接池对象,什么都不传的话，使用默认配置</span><br><span class="line">  DataSource ds&#x3D;new ComboPooledDataSource();</span><br><span class="line">  &#x2F;&#x2F;2.获取连接对象</span><br><span class="line">  Connection conn &#x3D; ds.getConnection();</span><br><span class="line">  &#x2F;&#x2F;3.打印</span><br><span class="line">  System.out.println(conn);</span><br><span class="line">  &#x2F;&#x2F;归还连接</span><br><span class="line">  conn.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Druid：数据库连接池实现技术，由阿里提供"><a href="#Druid：数据库连接池实现技术，由阿里提供" class="headerlink" title="Druid：数据库连接池实现技术，由阿里提供"></a><strong>Druid：数据库连接池实现技术，由阿里提供</strong></h2><ol>
+<li><p>导入jar包druid-1.0.9.jar</p>
+</li>
+<li><p>定义配置文件<br>  名称：是properties形式的，任意名称，可放在任意目录</p>
+</li>
+<li><p>加载配置文件properties</p>
+</li>
+<li><p>获取数据库连接池对象：动过工厂类DruidDataSourceFactory来获取</p>
+</li>
+<li><p>获取连接：getConnection</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">    Properties pro&#x3D;new Properties();</span><br><span class="line">    InputStream is&#x3D; DruidDemo1.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;);</span><br><span class="line">    pro.load(is);</span><br><span class="line">    DataSource ds&#x3D; DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">    Connection conn &#x3D; ds.getConnection();</span><br><span class="line">    System.out.println(conn);</span><br><span class="line">    conn.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义一个类JDBCUtils</p>
+</li>
+<li><p>提供静态代码块加载配置文件，初始化连接池对象</p>
+</li>
+<li><p>提供方法</p>
+<ul>
+<li>获取连接方法：通过数据库连接池获取连接</li>
+<li>释放资源</li>
+<li>获取连接池方法</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCDruidUtils &#123;</span><br><span class="line">    &#x2F;&#x2F;1.定义成员变量DataSource</span><br><span class="line">    private static DataSource ds;</span><br><span class="line">    static &#123;</span><br><span class="line">        1.加载配置文件</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        try &#123;</span><br><span class="line">            pro.load(JdbcUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;));</span><br><span class="line">            &#x2F;&#x2F;2.获取DataSource</span><br><span class="line">            ds&#x3D; DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public  static Connection getConnection() throws SQLException &#123;</span><br><span class="line">        return ds.getConnection();</span><br><span class="line">    &#125;</span><br><span class="line">   public static void close(Statement stmt, Connection conn)</span><br><span class="line">   &#123;</span><br><span class="line">    if(stmt!&#x3D;null)</span><br><span class="line">   &#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           stmt.close();</span><br><span class="line">       &#125; catch (SQLException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">       if(conn!&#x3D;null)</span><br><span class="line">       &#123;</span><br><span class="line">           try &#123;</span><br><span class="line">               conn.close();&#x2F;&#x2F;归还连接</span><br><span class="line">           &#125; catch (SQLException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    public static void close(ResultSet rs, Statement stmt, Connection conn)</span><br><span class="line">    &#123;</span><br><span class="line">        if(stmt!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                stmt.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(conn!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                conn.close();&#x2F;&#x2F;归还连接</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(rs!&#x3D;null)</span><br><span class="line">        &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public  static  DataSource getDataSource()</span><br><span class="line">    &#123;</span><br><span class="line">        return  ds;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0/" data-id="ckb22iufo008tzwu86sxje0dj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/Mysql逻辑架构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" class="article-date">
+  <time datetime="2019-09-29T13:20:36.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/">Mysql逻辑架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Mysql-逻辑架构简介"><a href="#Mysql-逻辑架构简介" class="headerlink" title="Mysql 逻辑架构简介"></a><strong>Mysql 逻辑架构简介</strong></h2><p><strong>整体架构图</strong><br><img src="/images/243.png" alt=""><br>和其它数据库相比，MySQL 有点与众不同，它的架构可以在多种不同场景中应用并发挥良好作用。主要体现在存储引擎的架构上，插件式的存储引擎架构将查询处理和其它的系统任务以及数据的存储提取相分离。这种架构可以根据业务的需求和实际需要选择合适的存储引擎。</p>
+<h2 id="各层介绍："><a href="#各层介绍：" class="headerlink" title="各层介绍："></a><strong>各层介绍：</strong></h2><h2 id="连接层"><a href="#连接层" class="headerlink" title="连接层"></a><strong>连接层</strong></h2><p>最上层是一些客户端和连接服务，包含本地 sock 通信和大多数基于客户端/服务端工具实现的类似于 tcp/ip的通信。主要完成一些类似于连接处理、授权认证、及相关的安全方案。在该层上引入了线程池的概念，为通过认证安全接入的客户端提供线程。同样在该层上可以实现基于SSL的安全链接。服务器也会为安全接入的每个客户端验<br>证它所具有的操作权限。</p>
+<h2 id="服务层"><a href="#服务层" class="headerlink" title="服务层"></a><strong>服务层</strong></h2><ul>
+<li>Management Serveices &amp; Utilities 系统管理和控制工具 </li>
+<li>SQL Interface: SQL 接口。接受用户的 SQL 命令，并且返回用户需要查询的结果。比如 select from 就是调用 SQL Interface </li>
+<li>Parser 解析器：SQL 命令传递到解析器的时候会被解析器验证和解析 </li>
+<li>Optimizer 查询优化器。 SQL 语句在查询之前会使用查询优化器对查询进行优化，比如有 where 条件时，优化器来决定先投影还是先过滤。 </li>
+<li>Cache和Buffer查询缓存：如果查询缓存有命中的查询结果，查询语句就可以直接去查询缓存中取数据。这个缓存机制是由一系列小缓存组成的。比如表缓存，记录缓存，key 缓存， 权限缓存等 </li>
+</ul>
+<h2 id="引擎层"><a href="#引擎层" class="headerlink" title="引擎层"></a><strong>引擎层</strong></h2><p>存储引擎层，存储引擎真正的负责了MySQL中数据的存储和提取，服务器通过API与存储引擎进行通信。不同的存储引擎具有的功能不同，这样我们可以根据自己的实际需要进行选取。</p>
+<p><strong>1.MyISAM存储引擎</strong><br>不支持事务、也不支持外键，优势是访问速度快，对事务完整性没有要求或者以select，insert为主的应用基本上可以用这个引擎来创建表</p>
+<p><strong>特征</strong></p>
+<ul>
+<li>并发性差，锁级别为表级锁</li>
+<li>表损坏难修复</li>
+<li>可以压缩：压缩后的内容只能读取，不能进行更新、删除等其他作业。</li>
+</ul>
+<p>支持3种不同的存储格式，分别是：静态表；动态表；压缩表</p>
+<p>静态表：表中的字段都是非变长字段，这样每个记录都是固定长度的，优点存储非常迅速，容易缓存，出现故障容易恢复；缺点是占用的空间通常比动态表多（因为存储时会按照列的宽度定义补足空格）ps：在取数据的时候，默认会把字段后面的空格去掉，如果不注意会把数据本身带的空格也会忽略。</p>
+<p>动态表：记录不是固定长度的，这样存储的优点是占用的空间相对较少；缺点：频繁的更新、删除数据容易产生碎片，需要定期执行OPTIMIZE TABLE或者myisamchk-r命令来改善性能</p>
+<p>压缩表：因为每个记录是被单独压缩的，所以只有非常小的访问开支</p>
+<p><strong>2.InnoDB存储引擎</strong></p>
+<p>该存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全。但是对比MyISAM引擎，写的处理效率会差一些，并且会占用更多的磁盘空间以保留数据和索引。<br>InnoDB存储引擎的特点：支持自动增长列，支持外键约束，支持事务<br><strong>特征介绍</strong></p>
+<ul>
+<li>支持事务的ACID特征</li>
+<li>InnoDB支持行级锁，可以最大程度的支持并发</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>MyISAM</th>
+<th>InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主外键</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>事务</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>行表锁</td>
+<td>表锁</td>
+<td>行锁</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>只缓存索引，不缓存真实数据</td>
+<td>不仅缓存索引还要缓存真实数据，对内存要求较高，而且内存大小对性能有决定性影响</td>
+</tr>
+<tr>
+<td>表空间</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>关注点</td>
+<td>性能</td>
+<td>事务</td>
+</tr>
+<tr>
+<td>默认安装</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<p><strong>3.MEMORY存储引擎</strong></p>
+<p>Memory存储引擎使用存在于内存中的内容来创建表。每个memory表只实际对应一个磁盘文件，格式是.frm。memory类型的表访问非常的快，因为它的数据是放在内存中的，并且默认使用HASH索引，但是一旦服务关闭，表中的数据就会丢失掉。<br>MEMORY存储引擎的表可以选择使用BTREE索引或者HASH索引，两种不同类型的索引有其不同的使用范围</p>
+<p><strong>Hash索引优点：</strong><br>Hash 索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位，不像B-Tree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问，所以 Hash 索引的查询效率要远高于 B-Tree 索引。<br><strong>Hash索引缺点：</strong> 那么不精确查找呢，也很明显，因为hash算法是基于等值计算的，所以对于“like”等范围查找hash索引无效，不支持；</p>
+<p>Memory类型的存储引擎主要用于哪些内容变化不频繁的代码表，或者作为统计操作的中间结果表，便于高效地对中间结果进行分析并得到最终的统计结果，。对存储引擎为memory的表进行更新操作要谨慎，因为数据并没有实际写入到磁盘中，所以一定要对下次重新启动服务后如何获得这些修改后的数据有所考虑。</p>
+<p><strong>存储层</strong><br>数据存储层，主要是将数据存储在运行于裸设备的文件系统之上，并完成与存储引擎的交互。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" data-id="ckb22iuft009czwu8eujq350r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/执行顺序与JOIN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/" class="article-date">
+  <time datetime="2019-09-29T13:20:36.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/">执行顺序与JOIN</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQL-的执行顺序"><a href="#SQL-的执行顺序" class="headerlink" title="SQL 的执行顺序"></a><strong>SQL 的执行顺序</strong></h2><p>手写的顺序：<br><img src="/images/244.png" alt=""> </p>
+<p>真正执行的顺序： 随着 Mysql 版本的更新换代，其优化器也在不断的升级，优化器会分析不同执行顺序产生的性能消耗不同而动 态调整执行顺序。下面是经常出现的查询顺序：<br><img src="/images/245.png" alt=""><br><img src="/images/246.png" alt=""> </p>
+<h2 id="七种JOIN"><a href="#七种JOIN" class="headerlink" title="七种JOIN"></a><strong>七种JOIN</strong></h2><p><strong>常见的 Join 查询图</strong><br><img src="/images/247.png" alt=""><br>oracle里面有full join,但是在mysql中没有full join。我们可以使用union来达到目的。</p>
+<p><strong>Join 示例</strong><br><strong>1.建表语句</strong> </p>
+<pre><code>CREATE TABLE `t_dept` ( 
+`id` INT(11) NOT NULL AUTO_INCREMENT, 
+`deptName` VARCHAR(30) DEFAULT NULL, 
+`address` VARCHAR(40) DEFAULT NULL, 
+PRIMARY KEY (`id`) 
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
+CREATE TABLE `t_emp` ( 
+`id` INT(11) NOT NULL AUTO_INCREMENT, 
+`name` VARCHAR(20) DEFAULT NULL, 
+`age` INT(3) DEFAULT NULL, 
+`deptId` INT(11) DEFAULT NULL, 
+empno int not null, 
+PRIMARY KEY (`id`), 
+KEY `idx_dept_id` (`deptId`) 
+#CONSTRAINT `fk_dept_id` FOREIGN KEY (`deptId`) REFERENCES `t_dept` (`id`) 
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
+
+INSERT INTO t_dept(deptName,address) VALUES(&apos;华山&apos;,&apos;华山&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;丐帮&apos;,&apos;洛阳&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;峨眉&apos;,&apos;峨眉山&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;武当&apos;,&apos;武当山&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;明教&apos;,&apos;光明顶&apos;); 
+INSERT INTO t_dept(deptName,address) VALUES(&apos;少林&apos;,&apos;少林寺&apos;); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;风清扬&apos;,90,1,100001);  
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;岳不群&apos;,50,1,100002); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;令狐冲&apos;,24,1,100003); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;洪七公&apos;,70,2,100004); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;乔峰&apos;,35,2,100005); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;灭绝师太&apos;,70,3,100006); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;周芷若&apos;,20,3,100007); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;张三丰&apos;,100,4,100008); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;张无忌&apos;,25,5,100009); 
+INSERT INTO t_emp(NAME,age,deptId,empno) VALUES(&apos;韦小宝&apos;,18,null,100010);</code></pre><p><strong>案例</strong> </p>
+<pre><code>1.所有有门派人员的信息（要求显示门派名称） 
+SELECT e.`name`,d.`deptName` FROM t_emp e INNER JOIN t_dept d ON e.`deptId`=d.`id`; 
+2. 列出所有人员及其门派信息 
+SELECT e.`name`,d.`deptName` FROM t_emp e LEFT JOIN t_dept d ON e.`deptId`=d.`id`; 
+3. 列出所有门派 
+SELECT * FROM t_dept; 
+4. 所有无门派人士 
+SELECT * FROM t_emp WHERE deptId IS NULL; 
+5. 所有无人门派 
+SELECT d.* FROM t_dept d LEFT JOIN t_emp e ON d.`id`=e.`deptId` WHERE e.`deptId` IS NULL; 
+6. 所有人员和门派的对应关系 
+SELECT * FROM t_emp e LEFT JOIN t_dept d ON e.`deptId`=d.`id` 
+UNION 
+SELECT * FROM t_emp e RIGHT JOIN t_dept d ON e.`deptId`=d.`id`;  
+7. 所有没有入门派的人员和没人入的门派 
+SELECT * FROM t_emp e LEFT JOIN t_dept d ON e.`deptId`=d.`id` WHERE e.deptId IS NULL 
+UNION 
+SELECT * FROM t_dept d LEFT JOIN t_emp e ON d.`id`=e.`deptId` WHERE e.`deptId` IS NULL; 
+8. 添加 CEO 字段 
+ALTER TABLE `t_dept` 
+add CEO INT(11) ; 
+update t_dept set CEO=2 where id=1; 
+update t_dept set CEO=4 where id=2; 
+update t_dept set CEO=6 where id=3; 
+update t_dept set CEO=8 where id=4; 
+update t_dept set CEO=9 where id=5; 
+8.1 求各个门派对应的掌门人名称 
+SELECT d.deptName,e.name FROM t_dept d LEFT JOIN t_emp e ON d.ceo=e.id 
+8.2 求所有当上掌门人的平均年龄 
+SELECT AVG(e.age) FROM t_dept d LEFT JOIN t_emp e ON d.ceo=e.id 
+8.3 求所有人物对应的掌门名称 
+SELECT ed.name &apos;人物&apos;,c.name &apos;掌门&apos; FROM 
+(SELECT e.name,d.ceo from t_emp e LEFT JOIN t_dept d on e.deptid=d.id) ed 
+LEFT JOIN t_emp c on ed.ceo= c.id; 
+SELECT e.name &apos;人物&apos;,tmp.name &apos;掌门&apos; 
+FROM t_emp e LEFT JOIN (SELECT d.id did,e.name FROM t_dept d LEFT JOIN t_emp e ON d.ceo=e.id)tmp 
+ON e.deptId=tmp.did; 
+SELECT e1.name &apos;人物&apos;,e2.name &apos;掌门&apos; 
+FROM t_emp e1 
+LEFT JOIN t_dept d on e1.deptid = d.id 
+LEFT JOIN t_emp e2 on d.ceo = e2.id ;  
+SELECT e2.name &apos;人物&apos;, 
+(SELECT e1.name FROM t_emp e1 where e1.id= d.ceo) &apos;掌门&apos; 
+from t_emp e2 LEFT JOIN t_dept d on e2.deptid=d.id;</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/" data-id="ckb22iufv009gzwu8f6jth489" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/数据库数据类型详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2019-09-29T13:20:36.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/">数据库数据类型详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQL中char、varchar、nvarchar的区别"><a href="#SQL中char、varchar、nvarchar的区别" class="headerlink" title="SQL中char、varchar、nvarchar的区别"></a><strong>SQL中char、varchar、nvarchar的区别</strong></h2><p><strong>char</strong><br>    char是定长的，也就是当你输入的字符小于你指定的数目时，char(8)，你输入的字符小于8时，它会再后面补空值。当你输入的字符大于指定的数时，它会截取超出的字符。<br><strong>nvarchar(n)</strong><br>    包含 n 个字符的可变长度 Unicode 字符数据。n 的值必须介于 1 与 4,000 之间。字节的存储大小是所输入字符个数的两倍。所输入的数据字符长度可以为零。<br><strong>varchar[(n)]</strong><br>    长度为 n 个字节的可变长度且非Unicode的字符数据。n必须是一个介于1和8,000之间的数值。存储大小为输入数据的字节的实际长度，而不是n个字节。所输入的数据字符长度可以为零。</p>
+<ul>
+<li>CHAR。CHAR存储定长数据很方便，CHAR字段上的索引效率级高，比如定义char(10)，那么不论你存储的数据是否达到了10个字节，都要占去10个字节的空间。 </li>
+<li>VARCHAR。存储变长数据，但存储效率没有CHAR高。如果一个字段可能的值是不固定长度的，我们只知道它不可能超过10个字符，把它定义为 VARCHAR(10)是最合算的。VARCHAR类型的实际长度是它的值的实际长度+1。为什么“+1”呢？这一个字节用于保存实际使用了多大的长度。<br>从空间上考虑，用varchar合适；从效率上考虑，用char合适，关键是根据实际情况找到权衡点。 </li>
+<li>TEXT。text存储可变长度的非Unicode数据，最大长度为2^31-1(2,147,483,647)个字符。 </li>
+<li>NCHAR、NVARCHAR、NTEXT。这三种从名字上看比前面三种多了个“N”。它表示存储的是Unicode数据类型的字符。我们知道字符中，英文字符只需要一个字节存储就足够了，但汉字众多，需要两个字节存储，英文与汉字同时存在时容易造成混乱，Unicode字符集就是为了解决字符集这种不兼容的问题而产生的，它所有的字符都用两个字节表示，即英文字符也是用两个字节表示。nchar、nvarchar的长度是在1到4000之间。和char、varchar比较起来，nchar、nvarchar则最多存储4000个字符，不论是英文还是汉字；而char、varchar最多能存储8000个英文，4000个汉字。可以看出使用nchar、nvarchar数据类型时不用担心输入的字符是英文还是汉字，较为方便，但在存储英文时数量上有些损失。<br>所以一般来说，如果含有中文字符，用nchar/nvarchar，如果纯英文和数字，用char/varchar。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/" data-id="ckb22iug0009yzwu87ze24rh8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/数据库设计与范式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%8C%83%E5%BC%8F/" class="article-date">
+  <time datetime="2019-09-29T13:20:36.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%8C%83%E5%BC%8F/">数据库设计与范式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="多表之间的关系"><a href="#多表之间的关系" class="headerlink" title="多表之间的关系"></a>多表之间的关系</h2><p><strong>1.分类</strong></p>
+<ol>
+<li><strong>一对一</strong><br>如：人和身份证<br>分析：一个人持有一个身份证，一个身份证只能对应一个人。</li>
+<li><strong>一对多或者多对一</strong><br>如：部门和员工<br>分析：一个部门有多个员工，一个员工对应一个部门；</li>
+<li><strong>多对多</strong><br>如：学生和课程<br>分析：一个学生可以选择很多课程，一个课程也可以被很多学生选择</li>
+</ol>
+<p><strong>2.实现关系</strong></p>
+<ol>
+<li><strong>一对多</strong><br>在多的一方建立外键，指向一的一方的的主键；</li>
+<li><strong>多对多</strong><br>需要借助第三张中间表，中间表至少要包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键；如：学生和课程可以建立选课表</li>
+<li><strong>一对一</strong><br>一对一可以在任意一方添加唯一外键指向另一方的主键。<br>一般情况下会合成一张表</li>
+</ol>
+<h2 id="数据库设计的范式"><a href="#数据库设计的范式" class="headerlink" title="数据库设计的范式"></a>数据库设计的范式</h2><p><strong>概念：</strong><br>设计数据库时，需要遵循的一些规范。要遵循后面的范式要求，必须先遵循前面的所有范式要求。设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）第四范式(4NF）和第五范式（5NF，又称完美范式）。</p>
+<h3 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a><strong>第一范式（1NF）</strong></h3><p>数据库表的每一列都是不可分割的原子数据项；<br><strong>错误：</strong><br><img src="/images/137.png" alt=""><br><strong>符合第一范式：</strong><br><img src="/images/138.png" alt=""><br><strong>目前存在的问题：</strong><br>1.存在非常严重的数据冗余（重复），姓名，系名，系主任。<br>2.数据添加存在问题，添加新开的系和系主任时，数据不合法。<br>3.数据删除也存在问题，张无忌同学毕业了，删除数据会将系的数据一起删除。</p>
+<h3 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a><strong>第二范式（2NF）</strong></h3><p>消除部分依赖；在1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）<br>几个概念：</p>
+<ul>
+<li>1.函数依赖：A-&gt;B,如果通过A属性(属性组)的值可以确定唯一B的属性的值，则称B依赖于A；<br>  例如：学号–&gt;姓名     （学号，课程名称）-&gt;分数</li>
+<li>2.完全函数依赖：A-&gt;B，如果A是一个属性组，则B属性值的确定需要依赖于A属性组中的所有属性值。<br>  例如：（学号，课程名称）-&gt;分数</li>
+<li>3.部分函数依赖: A-&gt;B，如果A是一个属性组，则B属性值的确定只需要依赖于A属性组中的某一些属性值<br>  例如：（学号，课程名称）-&gt;姓名</li>
+<li>4.传递函数依赖：A-&gt;B，B-&gt;C，如果通过A属性(属性组)的值可以确定唯一B的属性的值，<br>  再通过B属性（属性组）的值可以唯一确定c的一个属性值，则称c传递函数依赖于A</li>
+<li>5.候选码：<br>   若关系中的某一属性组的值能唯一地标识一个元组，且没有多余属性，则称该属性组为候选码。该表中学号和课程名称</li>
+<li>6.主码（Primary key）<br>   若一个关系有多个候选码，则选定其中一个为主码。</li>
+<li>7.全码（All-key）<br>   所有属性组共同组成的候选码，称为全码（All-key）。</li>
+<li>8.主属性与非主属性<br>  候选码的诸属性称为主属性。不包含在任何侯选码中的属性称为非主属性或非码属性。</li>
+</ul>
+<p><strong>不符合：</strong><br><img src="/images/139.png" alt=""><br><strong>符合第二范式：</strong><br><img src="/images/140.png" alt=""><br><strong>目前存在的问题：</strong>（去掉了1NF的数据冗余的问题）<br>1.数据添加存在问题，添加新开的系和系主任时，数据不合法。<br>2.数据删除也存在问题，张无忌同学毕业了，删除数据会将系的数据一起删除。</p>
+<h3 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a><strong>第三范式（3NF）</strong></h3><p>在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）<br>系主任传递依赖与学号，系主任依赖于系名，系名依赖于学号<br>符合第三范式<br><img src="/images/142.png" alt=""><br><img src="/images/144.png" alt=""><br><img src="/images/143.png" alt=""><br><img src="/images/141.png" alt=""> </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%8C%83%E5%BC%8F/" data-id="ckb22iug200a6zwu85sk7d8f4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库/JDBC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC/" class="article-date">
+  <time datetime="2019-09-29T05:37:11.000Z" itemprop="datePublished">2019-09-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC/">JDBC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JDBC基本概念"><a href="#JDBC基本概念" class="headerlink" title="JDBC基本概念"></a><strong>JDBC基本概念</strong></h2><p><strong>概念：</strong></p>
+<blockquote>
+<p>Java DataBase  Connectivity ，Java数据库连接<br><strong>JDBC本质：</strong>sun公司定义了一套操作所有关系型数据库的规则（接口）<br>每个数据库公司自己定义了自己的JDBC的实现类（数据库驱动）。提供数据库驱动jar包。<br>我们可以使用这套接口（JDBC）编程，真正执行的代码是驱动jar包中的实现类。</p>
+</blockquote>
+<p><strong>快速入门</strong><br><strong>步骤</strong></p>
+<ol>
+<li>导入驱动jar包<br>复制jar包到项目libs目录下<br>右键-&gt;Add As Library</li>
+<li>注册驱动</li>
+<li>获取数据库的连接对象Connection</li>
+<li>定义sql</li>
+<li>获取执行sql语句的对象 Statement</li>
+<li>执行sql，接受返回结果</li>
+<li>处理结果。</li>
+<li>释放资源<br>例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        &#x2F;&#x2F;1.导入驱动jar包</span><br><span class="line">        &#x2F;&#x2F;2.注册驱动,可以省略</span><br><span class="line">        Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">        &#x2F;&#x2F;3.获取数据库连接对象</span><br><span class="line">        Connection conn &#x3D; DriverManager.getConnection(&quot;jdbc:mysql:&#x2F;&#x2F;&#x2F;db1&quot;, &quot;root&quot;, &quot;root&quot;);</span><br><span class="line">        &#x2F;&#x2F;4.定义aql语句</span><br><span class="line">        String sql&#x3D;&quot;update stu set name &#x3D;&#39;zhou周&#39; where id&#x3D;2&quot;;</span><br><span class="line">        &#x2F;&#x2F;5.获取执行sql的对象</span><br><span class="line">        Statement stmt&#x3D;conn.createStatement();</span><br><span class="line">        &#x2F;&#x2F;6.执行sql</span><br><span class="line">        int count &#x3D; stmt.executeUpdate(sql);</span><br><span class="line">        &#x2F;&#x2F;7.处理结果</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        &#x2F;&#x2F;8.释放资源</span><br><span class="line">        stmt.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="详解各个对象"><a href="#详解各个对象" class="headerlink" title="详解各个对象"></a><strong>详解各个对象</strong></h2><p><strong>DriverManager:</strong>驱动管理对象</p>
+<ol>
+<li><strong>注册驱动（Mysql5后可以省略）</strong>：告诉程序该使用哪一个数据库驱动jar。<br> 其中的方法static void registerDriver(Driver driver)向DriverManager注册给定驱动程序。<br> 写代码时使用Class.forName(“com.mysql.jdbc.Driver”);<br> 通过查看源码，发现在com.mysql.jdbc.Driver类中存在静态代码块<br> static {<pre><code>     try {
+        java.sql.DriverManager.registerDriver(new Driver());
+     } catch (SQLException E) {
+        throw new RuntimeException(&quot;Can&apos;t register driver!&quot;);
+    }
+}</code></pre></li>
+<li>获取数据库连接<br> static Connection getConnection(String url, String user, String password) 试图建立到给定数据库 URL 的连接。<br>  参数：<br> <strong>url：</strong>指定连接的路径ip ,mysql语法：jdbc：mysql：//ip地址：端口号/数据库名称,如果是本机的mysql服务器且端口为3306，则url可以简写为jdbc：mysql：///数据库名称<br> <strong>user：</strong>用户名<br> <strong>password：</strong>密码</li>
+</ol>
+<hr>
+<p><strong>Connection:数据库连接对象</strong></p>
+<ol>
+<li><strong>获取执行sql的对象</strong><br>Statement createStatement()<br> 创建一个 Statement 对象来将 SQL 语句发送到数据库。<br> PreparedStatement prepareStatement(String sql)<br> 创建一个 PreparedStatement 对象来将参数化的 SQL 语句发送到数据库 </li>
+<li><strong>事务管理</strong><br>  <strong>开启事务</strong>：void setAutoCommit(boolean autoCommit) ，将此连接的自动提交模式设置为给定状态 ，将该方法参数传false即开启事务<br> <strong>提交事务</strong>：void commit() ，使所有上一次提交/回滚后进行的更改成为持久更改，    ，并释放此 Connection 对象当前持有的所有数据库锁。<br> <strong>回滚事务</strong>：void rollback() ，取消在当前事务中进行的所有更改，并释放此，Connection 对象当前持有的所有数据库锁。 </li>
+</ol>
+<hr>
+<p><strong>Statement:执行sql的对象</strong></p>
+<blockquote>
+<p><strong>boolean execute(String sql)</strong>执行给定的SQL语句，该语句可能返回多个结果。（了解）<br><strong>int executeUpdate(String sql)</strong> 执行DML（INSERT，UPDATE，DELETE）和DDL，返回值为影响的行数。<br><strong>ResultSet executeQuery(String sql)</strong> 执行DQL（select）语句，执行给定的 SQL 语句，该语句<strong>返回单个ResultSet对象。</strong> </p>
+</blockquote>
+<p><strong>ResultSet：结果集对象，封装查询结果的。</strong></p>
+<ol>
+<li>boolean next() ，将光标向下移一行，判断当前行是否是最后一行末尾，是返回flase，不是返回false</li>
+<li>getXXX(参数)获取数据 如getInt()，getDate;<br> 参数的两种情况<br> int：列的编号，第几列，从1开始的<br> String：代表列名称</li>
+<li>正确使用方式<br> 游标向下移动一行<br> 判断是否有数据 next()方法返回的boolean值。<br> 获取数据</li>
+</ol>
+<p><strong>PreparedStatement:执行sql的对象，Statement的子类</strong>  </p>
+<ol>
+<li><strong>sql注入问题：</strong>在拼接sql时有一些sql的关键字参与sql的拼接，造成了安全问题。<br>输入用户名随便，输入密码a’ or ‘a’ = ‘a<br>连接到一起就成为：SELECT * FROM USER WHERE uername =’asdad’ AND password = ‘a’ OR ‘a’ = ‘a’   ,很明显变成了一个恒等式。</li>
+<li><strong>解决sql注入问题</strong><br>使用PreparedStatement解决</li>
+<li><strong>预编译sql</strong><br>参数使用？作为预编译符</li>
+<li><strong>步骤</strong><br> 1.导入驱动jar包，复制jar包到项目libs目录下，右键-&gt;Add As Library<br> 2.注册驱动<br> 3.获取数据库的连接对象Connection<br> 4.定义sql ：注意：sql的参数使用？作为占用符。<br> 5.获取执行sql语句的对象 PreparedStatement，传递参数sql<br> 6.给？赋值：方法：setXXX（参数1，参数2），参数1：问号的位置从1开始，参数2：问号的值<br> 7.执行sql，接受返回结果，不需要传参，在5已经传参<br> 8.处理结果。<br> 9.释放资源</li>
+<li>后期都会使用PreparedStatement来完成所有操作，不会采用Statement</li>
+</ol>
+<h2 id="JDBC控制事物"><a href="#JDBC控制事物" class="headerlink" title="JDBC控制事物"></a><strong>JDBC控制事物</strong></h2><ol>
+<li>概念：如果一个包含多个步骤的业务操作，被事物管理，那么这些操作要么同时成功要么同时失败；</li>
+<li>操作<br>开启事务：start transaction<br>回滚：rollback<br>提交：commit</li>
+<li>使用Connection对象来管理事物<br>开启事务：start transaction(boolean autoCommit)：设置为false，即开启事务<br>回滚：rollback()<br>提交：commit()</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tukuai.github.io/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC/" data-id="ckb22iufq008xzwu864a3c2sh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E8%BF%9B%E9%98%B6/">Java进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JVM/" style="font-size: 12.86px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 11.43px;">LeetCode</a> <a href="/tags/Web/" style="font-size: 18.57px;">Web</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 17.14px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14.29px;">数据结构</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15.71px;">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 11.43px;">计算机网络</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14.29px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/">数据库/WHERE和ON的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/">操作系统/测试</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/">Java基础/HashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">企业级解决方案</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/">Redis集群</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Tukuai<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
