@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>第四层-传输层 | Hexo</title>
+  <meta name="keywords" content=" 计算机网络 ">
+  <meta name="description" content="第四层-传输层 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="步骤一： 看到中间的mark as了吗，其中有五个选项，我们可以根据对项目的任意目录进行这五种目录类型标注，这个知识点非常非常重要，必须会。  Sources 一般用于标注类似 src 这种可编译目录。有时候我们不单单项目的 src 目录要可编译，还有其他一些特别的目录也许我们也要作为可编译的目录，就需要对该目录进行此标注。只有 Sources 这种可编译目录才可以新建 Java 类和包，这一点需">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IDEA中不能创建Javaclass问题">
+<meta property="og:url" content="https://tukuai.github.io/IDEA/IDEA%E4%B8%AD%E4%B8%8D%E8%83%BD%E5%88%9B%E5%BB%BAJavaclass%E9%97%AE%E9%A2%98.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="步骤一： 看到中间的mark as了吗，其中有五个选项，我们可以根据对项目的任意目录进行这五种目录类型标注，这个知识点非常非常重要，必须会。  Sources 一般用于标注类似 src 这种可编译目录。有时候我们不单单项目的 src 目录要可编译，还有其他一些特别的目录也许我们也要作为可编译的目录，就需要对该目录进行此标注。只有 Sources 这种可编译目录才可以新建 Java 类和包，这一点需">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/3.png">
+<meta property="og:image" content="https://tukuai.github.io/images/4.png">
+<meta property="article:published_time" content="2019-10-23T12:07:30.000Z">
+<meta property="article:modified_time" content="2019-10-23T13:12:23.843Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/3.png">
+
+
+<link rel="icon" href="/img/q.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/q.jpg" />
+</a>
+<div class="author">
+    <span>Tukuai</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/Tukuai" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:603457280@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=603457280&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="All">All<small>(161)</small></div></li>
+    
+        
+            
+            <li><div data-rel="数据库">数据库<small>(19)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="并发编程">并发编程<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="多线程">多线程<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="计算机网络">计算机网络<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="面向对象">面向对象<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="设计模式">设计模式<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数据结构">数据结构<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="算法">算法<small>(13)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Git">Git<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="IO">IO<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Java基础">Java基础<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Java进阶">Java进阶<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="JVM">JVM<small>(8)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="LeetCode">LeetCode<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Redis">Redis<small>(14)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Web">Web<small>(19)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="161">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>计算机网络</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JVM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>LeetCode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Web</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All "
+           href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据库/WHERE和ON的区别">数据库/WHERE和ON的区别</span>
+            <span class="post-date" title="2020-06-05 18:23:49">2020/06/05</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="操作系统/测试">操作系统/测试</span>
+            <span class="post-date" title="2020-06-05 18:23:49">2020/06/05</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java基础/HashMap">Java基础/HashMap</span>
+            <span class="post-date" title="2020-06-05 18:23:47">2020/06/05</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="企业级解决方案">企业级解决方案</span>
+            <span class="post-date" title="2020-05-23 18:04:01">2020/05/23</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis集群">Redis集群</span>
+            <span class="post-date" title="2020-05-23 14:30:24">2020/05/23</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/23/Redis/Redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis哨兵模式">Redis哨兵模式</span>
+            <span class="post-date" title="2020-05-23 10:36:24">2020/05/23</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/21/Redis/Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis主从复制">Redis主从复制</span>
+            <span class="post-date" title="2020-05-21 14:23:24">2020/05/21</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/21/Redis/Redis%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis高级数据类型">Redis高级数据类型</span>
+            <span class="post-date" title="2020-05-21 09:00:00">2020/05/21</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/20/Redis/Redis%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis基础配置">Redis基础配置</span>
+            <span class="post-date" title="2020-05-20 15:53:24">2020/05/20</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/20/Redis/Redis%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis删除策略">Redis删除策略</span>
+            <span class="post-date" title="2020-05-20 14:35:24">2020/05/20</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/20/Redis/Redis%E4%BA%8B%E5%8A%A1/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis事务">Redis事务</span>
+            <span class="post-date" title="2020-05-20 09:00:00">2020/05/20</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/18/Redis/Redis&Linux%E5%9F%BA%E7%A1%80/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis&amp;Linux基础">Redis&amp;Linux基础</span>
+            <span class="post-date" title="2020-05-18 18:43:31">2020/05/18</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/18/Redis/Jedis/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Jedis">Jedis</span>
+            <span class="post-date" title="2020-05-18 14:18:25">2020/05/18</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/17/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis持久化">Redis持久化</span>
+            <span class="post-date" title="2020-05-17 13:51:31">2020/05/17</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/17/Redis/Redis%E9%80%9A%E7%94%A8%E6%8C%87%E4%BB%A4/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis通用指令">Redis通用指令</span>
+            <span class="post-date" title="2020-05-17 13:51:31">2020/05/17</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/16/Redis/Redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis数据类型">Redis数据类型</span>
+            <span class="post-date" title="2020-05-16 11:40:25">2020/05/16</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/15/Redis/Redis%E5%85%A5%E9%97%A8%E7%AE%80%E4%BB%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis入门简介">Redis入门简介</span>
+            <span class="post-date" title="2020-05-15 09:36:37">2020/05/15</span>
+        </a>
+        
+        <a  class="All 并发编程 "
+           href="/2020/05/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="基础知识">基础知识</span>
+            <span class="post-date" title="2020-05-09 10:48:37">2020/05/09</span>
+        </a>
+        
+        <a  class="All 并发编程 "
+           href="/2020/05/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%8E%9F%E7%90%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JMM内存模型">JMM内存模型</span>
+            <span class="post-date" title="2020-05-09 10:48:37">2020/05/09</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/NIO/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="NIO">NIO</span>
+            <span class="post-date" title="2020-05-01 18:57:51">2020/05/01</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/Socket&ServerSocket/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Socket&amp;ServerSocket">Socket&amp;ServerSocket</span>
+            <span class="post-date" title="2020-05-01 14:25:37">2020/05/01</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/BIO%E7%BC%96%E7%A8%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="BIO">BIO</span>
+            <span class="post-date" title="2020-05-01 13:47:15">2020/05/01</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="生产者消费者模式">生产者消费者模式</span>
+            <span class="post-date" title="2020-05-01 13:47:15">2020/05/01</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/29/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E9%94%81/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql锁">Mysql锁</span>
+            <span class="post-date" title="2020-04-29 14:24:20">2020/04/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/28/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql索引优化">Mysql索引优化</span>
+            <span class="post-date" title="2020-04-28 21:20:36">2020/04/28</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/28/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="WHERE和ON的区别">WHERE和ON的区别</span>
+            <span class="post-date" title="2020-04-28 21:20:36">2020/04/28</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="常见的索引失效">常见的索引失效</span>
+            <span class="post-date" title="2020-04-27 14:48:43">2020/04/27</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93/Explain/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Explain">Explain</span>
+            <span class="post-date" title="2020-04-27 09:06:36">2020/04/27</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/24/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E7%B4%A2%E5%BC%95/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql索引">Mysql索引</span>
+            <span class="post-date" title="2020-04-24 21:20:36">2020/04/24</span>
+        </a>
+        
+        <a  class="All linux "
+           href="/2020/04/21/Linux/linux%E5%85%A5%E9%97%A8/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux入门">linux入门</span>
+            <span class="post-date" title="2020-04-21 21:53:15">2020/04/21</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="观察者模式">观察者模式</span>
+            <span class="post-date" title="2020-04-19 12:50:16">2020/04/19</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="迭代器模式">迭代器模式</span>
+            <span class="post-date" title="2020-04-18 22:18:41">2020/04/18</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="代理模式">代理模式</span>
+            <span class="post-date" title="2020-04-18 16:28:41">2020/04/18</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="装饰者模式">装饰者模式</span>
+            <span class="post-date" title="2020-04-18 10:22:41">2020/04/18</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="适配器模式">适配器模式</span>
+            <span class="post-date" title="2020-04-16 21:54:14">2020/04/16</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2020/04/16/Java%E5%9F%BA%E7%A1%80/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="深浅拷贝">深浅拷贝</span>
+            <span class="post-date" title="2020-04-16 17:23:12">2020/04/16</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="工厂模式">工厂模式</span>
+            <span class="post-date" title="2020-04-16 10:51:41">2020/04/16</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="单例模式">单例模式</span>
+            <span class="post-date" title="2020-04-15 22:52:03">2020/04/15</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/UML%E7%B1%BB%E5%9B%BE/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="UML类图">UML类图</span>
+            <span class="post-date" title="2020-04-15 21:44:54">2020/04/15</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/13/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="内存模型">内存模型</span>
+            <span class="post-date" title="2020-04-13 16:10:51">2020/04/13</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/12/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="类加载器">类加载器</span>
+            <span class="post-date" title="2020-04-12 17:12:31">2020/04/12</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式七大原则">设计模式七大原则</span>
+            <span class="post-date" title="2020-04-10 20:20:03">2020/04/10</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/07/IO/NIO/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="NIO">NIO</span>
+            <span class="post-date" title="2020-04-07 15:39:51">2020/04/07</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/07/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E5%8A%A0%E8%BD%BD/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="类加载">类加载</span>
+            <span class="post-date" title="2020-04-07 11:20:56">2020/04/07</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/06/IO/IO%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="IO异常的处理">IO异常的处理</span>
+            <span class="post-date" title="2020-04-06 17:16:31">2020/04/06</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="字节码指令">字节码指令</span>
+            <span class="post-date" title="2020-04-06 15:15:29">2020/04/06</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="类文件结构">类文件结构</span>
+            <span class="post-date" title="2020-04-06 10:20:28">2020/04/06</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E6%89%93%E5%8D%B0%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="打印流">打印流</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="序列化">序列化</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E8%BD%AC%E6%8D%A2%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="转换流">转换流</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E7%BC%93%E5%86%B2%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="缓冲流">缓冲流</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2020/04/05/IO/File%E7%B1%BB/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="File类">File类</span>
+            <span class="post-date" title="2020-04-05 21:31:23">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/IO/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2020-04-05 21:31:23">2020/04/05</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2020/04/05/Java%E8%BF%9B%E9%98%B6/Properties/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Properties">Properties</span>
+            <span class="post-date" title="2020-04-05 21:31:23">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E5%AD%97%E8%8A%82%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="字节流">字节流</span>
+            <span class="post-date" title="2020-04-05 15:55:45">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E5%AD%97%E7%AC%A6%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="字符流">字符流</span>
+            <span class="post-date" title="2020-04-05 15:55:45">2020/04/05</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/04/02/Web/Maven/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2020-04-02 15:34:24">2020/04/02</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/04/02/LeetCode/%E5%89%91%E6%8C%87-%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="剑指-数值的整数次方">剑指-数值的整数次方</span>
+            <span class="post-date" title="2020-04-02 12:33:11">2020/04/02</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/04/02/LeetCode/%E5%89%91%E6%8C%87-%E5%89%AA%E7%BB%B3%E5%AD%90/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="剑指-剪绳子">剑指-剪绳子</span>
+            <span class="post-date" title="2020-04-02 12:33:11">2020/04/02</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/03/31/LeetCode/%E5%89%91%E6%8C%87-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="剑指-旋转数组的最小数字">剑指-旋转数组的最小数字</span>
+            <span class="post-date" title="2020-03-31 23:27:16">2020/03/31</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/03/31/LeetCode/%E5%89%91%E6%8C%87-%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="剑指-青蛙跳台">剑指-青蛙跳台</span>
+            <span class="post-date" title="2020-03-31 23:10:16">2020/03/31</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/03/31/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="垃圾回收">垃圾回收</span>
+            <span class="post-date" title="2020-03-31 21:48:09">2020/03/31</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/31/Web/Redis/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2020-03-31 13:55:57">2020/03/31</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/03/31/LeetCode/%E5%89%91%E6%8C%87-%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="剑指-数组中重复的数字">剑指-数组中重复的数字</span>
+            <span class="post-date" title="2020-03-31 13:27:16">2020/03/31</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/03/31/LeetCode/%E5%89%91%E6%8C%87-%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="剑指-重建二叉树">剑指-重建二叉树</span>
+            <span class="post-date" title="2020-03-31 13:27:16">2020/03/31</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/31/%E7%AE%97%E6%B3%95/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="鸽巢原理">鸽巢原理</span>
+            <span class="post-date" title="2020-03-31 12:12:15">2020/03/31</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/30/%E7%AE%97%E6%B3%95/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="容斥原理">容斥原理</span>
+            <span class="post-date" title="2020-03-30 23:04:28">2020/03/30</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/30/Web/JSON/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JSON">JSON</span>
+            <span class="post-date" title="2020-03-30 14:55:36">2020/03/30</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/30/Web/AJAX/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="AJAX">AJAX</span>
+            <span class="post-date" title="2020-03-30 09:23:24">2020/03/30</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/29/Web/JQuery%E9%AB%98%E7%BA%A7/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JQuery高级">JQuery高级</span>
+            <span class="post-date" title="2020-03-29 13:19:35">2020/03/29</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/28/Web/JQuery%E5%9F%BA%E7%A1%80/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JQuery基础">JQuery基础</span>
+            <span class="post-date" title="2020-03-28 10:02:14">2020/03/28</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/03/27/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="内存结构">内存结构</span>
+            <span class="post-date" title="2020-03-27 22:08:48">2020/03/27</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/03/27/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/JVM%E5%85%A5%E9%97%A8/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="JVM入门">JVM入门</span>
+            <span class="post-date" title="2020-03-27 21:51:35">2020/03/27</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/27/Web/Filter&Listener/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Filter&amp;Listener">Filter&amp;Listener</span>
+            <span class="post-date" title="2020-03-27 15:00:24">2020/03/27</span>
+        </a>
+        
+        <a  class="All LeetCode "
+           href="/2020/03/26/LeetCode/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"
+           data-tag="LeetCode"
+           data-author="" >
+            <span class="post-title" title="1-两数之和">1-两数之和</span>
+            <span class="post-date" title="2020-03-26 00:07:34">2020/03/26</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/25/Web/Session/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Session">Session</span>
+            <span class="post-date" title="2020-03-25 17:46:24">2020/03/25</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/25/Web/JSP/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JSP">JSP</span>
+            <span class="post-date" title="2020-03-25 15:28:33">2020/03/25</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/25/Web/Cookie/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Cookie">Cookie</span>
+            <span class="post-date" title="2020-03-25 10:14:32">2020/03/25</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/19/%E7%AE%97%E6%B3%95/%E9%A9%AC%E8%B8%8F%E6%A3%8B%E7%9B%98%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="马踏棋盘算法">马踏棋盘算法</span>
+            <span class="post-date" title="2020-03-19 22:14:40">2020/03/19</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%94%E5%B1%82-%E5%BA%94%E7%94%A8%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第五层-应用层">第五层-应用层</span>
+            <span class="post-date" title="2020-03-15 23:43:25">2020/03/15</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E5%B1%82-%E4%BC%A0%E8%BE%93%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第四层-传输层">第四层-传输层</span>
+            <span class="post-date" title="2020-03-15 14:36:27">2020/03/15</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第三层:网络层">第三层:网络层</span>
+            <span class="post-date" title="2020-03-14 15:24:19">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第二层:数据链路层">第二层:数据链路层</span>
+            <span class="post-date" title="2020-03-14 14:44:16">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%80%E5%B1%82-%E7%89%A9%E7%90%86%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第一层:物理层">第一层:物理层</span>
+            <span class="post-date" title="2020-03-14 14:20:04">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="网络体系结构">网络体系结构</span>
+            <span class="post-date" title="2020-03-14 14:09:41">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="计算机网络概述">计算机网络概述</span>
+            <span class="post-date" title="2020-03-14 13:10:33">2020/03/14</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/13/%E7%AE%97%E6%B3%95/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7(Floyd)%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="弗洛伊德(Floyd)算法">弗洛伊德(Floyd)算法</span>
+            <span class="post-date" title="2020-03-13 20:50:18">2020/03/13</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/13/%E7%AE%97%E6%B3%95/%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="迪杰斯特拉算法">迪杰斯特拉算法</span>
+            <span class="post-date" title="2020-03-13 16:30:32">2020/03/13</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/11/%E7%AE%97%E6%B3%95/%E6%99%AE%E5%88%A9%E5%A7%86(Prim)%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="普利姆(Prim)算法">普利姆(Prim)算法</span>
+            <span class="post-date" title="2020-03-11 09:23:10">2020/03/11</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/10/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-date" title="2020-03-10 21:14:23">2020/03/10</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/10/%E7%AE%97%E6%B3%95/%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94(Kruska)%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="克鲁斯卡尔(Kruska)算法">克鲁斯卡尔(Kruska)算法</span>
+            <span class="post-date" title="2020-03-10 12:24:15">2020/03/10</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="图">图</span>
+            <span class="post-date" title="2020-03-09 15:10:05">2020/03/09</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/06/%E7%AE%97%E6%B3%95/KMP%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="KMP算法">KMP算法</span>
+            <span class="post-date" title="2020-03-06 17:32:37">2020/03/06</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/04/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="动态规划">动态规划</span>
+            <span class="post-date" title="2020-03-04 15:50:20">2020/03/04</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="树">树</span>
+            <span class="post-date" title="2020-03-02 14:50:51">2020/03/02</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/02/%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="分治算法">分治算法</span>
+            <span class="post-date" title="2020-03-02 13:06:19">2020/03/02</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="哈希表">哈希表</span>
+            <span class="post-date" title="2020-03-01 19:32:03">2020/03/01</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="查找算法">查找算法</span>
+            <span class="post-date" title="2020-03-01 11:18:20">2020/03/01</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="排序">排序</span>
+            <span class="post-date" title="2020-02-22 21:35:29">2020/02/22</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/02/19/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="二分查找算法">二分查找算法</span>
+            <span class="post-date" title="2020-02-19 12:04:09">2020/02/19</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="栈">栈</span>
+            <span class="post-date" title="2020-02-18 15:01:47">2020/02/18</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="链表">链表</span>
+            <span class="post-date" title="2020-02-13 14:13:19">2020/02/13</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="队列">队列</span>
+            <span class="post-date" title="2020-02-12 12:16:15">2020/02/12</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="数组">数组</span>
+            <span class="post-date" title="2020-02-10 16:14:22">2020/02/10</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/02/10/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%A2%98/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="算法题">算法题</span>
+            <span class="post-date" title="2020-02-10 14:32:16">2020/02/10</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/09/Web/HTTP/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="HTTP">HTTP</span>
+            <span class="post-date" title="2019-11-09 15:30:59">2019/11/09</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/09/Web/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Web开发中遇到的问题">Web开发中遇到的问题</span>
+            <span class="post-date" title="2019-11-09 14:16:54">2019/11/09</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/06/Web/Servlet-Request/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Servlet-Request">Servlet-Request</span>
+            <span class="post-date" title="2019-11-06 12:02:14">2019/11/06</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/06/Web/Servlet-Response/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Servlet-Response">Servlet-Response</span>
+            <span class="post-date" title="2019-11-06 12:02:14">2019/11/06</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/06/Web/ServletContext%E5%AF%B9%E8%B1%A1/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="ServletContext对象">ServletContext对象</span>
+            <span class="post-date" title="2019-11-06 12:02:14">2019/11/06</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/03/Web/Servlet/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Servlet">Servlet</span>
+            <span class="post-date" title="2019-11-03 11:06:32">2019/11/03</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/02/Web/Tomcat/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Tomcat(服务器软件)">Tomcat(服务器软件)</span>
+            <span class="post-date" title="2019-11-02 14:21:41">2019/11/02</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Jsoup(XML解析工具)">Jsoup(XML解析工具)</span>
+            <span class="post-date" title="2019-10-27 12:46:32">2019/10/27</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/22/%E5%89%8D%E7%AB%AF/XML/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2019-10-22 20:51:45">2019/10/22</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/10/21/Web/BootStrap/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="BootStrap">BootStrap</span>
+            <span class="post-date" title="2019-10-21 19:52:32">2019/10/21</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/21/%E5%89%8D%E7%AB%AF/BootStrap/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="BootStrap">BootStrap</span>
+            <span class="post-date" title="2019-10-21 19:52:32">2019/10/21</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/12/%E5%89%8D%E7%AB%AF/JS-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E6%9C%BA%E5%88%B6/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JS-事件监听机制">JS-事件监听机制</span>
+            <span class="post-date" title="2019-10-12 23:50:11">2019/10/12</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-DOM/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JS-DOM">JS-DOM</span>
+            <span class="post-date" title="2019-10-09 21:12:31">2019/10/09</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-BOM/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JS-BOM">JS-BOM</span>
+            <span class="post-date" title="2019-10-09 19:46:41">2019/10/09</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/09/%E5%89%8D%E7%AB%AF/JavaScript/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JavaScript">JavaScript</span>
+            <span class="post-date" title="2019-10-09 16:40:51">2019/10/09</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/05/%E5%89%8D%E7%AB%AF/CSS/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="CSS">CSS</span>
+            <span class="post-date" title="2019-10-05 15:52:32">2019/10/05</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/04/%E5%89%8D%E7%AB%AF/HTML/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="HTML">HTML</span>
+            <span class="post-date" title="2019-10-04 10:06:33">2019/10/04</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/10/04/Web/%E5%88%9D%E8%AF%86Web/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="初识Web">初识Web</span>
+            <span class="post-date" title="2019-10-04 09:09:36">2019/10/04</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBCTemplate/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="JDBCTemplate">JDBCTemplate</span>
+            <span class="post-date" title="2019-10-02 16:13:20">2019/10/02</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="JDBC连接池(DataSource)">JDBC连接池(DataSource)</span>
+            <span class="post-date" title="2019-10-02 09:32:54">2019/10/02</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql逻辑架构">Mysql逻辑架构</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="执行顺序与JOIN">执行顺序与JOIN</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库数据类型详解">数据库数据类型详解</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%8C%83%E5%BC%8F/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库设计与范式">数据库设计与范式</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="JDBC">JDBC</span>
+            <span class="post-date" title="2019-09-29 13:37:11">2019/09/29</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程池">线程池</span>
+            <span class="post-date" title="2019-09-26 22:14:55">2019/09/26</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1(%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6)/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程间通信(等待唤醒机制)">线程间通信(等待唤醒机制)</span>
+            <span class="post-date" title="2019-09-26 20:18:10">2019/09/26</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程状态">线程状态</span>
+            <span class="post-date" title="2019-09-26 14:11:23">2019/09/26</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BA%8B%E5%8A%A1/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="事务">事务</span>
+            <span class="post-date" title="2019-09-26 13:23:20">2019/09/26</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/25/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程安全">线程安全</span>
+            <span class="post-date" title="2019-09-25 16:50:56">2019/09/25</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/25/Java%E8%BF%9B%E9%98%B6/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="正则表达式">正则表达式</span>
+            <span class="post-date" title="2019-09-25 15:59:48">2019/09/25</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/24/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库用户管理">数据库用户管理</span>
+            <span class="post-date" title="2019-09-24 16:10:18">2019/09/24</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/GitHub/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="GitHub">GitHub</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E5%B7%A5%E4%BD%9C%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git工作流">Git工作流</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git基本原理">Git基本原理</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git操作">Git操作</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E7%AE%80%E4%BB%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git简介">Git简介</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/23/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/23/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库的完整性">数据库的完整性</span>
+            <span class="post-date" title="2019-09-23 10:10:46">2019/09/23</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BA%A6%E6%9D%9F/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="约束">约束</span>
+            <span class="post-date" title="2019-09-22 20:34:06">2019/09/22</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E6%B3%A8%E8%A7%A3/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2019-09-21 18:46:26">2019/09/21</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E5%8F%8D%E5%B0%84/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="反射">反射</span>
+            <span class="post-date" title="2019-09-21 14:31:37">2019/09/21</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Junit单元测试">Junit单元测试</span>
+            <span class="post-date" title="2019-09-21 10:43:26">2019/09/21</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93/%E8%A1%A8%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84CRUD/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="表内数据的CRUD">表内数据的CRUD</span>
+            <span class="post-date" title="2019-09-19 13:21:35">2019/09/19</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84CRUD/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库和表的CRUD">数据库和表的CRUD</span>
+            <span class="post-date" title="2019-09-15 08:17:51">2019/09/15</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/13/Java%E5%9F%BA%E7%A1%80/%E8%BF%AD%E4%BB%A3%E5%99%A8/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="迭代器">迭代器</span>
+            <span class="post-date" title="2019-09-13 21:24:12">2019/09/13</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="HashCode、equals、clone解析">HashCode、equals、clone解析</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="枚举">枚举</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="数据类型">数据类型</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%A4%9A%E6%80%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多态">多态</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8A%BD%E8%B1%A1%E7%B1%BB/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="抽象类">抽象类</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8E%A5%E5%8F%A3/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="接口">接口</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="继承">继承</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="方法的重载与重写">方法的重载与重写</span>
+            <span class="post-date" title="2019-09-02 21:12:01">2019/09/02</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%B0%81%E8%A3%85/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="封装">封装</span>
+            <span class="post-date" title="2019-09-02 16:57:45">2019/09/02</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%AE%80%E4%BB%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="面向对象简介">面向对象简介</span>
+            <span class="post-date" title="2019-09-01 12:36:08">2019/09/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-计算机网络/第四层-传输层" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">第四层-传输层</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="计算机网络">计算机网络</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">计算机网络</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2020-03-15 21:56:35'>2020-03-15 14:36</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传输层要解决主要问题"><span class="toc-text">传输层要解决主要问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端到端的通信"><span class="toc-text">端到端的通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传输层的端口与地址"><span class="toc-text">传输层的端口与地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#用户数据报协议-（UDP）"><span class="toc-text">用户数据报协议 （UDP）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输控制协议（TCP）"><span class="toc-text">传输控制协议（TCP）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-的连接"><span class="toc-text">TCP 的连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP的计时器"><span class="toc-text">TCP的计时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#停止等待协议"><span class="toc-text">停止等待协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连续ARQ协议"><span class="toc-text">连续ARQ协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-可靠传输的实现"><span class="toc-text">TCP 可靠传输的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP的流量控制"><span class="toc-text">TCP的流量控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP的拥塞控制"><span class="toc-text">TCP的拥塞控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制的一般方法"><span class="toc-text">拥塞控制的一般方法</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="传输层要解决主要问题"><a href="#传输层要解决主要问题" class="headerlink" title="传输层要解决主要问题"></a><strong>传输层要解决主要问题</strong></h2><p>传输连接的建立。<br>流量控制。<br>拥塞控制。<br>在计算机网络中，传输层处于非常重要的位置。传输层，也称为运输层，无论在OIS还是在TCP/IP模型中，传输层都处于面向应用部分的最低层和面向通信部分的最高层。<br>在网络通信中，传输层有着承上启下的作用，实现了一种将面向应用（进程）的通信需求转变为面向网络设备的通信服务。</p>
+<h2 id="端到端的通信"><a href="#端到端的通信" class="headerlink" title="端到端的通信"></a><strong>端到端的通信</strong></h2><p>计算机网络由网络边缘和网络核心两大部分所组成<br><strong>1、网络边缘</strong></p>
+<blockquote>
+<p>在计算机网络中，网络边缘通常是指由主机、存储、服务器、数据库等各种软硬件设备组成，是网络信息资源的集散地。<br>由于集中了数量极其庞大且标准不同、结构互异的硬件资源、软件资源和信息资源，因此网络边缘历来是计算机网络研究中最为复杂和困难的领域，也是最具吸引力的领域，有“决战在边缘”、“价值在边缘”之说。<br>在网络边缘的主机平台上，运行着从物理层到应用层完整的TCP/IP协议。</p>
+</blockquote>
+<p><strong>2、网络核心</strong><br>相对于网络边缘，网络核心就显得非常单纯。网络核心由提供数据转发服务的网络路由器，以及连接各路由器的链路（如光纤、通信卫星等）组成。<br>在网络核心的路由器平台上，运行着从物理层到网际层的TCP/IP协议。所以，这类网络设备也称为三层设备，即具有路由能力的网络设备。<br>除了路由器等三层设备，网络核心中还有大量只运行物理层和数据链路层（网络接口层）。这类设备通常只运行物理层和数据链路层协议，所以称为二层设备。</p>
+<p><strong>3、传输层的作用和主要功能</strong><br>传输层（运输层）的主要作用是为运行在网络边缘的不同主机上的各应用程序之间提供通信服务。<br>因此，传输层面向的不是主机而是应用，或者说是面向进程的网络通信服务，是一种真正的端到端的通信服务。<br>传输层通信为不同进程之间提供了逻辑通信服务。<br>传输层的另外一个主要作用是在应用层和网络层之间充当复用器的作用。各种各样的网络应用，通过传输层的端口被提交统一的网络层，并由IP协议用统一的方式将它们发送到网络中。<br><img src="/images/123.png" alt=""><br>在OSI/RM中，传输层位于资源子网与通信子网之间，发挥着以下主要功能：<br>对高层应用屏蔽了通信（低层）的细节，无需过多考虑各种通信因素对网络通信过程本身的影响。<br>提供端到端之间的无差错保证，弥补网络层提供服务的差异和不足。</p>
+<p><strong>4、传输层协议与网络层协议的主要区别</strong><br><img src="/images/124.png" alt=""><br>传输层提供的服务<br>在TCP/IP中，传输层提供了：面向连接和面向无连接的两种服务。其中：<br>面向连接的服务<br>TCP服务，通信可靠，对数据有校验和重发等机制，但实现复杂，代价较大，通信速率相对较低。<br>如TCP/IP模型中应用层协议FTP、Telnet等<br>面向无连接的服务<br>UDP服务，对数据无校验和重发，实现简单，通信速率高<br>如TCP/IP模型中应用层协议SNMP、DNS等 </p>
+<p><strong>1、TCP</strong></p>
+<blockquote>
+<p>TCP 则提供面向连接的服务。TCP 不提供广播或多播服务。由于 TCP 要提供可靠的、面向连接的传输服务，因此不可避免地增加了许多的开销。这不仅使协议数据单元的首部增大很多，还要占用许多的处理机资源。<br>其协议数据单元称为 TCP 报文段(segment)<br>TCP 报文段是在传输层抽象的端到端逻辑信道中传送，这种信道是可靠的全双工信道。但这样的信道却不知道究竟经过了哪些路由器，而这些路由器也根本不知道上面的传输层是否建立了 TCP 连接。 </p>
+</blockquote>
+<p><strong>2、UDP</strong> </p>
+<blockquote>
+<p>UDP 在传送数据之前不需要先建立连接。对方的运输层在收到 UDP 报文后，也不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 是一种最有效的工作方式。<br>UDP 协议数据单元协议称为 UDP 报文或用户数据报。<br>传输层的 UDP 用户数据报与网际层的IP数据报有很大区别。IP 数据报要经过互连网中许多路由器的存储转发，但UDP 用户数据报是在传输层的端到端抽象的逻辑信道中传送。</p>
+</blockquote>
+<h2 id="传输层的端口与地址"><a href="#传输层的端口与地址" class="headerlink" title="传输层的端口与地址"></a><strong>传输层的端口与地址</strong></h2><p>为了使运行不同操作系统的计算机的应用进程能够互相通信，就必须用统一的方法对 TCP/IP 体系的应用进程进行标志。<br>解决这个问题的方法就是在传输层中使用协议端口号(protocol port number)，或通常简称为端口(port)。<br>虽然通信的终点是应用进程，但我们可以把端口想象是通信的终点，因为我们只要把要传送的报文交到目的主机的某一个合适的目的端口，剩下的工作（即最后交付目的进程）就由 TCP 来完成。<br><strong>1、硬件端口与软件端口</strong><br>路由器或交换机上的端口是硬件端口。<br>硬件端口是不同硬件设备进行交互的接口。<br>在协议栈层间的抽象的协议端口是软件端口。<br>而软件端口是应用层的各种协议进程与传输层协议进行层间交互的一种接口。 </p>
+<p><strong>2、端口号</strong><br>传输层端口用一个 16 位端口号进行标志。<br>端口号只具有本地意义，即端口号只是为了标志本计算机应用层中的各进程。<br>在因特网中，不同计算机的相同端口号之间并无特别的关联性。</p>
+<p><strong>3、传输服务访问点</strong><br>在OSI/RM中，当两个不同主机的两个进程需要通信时，必须指明对方是哪一个进程，这个标记称为传输层地址，也称为传输服务访问点（Transport Service Access Point，TSAP）<br>即，传输层地址（TSAP）=主机IP地址+端口号<br><img src="/images/125.png" alt=""></p>
+<p>套接字<br>套接字（Socket）是为了使应用程序能够方便地使用协议栈软件进行通信的一种方法。<br>套接字以标准的UNIX 文件描述符加以标识，应用程序通过对文件描述符的调用，实现与其他程序进行通信。<br>在BSD的定义，每个Socket 都可以用一个被称为半相关方式进行描述：<br>Socket={协议，本地地址，本地端口}<br>对于一个完整的Socket， 则用一个相关描述：<br>{协议，本地地址，本地端口，远程地址，远程端口}<br>从套接字(Socket)所处的地位来讲，套接字上联应用进程，下联网络协议栈，是应用程序通过网络协议栈进行通信的接口，是应用程序与网络协议栈进行交互的接口。 </p>
+<p>1、流式套接字(Stream Socket)<br>提供面向连接、可靠的数据传输服务，数据无差错、无重复的发送，且按发送顺序接收。内设流量控制，避免数据流超限；数据被看作是字节流，无长度限制。<br>2、数据报式套接字(Datagram Socket)<br>提供无连接服务。数据包以独立包形式发送，不提供无差错保证，数据可能丢失或重复，并且接收顺序混乱。<br>3、原始套接字(Raw Socket)<br>原始式套接字允许对较低层次的协议，如IP、ICMP直接访问，用于检验新的协议的实现。 </p>
+<h1 id="用户数据报协议-（UDP）"><a href="#用户数据报协议-（UDP）" class="headerlink" title="用户数据报协议 （UDP）"></a><strong>用户数据报协议 （UDP）</strong></h1><p>用户数据报协议（User Datagram Protocol，UDP）是OSI参考模型和TCP/IP模型中都有的一种面向无连接的传输层协议。<br>UDP 只在 IP 的数据报服务之上增加了很少一点的功能，即端口的功能和差错检测的功能。<br><strong>1、UDP 的主要特点</strong><br>UDP是无连接协议，在发送数据之前不需要建立连接。<br>UDP使用尽最大努力交付，不保证可靠交付，同时也不使用拥塞控制。<br>UDP是面向报文，没有拥塞控制，很适合多媒体通信的要求。<br>UDP支持一对一、一对多、多对一和多对多的交互通信。<br>UDP 的首部开销小，只有 8 个字节。<br><strong>2、面向报文的 UDP</strong><br>发送方 UDP 对应用程序交下来的报文，在添加首部后就向下交付 IP 层。UDP 对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。<br>应用层交给 UDP 多长的报文，UDP 就照样发送，即一次发送一个报文。<br>接收方 UDP 对 IP 层交上来的 UDP 用户数据报，在去除首部后就原封不动地交付上层的应用进程，一次交付一个完整的报文。<br>应用程序必须选择合适大小的报文。<br><img src="/images/126.png" alt=""><br>UDP 有两个字段：数据字段和首部字段。首部字段有 8 个字节，由 4 个字段组成，每个字段都是两个字节。<br>在计算检验和时，临时把“伪首部”和 UDP 用户数据报连接在一起。伪首部仅仅是为了计算检验和。</p>
+<h1 id="传输控制协议（TCP）"><a href="#传输控制协议（TCP）" class="headerlink" title="传输控制协议（TCP）"></a><strong>传输控制协议（TCP）</strong></h1><p>传输控制协议（Transmission Control Protocol，TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义。TCP与UDP同处于传输层，是TCP/IP协议簇中最复杂也是最精彩的协议。</p>
+<p><strong>TCP协议的特点：</strong><br>TCP 是面向连接的传输层协议。<br>每一条 TCP 连接只能有两个端点(endpoint)，每一条 TCP 连接只能是点对点的（一对一）。<br>TCP 提供可靠交付的服务。<br>TCP 提供全双工通信。<br>面向字节流。<br><img src="/images/127.png" alt=""><br>TCP 连接是一种虚连接而不是真正的物理连接。<br>TCP不关心应用程序一次把多长的报文发送到TCP 的缓存中。<br>TCP 根据对方给出的窗口值和当前网络拥塞的程度来决定一个报文段应包含多少个字节（UDP 发送的报文长度是应用进程给出的）。<br>TCP可把太长的数据块划分短一些再传送，也可等待积累足够多的字节后再构成报文段发送出去<br>TCP 连接的建立都是采用客户服务器方式：<br>主动发起连接建立的应用进程称为客户端(client)。<br>被动等待连接建立的应用进程称为服务器(server)。<br><img src="/images/128.png" alt=""></p>
+<h2 id="TCP-的连接"><a href="#TCP-的连接" class="headerlink" title="TCP 的连接"></a><strong>TCP 的连接</strong></h2><p><strong>1、TCP连接</strong><br>TCP把连接作为最基本的抽象。<br>每一条TCP连接有两个端点。<br>TCP连接的端点叫做套接字(socket)或插口。<br>端口号拼接到(contatenated with) IP 地址即构成了<strong>套接字{协议，本地地址，本地端口，远程地址，远程端口}</strong><br>每一条 TCP 连接唯一地被通信两端的两个端点（即两个套接字）所确定。即：<br>TCP 连接 ::= {socket1, socket2}         =     {(IP1: port1), (IP2: port2)} </p>
+<p><strong>2、TCP连接的三个阶段</strong><br>传输连接就有三个阶段，即：<strong>连接建立、数据传送和连接释放。</strong>传输连接的管理就是使传输连接的建立和释放都能正常地进行。<br>连接建立过程中要解决以下三个问题：<br>要使每一方能够确知对方的存在。<br>要允许双方协商一些参数（如最大报文段长度，最大窗口大小，服务质量等）。<br>能够对传输实体资源（如缓存大小，连接表中的项目等）进行分配。  </p>
+<p><strong>3、TCP连接的建立</strong><br><strong>TCP连接的建立过程也被称为三次握手</strong><br>第一次: 客户端–&gt;服务器。客户端向服务器提出连接建立请求，即发出同步请求报文。<br>第二次: 客户端&lt;–服务器。服务器收到客户端的连接请求后，向客户端发出同意建立连接的同步确认报文。<br>第三次: 客户端–&gt;服务器。客户端在收到服务器的同步确认报文后，向服务器发出确认报文。<br>当服务器收到来自客户端的确认报文后，连接即被建立。<br><img src="/images/129.png" alt=""></p>
+<p><strong>4、TCP连接的释放</strong><br><strong>TCP连接释放的建立过程也被称为四次挥手</strong><br>第一次: 客户端–&gt;服务器。客户端向服务器发出一个连接释放报文。<br>第二次: 客户端&lt;–服务器。服务器收到客户端的释放连接请求后，向客户端发出确认报文。<br>第三次: 客户端&lt;–服务器。服务器在发送完最后的数据后，向客户端发出连接释放确认报文。<br>第四次: 客户端–&gt;服务器。客户端在收到服务器连接释放报文后，向服务器发出确认报文。<br><img src="/images/130.png" alt=""><br><strong>TCP 连接必须经过时间 2MSL 后才真正释放掉。</strong><br>MSL（Maximum Segment Lifetime）是任何报文在网络上的存在的最长时间，超过这个时间报文将被丢弃。RFC 793中规定MSL为2分钟，不同的操作系统在实现时各不相同，常用的有30秒、1分钟、2分钟等。<br><strong>必须等待 2MSL 的时间的原因：</strong></p>
+<blockquote>
+<p>第一，为了保证客户端发送的最后一个ACK 报文段能够到达服务器。<br>第二，防止“已失效的连接请求报文段”出现在本连接中。客户端在发送完最后一个ACK报文段后，再经过时间 2MSL，就可以使本连接持续的时间内所产生的所有报文段，都从网络中消失。这样就可以使下一个新的连接中不会出现这种旧的连接请求报文段。</p>
+</blockquote>
+<h2 id="TCP的计时器"><a href="#TCP的计时器" class="headerlink" title="TCP的计时器"></a><strong>TCP的计时器</strong></h2><p>为了保证传输的可靠性和协议栈的稳定，一条TCP连接可以用多达9种不同类型的定时器为其保驾护航。<br>TCP要保证正常工作，至少应该有四种计时器：重传计时器、持久计时器、保活计时器和时间等待计时器。<br><strong>1、重传计时器</strong><br>当接收端收到一个TCP报文后，就会向发送方发出一个确认报文，并指示对方下次传送数据的起始位置。<br>由于网络的不确定性，发送的数据报文和确认报文都有可能在传输过程中丢失。<br>重传计时器（Retransmission Timer），当发送方发出数据报文后即启动该计时器（一般为60秒）：<br>在设定时间截至之前收到确认报文，则传输成功，撤销计时器；否则，传输失败，重新发送数据报文。<br><strong>2、坚持计时器</strong><br>当接收方发出一个零窗口确认报文，发送方立即停止发送数据报文直到接收方发出非零窗口的确认报文。<br>由于TCP不会对确认报文进行确认，因此接收方在发出非零窗口确认报文后即进入等待发送方发送数据报文。<br>如果此确认报文在中途丢失，在通信会陷入死锁。<br>坚持计时器（Persistent Timer）即为破解此死锁而设定。<br>当发送方收到一个零窗口确认时，即启动坚持计时器 。<br>若在设定时间到达之前收到接收方的非零窗口确认报文，则撤销该计时器，恢复正常发送数据报文。<br>若设定时间到达仍未收到接收方的非零窗口确认报文，则发送方发出一个只有一个字节数据的探测报文并消耗一个序号，但该序号会被确认报文所忽略。<br>探测报文的目的，即提醒接收方：确认丢失，重新发送。<br>坚持计时器的值与重传计时器相同。若在截止时间后没有收到接收方的非零窗口确认报文，则发送另一个探测报文，并加倍设置坚持计时器值，如此反复直到收到接收方的非零窗口确认报文为止。<br>坚持计时器的值有最大值限制（门限值，通常为60秒）。<br><strong>3、保活计时器</strong><br>保活计时器（keepalive timer）用于判断两个TCP端点之间长久的连接是否正常。<br>当客户端与服务器建立了TCP连接后，保活计时器即被激活，并设置计时值（通常为2小时）。每当服务器收到来自客户端的报文，即重置计时器。<br>当计时截止后仍未收到客户端的报文，则服务器将向客户端发出探测报文，并每隔75秒发送一个探测报文。<br>如果发出10个探测报文后依然没有得到客户端的确认报文，则服务器假定客户端遇到了故障，，于是强制关闭这条连接。<br><strong>4、时间等待计时器</strong><br>时间等待计时器（Time_Wait Timer）也叫2MSL计时器，是TCP终止连接时启动的计时器。<br>设置这个计时器的主目的是为了能够正常关闭服务端的连接！</p>
+<h2 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a><strong>停止等待协议</strong></h2><p>1、简单流控<br>假设：<br>（1）传输过程中不会出错<br>（2）接收端不保证总能及时接受发送端发出的数据<br>流量控制<br>基本思想：由接收端控制发送端发送数据的速度这种思想是现代网络中各种流量控制方法的基础。<br>停止等待协议的基本算法：<br>发送端<br>（1）等待从上层应用中获得数据<br>（2）获得数据并封装成可发送的数据报文<br>（3）发送报文，等待接收端的确认报文转（1）<br>接收端<br>（1）等发送端发送数据<br>（2）获得数据并转交到上层应用<br>（3）向发送端发送确认报文，转（1）<br>显然，具有简单流量控制的停止等待协议不会由于来不及接受而丢失数据，但其通信效率极低。</p>
+<p>2、有差错的流控<br>在不可靠的信道中，假设不会丢失报文，则对应的停止等待协议算法：<br>发送端<br>（1）从上层获得数据并计算校验码，封装报文并缓存。<br>（2）发送报文并等待接收端应答报文。<br>（3）收到接收端应答报文。若肯定，删除缓存并转（1）；若否定，提取缓存数据报文并转（2）。<br>接收端端<br>（1）等待并获得发送端发送的报文，缓存并校验。<br>（2）若校验错，删缓存并发否定报文，转（1）；若校验正确，上交缓存并删缓存，发肯定报文，转（1）。</p>
+<p>3、有报文丢失的流控<br>无论是数据报文（发送端发送）还是应答报文（接收端发送），都有可能在传输过程中丢失。<br>若数据报文丢失，接收端未收到数据报文，等待发送端发送。<br>若应答报文丢失，发送端未收到应答报文，等待接收端发送。<br>上述两种情况，都会使发送端等待接收端发送应答报文，而接收端等待发送端发送数据报文。死锁！<br>（1）解决死锁的办法<br>设置重发计时器<br>发送端在发出报文后即启动重发计时器，若在设置的时间tout内未收到接收端的应答报文，则认为报文已丢失，从而重发报文。 通常，Tout略大于报文平均往返时间。</p>
+<p>4、对停止等待协议的改进<br>针对采用重传计时器后出现的新问题，有如下改进方法：<br>对报文编号，接收方对收到的报文进行编号重复检查，丢弃编号重复的报文，从而解决重复报文的问题。<br>接收方不再发送否定应答报文，只对无差错的数据报文发送肯定应答报文（并改名为确认报文）。对于有差错的报文，由于没有收到确认报文而超时，导致发送方重发该报文。<br>在确认报文中添加确认信息，以明确被确认的报文。<br>接收方收到重复报文后，在丢弃重复报文的同时，也要向发送方发出针对该重复报文的确认报文。</p>
+<p>5、改进的停止等待协议中的报文序号<br>序号会消耗通信资源，序号越长消耗的资源越多。<br>由于只需要区分前后报文，在停止等待协议中报文序号只需要一位即可。</p>
+<p>6、改进后的停止等待协议总结<br>只要传输层采用有效的检错重传机制，可以在不可靠的网络上为应用层建立可靠的传输服务。<br>每个报文发送后均需暂时缓存，以备重传。<br>超时计时器的阈值应该适当大于数据传输的平均往返时间。<br>由于具备了超时自动重传的能力，改进后的停止等待协议也被称为停止等待自动重传请求协议（Automatic Repeat reQuest，ARQ），简称停等ARQ协议。</p>
+<h2 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a><strong>连续ARQ协议</strong></h2><p>1、概念<br>发送方可连续发送多个报文，不必每发完一个报文就停止并等待接收方的确认。也被称为流水线传输。<br>流水线传输<br>发送方在TD+RTT+TA的时间周期内不必每发送一个报文就等待接收方的确认，而是连续的发送多个报文。</p>
+<p>信道利用率U=nTD/(TD+RTT+TA)<br>其中：n为在时间周期内可以发送的数据报文的数量。<br>问题：在信道利用率优先的前提下，n取多大比较合适？<br>由于信道利用率不会超过100%，因此在n达到某个值之后，信道利用率不可能继续提高。        n的增加也意味着缓冲区的增加，成本也随之上升。</p>
+<p>报文序号<br>为了能够区分尚未确认的报文，需要有更多报文序号。通常，如果n=N，则序号范围为0~ N，共n+1个序号。<br>在不可靠的网络中，为了避免由于超时造成序号产生误认，序号的范围需要有更大的取值范围。</p>
+<p>2、GO-Back-N的连续ARQ<br>如果接收方正在校验的报文出错或丢失，则发送方重传这个出错的报文以及其后所有已经发送的报文。<br>在返回N协议中，发送方为所有已经发送但尚未确认的报文进行缓存，直到被确认。接收方只能缓存当前正在校验的报文即可。<br>特点：<br>控制简单；缓冲区较少（发送方N个缓存，接收方1个缓存）。</p>
+<p>3、滑动窗口<br>滑动窗口（Sliding window，SW）是一种流控方法，用于约束发送方可发送报文的数量。窗口是指发送方最多可发送未被确认报文的数量，而滑动则是指每收到一个确认报文，窗口可向前滑动一个报文，从而纳入新的待发送的报文。<br>因此，停等ARQ协议是连续ARQ协议窗口为1的特例：</p>
+<p>4、应答机制改进<br>（1）捎带应答<br>收到正确报文时<br>若有数据报文发送给对方，则在数据报文中应答。<br>若一定时间内没有数据报文给对方，则发送应答报文。<br>捎带方式<br>在数据报文首部增加应答字段N(R)，表示对报文序号为N(R)的报文的确认。</p>
+<p>（2）累积应答<br>不必对每个收到的数据报文都应答<br>在收到一定数量的正确报文后再对最后一个收到的正确报文进行确认应答，表示到这个报文为止所有的报文都正确。<br>通常与捎带应答结合使用<br>无数据报文时暂不应答。<br>收到正确报文后的一定时间内至少应答一次<br>避免对方因为超时而重发正确报文。<br>累积应答的优点是简单，容易实现，即使确认丢失也不必重传；缺点是不能及时反映接收已经接收到的正确报文。</p>
+<hr>
+<h2 id="TCP-可靠传输的实现"><a href="#TCP-可靠传输的实现" class="headerlink" title="TCP 可靠传输的实现"></a><strong>TCP 可靠传输的实现</strong></h2><p>简单的把停等协议或连续ARQ协议等可靠通信原理照搬到真实的TCP运行环境并不适合。<br>在TCP中，每个连接的两端都各两个窗口：一个发送窗口和一个接收窗口。<br>TCP为其传输的每个字节都编制一个序号，并以此为基础构建可靠传输。同样，TCP的确认也都是基于（字节）序号而不是报文序号。<br>TCP连接的往返时间 RTT 也不是固定不变的。需要使用特定的算法估算较为合理的重传时间。  </p>
+<hr>
+<p><strong>以字节为单位的滑动窗口</strong><br>滑动窗口用于<br>差错控制：控制“连续ARQ”的参数<br>流量控制：控制发送报文的速率<br>TCP滑动窗口的特点之一：面向字节流<br>以字节为单位进行控制<br>TCP报文首部中的窗口字段即为接收方可允许发送方可以发送的字节数，以约束发送方的发送量。<br>发送方根据接收方给出的窗口值，构造自己的发送窗口尺寸。通常不大于对方的窗口值。</p>
+<p><strong>1.发送窗口的结构</strong><br><img src="/images/131.png" alt=""><br>发送窗口内的序号都已用完，但还没有收到确认，必须停止发送。 </p>
+<p><strong>2.接收窗口</strong><br>TCP 标准没有规定对不按序到达的数据如何处理。<br>通常的方法：<br>先临时存放在接收窗口中，等收到字节流中所缺少的字节后，再一并交付上层应用程序。<br>因此，接收窗口大小不为1（通常，与发送窗口一样大）</p>
+<p><strong>3.发送窗口的调整</strong><br>可用窗口大小、发送窗口的移动<br>根据连续ARQ的要求调整<br>发送窗口大小<br>根据流量控制（接收方的接收窗口）调整<br>规则<br>接收窗口控制发送窗口大小的变动</p>
+<p><strong>4.缓存与接收缓存的作用</strong></p>
+<blockquote>
+<p>发送缓存用来暂时存放：<br>发送应用程序传送给发送方 TCP 准备发送的数据；<br>TCP已发送出但尚未收到确认的数据。</p>
+</blockquote>
+<blockquote>
+<p>接收缓存用来暂时存放：<br>按序到达的、但尚未被接收应用程序读取的数据；<br>不按序到达的数据。 </p>
+</blockquote>
+<p><strong>5.另外：</strong><br>发送窗口并不总是和对应的接收窗口一样大（因为有一定的时间滞后）。<br>TCP 标准没有规定对不按序到达的数据应如何处理。通常是先临时存放在接收窗口中，等到字节流中所缺少的字节收到后，再按序交付上层的应用进程。<br>TCP 要求接收方必须有累积确认的功能，这样可以减小传输开销。 </p>
+<p><strong>超时重传时间的选择</strong><br>重传机制是TCP中最重要和最复杂的问题之一，也是TCP可靠传输的基石。<br>TCP 每发送一个报文段，就对这个报文段设置一次计时器。只要计时器设置的重传时间到但还没有收到确认，就要重传这一报文段。<br>超时重传时间（RetransmissionTime-Out，RTO）的确定对TCP的性能有重大影响。<br>往返时间（Round Trip Time，RTT）是确定超时重传时间的最重要的基础。<br>在真实网络环境中，RTT的测量是有非常大的不确定性。<br><strong>指数避退</strong><br>在TCP中，当超时而发生连续多次重传时，在两次重传之间的超时阈值的设置遵循“指数避退”原则：<br>当超时第一次重传后，第二次重传等待时间是第一次的2倍，第三次重传等待时间是第二次的2倍,2为退避因子，直到收到重传数据包的应答，RTO退避因子回复为1。<br>这样为了当网络处于无法快速交付数据报文状态时减小网络负担。</p>
+<h2 id="TCP的流量控制"><a href="#TCP的流量控制" class="headerlink" title="TCP的流量控制"></a><strong>TCP的流量控制</strong></h2><ol>
+<li>利用滑动窗口实现流量控制<br>一般说来，我们总是希望数据传输得更快一些。但如果发送方把数据发送得过快，接收方就可能来不及接收，这就会造成数据的丢失。<br>流量控制(flow control)就是让发送方的发送速率不要太快，既要让接收方来得及接收，也不要使网络发生拥塞。<br>利用滑动窗口机制可以很方便地在 TCP 连接上实现流量控制。 </li>
+<li>持续计时器<br>TCP 为每一个连接设有一个持续计时器。<br>只要 TCP 连接的一方收到对方的零窗口通知，就启动持续计时器。<br>若持续计时器设置的时间到期，就发送一个零窗口探测报文段（仅携带 1 字节的数据），而对方就在确认这个探测报文段时给出了现在的窗口值。<br>若窗口仍然是零，则收到这个报文段的一方就重新设置持续计时器。<br>若窗口不是零，则死锁的僵局就可以打破了。 </li>
+<li>传输效率的思考<br>可以用不同的机制来控制 TCP 报文段的发送时机:<br>第一种机制是 TCP 维持一个变量，它等于最大报文段长度 MSS。只要缓存中存放的数据达到 MSS 字节时，就组装成一个 TCP 报文段发送出去。<br>第二种机制是由发送方的应用进程指明要求发送报文段，即 TCP 支持的推送(push)操作。<br>第三种机制是发送方的一个计时器期限到了，这时就把当前已有的缓存数据装入报文段（但长度不能超过 MSS）发送出去。</li>
+</ol>
+<h2 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a><strong>TCP的拥塞控制</strong></h2><p>拥塞<br>即对资源的需求超过了可用的资源。若网络中许多资源同时供应不足，网络的性能就要明显变坏，整个网络的吞吐量随着负荷的增大而下降。<br>拥塞控制<br>防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载。<br>拥塞控制的前提：<br>网络能够承受现有的网络负荷。</p>
+<ol>
+<li><p>拥塞发生的原因<br>在某段时间，若对网络中某资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏——产生拥塞(congestion)。<br>出现资源拥塞的条件：</p>
+<pre><code>对资源需求的总和 &gt; 可用资源</code></pre><p>若网络中有许多资源同时产生拥塞，网络的性能就要明显变坏，整个网络的吞吐量将随输入负荷的增大而下降。<br>在许多情况下，甚至正是拥塞控制本身成为引起网络性能恶化甚至发生死锁的原因。这点应特别引起重视。 </p>
+</li>
+<li><p>拥塞控制与流量控制的关系<br>拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷。<br>拥塞控制是一个全局性的过程，涉及到所有的主机、所有的路由器，以及与降低网络传输性能有关的所有因素。<br>流量控制往往指在给定的发送端和接收端之间的点对点通信量的控制。<br>流量控制所要做的就是抑制发送端发送数据的速率，以便使接收端来得及接收。 </p>
+</li>
+<li><p>开环控制和闭环控制<br>开环控制方法就是在设计网络时事先将有关发生拥塞的因素考虑周到，力求网络在工作时不产生拥塞。<br>闭环控制是基于反馈环路的概念。属于闭环控制的有以下几种措施：<br>监测网络系统以便检测到拥塞在何时、何处发生。<br>将拥塞发生的信息传送到可采取行动的地方。<br>调整网络系统的运行以解决出现的问题。</p>
+</li>
+</ol>
+<h2 id="拥塞控制的一般方法"><a href="#拥塞控制的一般方法" class="headerlink" title="拥塞控制的一般方法"></a><strong>拥塞控制的一般方法</strong></h2><ol>
+<li>慢开始和拥塞避免<br>发送方维持一个叫做拥塞窗口 cwnd (congestion window)的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口小于等于拥塞窗口。<br>发送方控制拥塞窗口的原则是：只要网络没有出现拥塞，拥塞窗口就再增大一些，以便把更多的分组发送出去。但只要网络出现拥塞，拥塞窗口就减小一些，以减少注入到网络中的分组数。</li>
+</ol>
+<p>慢开始算法的原理<br>在主机刚刚开始发送报文段时可先设置拥塞窗口 cwnd = 1，即设置为一个最大报文段 MSS 的数值。<br>在每收到一个对新的报文段的确认后，将拥塞窗口加 1，即增加一个 MSS 的数值。<br>用这样的方法逐步增大发送端的拥塞窗口 cwnd，可以使分组注入到网络的速率更加合理</p>
+<p>传输轮次<br>使用慢开始算法后，每经过一个传输轮次，拥塞窗口 cwnd 就加倍。<br>一个传输轮次所经历的时间其实就是往返时间 RTT。</p>
+<p>门限状态变量及其设置方法：<br>门限状态变量（ssthresh）是指网络状态达到某个临界点，继续延续这种状态将导致状态发生转变。<br>当 cwnd &lt; ssthresh 时，使用慢开始算法。<br>当 cwnd &gt; ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。<br>当 cwnd = ssthresh 时，既可使用慢开始算法，也可使用拥塞避免算法。<br>拥塞避免算法的思路是让拥塞窗口 cwnd 缓慢地增大，即每经过一个往返时间 RTT 就把发送方的拥塞窗口 cwnd 加 1，而不是加倍，使拥塞窗口 cwnd 按线性规律缓慢增长。</p>
+<p><strong>“拥塞避免”并非指完全能够避免了拥塞。利用以上的措施要完全避免网络拥塞还是不可能的。<br>“拥塞避免”是说在拥塞避免阶段把拥塞窗口控制为按线性规律增长，使网络比较不容易出现拥塞。</strong> </p>
+<p><strong>快重传和快恢复</strong><br>快重传算法首先要求接收方每收到一个失序的报文段后就立即发出重复确认。这样做可以让发送方及早知道有报文段没有到达接收方。<br>发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段。<br>不难看出，快重传并非取消重传计时器，而是在某些情况下可更早地重传丢失的报文段。 </p>
+<p>(1) 当发送端收到连续三个重复的确认时，就执行“乘法减小”算法，把慢开始门限 ssthresh 减半。但接下去不执行慢开始算法。<br>(2) 由于发送方现在认为网络很可能没有发生拥塞，因此现在不执行慢开始算法，即拥塞窗口 cwnd 现在不设置为 1，而是设置为慢开始门限 ssthresh 减半后的数值，然后开始执行拥塞避免算法（“加法增大”），使拥塞窗口缓慢地线性增大。</p>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 Tukuai
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    #post .pjax article .article-entry>ol, #post .pjax article .article-entry>ul, #post .pjax article>ol, #post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    #post .pjax article .article-entry li>ol, #post .pjax article .article-entry li>ul,#post .pjax article li>ol, #post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    #post .pjax article .article-entry>ol>li, #post .pjax article .article-entry>ul>li,#post .pjax article>ol>li, #post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    #post .pjax article .article-entry li>ol>li, #post .pjax article .article-entry li>ul>li,#post .pjax article li>ol>li, #post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+    #post .index {
+        background: url(/img/1.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/7.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>
