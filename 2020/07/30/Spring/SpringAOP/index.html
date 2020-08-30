@@ -1,0 +1,2859 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpringAOP | Hexo</title>
+  <meta name="keywords" content=" Spring ">
+  <meta name="description" content="SpringAOP | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="在一个包内创建一个包时会发现两个包竟然重合在一起了，很不利于分级操作如同中所示 解决方法点击项目旁边的齿轮然后点击，将这个对勾去掉注意IDEA2018或之前版本显示的是Hide EmptyMidd Packages">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IDEA如何在包下建立子包（解决空包自动隐藏问题）">
+<meta property="og:url" content="https://tukuai.github.io/IDEA/IDEA%E5%A6%82%E4%BD%95%E5%9C%A8%E5%8C%85%E4%B8%8B%E5%BB%BA%E7%AB%8B%E5%AD%90%E5%8C%85%EF%BC%88%E8%A7%A3%E5%86%B3%E7%A9%BA%E5%8C%85%E8%87%AA%E5%8A%A8%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98%EF%BC%89.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在一个包内创建一个包时会发现两个包竟然重合在一起了，很不利于分级操作如同中所示 解决方法点击项目旁边的齿轮然后点击，将这个对勾去掉注意IDEA2018或之前版本显示的是Hide EmptyMidd Packages">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tukuai.github.io/images/26.png">
+<meta property="og:image" content="https://tukuai.github.io/images/27.png">
+<meta property="og:image" content="https://tukuai.github.io/images/28.png">
+<meta property="article:published_time" content="2019-11-09T09:25:03.000Z">
+<meta property="article:modified_time" content="2019-11-09T09:32:11.319Z">
+<meta property="article:author" content="Tukuai">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tukuai.github.io/images/26.png">
+
+
+<link rel="icon" href="/img/q.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+</div>
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/q.jpg" />
+</a>
+<div class="author">
+    <span>Tukuai</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/Tukuai" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:603457280@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=603457280&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active" data-rel="All">All<small>(174)</small></div></li>
+    
+        
+            
+            <li><div data-rel="数据库">数据库<small>(19)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="并发编程">并发编程<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="操作系统">操作系统<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="多线程">多线程<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="计算机网络">计算机网络<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="面向对象">面向对象<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="前端">前端<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="设计模式">设计模式<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="数据结构">数据结构<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="算法">算法<small>(13)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Git">Git<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="IO">IO<small>(9)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Java基础">Java基础<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Java进阶">Java进阶<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="JVM">JVM<small>(8)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="linux">linux<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Mybatis">Mybatis<small>(5)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Redis">Redis<small>(14)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Spring">Spring<small>(6)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="SpringMVC">SpringMVC<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Web">Web<small>(19)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="174">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" />
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>操作系统</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>计算机网络</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计模式</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据结构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>算法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JVM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mybatis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringMVC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Web</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All SpringMVC "
+           href="/2020/08/01/Spring/SpringMVC%E5%85%A5%E9%97%A8/"
+           data-tag="SpringMVC"
+           data-author="" >
+            <span class="post-title" title="SpringMVC入门">SpringMVC入门</span>
+            <span class="post-date" title="2020-08-01 09:51:00">2020/08/01</span>
+        </a>
+        
+        <a  class="All SpringMVC "
+           href="/2020/08/01/Spring/SpringMVC%E8%BF%9B%E9%98%B6/"
+           data-tag="SpringMVC"
+           data-author="" >
+            <span class="post-title" title="SpringMVC进阶">SpringMVC进阶</span>
+            <span class="post-date" title="2020-08-01 09:51:00">2020/08/01</span>
+        </a>
+        
+        <a  class="All SpringMVC "
+           href="/2020/08/01/Spring/SSM%20%E6%95%B4%E5%90%88/"
+           data-tag="SpringMVC"
+           data-author="" >
+            <span class="post-title" title="SSM 整合">SSM 整合</span>
+            <span class="post-date" title="2020-08-01 09:51:00">2020/08/01</span>
+        </a>
+        
+        <a  class="All Spring "
+           href="/2020/07/30/Spring/Spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="Spring中的事务控制">Spring中的事务控制</span>
+            <span class="post-date" title="2020-07-30 09:02:00">2020/07/30</span>
+        </a>
+        
+        <a  class="All Spring "
+           href="/2020/07/30/Spring/SpringAOP/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="SpringAOP">SpringAOP</span>
+            <span class="post-date" title="2020-07-30 09:02:00">2020/07/30</span>
+        </a>
+        
+        <a  class="All Spring "
+           href="/2020/07/30/Spring/SpringJdbcTemplate/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="SpringJdbcTemplate">SpringJdbcTemplate</span>
+            <span class="post-date" title="2020-07-30 09:02:00">2020/07/30</span>
+        </a>
+        
+        <a  class="All Spring "
+           href="/2020/07/28/Spring/SpringIOC%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AE/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="SpringIOC注解配置">SpringIOC注解配置</span>
+            <span class="post-date" title="2020-07-28 09:41:00">2020/07/28</span>
+        </a>
+        
+        <a  class="All Spring "
+           href="/2020/07/28/Spring/SpringIOC%E5%AE%9E%E7%8E%B0CRUD/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="SpringIOC实现CRUD">SpringIOC实现CRUD</span>
+            <span class="post-date" title="2020-07-28 09:41:00">2020/07/28</span>
+        </a>
+        
+        <a  class="All Spring "
+           href="/2020/07/25/Spring/Spring%E5%85%A5%E9%97%A8%E4%B8%8EIOC/"
+           data-tag="Spring"
+           data-author="" >
+            <span class="post-title" title="Spring入门与IOC">Spring入门与IOC</span>
+            <span class="post-date" title="2020-07-25 19:05:00">2020/07/25</span>
+        </a>
+        
+        <a  class="All Mybatis "
+           href="/2020/07/20/Mybatis/Mybatis%E5%8A%A0%E8%BD%BD%E7%AD%96%E7%95%A5%E4%B8%8E%E7%BC%93%E5%AD%98/"
+           data-tag="Mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis加载策略与缓存">Mybatis加载策略与缓存</span>
+            <span class="post-date" title="2020-07-20 17:25:00">2020/07/20</span>
+        </a>
+        
+        <a  class="All Mybatis "
+           href="/2020/07/20/Mybatis/Mybatis&%E6%95%B0%E6%8D%AE%E5%BA%93/"
+           data-tag="Mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis&amp;数据库">Mybatis&amp;数据库</span>
+            <span class="post-date" title="2020-07-20 17:25:00">2020/07/20</span>
+        </a>
+        
+        <a  class="All Mybatis "
+           href="/2020/07/19/Mybatis/Mybatis%E7%9A%84CRUD/"
+           data-tag="Mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis的CRUD">Mybatis的CRUD</span>
+            <span class="post-date" title="2020-07-19 17:12:00">2020/07/19</span>
+        </a>
+        
+        <a  class="All Mybatis "
+           href="/2020/07/19/Mybatis/Mybatis%E7%9A%84%E5%8F%82%E6%95%B0%E6%B7%B1%E5%85%A5/"
+           data-tag="Mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis的参数深入">Mybatis的参数深入</span>
+            <span class="post-date" title="2020-07-19 17:12:00">2020/07/19</span>
+        </a>
+        
+        <a  class="All Mybatis "
+           href="/2020/07/05/Mybatis/Mybatis%E6%A6%82%E8%BF%B0/"
+           data-tag="Mybatis"
+           data-author="" >
+            <span class="post-title" title="Mybatis概述">Mybatis概述</span>
+            <span class="post-date" title="2020-07-05 11:56:00">2020/07/05</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/06/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="文件管理">文件管理</span>
+            <span class="post-date" title="2020-06-08 16:20:51">2020/06/08</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据库/WHERE和ON的区别">数据库/WHERE和ON的区别</span>
+            <span class="post-date" title="2020-06-05 18:23:49">2020/06/05</span>
+        </a>
+        
+        <a  class="All "
+           href="/2020/06/05/Java%E5%9F%BA%E7%A1%80/HashMap/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java基础/HashMap">Java基础/HashMap</span>
+            <span class="post-date" title="2020-06-05 18:23:47">2020/06/05</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/06/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%86%85%E5%AD%98/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="内存">内存</span>
+            <span class="post-date" title="2020-06-02 15:04:51">2020/06/02</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/05/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%AD%BB%E9%94%81%E7%9A%84%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="死锁的处理策略">死锁的处理策略</span>
+            <span class="post-date" title="2020-05-27 18:24:51">2020/05/27</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/05/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="处理机调度">处理机调度</span>
+            <span class="post-date" title="2020-05-26 15:50:42">2020/05/26</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/05/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="进程同步与互斥">进程同步与互斥</span>
+            <span class="post-date" title="2020-05-26 15:50:42">2020/05/26</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/05/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="进程与线程">进程与线程</span>
+            <span class="post-date" title="2020-05-25 10:22:06">2020/05/25</span>
+        </a>
+        
+        <a  class="All 操作系统 "
+           href="/2020/05/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB/"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="操作系统体系">操作系统体系</span>
+            <span class="post-date" title="2020-05-24 15:14:06">2020/05/24</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/23/Redis/%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="企业级解决方案">企业级解决方案</span>
+            <span class="post-date" title="2020-05-23 18:04:01">2020/05/23</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/23/Redis/Redis%E9%9B%86%E7%BE%A4/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis集群">Redis集群</span>
+            <span class="post-date" title="2020-05-23 14:30:24">2020/05/23</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/23/Redis/Redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis哨兵模式">Redis哨兵模式</span>
+            <span class="post-date" title="2020-05-23 10:36:24">2020/05/23</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/21/Redis/Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis主从复制">Redis主从复制</span>
+            <span class="post-date" title="2020-05-21 14:23:24">2020/05/21</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/21/Redis/Redis%E9%AB%98%E7%BA%A7%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis高级数据类型">Redis高级数据类型</span>
+            <span class="post-date" title="2020-05-21 09:00:00">2020/05/21</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/20/Redis/Redis%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis基础配置">Redis基础配置</span>
+            <span class="post-date" title="2020-05-20 15:53:24">2020/05/20</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/20/Redis/Redis%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis删除策略">Redis删除策略</span>
+            <span class="post-date" title="2020-05-20 14:35:24">2020/05/20</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/20/Redis/Redis%E4%BA%8B%E5%8A%A1/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis事务">Redis事务</span>
+            <span class="post-date" title="2020-05-20 09:00:00">2020/05/20</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/18/Redis/Redis&Linux%E5%9F%BA%E7%A1%80/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis&amp;Linux基础">Redis&amp;Linux基础</span>
+            <span class="post-date" title="2020-05-18 18:43:31">2020/05/18</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/18/Redis/Jedis/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Jedis">Jedis</span>
+            <span class="post-date" title="2020-05-18 14:18:25">2020/05/18</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/17/Redis/Redis%E6%8C%81%E4%B9%85%E5%8C%96/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis持久化">Redis持久化</span>
+            <span class="post-date" title="2020-05-17 13:51:31">2020/05/17</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/17/Redis/Redis%E9%80%9A%E7%94%A8%E6%8C%87%E4%BB%A4/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis通用指令">Redis通用指令</span>
+            <span class="post-date" title="2020-05-17 13:51:31">2020/05/17</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/16/Redis/Redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis数据类型">Redis数据类型</span>
+            <span class="post-date" title="2020-05-16 11:40:25">2020/05/16</span>
+        </a>
+        
+        <a  class="All Redis "
+           href="/2020/05/15/Redis/Redis%E5%85%A5%E9%97%A8%E7%AE%80%E4%BB%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Redis入门简介">Redis入门简介</span>
+            <span class="post-date" title="2020-05-15 09:36:37">2020/05/15</span>
+        </a>
+        
+        <a  class="All 并发编程 "
+           href="/2020/05/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="基础知识">基础知识</span>
+            <span class="post-date" title="2020-05-09 10:48:37">2020/05/09</span>
+        </a>
+        
+        <a  class="All 并发编程 "
+           href="/2020/05/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%8E%9F%E7%90%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JMM内存模型">JMM内存模型</span>
+            <span class="post-date" title="2020-05-09 10:48:37">2020/05/09</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/NIO/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="NIO">NIO</span>
+            <span class="post-date" title="2020-05-01 18:57:51">2020/05/01</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/Socket&ServerSocket/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Socket&amp;ServerSocket">Socket&amp;ServerSocket</span>
+            <span class="post-date" title="2020-05-01 14:25:37">2020/05/01</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/BIO%E7%BC%96%E7%A8%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="BIO">BIO</span>
+            <span class="post-date" title="2020-05-01 13:47:15">2020/05/01</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2020/05/01/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="生产者消费者模式">生产者消费者模式</span>
+            <span class="post-date" title="2020-05-01 13:47:15">2020/05/01</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/29/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E9%94%81/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql锁">Mysql锁</span>
+            <span class="post-date" title="2020-04-29 14:24:20">2020/04/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/28/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql索引优化">Mysql索引优化</span>
+            <span class="post-date" title="2020-04-28 21:20:36">2020/04/28</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/28/%E6%95%B0%E6%8D%AE%E5%BA%93/WHERE%E5%92%8CON%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="WHERE和ON的区别">WHERE和ON的区别</span>
+            <span class="post-date" title="2020-04-28 21:20:36">2020/04/28</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="常见的索引失效">常见的索引失效</span>
+            <span class="post-date" title="2020-04-27 14:48:43">2020/04/27</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93/Explain/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Explain">Explain</span>
+            <span class="post-date" title="2020-04-27 09:06:36">2020/04/27</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2020/04/24/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E7%B4%A2%E5%BC%95/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql索引">Mysql索引</span>
+            <span class="post-date" title="2020-04-24 21:20:36">2020/04/24</span>
+        </a>
+        
+        <a  class="All linux "
+           href="/2020/04/21/Linux/linux%E5%85%A5%E9%97%A8/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux入门">linux入门</span>
+            <span class="post-date" title="2020-04-21 21:53:15">2020/04/21</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="观察者模式">观察者模式</span>
+            <span class="post-date" title="2020-04-19 12:50:16">2020/04/19</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="迭代器模式">迭代器模式</span>
+            <span class="post-date" title="2020-04-18 22:18:41">2020/04/18</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="代理模式">代理模式</span>
+            <span class="post-date" title="2020-04-18 16:28:41">2020/04/18</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/18/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="装饰者模式">装饰者模式</span>
+            <span class="post-date" title="2020-04-18 10:22:41">2020/04/18</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="适配器模式">适配器模式</span>
+            <span class="post-date" title="2020-04-16 21:54:14">2020/04/16</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2020/04/16/Java%E5%9F%BA%E7%A1%80/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="深浅拷贝">深浅拷贝</span>
+            <span class="post-date" title="2020-04-16 17:23:12">2020/04/16</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="工厂模式">工厂模式</span>
+            <span class="post-date" title="2020-04-16 10:51:41">2020/04/16</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="单例模式">单例模式</span>
+            <span class="post-date" title="2020-04-15 22:52:03">2020/04/15</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/UML%E7%B1%BB%E5%9B%BE/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="UML类图">UML类图</span>
+            <span class="post-date" title="2020-04-15 21:44:54">2020/04/15</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/13/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="内存模型">内存模型</span>
+            <span class="post-date" title="2020-04-13 16:10:51">2020/04/13</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/12/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="类加载器">类加载器</span>
+            <span class="post-date" title="2020-04-12 17:12:31">2020/04/12</span>
+        </a>
+        
+        <a  class="All 设计模式 "
+           href="/2020/04/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/"
+           data-tag="设计模式"
+           data-author="" >
+            <span class="post-title" title="设计模式七大原则">设计模式七大原则</span>
+            <span class="post-date" title="2020-04-10 20:20:03">2020/04/10</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/07/IO/NIO/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="NIO">NIO</span>
+            <span class="post-date" title="2020-04-07 15:39:51">2020/04/07</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/07/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E5%8A%A0%E8%BD%BD/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="类加载">类加载</span>
+            <span class="post-date" title="2020-04-07 11:20:56">2020/04/07</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/06/IO/IO%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="IO异常的处理">IO异常的处理</span>
+            <span class="post-date" title="2020-04-06 17:16:31">2020/04/06</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="字节码指令">字节码指令</span>
+            <span class="post-date" title="2020-04-06 15:15:29">2020/04/06</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/04/06/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="类文件结构">类文件结构</span>
+            <span class="post-date" title="2020-04-06 10:20:28">2020/04/06</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E6%89%93%E5%8D%B0%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="打印流">打印流</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="序列化">序列化</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E8%BD%AC%E6%8D%A2%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="转换流">转换流</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E7%BC%93%E5%86%B2%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="缓冲流">缓冲流</span>
+            <span class="post-date" title="2020-04-05 22:20:15">2020/04/05</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2020/04/05/IO/File%E7%B1%BB/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="File类">File类</span>
+            <span class="post-date" title="2020-04-05 21:31:23">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/IO/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="IO">IO</span>
+            <span class="post-date" title="2020-04-05 21:31:23">2020/04/05</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2020/04/05/Java%E8%BF%9B%E9%98%B6/Properties/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Properties">Properties</span>
+            <span class="post-date" title="2020-04-05 21:31:23">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E5%AD%97%E7%AC%A6%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="字符流">字符流</span>
+            <span class="post-date" title="2020-04-05 15:55:45">2020/04/05</span>
+        </a>
+        
+        <a  class="All IO "
+           href="/2020/04/05/IO/%E5%AD%97%E8%8A%82%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="字节流">字节流</span>
+            <span class="post-date" title="2020-04-05 15:55:45">2020/04/05</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/04/02/Web/Maven/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Maven">Maven</span>
+            <span class="post-date" title="2020-04-02 15:34:24">2020/04/02</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/03/31/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="垃圾回收">垃圾回收</span>
+            <span class="post-date" title="2020-03-31 21:48:09">2020/03/31</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/31/Web/Redis/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Redis">Redis</span>
+            <span class="post-date" title="2020-03-31 13:55:57">2020/03/31</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/31/%E7%AE%97%E6%B3%95/%E9%B8%BD%E5%B7%A2%E5%8E%9F%E7%90%86/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="鸽巢原理">鸽巢原理</span>
+            <span class="post-date" title="2020-03-31 12:12:15">2020/03/31</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/30/%E7%AE%97%E6%B3%95/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="容斥原理">容斥原理</span>
+            <span class="post-date" title="2020-03-30 23:04:28">2020/03/30</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/30/Web/JSON/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JSON">JSON</span>
+            <span class="post-date" title="2020-03-30 14:55:36">2020/03/30</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/30/Web/AJAX/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="AJAX">AJAX</span>
+            <span class="post-date" title="2020-03-30 09:23:24">2020/03/30</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/29/Web/JQuery%E9%AB%98%E7%BA%A7/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JQuery高级">JQuery高级</span>
+            <span class="post-date" title="2020-03-29 13:19:35">2020/03/29</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/28/Web/JQuery%E5%9F%BA%E7%A1%80/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JQuery基础">JQuery基础</span>
+            <span class="post-date" title="2020-03-28 10:02:14">2020/03/28</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/03/27/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="内存结构">内存结构</span>
+            <span class="post-date" title="2020-03-27 22:08:48">2020/03/27</span>
+        </a>
+        
+        <a  class="All JVM "
+           href="/2020/03/27/JVM-Java%E8%99%9A%E6%8B%9F%E6%9C%BA/JVM%E5%85%A5%E9%97%A8/"
+           data-tag="JVM"
+           data-author="" >
+            <span class="post-title" title="JVM入门">JVM入门</span>
+            <span class="post-date" title="2020-03-27 21:51:35">2020/03/27</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/27/Web/Filter&Listener/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Filter&amp;Listener">Filter&amp;Listener</span>
+            <span class="post-date" title="2020-03-27 15:00:24">2020/03/27</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/25/Web/Session/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Session">Session</span>
+            <span class="post-date" title="2020-03-25 17:46:24">2020/03/25</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/25/Web/JSP/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JSP">JSP</span>
+            <span class="post-date" title="2020-03-25 15:28:33">2020/03/25</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2020/03/25/Web/Cookie/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Cookie">Cookie</span>
+            <span class="post-date" title="2020-03-25 10:14:32">2020/03/25</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/19/%E7%AE%97%E6%B3%95/%E9%A9%AC%E8%B8%8F%E6%A3%8B%E7%9B%98%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="马踏棋盘算法">马踏棋盘算法</span>
+            <span class="post-date" title="2020-03-19 22:14:40">2020/03/19</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%94%E5%B1%82-%E5%BA%94%E7%94%A8%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第五层-应用层">第五层-应用层</span>
+            <span class="post-date" title="2020-03-15 23:43:25">2020/03/15</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E5%9B%9B%E5%B1%82-%E4%BC%A0%E8%BE%93%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第四层-传输层">第四层-传输层</span>
+            <span class="post-date" title="2020-03-15 14:36:27">2020/03/15</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%89%E5%B1%82-%E7%BD%91%E7%BB%9C%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第三层:网络层">第三层:网络层</span>
+            <span class="post-date" title="2020-03-14 15:24:19">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第二层:数据链路层">第二层:数据链路层</span>
+            <span class="post-date" title="2020-03-14 14:44:16">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%B8%80%E5%B1%82-%E7%89%A9%E7%90%86%E5%B1%82/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="第一层:物理层">第一层:物理层</span>
+            <span class="post-date" title="2020-03-14 14:20:04">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="网络体系结构">网络体系结构</span>
+            <span class="post-date" title="2020-03-14 14:09:41">2020/03/14</span>
+        </a>
+        
+        <a  class="All 计算机网络 "
+           href="/2020/03/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0/"
+           data-tag="计算机网络"
+           data-author="" >
+            <span class="post-title" title="计算机网络概述">计算机网络概述</span>
+            <span class="post-date" title="2020-03-14 13:10:33">2020/03/14</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/13/%E7%AE%97%E6%B3%95/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7(Floyd)%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="弗洛伊德(Floyd)算法">弗洛伊德(Floyd)算法</span>
+            <span class="post-date" title="2020-03-13 20:50:18">2020/03/13</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/13/%E7%AE%97%E6%B3%95/%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="迪杰斯特拉算法">迪杰斯特拉算法</span>
+            <span class="post-date" title="2020-03-13 16:30:32">2020/03/13</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/11/%E7%AE%97%E6%B3%95/%E6%99%AE%E5%88%A9%E5%A7%86(Prim)%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="普利姆(Prim)算法">普利姆(Prim)算法</span>
+            <span class="post-date" title="2020-03-11 09:23:10">2020/03/11</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/10/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="贪心算法">贪心算法</span>
+            <span class="post-date" title="2020-03-10 21:14:23">2020/03/10</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/10/%E7%AE%97%E6%B3%95/%E5%85%8B%E9%B2%81%E6%96%AF%E5%8D%A1%E5%B0%94(Kruska)%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="克鲁斯卡尔(Kruska)算法">克鲁斯卡尔(Kruska)算法</span>
+            <span class="post-date" title="2020-03-10 12:24:15">2020/03/10</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="图">图</span>
+            <span class="post-date" title="2020-03-09 15:10:05">2020/03/09</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/06/%E7%AE%97%E6%B3%95/KMP%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="KMP算法">KMP算法</span>
+            <span class="post-date" title="2020-03-06 17:32:37">2020/03/06</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/04/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="动态规划">动态规划</span>
+            <span class="post-date" title="2020-03-04 15:50:20">2020/03/04</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="树">树</span>
+            <span class="post-date" title="2020-03-02 14:50:51">2020/03/02</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/03/02/%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="分治算法">分治算法</span>
+            <span class="post-date" title="2020-03-02 13:06:19">2020/03/02</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="哈希表">哈希表</span>
+            <span class="post-date" title="2020-03-01 19:32:03">2020/03/01</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/03/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="查找算法">查找算法</span>
+            <span class="post-date" title="2020-03-01 11:18:20">2020/03/01</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="排序">排序</span>
+            <span class="post-date" title="2020-02-22 21:35:29">2020/02/22</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/02/19/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="二分查找算法">二分查找算法</span>
+            <span class="post-date" title="2020-02-19 12:04:09">2020/02/19</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/18/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="栈">栈</span>
+            <span class="post-date" title="2020-02-18 15:01:47">2020/02/18</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="链表">链表</span>
+            <span class="post-date" title="2020-02-13 14:13:19">2020/02/13</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%98%9F%E5%88%97/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="队列">队列</span>
+            <span class="post-date" title="2020-02-12 12:16:15">2020/02/12</span>
+        </a>
+        
+        <a  class="All 数据结构 "
+           href="/2020/02/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84/"
+           data-tag="数据结构"
+           data-author="" >
+            <span class="post-title" title="数组">数组</span>
+            <span class="post-date" title="2020-02-10 16:14:22">2020/02/10</span>
+        </a>
+        
+        <a  class="All 算法 "
+           href="/2020/02/10/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E9%A2%98/"
+           data-tag="算法"
+           data-author="" >
+            <span class="post-title" title="算法题">算法题</span>
+            <span class="post-date" title="2020-02-10 14:32:16">2020/02/10</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/09/Web/HTTP/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="HTTP">HTTP</span>
+            <span class="post-date" title="2019-11-09 15:30:59">2019/11/09</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/09/Web/Web%E5%BC%80%E5%8F%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Web开发中遇到的问题">Web开发中遇到的问题</span>
+            <span class="post-date" title="2019-11-09 14:16:54">2019/11/09</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/06/Web/ServletContext%E5%AF%B9%E8%B1%A1/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="ServletContext对象">ServletContext对象</span>
+            <span class="post-date" title="2019-11-06 12:02:14">2019/11/06</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/06/Web/Servlet-Response/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Servlet-Response">Servlet-Response</span>
+            <span class="post-date" title="2019-11-06 12:02:14">2019/11/06</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/06/Web/Servlet-Request/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Servlet-Request">Servlet-Request</span>
+            <span class="post-date" title="2019-11-06 12:02:14">2019/11/06</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/03/Web/Servlet/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Servlet">Servlet</span>
+            <span class="post-date" title="2019-11-03 11:06:32">2019/11/03</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/11/02/Web/Tomcat/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Tomcat(服务器软件)">Tomcat(服务器软件)</span>
+            <span class="post-date" title="2019-11-02 14:21:41">2019/11/02</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/27/%E5%89%8D%E7%AB%AF/Jsoup/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="Jsoup(XML解析工具)">Jsoup(XML解析工具)</span>
+            <span class="post-date" title="2019-10-27 12:46:32">2019/10/27</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/22/%E5%89%8D%E7%AB%AF/XML/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="XML">XML</span>
+            <span class="post-date" title="2019-10-22 20:51:45">2019/10/22</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/10/21/Web/BootStrap/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="BootStrap">BootStrap</span>
+            <span class="post-date" title="2019-10-21 19:52:32">2019/10/21</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/21/%E5%89%8D%E7%AB%AF/BootStrap/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="BootStrap">BootStrap</span>
+            <span class="post-date" title="2019-10-21 19:52:32">2019/10/21</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/12/%E5%89%8D%E7%AB%AF/JS-%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E6%9C%BA%E5%88%B6/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JS-事件监听机制">JS-事件监听机制</span>
+            <span class="post-date" title="2019-10-12 23:50:11">2019/10/12</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-DOM/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JS-DOM">JS-DOM</span>
+            <span class="post-date" title="2019-10-09 21:12:31">2019/10/09</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/09/%E5%89%8D%E7%AB%AF/JS-BOM/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JS-BOM">JS-BOM</span>
+            <span class="post-date" title="2019-10-09 19:46:41">2019/10/09</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/09/%E5%89%8D%E7%AB%AF/JavaScript/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="JavaScript">JavaScript</span>
+            <span class="post-date" title="2019-10-09 16:40:51">2019/10/09</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/05/%E5%89%8D%E7%AB%AF/CSS/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="CSS">CSS</span>
+            <span class="post-date" title="2019-10-05 15:52:32">2019/10/05</span>
+        </a>
+        
+        <a  class="All 前端 "
+           href="/2019/10/04/%E5%89%8D%E7%AB%AF/HTML/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="HTML">HTML</span>
+            <span class="post-date" title="2019-10-04 10:06:33">2019/10/04</span>
+        </a>
+        
+        <a  class="All Web "
+           href="/2019/10/04/Web/%E5%88%9D%E8%AF%86Web/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="初识Web">初识Web</span>
+            <span class="post-date" title="2019-10-04 09:09:36">2019/10/04</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBCTemplate/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="JDBCTemplate">JDBCTemplate</span>
+            <span class="post-date" title="2019-10-02 16:13:20">2019/10/02</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/10/02/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="JDBC连接池(DataSource)">JDBC连接池(DataSource)</span>
+            <span class="post-date" title="2019-10-02 09:32:54">2019/10/02</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="Mysql逻辑架构">Mysql逻辑架构</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E4%B8%8EJOIN/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="执行顺序与JOIN">执行顺序与JOIN</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库数据类型详解">数据库数据类型详解</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%8C%83%E5%BC%8F/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库设计与范式">数据库设计与范式</span>
+            <span class="post-date" title="2019-09-29 21:20:36">2019/09/29</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/29/%E6%95%B0%E6%8D%AE%E5%BA%93/JDBC/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="JDBC">JDBC</span>
+            <span class="post-date" title="2019-09-29 13:37:11">2019/09/29</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程池">线程池</span>
+            <span class="post-date" title="2019-09-26 22:14:55">2019/09/26</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1(%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6)/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程间通信(等待唤醒机制)">线程间通信(等待唤醒机制)</span>
+            <span class="post-date" title="2019-09-26 20:18:10">2019/09/26</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/26/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程状态">线程状态</span>
+            <span class="post-date" title="2019-09-26 14:11:23">2019/09/26</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/26/%E6%95%B0%E6%8D%AE%E5%BA%93/%E4%BA%8B%E5%8A%A1/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="事务">事务</span>
+            <span class="post-date" title="2019-09-26 13:23:20">2019/09/26</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/25/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="线程安全">线程安全</span>
+            <span class="post-date" title="2019-09-25 16:50:56">2019/09/25</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/25/Java%E8%BF%9B%E9%98%B6/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="正则表达式">正则表达式</span>
+            <span class="post-date" title="2019-09-25 15:59:48">2019/09/25</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/24/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库用户管理">数据库用户管理</span>
+            <span class="post-date" title="2019-09-24 16:10:18">2019/09/24</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/GitHub/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="GitHub">GitHub</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git基本原理">Git基本原理</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E5%B7%A5%E4%BD%9C%E6%B5%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git工作流">Git工作流</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E7%AE%80%E4%BB%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git简介">Git简介</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All Git "
+           href="/2019/09/23/Git/Git%E6%93%8D%E4%BD%9C/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Git操作">Git操作</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All 多线程 "
+           href="/2019/09/23/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程">多线程</span>
+            <span class="post-date" title="2019-09-23 14:31:37">2019/09/23</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/23/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%B8%8E%E5%AE%8C%E6%95%B4%E6%80%A7/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库的完整性">数据库的完整性</span>
+            <span class="post-date" title="2019-09-23 10:10:46">2019/09/23</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/22/%E6%95%B0%E6%8D%AE%E5%BA%93/%E7%BA%A6%E6%9D%9F/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="约束">约束</span>
+            <span class="post-date" title="2019-09-22 20:34:06">2019/09/22</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E6%B3%A8%E8%A7%A3/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="注解">注解</span>
+            <span class="post-date" title="2019-09-21 18:46:26">2019/09/21</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/%E5%8F%8D%E5%B0%84/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="反射">反射</span>
+            <span class="post-date" title="2019-09-21 14:31:37">2019/09/21</span>
+        </a>
+        
+        <a  class="All Java进阶 "
+           href="/2019/09/21/Java%E8%BF%9B%E9%98%B6/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Junit单元测试">Junit单元测试</span>
+            <span class="post-date" title="2019-09-21 10:43:26">2019/09/21</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93/%E8%A1%A8%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84CRUD/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="表内数据的CRUD">表内数据的CRUD</span>
+            <span class="post-date" title="2019-09-19 13:21:35">2019/09/19</span>
+        </a>
+        
+        <a  class="All 数据库 "
+           href="/2019/09/15/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84CRUD/"
+           data-tag="数据库"
+           data-author="" >
+            <span class="post-title" title="数据库和表的CRUD">数据库和表的CRUD</span>
+            <span class="post-date" title="2019-09-15 08:17:51">2019/09/15</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/13/Java%E5%9F%BA%E7%A1%80/%E8%BF%AD%E4%BB%A3%E5%99%A8/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="迭代器">迭代器</span>
+            <span class="post-date" title="2019-09-13 21:24:12">2019/09/13</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/HashCode%E3%80%81equals%E3%80%81clone%E8%A7%A3%E6%9E%90/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="HashCode、equals、clone解析">HashCode、equals、clone解析</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%9E%9A%E4%B8%BE/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="枚举">枚举</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All Java基础 "
+           href="/2019/09/10/Java%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="数据类型">数据类型</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%A4%9A%E6%80%81/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多态">多态</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8A%BD%E8%B1%A1%E7%B1%BB/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="抽象类">抽象类</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E6%8E%A5%E5%8F%A3/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="接口">接口</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%BB%A7%E6%89%BF/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="继承">继承</span>
+            <span class="post-date" title="2019-09-10 21:24:12">2019/09/10</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="方法的重载与重写">方法的重载与重写</span>
+            <span class="post-date" title="2019-09-02 21:12:01">2019/09/02</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E5%B0%81%E8%A3%85/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="封装">封装</span>
+            <span class="post-date" title="2019-09-02 16:57:45">2019/09/02</span>
+        </a>
+        
+        <a  class="All 面向对象 "
+           href="/2019/09/01/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%AE%80%E4%BB%8B/"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="面向对象简介">面向对象简介</span>
+            <span class="post-date" title="2019-09-01 12:36:08">2019/09/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Spring/SpringAOP" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">SpringAOP</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Spring">Spring</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Spring</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2020-07-30 11:07:59'>2020-07-30 09:02</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AOP-的相关概念-理解"><span class="toc-text">AOP 的相关概念[理解]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP-概述"><span class="toc-text">AOP 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体应用"><span class="toc-text">具体应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#动态代理回顾"><span class="toc-text">动态代理回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#动态代理的特点"><span class="toc-text">动态代理的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态代理常用的有两种方式"><span class="toc-text">动态代理常用的有两种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-JDK-官方的-Proxy-类创建代理对象"><span class="toc-text">使用 JDK 官方的 Proxy 类创建代理对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-CGLib-的-Enhancer-类创建代理对象"><span class="toc-text">使用 CGLib 的 Enhancer 类创建代理对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决案例中的问题"><span class="toc-text">解决案例中的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-中的-AOP-掌握"><span class="toc-text">Spring 中的 AOP[掌握]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-中-AOP-的细节"><span class="toc-text">Spring 中 AOP 的细节</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于-XML-的-AOP-配置"><span class="toc-text">基于 XML 的 AOP 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置步骤"><span class="toc-text">配置步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切入点表达式说明"><span class="toc-text">切入点表达式说明</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基于注解的-AOP-配置"><span class="toc-text">基于注解的 AOP 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建-1"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置步骤-1"><span class="toc-text">配置步骤</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AOP-的相关概念-理解"><a href="#AOP-的相关概念-理解" class="headerlink" title="AOP 的相关概念[理解]"></a><strong>AOP 的相关概念[理解]</strong></h1><h2 id="AOP-概述"><a href="#AOP-概述" class="headerlink" title="AOP 概述"></a><strong>AOP 概述</strong></h2><p><strong>什么是 AOP</strong><br>AOP：全称是 Aspect Oriented Programming 即：面向切面编程。<br>简单的说它就是把我们程序重复的代码抽取出来，在需要执行的时候，使用动态代理的技术，在不修改源码的基础上，对我们的已有方法进行增强。</p>
+<p><strong>AOP 的作用及优势</strong><br>作用：在程序运行期间，不修改源码对已有方法进行增强。<br>优势：减少重复代码，提高开发效率，维护方便</p>
+<p><strong>AOP 的实现方式</strong><br>使用动态代理技术</p>
+<h2 id="具体应用"><a href="#具体应用" class="headerlink" title="具体应用"></a><strong>具体应用</strong></h2><p><strong>案例中问题</strong><br>这是我们昨天课程中做的增删改查例子。下面是客户的业务层实现类。我们能看出什么问题吗?</p>
+<pre><code>客户的业务层实现类
+/**
+* 账户的业务层实现类
+* @author 黑马程序员
+* @Company http://www.ithiema.com
+* @Version 1.0
+*/
+public class AccountServiceImpl implements IAccountService {
+    private IAccountDao accountDao;
+    public void setAccountDao(IAccountDao accountDao) {
+    this.accountDao = accountDao; }
+    @Override
+    public void saveAccount(Account account) throws SQLException {
+        accountDao.save(account);
+    }
+    @Override
+    public void updateAccount(Account account) throws SQLException{
+        accountDao.update(account);
+    }
+    @Override
+    public void deleteAccount(Integer accountId) throws SQLException{
+        accountDao.delete(accountId);
+    }
+    @Override
+    public Account findAccountById(Integer accountId) throws SQLException {
+        return accountDao.findById(accountId);
+    }
+    @Override
+    public List&lt;Account&gt; findAllAccount() throws SQLException{
+        return accountDao.findAll();
+    } 
+}</code></pre><p>问题就是：<br>事务被自动控制了。换言之，我们使用了 connection 对象的 setAutoCommit(true)<br>此方式控制事务，如果我们每次都执行一条 sql 语句，没有问题，但是如果业务方法一次要执行多条 sql语句，这种方式就无法实现功能了。</p>
+<p>请看下面的示例：<br>我们在业务层中多加入一个方法。<br>业务层接口</p>
+<pre><code>/**
+* 转账
+* @param sourceName
+* @param targetName
+* @param money
+*/
+void transfer(String sourceName,String targetName,Float money);
+业务层实现类：
+@Override
+public void transfer(String sourceName, String targetName, Float money) {
+    //根据名称查询两个账户信息
+    Account source = accountDao.findByName(sourceName);
+    Account target = accountDao.findByName(targetName);
+    //转出账户减钱，转入账户加钱
+    source.setMoney(source.getMoney()-money);
+    target.setMoney(target.getMoney()+money);
+    //更新两个账户
+    accountDao.update(source);
+    int i=1/0; //模拟转账异常
+    accountDao.update(target);
+}</code></pre><p>当我们执行时，由于执行有异常，转账失败。但是因为我们是每次执行持久层方法都是独立事务，导致无法实现事务控制（不符合事务的一致性）</p>
+<p><strong>问题的解决</strong><br>解决办法：让业务层来控制事务的提交和回滚。（这个我们之前已经在 web 阶段讲过了）</p>
+<p>改造后的业务层实现类：注：此处没有使用 spring 的 IoC.</p>
+<pre><code>/**
+ * 账户的业务层实现类
+ * @author 黑马程序员
+ * @Company http://www.ithiema.com
+ * @Version 1.0
+ */
+public class AccountServiceImpl implements IAccountService {
+    private IAccountDao accountDao = new AccountDaoImpl();
+    @Override
+    public void saveAccount(Account account) {
+        try {
+            TransactionManager.beginTransaction();
+            accountDao.save(account);
+            TransactionManager.commit();
+        } catch (Exception e) {
+            TransactionManager.rollback();
+            e.printStackTrace();
+        }finally {
+            TransactionManager.release();
+        } 
+    }
+    @Override
+    public void updateAccount(Account account) {
+        try {
+            TransactionManager.beginTransaction();
+            accountDao.update(account);
+            TransactionManager.commit();
+        } catch (Exception e) {
+            TransactionManager.rollback();
+            e.printStackTrace();
+        }finally {
+            TransactionManager.release();
+        } 
+    }
+    @Override
+    public void deleteAccount(Integer accountId) {
+        try {
+            TransactionManager.beginTransaction();
+            accountDao.delete(accountId);
+            TransactionManager.commit();
+        } catch (Exception e) {
+            TransactionManager.rollback();
+            e.printStackTrace();
+        }finally {
+            TransactionManager.release();
+        } 
+    }
+    @Override
+    public Account findAccountById(Integer accountId) {
+        Account account = null;
+        try {
+            TransactionManager.beginTransaction();
+            account = accountDao.findById(accountId);
+            TransactionManager.commit();
+            return account;
+        } catch (Exception e) {
+            TransactionManager.rollback();
+            e.printStackTrace();
+        }finally {
+            TransactionManager.release();
+        }
+        return null; }
+    @Override
+    public List&lt;Account&gt; findAllAccount() {
+        List&lt;Account&gt; accounts = null;
+        try {
+            TransactionManager.beginTransaction();
+            accounts = accountDao.findAll();
+            TransactionManager.commit();
+            return accounts;
+        } catch (Exception e) {
+            TransactionManager.rollback();
+            e.printStackTrace();
+        }finally {
+            TransactionManager.release();
+        }
+        return null; }
+    @Override
+    public void transfer(String sourceName, String targetName, Float money) {
+        try {
+            TransactionManager.beginTransaction();
+            Account source = accountDao.findByName(sourceName);
+            Account target = accountDao.findByName(targetName);
+            source.setMoney(source.getMoney()-money);
+            target.setMoney(target.getMoney()+money);
+            accountDao.update(source);
+            int i=1/0;
+            accountDao.update(target);
+            TransactionManager.commit();
+        } catch (Exception e) {
+            TransactionManager.rollback();
+            e.printStackTrace();
+        }finally {
+            TransactionManager.release();
+        } 
+    } 
+}</code></pre><p>TransactionManager 类的代码：</p>
+<pre><code>/**
+ * 事务控制类
+ * @author 黑马程序员
+ * @Company http://www.ithiema.com
+ * @Version 1.0
+ */
+public class TransactionManager {
+    //定义一个 DBAssit
+    private static DBAssit dbAssit = new DBAssit(C3P0Utils.getDataSource(),true);
+    //开启事务
+    public static void beginTransaction() {
+        try {
+            dbAssit.getCurrentConnection().setAutoCommit(false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+    }
+    //提交事务
+    public static void commit() {
+        try {
+            dbAssit.getCurrentConnection().commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+    }
+    //回滚事务
+    public static void rollback() {
+        try {
+            dbAssit.getCurrentConnection().rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+    }
+    //释放资源
+    public static void release() {
+        try {
+            dbAssit.releaseConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    } 
+}</code></pre><p><strong>新的问题</strong><br>上一小节的代码，通过对业务层改造，已经可以实现事务控制了，但是由于我们添加了事务控制，也产生了一个新的问题：业务层方法变得臃肿了，里面充斥着很多重复代码。并且业务层方法和事务控制方法耦合了。</p>
+<p>试想一下，如果我们此时提交，回滚，释放资源中任何一个方法名变更，都需要修改业务层的代码，况且这还只是一个业务层实现类，而实际的项目中这种业务层实现类可能有十几个甚至几十个。</p>
+<p>思考：<br>这个问题能不能解决呢？<br>答案是肯定的，使用下一小节中提到的技术。</p>
+<h1 id="动态代理回顾"><a href="#动态代理回顾" class="headerlink" title="动态代理回顾"></a><strong>动态代理回顾</strong></h1><h2 id="动态代理的特点"><a href="#动态代理的特点" class="headerlink" title="动态代理的特点"></a><strong>动态代理的特点</strong></h2><p>字节码随用随创建，随用随加载。<br>它与静态代理的区别也在于此。因为静态代理是字节码一上来就创建好，并完成加载。<br>装饰者模式就是静态代理的一种体现。</p>
+<h2 id="动态代理常用的有两种方式"><a href="#动态代理常用的有两种方式" class="headerlink" title="动态代理常用的有两种方式"></a><strong>动态代理常用的有两种方式</strong></h2><p><strong>基于接口的动态代理</strong><br>提供者：JDK 官方的 Proxy 类。<br>要求：被代理类最少实现一个接口。</p>
+<p><strong>基于子类的动态代理</strong><br>提供者：第三方的 CGLib，如果报 asmxxxx 异常，需要导入 asm.jar。<br>要求：被代理类不能用 final 修饰的类（最终类）。</p>
+<h2 id="使用-JDK-官方的-Proxy-类创建代理对象"><a href="#使用-JDK-官方的-Proxy-类创建代理对象" class="headerlink" title="使用 JDK 官方的 Proxy 类创建代理对象"></a><strong>使用 JDK 官方的 Proxy 类创建代理对象</strong></h2><p>此处我们使用的是一个演员的例子：<br>在很久以前，演员和剧组都是直接见面联系的。没有中间人环节。<br>而随着时间的推移，产生了一个新兴职业：经纪人（中间人），这个时候剧组再想找演员就需要通过经纪人来找了。下面我们就用代码演示出来。</p>
+<pre><code>/**
+ * 一个经纪公司的要求:
+ * 能做基本的表演和危险的表演
+ */
+public interface IActor {
+    /**
+     * 基本演出
+     * @param money
+     */
+    public void basicAct(float money);
+    /**
+     * 危险演出
+     * @param money
+     */
+    public void dangerAct(float money);
+}
+/**
+ * 一个演员
+ */
+//实现了接口，就表示具有接口中的方法实现。即：符合经纪公司的要求
+public class Actor implements IActor{
+    public void basicAct(float money){
+        System.out.println(&quot;拿到钱，开始基本的表演：&quot;+money);
+    }
+    public void dangerAct(float money){
+        System.out.println(&quot;拿到钱，开始危险的表演：&quot;+money);
+    } }
+public class Client {
+    public static void main(String[] args) {
+        //一个剧组找演员：
+        final Actor actor = new Actor();//直接
+        /**
+         * 代理：
+             * 间接。
+         * 获取代理对象：
+         * 要求：
+             * 被代理类最少实现一个接口
+         * 创建的方式
+             * Proxy.newProxyInstance(三个参数)
+         * 参数含义：
+             * ClassLoader：和被代理对象使用相同的类加载器。
+             * Interfaces：和被代理对象具有相同的行为。实现相同的接口。
+             * InvocationHandler：如何代理。
+         * 策略模式：使用场景是：
+             * 数据有了，目的明确。
+             * 如何达成目标，就是策略。
+         *
+         */
+        IActor proxyActor = (IActor) Proxy.newProxyInstance(
+                actor.getClass().getClassLoader(),
+                actor.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    /**
+                     * 执行被代理对象的任何方法，都会经过该方法。
+                     * 此方法有拦截的功能。
+                     *
+                     * 参数：
+                     * proxy：代理对象的引用。不一定每次都用得到
+                     * method：当前执行的方法对象
+                     * args：执行方法所需的参数
+                     * 返回值：
+                     * 当前执行方法的返回值
+                     */
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args)
+                            throws Throwable {
+                        String name = method.getName();
+                        Float money = (Float) args[0];
+                        Object rtValue = null;
+                        //每个经纪公司对不同演出收费不一样，此处开始判断
+                        if(&quot;basicAct&quot;.equals(name)){
+                            //基本演出，没有 2000 不演
+                            if(money &gt; 2000){
+                            //看上去剧组是给了 8000，实际到演员手里只有 4000
+                            //这就是我们没有修改原来 basicAct 方法源码，对方法进行了增强
+                                rtValue = method.invoke(actor, money/2);
+                            } }
+                        if(&quot;dangerAct&quot;.equals(name)){
+                            //危险演出,没有 5000 不演
+                            if(money &gt; 5000){
+                            //看上去剧组是给了 50000，实际到演员手里只有 25000
+                            //这就是我们没有修改原来 dangerAct 方法源码，对方法进行了增强
+                                rtValue = method.invoke(actor, money/2);
+                            } }
+                        return rtValue;
+                    }
+                });
+        //没有经纪公司的时候，直接找演员。
+        // actor.basicAct(1000f);
+        // actor.dangerAct(5000f);
+        //剧组无法直接联系演员，而是由经纪公司找的演员
+        proxyActor.basicAct(8000f);
+        proxyActor.dangerAct(50000f);
+    } 
+}</code></pre><h2 id="使用-CGLib-的-Enhancer-类创建代理对象"><a href="#使用-CGLib-的-Enhancer-类创建代理对象" class="headerlink" title="使用 CGLib 的 Enhancer 类创建代理对象"></a><strong>使用 CGLib 的 Enhancer 类创建代理对象</strong></h2><p>还是那个演员的例子，只不过不让他实现接口。</p>
+<pre><code>/**
+ * 一个演员
+ */
+public class Actor{//没有实现任何接口
+    public void basicAct(float money){
+        System.out.println(&quot;拿到钱，开始基本的表演：&quot;+money);
+    }
+    public void dangerAct(float money){
+        System.out.println(&quot;拿到钱，开始危险的表演：&quot;+money);
+    } 
+}
+public class Client {
+    /**
+     * 基于子类的动态代理
+     * 要求：
+     * 被代理对象不能是最终类
+     * 用到的类：
+     * Enhancer
+     * 用到的方法：
+     * create(Class, Callback)
+     * 方法的参数：
+     * Class：被代理对象的字节码
+     * Callback：如何代理
+     * @param args
+     */
+    public static void main(String[] args) {
+        final Actor actor = new Actor();
+        Actor cglibActor = (Actor) Enhancer.create(actor.getClass(),
+                new MethodInterceptor() {
+                    /**
+                     * 执行被代理对象的任何方法，都会经过该方法。在此方法内部就可以对被代理对象的任何
+                     方法进行增强。
+                     *
+                     * 参数：
+                     * 前三个和基于接口的动态代理是一样的。
+                     * MethodProxy：当前执行方法的代理对象。
+                     * 返回值：
+                     * 当前执行方法的返回值
+                     */
+                    @Override
+                    public Object intercept(Object proxy, Method method, Object[] args,
+                                            MethodProxy methodProxy) throws Throwable {
+                        String name = method.getName();
+                        Float money = (Float) args[0];
+                        Object rtValue = null;
+                        if(&quot;basicAct&quot;.equals(name)){
+                            //基本演出
+                            if(money &gt; 2000){
+                                rtValue = method.invoke(actor, money/2);
+                            } }
+                        if(&quot;dangerAct&quot;.equals(name)){
+                            //危险演出
+                            if(money &gt; 5000){
+                                rtValue = method.invoke(actor, money/2);
+                            } }
+                        return rtValue;
+                    }
+                });
+        cglibActor.basicAct(10000);
+        cglibActor.dangerAct(100000);
+    } }</code></pre><p>思考：<br>这个故事（示例）讲完之后，我们从中受到什么启发呢？它到底能应用在哪呢？</p>
+<h2 id="解决案例中的问题"><a href="#解决案例中的问题" class="headerlink" title="解决案例中的问题"></a><strong>解决案例中的问题</strong></h2><pre><code>/**
+ * 用于创建客户业务层对象工厂（当然也可以创建其他业务层对象，只不过我们此处不做那么繁琐）
+ * @author 黑马程序员
+ * @Company http://www.ithiema.com
+ * @Version 1.0
+ */
+public class BeanFactory {
+    /**
+     * 创建账户业务层实现类的代理对象
+     * @return
+     */
+    public static IAccountService getAccountService() {
+        //1.定义被代理对象
+        final IAccountService accountService = new AccountServiceImpl();
+        //2.创建代理对象
+        IAccountService proxyAccountService = (IAccountService)
+                Proxy.newProxyInstance(accountService.getClass().getClassLoader(),
+                        accountService.getClass().getInterfaces(),new
+                                InvocationHandler() {
+                                    /**
+                                     * 执行被代理对象的任何方法，都会经过该方法。
+                                     * 此处添加事务控制
+                                     */
+                                    @Override
+                                    public Object invoke(Object proxy, Method method,
+                                                         Object[] args) throws Throwable {
+                                        Object rtValue = null;
+                                        try {
+                                            //开启事务
+                                            TransactionManager.beginTransaction();
+                                            //执行业务层方法
+                                            rtValue = method.invoke(accountService, args);
+                                            //提交事务
+                                            TransactionManager.commit();
+                                        }catch(Exception e) {
+                                            //回滚事务
+                                            TransactionManager.rollback();
+                                            e.printStackTrace();
+                                        }finally {
+                                            //释放资源
+                                            TransactionManager.release();
+                                        }
+                                        return rtValue; }
+                                });
+        return proxyAccountService; } 
+}</code></pre><p>当我们改造完成之后，业务层用于控制事务的重复代码就都可以删掉了。</p>
+<h1 id="Spring-中的-AOP-掌握"><a href="#Spring-中的-AOP-掌握" class="headerlink" title="Spring 中的 AOP[掌握]"></a><strong>Spring 中的 AOP[掌握]</strong></h1><h2 id="Spring-中-AOP-的细节"><a href="#Spring-中-AOP-的细节" class="headerlink" title="Spring 中 AOP 的细节"></a><strong>Spring 中 AOP 的细节</strong></h2><p><strong>说明</strong><br>我们学习 spring 的 aop，就是通过配置的方式，实现上一章节的功能。</p>
+<p><strong>AOP 相关术语</strong></p>
+<ul>
+<li><p>Joinpoint(连接点):所谓连接点是指那些被拦截到的点。在 spring 中,这些点指的是方法,因为 spring 只支持方法类型的连接点。</p>
+</li>
+<li><p>Pointcut(切入点):所谓切入点是指我们要对哪些 Joinpoint 进行拦截的定义。</p>
+</li>
+<li><p>Advice(通知/增强):所谓通知是指拦截到 Joinpoint 之后所要做的事情就是通知。通知的类型：前置通知,后置通知,异常通知,最终通知,环绕通知。</p>
+</li>
+<li><p>Introduction(引介):引介是一种特殊的通知在不修改类代码的前提下, Introduction 可以在运行期为类动态地添加一些方法或 Field。</p>
+</li>
+<li><p>Target(目标对象):代理的目标对象。</p>
+</li>
+<li><p>Weaving(织入):是指把增强应用到目标对象来创建新的代理对象的过程。spring 采用动态代理织入，而 AspectJ 采用编译期织入和类装载期织入。</p>
+</li>
+<li><p>Proxy（代理）:一个类被 AOP 织入增强后，就产生一个结果代理类。</p>
+</li>
+<li><p>Aspect(切面):是切入点和通知（引介）的结合。</p>
+</li>
+</ul>
+<p><strong>关于代理的选择</strong><br>在 spring 中，框架会根据目标类是否实现了接口来决定采用哪种动态代理的方式。</p>
+<h1 id="基于-XML-的-AOP-配置"><a href="#基于-XML-的-AOP-配置" class="headerlink" title="基于 XML 的 AOP 配置"></a><strong>基于 XML 的 AOP 配置</strong></h1><p><strong>示例：</strong><br>我们在学习 spring 的 aop 时，采用账户转账作为示例。<br>并且把 spring 的 ioc 也一起应用进来。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a><strong>环境搭建</strong></h2><p><strong>第一步：</strong>准备必要的代码<br>此处包含了实体类，业务层和持久层代码。我们沿用上一章节中的代码即可。</p>
+<p><strong>第二步：</strong>拷贝必备的 jar 包到工程的 lib 目录<br>此处要拷贝 spring 的 ioc 和 aop 两组 jar 包</p>
+<p><strong>第三步：</strong>创建 spring 的配置文件并导入约束<br>此处要导入 aop 的约束</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+ xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+ xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+ xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans 
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop 
+ http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
+&lt;/beans&gt;</code></pre><p><strong>第四步：</strong>配置 spring 的 ioc</p>
+<pre><code>&lt;!-- 配置 service --&gt; 
+&lt;bean id=&quot;accountService&quot; class=&quot;com.itheima.service.impl.AccountServiceImpl&quot;&gt; 
+    &lt;property name=&quot;accountDao&quot; ref=&quot;accountDao&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 配置 dao --&gt; 
+&lt;bean id=&quot;accountDao&quot; class=&quot;com.itheima.dao.impl.AccountDaoImpl&quot;&gt;
+    &lt;property name=&quot;dbAssit&quot; ref=&quot;dbAssit&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 配置数据库操作对象 --&gt; 
+&lt;bean id=&quot;dbAssit&quot; class=&quot;com.itheima.dbassit.DBAssit&quot;&gt; 
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+&lt;!-- 指定 connection 和线程绑定 --&gt; 
+    &lt;property name=&quot;useCurrentConnection&quot; value=&quot;true&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 配置数据源 --&gt; 
+&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt; 
+    &lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.jdbc.Driver&quot;&gt;&lt;/property&gt; 
+    &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql:///spring_day02&quot;&gt;&lt;/property&gt; 
+    &lt;property name=&quot;user&quot; value=&quot;root&quot;&gt;&lt;/property&gt; 
+    &lt;property name=&quot;password&quot; value=&quot;1234&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;</code></pre><p><strong>第五步：</strong><br>抽取公共代码制作成通知</p>
+<pre><code>/**
+ * 事务控制类
+ * @author 黑马程序员
+ * @Company http://www.ithiema.com
+ * @Version 1.0
+ */
+public class TransactionManager {
+    //定义一个 DBAssit
+    private DBAssit dbAssit ;
+    public void setDbAssit(DBAssit dbAssit) {
+        this.dbAssit = dbAssit; }
+    //开启事务
+    public void beginTransaction() {
+        try {
+            dbAssit.getCurrentConnection().setAutoCommit(false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+    }
+    //提交事务
+    public void commit() {
+        try {
+            dbAssit.getCurrentConnection().commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+    }
+    //回滚事务
+    public void rollback() {
+        try {
+            dbAssit.getCurrentConnection().rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+    }
+    //释放资源
+    public void release() {
+        try {
+            dbAssit.releaseConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    } 
+}</code></pre><h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a><strong>配置步骤</strong></h2><p><strong>第一步：</strong>把通知类用 bean 标签配置起来</p>
+<pre><code>&lt;!-- 配置通知 --&gt; 
+&lt;bean id=&quot;txManager&quot; class=&quot;com.itheima.utils.TransactionManager&quot;&gt; 
+    &lt;property name=&quot;dbAssit&quot; ref=&quot;dbAssit&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt; </code></pre><p><strong>第二步：</strong>使用 aop:config 声明 aop 配置<br>aop:config:<br>作用：用于声明开始 aop 的配置</p>
+<pre><code>&lt;aop:config&gt;
+    &lt;!-- 配置的代码都写在此处 --&gt;
+&lt;/aop:config&gt;</code></pre><p><strong>第三步：</strong>使用 aop:aspect 配置切面</p>
+<p>aop:aspect:<br>作用：用于配置切面。<br>属性：<br>    * id：给切面提供一个唯一标识。<br>    * ref：引用配置好的通知类 bean 的 id。 </p>
+<pre><code>&lt;aop:aspect id=&quot;txAdvice&quot; ref=&quot;txManager&quot;&gt;
+    &lt;!--配置通知的类型要写在此处--&gt;
+&lt;/aop:aspect&gt;</code></pre><p><strong>第四步：</strong></p>
+<p>使用 aop:pointcut 配置切入点表达式<br>aop:pointcut：<br>作用：用于配置切入点表达式。就是指定对哪些类的哪些方法进行增强。<br>属性：expression：用于定义切入点表达式。<br>id：用于给切入点表达式提供一个唯一标识</p>
+<pre><code>&lt;aop:pointcut expression=&quot;execution(
+    public void com.itheima.service.impl.AccountServiceImpl.transfer(
+    java.lang.String, java.lang.String, java.lang.Float) )&quot; 
+id=&quot;pt1&quot;/&gt;</code></pre><p><strong>第五步：</strong>使用 aop:xxx 配置对应的通知类型<br><strong>aop:before</strong></p>
+<ul>
+<li>作用：用于配置前置通知。指定增强的方法在切入点方法之前执行</li>
+<li>属性：<ul>
+<li>method:用于指定通知类中的增强方法名称</li>
+<li>ponitcut-ref：用于指定切入点的表达式的引用</li>
+<li>poinitcut：用于指定切入点表达式</li>
+</ul>
+</li>
+</ul>
+<p>执行时间点：<br>切入点方法执行之前执行</p>
+<pre><code>&lt;aop:before method=&quot;beginTransaction&quot; pointcut-ref=&quot;pt1&quot;/&gt;</code></pre><p><strong>aop:after-returning</strong></p>
+<ul>
+<li>作用：用于配置后置通知</li>
+<li>属性：<ul>
+<li>method：指定通知中方法的名称。</li>
+<li>pointct：定义切入点表达式</li>
+<li>pointcut-ref：指定切入点表达式的引用</li>
+</ul>
+</li>
+</ul>
+<p>执行时间点：<br>切入点方法正常执行之后。它和异常通知只能有一个执行</p>
+<pre><code>&lt;aop:after-returning method=&quot;commit&quot; pointcut-ref=&quot;pt1&quot;/&gt;</code></pre><p><strong>aop:after-throwing</strong></p>
+<ul>
+<li>作用：用于配置异常通知</li>
+<li>属性：<ul>
+<li>method：指定通知中方法的名称。</li>
+<li>pointct：定义切入点表达式</li>
+<li>pointcut-ref：指定切入点表达式的引用</li>
+</ul>
+</li>
+</ul>
+<p>执行时间点：<br>切入点方法执行产生异常后执行。它和后置通知只能执行一个</p>
+<pre><code>&lt;aop:after-throwing method=&quot;rollback&quot; pointcut-ref=&quot;pt1&quot;/&gt;</code></pre><p><strong>aop:after</strong></p>
+<ul>
+<li>作用：用于配置最终通知</li>
+<li>属性：<ul>
+<li>method：指定通知中方法的名称。</li>
+<li>pointct：定义切入点表达式</li>
+<li>pointcut-ref：指定切入点表达式的引用</li>
+</ul>
+</li>
+</ul>
+<p>执行时间点：<br>无论切入点方法执行时是否有异常，它都会在其后面执行。</p>
+<pre><code>aop:after method=&quot;release&quot; pointcut-ref=&quot;pt1&quot;/&gt;</code></pre><h2 id="切入点表达式说明"><a href="#切入点表达式说明" class="headerlink" title="切入点表达式说明"></a><strong>切入点表达式说明</strong></h2><p>execution:匹配方法的执行(常用)<br>execution(表达式)<br>表达式语法：execution([修饰符] 返回值类型 包名.类名.方法名(参数))</p>
+<p>写法说明：<br>全匹配方式：</p>
+<pre><code>public void com.itheima.service.impl.AccountServiceImpl.saveAccount(com.itheima.domain.Account)</code></pre><p>访问修饰符可以省略</p>
+<pre><code>void com.itheima.service.impl.AccountServiceImpl.saveAccount(com.itheima.domain.Account)</code></pre><p>返回值可以使用 * 号，表示任意返回值</p>
+<pre><code>* com.itheima.service.impl.AccountServiceImpl.saveAccount(com.itheima.domain.Account)</code></pre><p>包名可以使用* 号，表示任意包，但是有几级包，需要写几个* </p>
+<pre><code>* *.*.*.*.AccountServiceImpl.saveAccount(com.itheima.domain.Account)</code></pre><p>使用..来表示当前包，及其子包</p>
+<pre><code>* com..AccountServiceImpl.saveAccount(com.itheima.domain.Account)</code></pre><p>类名可以使用 * 号，表示任意类</p>
+<pre><code>* com..*.saveAccount(com.itheima.domain.Account)</code></pre><p>方法名可以使用* 号，表示任意方法</p>
+<pre><code>* com..*.*( com.itheima.domain.Account)</code></pre><p>参数列表可以使用* ，表示参数可以是任意数据类型，但是必须有参数</p>
+<pre><code>* com..*.*(*)</code></pre><p>参数列表可以使用..表示有无参数均可，有参数可以是任意类型</p>
+<pre><code>* com..*.*(..)</code></pre><p>全通配方式：</p>
+<pre><code>* *..*.*(..)</code></pre><p>注：通常情况下，我们都是对业务层的方法进行增强，所以切入点表达式都是切到业务层实现类。</p>
+<pre><code>execution(* com.itheima.service.impl.*.*(..))</code></pre><p><strong>环绕通知</strong><br>配置方式: </p>
+<pre><code>&lt;aop:config&gt; 
+&lt;aop:pointcut expression=&quot;execution(* com.itheima.service.impl.*.*(..))&quot;id=&quot;pt1&quot;/&gt;
+    &lt;aop:aspect id=&quot;txAdvice&quot; ref=&quot;txManager&quot;&gt;
+        &lt;!-- 配置环绕通知 --&gt; 
+        &lt;aop:around method=&quot;transactionAround&quot; pointcut-ref=&quot;pt1&quot;/&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;</code></pre><p>aop:around：</p>
+<ul>
+<li>作用：用于配置环绕通知</li>
+<li>属性：<ul>
+<li>method：指定通知中方法的名称。</li>
+<li>pointct：定义切入点表达式</li>
+<li>pointcut-ref：指定切入点表达式的引用</li>
+</ul>
+</li>
+</ul>
+<p>说明：它是 spring 框架为我们提供的一种可以在代码中手动控制增强代码什么时候执行的方式。<br>注意：通常情况下，环绕通知都是独立使用的</p>
+<pre><code>/**
+ * 环绕通知
+ * @param pjp
+ * spring 框架为我们提供了一个接口：ProceedingJoinPoint，它可以作为环绕通知的方法参数。
+ * 在环绕通知执行时，spring 框架会为我们提供该接口的实现类对象，我们直接使用就行。
+ * @return
+ */
+public Object transactionAround(ProceedingJoinPoint pjp) {
+        //定义返回值
+    Object rtValue = null;
+    try {
+        //获取方法执行所需的参数
+        Object[] args = pjp.getArgs();
+        //前置通知：开启事务
+        beginTransaction();
+        //执行方法
+        rtValue = pjp.proceed(args);
+        //后置通知：提交事务
+        commit();
+    }catch(Throwable e) {
+        //异常通知：回滚事务
+        rollback();
+        e.printStackTrace();
+    }finally {
+        //最终通知：释放资源
+        release();
+    }
+    return rtValue; }</code></pre><h1 id="基于注解的-AOP-配置"><a href="#基于注解的-AOP-配置" class="headerlink" title="基于注解的 AOP 配置"></a><strong>基于注解的 AOP 配置</strong></h1><h2 id="环境搭建-1"><a href="#环境搭建-1" class="headerlink" title="环境搭建"></a><strong>环境搭建</strong></h2><p><strong>第一步：</strong>准备必要的代码和 jar 包<br>拷贝上一小节的工程即可。</p>
+<p><strong>第二步：</strong>在配置文件中导入 context 的名称空间</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+ xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+ xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+&lt;!-- 配置数据库操作对象 --&gt; 
+&lt;bean id=&quot;dbAssit&quot; class=&quot;com.itheima.dbassit.DBAssit&quot;&gt; 
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;&gt;&lt;/property&gt;
+    &lt;!-- 指定 connection 和线程绑定 --&gt; 
+    &lt;property name=&quot;useCurrentConnection&quot; value=&quot;true&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;!-- 配置数据源 --&gt; 
+&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt; 
+    &lt;property name=&quot;driverClass&quot; value=&quot;com.mysql.jdbc.Driver&quot;&gt;&lt;/property&gt; 
+    &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql:///spring_day02&quot;&gt;&lt;/property&gt; 
+    &lt;property name=&quot;user&quot; value=&quot;root&quot;&gt;&lt;/property&gt; 
+    &lt;property name=&quot;password&quot; value=&quot;1234&quot;&gt;&lt;/property&gt;
+&lt;/bean&gt;
+&lt;/beans&gt;</code></pre><p><strong>第三步：把资源使用注解配置</strong></p>
+<pre><code>/**
+* 账户的业务层实现类
+* @author 黑马程序员
+* @Company http://www.ithiema.com
+* @Version 1.0
+*/
+@Service(&quot;accountService&quot;)
+public class AccountServiceImpl implements IAccountService {
+    @Autowired
+    private IAccountDao accountDao;
+}
+/**
+* 账户的持久层实现类
+* @author 黑马程序员
+* @Company http://www.ithiema.com
+* @Version 1.0
+*/
+@Repository(&quot;accountDao&quot;)
+public class AccountDaoImpl implements IAccountDao {
+    @Autowired
+    private DBAssit dbAssit ; 
+}</code></pre><p><strong>第四步：</strong>在配置文件中指定 spring 要扫描的包</p>
+<pre><code>&lt;!-- 告知 spring，在创建容器时要扫描的包 --&gt; 
+&lt;context:component-scan base-package=&quot;com.itheima&quot;&gt;&lt;/context:component-scan&gt;</code></pre><h2 id="配置步骤-1"><a href="#配置步骤-1" class="headerlink" title="配置步骤"></a><strong>配置步骤</strong></h2><p><strong>第一步：</strong><br>把通知类也使用注解配置</p>
+<pre><code>/**
+* 事务控制类
+* @author 黑马程序员
+* @Company http://www.ithiema.com
+* @Version 1.0
+*/
+@Component(&quot;txManager&quot;)
+public class TransactionManager {
+    //定义一个 DBAssit
+    @Autowired
+    private DBAssit dbAssit ; 
+}</code></pre><p><strong>第二步：</strong><br>在通知类上使用@Aspect 注解声明为切面<br>作用：<br>把当前类声明为切面类。</p>
+<pre><code>/**
+* 事务控制类
+* @author 黑马程序员
+* @Company http://www.ithiema.com
+* @Version 1.0
+*/
+@Component(&quot;txManager&quot;)
+@Aspect//表明当前类是一个切面类
+public class TransactionManager {
+    //定义一个 DBAssit
+    @Autowired
+    private DBAssit dbAssit ; 
+}</code></pre><p><strong>第三步：</strong>在增强的方法上使用注解配置通知<br>@Before<br>作用：把当前方法看成是前置通知。<br>属性：value：用于指定切入点表达式，还可以指定切入点表达式的引用。</p>
+<pre><code>//开启事务
+@Before(&quot;execution(* com.itheima.service.impl.*.*(..))&quot;)
+public void beginTransaction() {
+    try {
+        dbAssit.getCurrentConnection().setAutoCommit(false);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } }</code></pre><p>@AfterReturning<br>作用：把当前方法看成是后置通知。<br>属性：value：用于指定切入点表达式，还可以指定切入点表达式的引用</p>
+<pre><code>//提交事务
+@AfterReturning(&quot;execution(* com.itheima.service.impl.*.*(..))&quot;)
+public void commit() {
+    try {
+        dbAssit.getCurrentConnection().commit();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } 
+}</code></pre><p>@AfterThrowing<br>作用：把当前方法看成是异常通知。<br>属性：value：用于指定切入点表达式，还可以指定切入点表达式的引用</p>
+<pre><code>//回滚事务
+@AfterThrowing(&quot;execution(* com.itheima.service.impl.*.*(..))&quot;)
+public void rollback() {
+    try {
+        dbAssit.getCurrentConnection().rollback();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } 
+}</code></pre><p>@After<br>作用：把当前方法看成是最终通知。<br>属性：value：用于指定切入点表达式，还可以指定切入点表达式的引用</p>
+<pre><code>//释放资源
+@After(&quot;execution(* com.itheima.service.impl.*.*(..))&quot;)
+public void release() {
+    try {
+    dbAssit.releaseConnection();
+    } catch (Exception e) {
+    e.printStackTrace();
+    } 
+}</code></pre><p><strong>第四步：</strong>在 spring 配置文件中开启 spring 对注解 AOP 的支持</p>
+<pre><code>&lt;!-- 开启 spring 对注解 AOP 的支持 --&gt; 
+&lt;aop:aspectj-autoproxy/&gt;</code></pre><p><strong>环绕通知注解配置</strong></p>
+<p>@Around<br>作用：把当前方法看成是环绕通知。<br>属性：value：用于指定切入点表达式，还可以指定切入点表达式的引用。</p>
+<pre><code>/**
+ * 环绕通知
+ * @param pjp
+ * @return
+ */
+@Around(&quot;execution(* com.itheima.service.impl.*.*(..))&quot;)
+public Object transactionAround(ProceedingJoinPoint pjp) {
+    //定义返回值
+    Object rtValue = null;
+    try {
+        //获取方法执行所需的参数
+        Object[] args = pjp.getArgs();
+        //前置通知：开启事务
+        beginTransaction();
+        //执行方法
+        rtValue = pjp.proceed(args);
+        //后置通知：提交事务
+        commit();
+    }catch(Throwable e) {
+        //异常通知：回滚事务
+        rollback();
+        e.printStackTrace();
+    }finally {
+        //最终通知：释放资源
+        release();
+    }
+    return rtValue; 
+}</code></pre><p><strong>切入点表达式注解</strong><br>@Pointcut<br>作用：指定切入点表达式<br>属性：value：指定表达式的内容</p>
+<pre><code>@Pointcut(&quot;execution(* com.itheima.service.impl.*.*(..))&quot;)
+private void pt1() {}</code></pre><p>引用方式：</p>
+<pre><code>/**
+ * 环绕通知
+ * @param pjp
+ * @return
+ */
+@Around(&quot;pt1()&quot;)//注意：千万别忘了写括号
+public Object transactionAround(ProceedingJoinPoint pjp) {
+    //定义返回值
+    Object rtValue = null;
+    try {
+        //获取方法执行所需的参数
+        Object[] args = pjp.getArgs();
+        //前置通知：开启事务
+        beginTransaction();
+        //执行方法
+        rtValue = pjp.proceed(args);
+        //后置通知：提交事务
+        commit();
+    }catch(Throwable e) {
+        //异常通知：回滚事务
+        rollback();
+        e.printStackTrace();
+    }finally {
+        //最终通知：释放资源
+        release();
+    }
+    return rtValue; 
+}</code></pre><p><strong>不使用 XML 的配置方式</strong></p>
+<pre><code>@Configuration
+@ComponentScan(basePackages=&quot;com.itheima&quot;)
+@EnableAspectJAutoProxy
+public class SpringConfiguration {
+}</code></pre>
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 Tukuai
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    #post .pjax article .article-entry>ol, #post .pjax article .article-entry>ul, #post .pjax article>ol, #post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    #post .pjax article .article-entry li>ol, #post .pjax article .article-entry li>ul,#post .pjax article li>ol, #post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    #post .pjax article .article-entry>ol>li, #post .pjax article .article-entry>ul>li,#post .pjax article>ol>li, #post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    #post .pjax article .article-entry li>ol>li, #post .pjax article .article-entry li>ul>li,#post .pjax article li>ol>li, #post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+    #post .index {
+        background: url(/img/1.jpg);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("/img/7.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>
