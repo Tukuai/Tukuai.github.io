@@ -105,19 +105,11 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="All">All<small>(174)</small></div></li>
+    <li><div class="all active" data-rel="All">All<small>(172)</small></div></li>
     
         
             
             <li><div data-rel="数据库">数据库<small>(19)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="并发编程">并发编程<small>(2)</small></div>
                 
             </li>
             
@@ -285,7 +277,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="174">
+<input type="hidden" id="yelog_site_posts_number" value="172">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -682,22 +674,6 @@
            data-author="" >
             <span class="post-title" title="Redis入门简介">Redis入门简介</span>
             <span class="post-date" title="2020-05-15 09:36:37">2020/05/15</span>
-        </a>
-        
-        <a  class="All 并发编程 "
-           href="/2020/05/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
-           data-tag="Java"
-           data-author="" >
-            <span class="post-title" title="基础知识">基础知识</span>
-            <span class="post-date" title="2020-05-09 10:48:37">2020/05/09</span>
-        </a>
-        
-        <a  class="All 并发编程 "
-           href="/2020/05/09/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%8E%9F%E7%90%86/"
-           data-tag="Java"
-           data-author="" >
-            <span class="post-title" title="JMM内存模型">JMM内存模型</span>
-            <span class="post-date" title="2020-05-09 10:48:37">2020/05/09</span>
         </a>
         
         <a  class="All 多线程 "
@@ -1824,7 +1800,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2020-03-14 15:13:46'>2020-03-14 14:44</time>
+            Created At : <time class="date" title='Updated At: 2020-08-30 09:39:53'>2020-03-14 14:44</time>
         
     </div>
     <div class="article-meta">
@@ -1882,11 +1858,12 @@
 <li>接收方将正确的且帧序号落入当前接收窗口的帧存入接收窗口，同时按序将接收窗口的帧送交给主机（网络层）。出错或帧序号未落入当前窗口的帧全部予以丢弃。 </li>
 <li>当某帧丢失或出错时，则其后到达的帧均丢弃，并返回否认信息，请求对方从出错帧开始重发。 </li>
 <li>发送方设置一个超时计时器，当连续发送n帧后，立即启动超时计时器。当超时计时器满且未收到应答，则重发这n帧。<br><img src="/images/111.png" alt=""></li>
-</ul>
-<p><strong>2.2选择重传协议</strong><br>顺序接收管道协议 </p>
-<ul>
 <li>优点：仅需一个接收缓冲区 </li>
-<li>缺点：当信道误码率较高时，会产生大量重发帧<br>另一种更好的方法：选择重传协议 </li>
+<li>缺点：当信道误码率较高时，会产生大量重发帧 </li>
+</ul>
+<p><strong>2.2选择重传协议</strong></p>
+<p>另一种更好的方法：选择重传协议 </p>
+<ul>
 <li>若某一帧出错，后面正确到达的帧虽然不能立即送网络层，但接收方可将其保存在接收窗口，仅要求发送方重传那个发错帧。</li>
 </ul>
 <p><strong>停—等协议 、顺序接收管道协议、选择重传协议都可以看成是滑动窗口协议，其差别仅在窗口的尺寸不同。如下表所示</strong><br><img src="/images/112.png" alt=""></p>
